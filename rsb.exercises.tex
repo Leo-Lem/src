@@ -47,12 +47,14 @@
     \item ${N}_{2K} = (0.85_{10})_{2K} = {1111.0010\ 0111}_2$
   \end{solution}
 
-  \begin{exercise}{Rechnen im Hexadezimalsystem}
-    \noitem {Gegeben seien die Hexadezimalzahlen $A = \mathrm{4B2F}$ und $B = \mathrm{3B32}$.}
-    \item Addieren Sie $A+B$.
-    \item Subtrahieren Sie $A-B$.
-    \item Multiplizieren Sie $A\cdot (20)_{16}$.
-  \end{exercise}
+  \begin{exercise*}{Rechnen im Hexadezimalsystem}
+    Gegeben seien die Hexadezimalzahlen $A = \mathrm{4B2F}$ und $B = \mathrm{3B32}$.
+    \begin{enumerate}
+      \item Addieren Sie $A+B$.
+      \item Subtrahieren Sie $A-B$.
+      \item Multiplizieren Sie $A\cdot (20)_{16}$.
+    \end{enumerate}
+  \end{exercise*}
 
   \begin{solution}
     \item $A + B = \mathrm{4B2F} + \mathrm{3B32} = \mathrm{8661}$
@@ -60,20 +62,18 @@
     \item $A \cdot B = \mathrm{4B2F} \cdot 20 = \mathrm{965E}$
   \end{solution}
 
-  \begin{exercise}{Umwandlung von IEEE-754 Gleitkommazahlen}
-    \noitem {Wandeln Sie die folgenden normalisierten 32-bit Gleitkommazahlen im IEEE-754 float-Format (1-bit Vorzeichen, 8-bit Exponent in Exzess-127 Darstellung, 23-bit Mantisse) in Dezimalzahlen um. Dabei sind nur die oberen 7 Bit der Mantisse angegeben (alle anderen Bits sind 0).
-      \begin{itemize}
-        \item $(0|0000 0000|0000 000)$:
-        \item $(1|1000 0010|1110 000)$:
-        \item $(0|0111 1111|0000 000)$:
-        \item $(0|0111 1110|1000 000)$:
-        \item $(1|0111 1111|0100 000)$:
-      \end{itemize}
-    }
-  \end{exercise}
+  \begin{exercise*}{Umwandlung von IEEE-754 Gleitkommazahlen}
+    Wandeln Sie die folgenden normalisierten 32-bit Gleitkommazahlen im IEEE-754 float-Format (1-bit Vorzeichen, 8-bit Exponent in Exzess-127 Darstellung, 23-bit Mantisse) in Dezimalzahlen um. Dabei sind nur die oberen 7 Bit der Mantisse angegeben (alle anderen Bits sind 0).
+    \begin{itemize}
+      \item $(0|0000 0000|0000 000)$:
+      \item $(1|1000 0010|1110 000)$:
+      \item $(0|0111 1111|0000 000)$:
+      \item $(0|0111 1110|1000 000)$:
+      \item $(1|0111 1111|0100 000)$:
+    \end{itemize}
+  \end{exercise*}
 
-  \begin{solution}
-    \noitem{
+  \begin{solution*}
       \begin{itemize}
         \item $0.0$
         \item $-15.0$
@@ -81,28 +81,27 @@
         \item $0.75$
         \item $-1.25$
       \end{itemize}
-    }
-  \end{solution}
+  \end{solution*}
 
-  \begin{exercise}{Codierung}
-    \noitem {
-      Nachfolgend sind alle 4 Codewörter eines Codes angegeben:
+  \begin{exercise*}{Codierung}
+    Nachfolgend sind alle 4 Codewörter eines Codes angegeben:
     \begin{center} $w_1 = 0000001$, $w_2 = 0001110$, $w_3 = 1110000$, $w_4 = 1111111$ \end{center}
-    }
-    \item Bestimmen Sie den minimalen Hamming-Abstand der Codewörter.
-    \item Welche Aussagen sind zutreffend?
-      \begin{itemize}
-        \item Es handelt sich um einen Binärcode.
-        \item Es handelt sich um einen Blockcode.
-        \item Es handelt sich um einen linearen Code.
-        \item Es handelt sich um einen zyklischen Code.
-        \item Mit dem Code können 2-bit Fehler erkannt werden.
-        \item Mit dem Code können 3-bit Fehler erkannt werden.
-        \item Mit dem Code können 1-bit Fehler korrigiert werden.
-        \item Mit dem Code können 2-bit Fehler korrigiert werden.
-        \item Mit dem Code können 1-bit Fehler korrigiert und 2-bit Fehler erkannt werden.
-      \end{itemize}
-  \end{exercise}
+    \begin{enumerate}
+      \item Bestimmen Sie den minimalen Hamming-Abstand der Codewörter.
+      \item Welche Aussagen sind zutreffend?
+        \begin{itemize}
+          \item Es handelt sich um einen Binärcode.
+          \item Es handelt sich um einen Blockcode.
+          \item Es handelt sich um einen linearen Code.
+          \item Es handelt sich um einen zyklischen Code.
+          \item Mit dem Code können 2-bit Fehler erkannt werden.
+          \item Mit dem Code können 3-bit Fehler erkannt werden.
+          \item Mit dem Code können 1-bit Fehler korrigiert werden.
+          \item Mit dem Code können 2-bit Fehler korrigiert werden.
+          \item Mit dem Code können 1-bit Fehler korrigiert und 2-bit Fehler erkannt werden.
+        \end{itemize}
+    \end{enumerate}
+  \end{exercise*}
 
   \begin{solution}
     \item $d_{min} = 4$
@@ -120,20 +119,21 @@
       \end{itemize}
   \end{solution}
 
-  \begin{exercise}{Codierung nach Fano \& Huffman}
-    \noitem {Gegeben sei eine Menge $M = \{A, B, C, D, E\}$ von Symbolen, die mit folgenden Wahrscheinlichkeiten auftreten:
-      \begin{center}
-        \begin{tabular}{c|ccccc}
-          $m_i$ & $A$ & $B$ & $C$ & $D$ & $E$\\
-          \hline
-          $p_i$ & 0,35 & 0,15 & 0,2 & 0,18 & 0,12\\
-        \end{tabular}
-      \end{center}
-    }
-    \item Geben Sie eine optimale Codierung der Elemente von $M$ nach Fano an.
-    \item Geben Sie eine optimale Codierung der Elemente von $M$ nach Huffman an.
-    \item Schreiben Sie die Formel auf, nach der die Entropie $H$ berechnet wird \& setzen Sie die Zahlen ein. Die Berechnung des Zahlenwertes entfällt.
-  \end{exercise}
+  \begin{exercise*}{Codierung nach Fano \& Huffman}
+    Gegeben sei eine Menge $M = \{A, B, C, D, E\}$ von Symbolen, die mit folgenden Wahrscheinlichkeiten auftreten:
+    \begin{center}
+      \begin{tabular}{c|ccccc}
+        $m_i$ & $A$ & $B$ & $C$ & $D$ & $E$\\
+        \hline
+        $p_i$ & 0,35 & 0,15 & 0,2 & 0,18 & 0,12\\
+      \end{tabular}
+    \end{center}
+    \begin{enumerate}
+      \item Geben Sie eine optimale Codierung der Elemente von $M$ nach Fano an.
+      \item Geben Sie eine optimale Codierung der Elemente von $M$ nach Huffman an.
+      \item Schreiben Sie die Formel auf, nach der die Entropie $H$ berechnet wird \& setzen Sie die Zahlen ein. Die Berechnung des Zahlenwertes entfällt.
+    \end{enumerate}
+  \end{exercise*}
 
   \begin{solution}
     \item
@@ -160,24 +160,25 @@
       \end{equation*}
   \end{solution}
 
-  \begin{exercise}{Logische Funktionen}
-    \noitem {Gegeben sei die folgende logische Funktion $F$:
-      \begin{center}
-        \begin{tabular}{c|cccc cccc cccc cccc}
-          $b_0$ & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1\\
-          $b_1$ & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1\\
-          $a_0$ & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1\\
-          $a_1$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
-          \hline
-          $F$ & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 1 \\
-        \end{tabular}
-      \end{center}
-    }
-    \item Übertragen Sie $F$ in ein 4x4 KV-Diagramm.
-    \item Finden Sie geeignete Schleifen \& geben Sie die minimale konjunktive Form von $F$ als logische Funktion $a_1, a_0, b_1, b_0$ an.
-    \item Wie lautet die minimale disjunktive Form von $F$?
-    \item Welche Vergleichsoperation der 2-bit Zahlen $(a_1a_0)$ \& $(b_1b_0)$ beschreibt $F$?
-  \end{exercise}
+  \begin{exercise*}{Logische Funktionen}
+    Gegeben sei die folgende logische Funktion $F$:
+    \begin{center}
+      \begin{tabular}{c|cccc cccc cccc cccc}
+        $b_0$ & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1\\
+        $b_1$ & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1\\
+        $a_0$ & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1\\
+        $a_1$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+        \hline
+        $F$ & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 1 \\
+      \end{tabular}
+    \end{center}
+    \begin{enumerate}
+      \item Übertragen Sie $F$ in ein 4x4 KV-Diagramm.
+      \item Finden Sie geeignete Schleifen \& geben Sie die minimale konjunktive Form von $F$ als logische Funktion $a_1, a_0, b_1, b_0$ an.
+      \item Wie lautet die minimale disjunktive Form von $F$?
+      \item Welche Vergleichsoperation der 2-bit Zahlen $(a_1a_0)$ \& $(b_1b_0)$ beschreibt $F$?
+    \end{enumerate}
+  \end{exercise*}
 
   \begin{solution}
     \item
@@ -224,31 +225,31 @@
       \end{enumerate}
   \end{solution}
 
-  \begin{exercise}{Impulsdiagramme}
-    \noitem {Zeichnen Sie die Impulsdiagramme für die folgenden Schaltungen:
-      \begin{enumerate}
-        \item\label{impulse:1st} Vorderflankengesteuertes D-Flipflop
-        \item\label{impulse:2nd} Rückflankengesteuertes D-Flipflop
-        \item\label{impulse:3rd} Pegelgesteuertes D-Flipflop / Latch (high-aktiv)
-      \end{enumerate}
-      \resizebox{\linewidth}{!}{
-        \begin{tikzpicture}
-          \node at (-1,0.5) {\textbf{C}lock};
-          \draw[gray!25] (0,0) grid (25,1);
-          \draw{(0,0) -- (1,0) -- (1,1) -- (4,1) -- (4,0) -- (7,0) -- (7,1) -- (10,1) -- (10,0) -- (13,0) -- (13,1) -- (16,1) -- (16,0) -- (19,0) -- (19,1) -- (22,1) -- (22,0) -- (25,0)};
+  \begin{exercise*}{Impulsdiagramme}
+    Zeichnen Sie die Impulsdiagramme für die folgenden Schaltungen:
 
-          \node at (-1,-1.5) {\textbf{D}ata};
-          \draw[gray!25] (0,-1) grid (25,-2);
-          \draw{(0,-2) -- (2,-2) -- (2,-1) -- (3,-1) -- (3,-2) -- (6,-2) -- (6,-1) -- (11,-1) -- (11,-2) -- (14,-2) -- (14,-1) -- (20,-1) -- (20,-2) -- (23,-2) -- (25,-2)};
-        \end{tikzpicture}
+    \begin{enumerate}
+      \item\label{impulse:1st} Vorderflankengesteuertes D-Flipflop
+      \item\label{impulse:2nd} Rückflankengesteuertes D-Flipflop
+      \item\label{impulse:3rd} Pegelgesteuertes D-Flipflop / Latch (high-aktiv)
+    \end{enumerate}
+
+    \resizebox{\linewidth}{!}{
+      \tikz{
+        \node at (-1,0.5) {\textbf{C}lock};
+        \draw[gray!25] (0,0) grid (25,1);
+        \draw{(0,0) -- (1,0) -- (1,1) -- (4,1) -- (4,0) -- (7,0) -- (7,1) -- (10,1) -- (10,0) -- (13,0) -- (13,1) -- (16,1) -- (16,0) -- (19,0) -- (19,1) -- (22,1) -- (22,0) -- (25,0)};
+
+        \node at (-1,-1.5) {\textbf{D}ata};
+        \draw[gray!25] (0,-1) grid (25,-2);
+        \draw{(0,-2) -- (2,-2) -- (2,-1) -- (3,-1) -- (3,-2) -- (6,-2) -- (6,-1) -- (11,-1) -- (11,-2) -- (14,-2) -- (14,-1) -- (20,-1) -- (20,-2) -- (23,-2) -- (25,-2)};
       }
     }
-  \end{exercise}
+  \end{exercise*}
 
-  \begin{solution}
-    \noitem {
+  \begin{solution*}
       \resizebox{\linewidth}{!}{
-        \begin{tikzpicture}
+        \tikz{
           \node at (-1,0.5) {\textbf{C}lock};
           \draw[gray!25] (0,0) grid (25,1);
           \draw{(0,0) -- (1,0) -- (1,1) -- (4,1) -- (4,0) -- (7,0) -- (7,1) -- (10,1) -- (10,0) -- (13,0) -- (13,1) -- (16,1) -- (16,0) -- (19,0) -- (19,1) -- (22,1) -- (22,0) -- (25,0)};
@@ -271,17 +272,15 @@
           \fill[gray!25] (1,-7) rectangle (2,-8);
           \draw[gray!25] (2,-7) grid (25,-8);
           \draw{(2,-8) -- (3,-8) -- (3,-7) -- (4,-7) -- (4,-8) -- (8,-8) -- (8,-7) -- (14,-7) -- (14,-8) -- (15,-8) -- (15,-7) -- (21,-7) -- (21,-8) -- (25,-8)};
-        \end{tikzpicture}
+        }
       }
-    }
-  \end{solution}
+  \end{solution*}
 
-  \begin{exercise}{ROBDDs}
-    \noitem {Skizzieren Sie den ROBDD für die Boole'sche Funktion $f(a, b) = \overline{a \oplus b}$.}
-  \end{exercise}
+  \begin{exercise*}{ROBDDs}
+    Skizzieren Sie den ROBDD für die Boole'sche Funktion $f(a, b) = \overline{a \oplus b}$.
+  \end{exercise*}
 
-  \begin{solution}
-    \noitem {
+  \begin{solution*}
       \tikz[auto] {
         \node (a) at (1,0) {$a$};
         \node (b1) at (0,-1) {$b$};
@@ -295,17 +294,17 @@
         \draw[->] (b1) -- (1) node[midway, right, yshift=1em] {1};
         \draw[->] (b2) -- (1) node[midway, right] {0};
       }
-    }
-  \end{solution}
+  \end{solution*}
 
-  \begin{exercise}{Schaltwerke}
-    \noitem {Gegeben sei ein Schaltwerk mit vier, in zwei Bit kodiernte, Zuständen ($z_1, z_2$), einem Eingang $x$ \& einem Ausgang $y$. Es gelte:
-      \begin{center}$z_1^+ = z_2 \lor \bar{x}\qquad z_2^+ = \bar{z_2} \lor \overline{z_1\bar{x}}\qquad y = z_1 \lor x$\end{center}
-    }
-    \item Ist das Schaltwerk vom Typ Moore oder Mealy? Begründen Sie Ihre Antwort.
-    \item Füllen Sie eine Funktions- \& KV-Tabelle für $z_1, z_2, y$ mit entsprechenden Werten.
-    \item Zeichnen Sie das Zustandsübergangsdiagramm des Schaltwerks.
-  \end{exercise}
+  \begin{exercise*}{Schaltwerke}
+    Gegeben sei ein Schaltwerk mit vier, in zwei Bit kodiernte, Zuständen ($z_1, z_2$), einem Eingang $x$ \& einem Ausgang $y$. Es gelte:
+    \begin{center}$z_1^+ = z_2 \lor \bar{x}\qquad z_2^+ = \bar{z_2} \lor \overline{z_1\bar{x}}\qquad y = z_1 \lor x$\end{center}
+    \begin{enumerate}
+      \item Ist das Schaltwerk vom Typ Moore oder Mealy? Begründen Sie Ihre Antwort.
+      \item Füllen Sie eine Funktions- \& KV-Tabelle für $z_1, z_2, y$ mit entsprechenden Werten.
+      \item Zeichnen Sie das Zustandsübergangsdiagramm des Schaltwerks.
+    \end{enumerate}
+  \end{exercise*}
 
   \begin{solution}
     \item Das Schaltwerk ist vom Typ Mealy, da der Ausgang $y$ von den Eingängen $x$ \& $z_1$ abhängt.
@@ -365,8 +364,8 @@
       }
   \end{solution}
 
-  \begin{exercise}{Mikroprogrammierung}
-    \noitem {Schreiben Sie für eine 1-Address Maschine \& eine 2-Address Maschine jeweils ein Programm zur Berechnung des Ausdrucks:
+  \begin{exercise*}{Mikroprogrammierung}
+    Schreiben Sie für eine 1-Address Maschine \& eine 2-Address Maschine jeweils ein Programm zur Berechnung des Ausdrucks:
       \begin{center}$W = A^3 - 3A^2 + A + 1$\end{center}
       $W$\&$A$ sind dabei als Speicheradressen der Operanden zu interpretieren. Der Wert an der Adresse $A$ soll vom Programm nicht modifiziert werden. Falls Sie temporäre Variablen benötigen, können Sie die Speicheradressen $B, C, ..., V$ benutzen. Dabei bedeutet $M$ die jeweilige Speicheradresse, $IMM$ einen Direktwert (immediate) \& $rX$ bzw. $rY$ stehen für eines von 16 Universalregistern ($r0, ..., r15$).\\
       \textit{Bonus: Ein besonders kurzes Programm gibt bis zu 3 Bonuspunkte.}
@@ -400,46 +399,43 @@
           \hline
         \end{tabular}
       \end{multicols*}
-    }
-  \end{exercise}
+  \end{exercise*}
 
-  \begin{solution}
-    \noitem {
-      \begin{multicols*}{2}
-        1-Adress Maschine:
-        \begin{enumerate}
-          \item LOADI 3
-          \item STORE B
-          \item LOAD A
-          \item SUB B
-          \item MUL A
-          \item ADDI 1
-          \item MUL A
-          \item ADDI 1
-          \item STORE W
-        \end{enumerate}
+  \begin{solution*}
+    \begin{multicols*}{2}
+      1-Adress Maschine:
+      \begin{enumerate}
+        \item LOADI 3
+        \item STORE B
+        \item LOAD A
+        \item SUB B
+        \item MUL A
+        \item ADDI 1
+        \item MUL A
+        \item ADDI 1
+        \item STORE W
+      \end{enumerate}
 
-        2-Adress Maschine:
-        \begin{enumerate}
-          \item LOADI r0, 3
-          \item LOAD r1, A
-          \item COPY r1, r2
-          \item SUB r2, r0
-          \item MUL r2, r1
-          \item INCR r2
-          \item MUL r2, r1
-          \item INCR r2
-          \item STORE W, r2
-        \end{enumerate}
-      \end{multicols*}
+      2-Adress Maschine:
+      \begin{enumerate}
+        \item LOADI r0, 3
+        \item LOAD r1, A
+        \item COPY r1, r2
+        \item SUB r2, r0
+        \item MUL r2, r1
+        \item INCR r2
+        \item MUL r2, r1
+        \item INCR r2
+        \item STORE W, r2
+      \end{enumerate}
+    \end{multicols*}
 
-      \textit{Bonus:} Kann (wie oben) zB. mit dem Horner-Schema erzielt werden (9 Operationen)
-    }
-  \end{solution}
+    \textit{Bonus:} Kann (wie oben) zB. mit dem Horner-Schema erzielt werden (9 Operationen)
+  \end{solution*}
 
 \exercisesheet{2021}{Probeklausur}
-  \begin{exercise}[4]{Umwandlung von IEEE-754 Gleitkommazahlen}
-    \noitem {Wandeln Sie die folgenden normalisierten 32-bit Gleitkommazahlen im IEEE-754 float-Format (1-bit Vorzeichen, 8-bit Exponent in Exzess-127 Darstellung, 23-bit Mantisse) in Dezimalzahlen um. Dabei sind nur die oberen 7 Bit der Mantisse angegeben (alle anderen Bits sind 0).
+  \begin{exercise*}[4]{Umwandlung von IEEE-754 Gleitkommazahlen}
+    Wandeln Sie die folgenden normalisierten 32-bit Gleitkommazahlen im IEEE-754 float-Format (1-bit Vorzeichen, 8-bit Exponent in Exzess-127 Darstellung, 23-bit Mantisse) in Dezimalzahlen um. Dabei sind nur die oberen 7 Bit der Mantisse angegeben (alle anderen Bits sind 0).
       \begin{itemize}
         \item $(0|0000 0000|0000 000)$:
         \item $(1|1000 0010|1110 000)$:
@@ -447,11 +443,9 @@
         \item $(0|0111 1110|1000 000)$:
         \item $(1|0111 1111|0100 000)$:
       \end{itemize}
-    }
-  \end{exercise}
+  \end{exercise*}
 
-  \begin{solution}
-    \noitem{
+  \begin{solution*}
       \begin{itemize}
         \item $0.0$
         \item $-15.0$
@@ -459,8 +453,7 @@
         \item $0.75$
         \item $-1.25$
       \end{itemize}
-    }
-  \end{solution}
+  \end{solution*}
 
   % TODO: continue updating
 
