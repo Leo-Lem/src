@@ -15,12 +15,32 @@
 \item Beschreiben Sie zwei Beispiele, wie durch eine unkontrollierte Bekanntgabe \& Verarbeitung von persönlichen Daten die Freiheit eines Menschen gehemmt sein kann.
 \end{exercises}
 
+\begin{solutions}
+  \item Zu viele (teils nicht zweckmäßige) Daten erhoben, Datensicherheit nicht gewährleistet.
+  \item zB. Erstellung von Persönlichkeitsprofilen, Verweigerung von Krediten, Versicherungen, Arbeitsplätzen, etc.
+\end{solutions}
+
 \begin{exercise}{Anwendungsbereich der DSGVO}
   Ein in Hamburg lebender US-Amerikaner bestellt bei einen chinesischen Online-Versandhändler einen Elektrobausatz. Bei der Bestellung gibt er Name, Anschrift \& seine E-Mail-Adresse an. Prüfen Sie stichpunktartig, ob auf diese Bestellung die DSGVO anwendbar wäre.
+
+  \begin{solution}
+    \begin{itemize}
+      \item Name, Anschrift \& E-Mail-Adresse sind personenbezogene Daten. \checkmark
+      \item Der US-Amerikaner ist eine natürliche Person. \checkmark
+      \item Der Versandhändler ist ein Unternehmen. \checkmark
+      \item Der Versandhändler hat eine Niederlassung in der EU. \xmark
+      \item Der Versandhändler bietet Waren \& Dienstleistungen in der EU an. \checkmark
+      \item Die Bestellung ist eine Verarbeitung personenbezogener Daten. \checkmark
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{Datenschutz-Grundverordnung}
   Welche Auswirkungen hat die Datenschutz-Grundverordnung (DSGVO) auf das europäische Datenschutzrecht \& die bisherigen nationalen Regelungen?
+
+  \begin{solution}
+    Die DSGVO ist unmittelbar geltendes Recht in allen Mitgliedsstaaten der EU. Sie ersetzt die bisherigen nationalen Regelungen, soweit diese nicht mit der DSGVO vereinbar sind.
+  \end{solution}
 \end{exercise}
 
 \begin{eexercises}{Grundlagen der Datenverarbeitung}{
@@ -31,6 +51,14 @@
   \item Nennen Sie je ein legitimes Interesse, das das Hotel H bzw der Kunde K an der Verarbeitung bzw deren Ausschluss haben könnte.
 \end{eexercises}
 
+\begin{solutions}
+  \item Art. 6 Abs. 1 lit. a) DSGVO (Einwilligung) \& Art. 6 Abs. 1 lit. f) DSGVO (berechtigtes Interesse)
+  \item Art. 6 Abs. 1 lit. b) DSGVO (Einwiligung), da wenig Auslegungsbedarf \& keine Abwägung nötig.
+  \item
+  Legitimes Interesse an Verarbeitung H: zB. Wiedererkennung des Kunden, Verbesserung des Kundenservice \& K: zB. Wiedererkennung des Hotels, Verbesserung des Kundenservice\par
+  Legitimes Interesse an Ausschluss H: zB. Vermeidung von Aufwand, Vermeidung von Verantwortung \& K: zB. Vermeidung von Werbung, Vermeidung von Datenverlust
+\end{solutions}
+
 \begin{eexercises}{Betrieblicher Datenschutzbeauftragter}{
     Für betriebliche Datenschutzbeauftragte werden Fachkunde \& Zuverlässigkeit gefordert.
   }
@@ -38,11 +66,22 @@
   \item Was versteht man unter Zuverlässigkeit des betrieblichen Datenschutzbeauftragten?
 \end{eexercises}
 
+\begin{solutions}
+  \item Fachkunde des betrieblichen Datenschutzbeauftragten: Kenntnisse des Datenschutzrechts \& der Technik der Datenverarbeitung.
+  \item Zuverlässigkeit des betrieblichen Datenschutzbeauftragten: Keine Straftaten, keine Datenschutzverstöße, keine Interessenkonflikte.
+\end{solutions}
+
 \begin{exercises}{Anonymisierung \& Pseudonymisierung}
 \item Was bedeuten die Begriffe Anonymisierung \& Pseudonymisierung von personenbezogenen Daten?
 \item Warum findet sich in Art. 4 DSGVO nur der Begriff "Pseudonymisierung", nicht jedoch "Anonymisierung"?
 \item Beschreiben Sie am Beispiel von IP-Adressen in Logdateien, wie die Anonymisierung \& Pseudonymisierung von personenbezogenen Daten geschehen könnte.
 \end{exercises}
+
+\begin{solutions}
+  \item Anonymisierung: Person kann nicht mehr identifiziert werden. Pseudonymisierung: Person kann nur mit zusätzlichen Informationen identifiziert werden.
+  \item Anonyme Daten werden von der DSGVO grundsätzlich nicht erfasst. Pseudonyme Daten sind allerdings als personenbezogen definiert, da sie mit zusätzlichen Informationen einer Person zugeordnet werden können. Daher ist die Pseudonymisierung explizit erwähnt.
+  \item Anonymisierung: Alle IP-Adressen werden durch eine IP-Adresse ersetzt, die nicht einer Person zugeordnet werden kann. Pseudonymisierung: Alle IP-Adressen werden durch eine IP-Adresse ersetzt, die nur mit zusätzlichen Informationen einer Person zugeordnet werden kann.
+\end{solutions}
 
 \begin{eexercises}{Faktische Anonymität}{
     In der Rechtsdogmatik wird zwischen faktischer \& absoluter Anonymität unterschieden.
@@ -51,17 +90,39 @@
   \item Nennen Sie ein Beispiel, wie durch technischen Fortschritt eine faktisch anonymisiertes Datum wieder personenbezogen werden kann.
 \end{eexercises}
 
+\begin{solutions}
+  \item §3 Abs. 6 BDSG (inzwischen aufgehoben): Faktisch anonymisierte Daten sind Daten, die nicht mehr einer Person zugeordnet werden können. Absolut anonymisierte Daten sind Daten, die nie einer Person zugeordnet werden können.
+  \item Moore's law $\to$ Rechenleistung erhöht sich startk $\to$ Brute-Force-Angriffe auf Hashes werden uU. möglich.
+\end{solutions}
+
+
 \begin{exercise}{Anonymisierte Daten}
   Sind anonymisierte Daten personenbezogene Daten? Begründen Sie Ihre Antwort!
+
+  \begin{solution}
+    Nein, anonymisierte Daten sind keine personenbezogenen Daten, da sie nicht mehr einer Person zugeordnet werden können. Allerdings nur insofern perfekt anonymisiert wurde. Bei einer Pseudonymisierung sind die Daten weiterhin personenbezogen.
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{Digitalisierung historischer Telefonbücher}
   Ein Berliner Unternehmen möchte 100 Jahre alte, gedruckte Telefonbücher digitalisieren \& im Internet veröffentlichen. Ist dies datenschutzrechtlich zulässig?
   \hint{Lassen Sie bei Ihrer Antwort urheber- \& lizenzrechtliche Aspekte außer Acht.}
+
+  \begin{solution}
+    Datenschutzrecht (nach DSGVO bzw. BDSG) ist nur auf lebende, natürliche Personen anwendbar. Es ist davon auszugehen, dass die enthaltenen Daten sind nicht auf solche beziehen. Daher ist die Veröffentlichung der Telefonbücher zulässig.
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{Recht auf Auskunft}
-  Bei einem Hosting-Provider geht per Post eine Beschwerde über die unberechtigte Speicherung von Daten durch einen Online-Shop ein. Der Beschwerdeführer möchte vom Hosting-Provider des Online-Shops wissen, welche Daten über ihn von dem dort gehosteten Online-Shop zu seiner Person gespeichert werden. Formulieren Sie ein Antwortschreiben des Hosting-Providers.
+  Bei einem Hosting-Provider geht per Post eine Beschwerde über die unberechtigte Speicherung von Daten durch einen Online-Shop ein. Der Beschwerdeführer möchte vom Hosting-Provider des Online-Shops wissen, welche Daten über ihn von dem dort gehosteten Online-Shop zu seiner Person gespeichert werden.\newline
+  Formulieren Sie ein Antwortschreiben des Hosting-Providers.
+
+  \begin{solution}
+    Sehr geehrter Herr X,\newline
+    wir haben Ihre Anfrage erhalten. Wir sind jedoch nicht der Betreiber des Online-Shops, sondern lediglich der Hosting-Provider und somit weisungsgebundener Auftragsverarbeiter (Art. 28 DSGVO). Wir haben daher keine Kenntnis über die Daten, die der Online-Shop über Sie speichert. Bitte wenden Sie sich mit Ihrer Anfrage direkt an den Online-Shop.\newline
+    Mit freundlichen Grüßen,\newline
+    Hosting-Provider
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{Löschung}
@@ -268,7 +329,7 @@
     Eine Website soll auf Konformität zur DSGVO überprüft werden.
   }
   \item Sortieren Sie die folgenden Punkte nach einer sinnvollen Reihenfolge der Überprüfung \& begründen Sie diese: Informationspflichten, Anwendungsbereich, Rechtmäßigkeit der Datenverarbeitung
-  \item Ordnen Sie die folgenden fünf Begriffe den unterschiedlichen Aspekten aus 1. zu \& nennen möglichst genau die dazugehörige Stelle der DSGVO: berechtigtes Interesse, Kopplungsverbot, persönliche Tätigkeiten, einfache \& verständliche Sprache, Erhebung aus dritter Quelle
+  \item Ordnen Sie die folgenden fünf Begriffe den unterschiedlichen Aspekten aus 1. zu und nennen möglichst genau die dazugehörige Stelle der DSGVO: berechtigtes Interesse, Kopplungsverbot, persönliche Tätigkeiten, einfache \& verständliche Sprache, Erhebung aus dritter Quelle
 \end{eexercises}
 
 \end{document}
