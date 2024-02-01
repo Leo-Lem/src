@@ -106,9 +106,9 @@ gearbeitet wird.
 \begin{eexercises}{Codierung nach Fano \& Huffman}{
     Gegeben sei eine Menge $M = \{A, B, C, D, E\}$ von Symbolen, die mit folgenden Wahrscheinlichkeiten auftreten:
     \centering\begin{tabular}{c|ccccc}
-      $m_i$ & $A$  & $B$  & $C$ & $D$  & $E$  \\
+      $m_i$ & $A$ & $B$ & $C$ & $D$ & $E$ \\
       \hline
-      $p_i$ & 0,35 & 0,15 & 0,2 & 0,18 & 0,12 \\
+      $p_i$ & .35 & .15 & .2  & .18 & .12 \\
     \end{tabular}
   }
   \item Geben Sie eine optimale Codierung der Elemente von $M$ nach Fano an.
@@ -119,17 +119,17 @@ gearbeitet wird.
 \begin{solutions}
   \item
   \begin{tabular}{c|ccccc}
-    $m_i$ & $A$  & $B$  & $C$ & $D$  & $E$  \\
+    $m_i$ & $A$ & $B$ & $C$ & $D$ & $E$ \\
     \hline
-    $p_i$ & 0,35 & 0,15 & 0,2 & 0,18 & 0,12 \\
-    $c_i$ & 00   & 10   & 01  & 11   & 001  \\
+    $p_i$ & .35 & .15 & .2  & .18 & .12 \\
+    $c_i$ & 00  & 10  & 01  & 11  & 001 \\
   \end{tabular}
   \item
   \begin{tabular}{c|ccccc}
-    $m_i$ & $A$  & $B$  & $C$ & $D$  & $E$  \\
+    $m_i$ & $A$ & $B$ & $C$ & $D$ & $E$ \\
     \hline
-    $p_i$ & 0,35 & 0,15 & 0,2 & 0,18 & 0,12 \\
-    $c_i$ & 0    & 110  & 10  & 111  & 111  \\
+    $p_i$ & .35 & .15 & .2  & .18 & .12 \\
+    $c_i$ & 0   & 110 & 10  & 111 & 111 \\
   \end{tabular}
   \item
   \begin{equation*}
@@ -386,6 +386,10 @@ gearbeitet wird.
 \exercisesheet{Probeklausur}
 \begin{exercise}[5]{Codierung}
   Geben Sie einen zyklisch-einschrittigen Binärcode mit 12 Codewörtern an.
+
+  \begin{solution}
+    zB. $0000, 0001, 0011, 0111, 0110, 0100, 0101, 1101, 1100, 1110, 1010, 0010$
+  \end{solution}
 \end{exercise}
 
 \begin{eexercises}{Codierung nach Fano}{
@@ -400,20 +404,41 @@ gearbeitet wird.
   \item Formulieren Sie die Fano-Bedingung.
   \item Erfüllen die Code-Worte, die Sie unter \ref{fano:1} gefunden haben, die Fano-Bedingung?
   \item Ist jeder Code, der der Fano-Bedingung genügt, eindeutig decodierbar? Ist jeder Blockcode eindeutig decodierbar? Geben Sie eine Codierung der Elemente von $M$ an, die nicht eindeutig decodierbar ist.
-
 \end{eexercises}
+
+\begin{solutions}
+  \item
+  \begin{tabular}{c|ccccc}
+    $m_i$ & $A$ & $B$ & $C$ & $D$ & $E$ \\
+    \hline
+    $c_i$ & 00  & 110 & 01  & 10  & 111 \\
+  \end{tabular}
+  \item Die Fano-Bedingung lautet: Die Codewörter müssen präfixfrei sein (Kein Codewort bildet Anfang von anderem Codewort).
+  \item Ja, die Code-Worte erfüllen die Fano-Bedingung. Jede nach dem Shannon-Fano Verfahren gefundene Codierung erfüllt die Fano-Bedingung.
+  \item Ja, jeder Code der die Fano-Bedingung erfüllt, ist eindeutig decodierbar (abgesehen von Übertragungsfehlern). Ein Blockcode ist ebenfalls immer eindeutig decodierbar. Ein Beispiel für einen Code, der nicht eindeutig decodierbar ist, ist:\par
+  \begin{tabular}{c|ccccc}
+    $m_i$ & $A$ & $B$ & $C$ & $D$  & $E$   \\
+    \hline
+    $c_i$ & 1   & 10  & 100 & 1000 & 10000 \\
+  \end{tabular}
+\end{solutions}
 
 \begin{eexercises}{Entropie}{
     Wir betrachten eine Münze mit den Seiten Kopf \& Zahl.
   }
   \item Geben Sie die Entropie an für einen Wurf mit der unpräparierten Münze, d.h. Kopf \& Zahl treten gleich oft auf. (Formel \& Zahlenwert)
   \item Die Münze sei jetzt so präpariert, dass Kopf dreimal öfter als Zahl auftritt ($p(Kopf) = 0,75$ \& $p(Zahl) = 0,25$). Berechnen Sie wieder die Entropie (Formel \& Zahlenwert).
-  \hint{Es gilt $\log_2(3) \approx 1,6$ und $\log(x \cdot y) = \log(x) + \log(y)$.}
+  \hint{Es gilt $\log_2(3) \approx 1.6$ und $\log(x \cdot y) = \log(x) + \log(y)$.}
 \end{eexercises}
 
-\begin{eexercises}{Gray-Code}{
-    Für die folgenden Gray-Codes ist ein Codeprüfer zu realisieren, d.h. eine Funktion $F$, die genau dann 1 liefert, wenn das als Argument angebotene Wort ein Codewort ist. Codewörter sind dabei:
-    \centering\begin{tabular}{c|cccc cccc cc}
+\begin{solutions}
+  \item $H = -(.5\cdot\log_2(.5) + .5\cdot\log_2(.5)) = 1$
+  \item $H = -(.75\cdot\log_2(.75) + .25\cdot\log_2(.25)) \approx .8$
+\end{solutions}
+
+\begin{eexercises}{Gray-Code Prüfer}{
+    Für die folgenden Gray-Codes ist ein Codeprüfer zu realisieren, d.h. eine Funktion $F$, die genau dann 1 liefert, wenn das als Argument angebotene Wort ein Codewort ist. Codewörter sind dabei:\par
+    \begin{tabular}{c|cccc cccc cc}
       $x_4$ & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
       $x_3$ & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\
       $x_2$ & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
@@ -425,6 +450,21 @@ gearbeitet wird.
   \item Geben Sie die Reed-Muller-Form für den Gray-Codeprüfer an.\par
   \hint{Es gilt $\bar{a}=1\oplus a$ und $a\lor b = a\oplus b\oplus ab$.}
 \end{eexercises}
+
+\begin{solutions}
+  \item KV-Diagramm:
+  \begin{tabular}{c|cccc}
+    $x_4x_3\backslash x_2x_1$ & 00 & 01 & 11 & 10 \\
+    \hline
+    00                        & 1  & 1  & 1  & 1  \\
+    01                        & 1  & 0  & 0  & 1  \\
+    11                        & 1  & 0  & 0  & 1  \\
+    10                        & 1  & 0  & 0  & 1  \\
+  \end{tabular}\par
+  Disjunktive Normalform: $\bar{x_1}\lor\bar{x_4}\bar{x_3}$
+  \item Konjunktive Minimalform: $(x_3\lor x_1)\land(x_4\lor x_1)$
+  \item Reed-Muller-Form: zB. $x_1\oplus x_4x_3\oplus x_4x_3x_1$
+\end{solutions}
 
 \begin{eexercises}[10]{Schaltwerke}{
     Ein Schaltwerk ist durch das folgende Zustandsdiagramm definiert. Die Codierung der Zustände ($z_1, z_2$) und der Ausgabe $y$ ist bereits in den Knoten des Graphen angegeben.\par
@@ -449,11 +489,62 @@ gearbeitet wird.
   \item Geben Sie minimale Ausdrücke für die Schaltfunktionen an.
 \end{eexercises}
 
+\begin{solutions}
+  \item Das Schaltwerk ist vom Typ Moore, da der Ausgang $y$ nur vom Zustand $z_1, z_2$ abhängt.
+  \item Funktionstabelle:
+  \begin{tabular}{ccc|cc}
+    $x$ & $z_2$ & $z_1$ & $z_2^+$ & $z_1^+$ \\
+    \hline
+    0   & 0     & 0     & 0       & 1       \\
+    0   & 0     & 1     & 1       & 0       \\
+    0   & 1     & 0     & 0       & 0       \\
+    0   & 1     & 1     & 0       & 0       \\
+    1   & 0     & 0     & 0       & 0       \\
+    1   & 0     & 1     & 0       & 0       \\
+    1   & 1     & 0     & 0       & 0       \\
+    *   & 1     & 1     & *       & *       \\
+  \end{tabular}
+
+  KV-Diagramm für $z_2^+$:
+  \begin{tabular}{c|cccc}
+    $x\backslash z_1z_2$ & 00 & 01 & 11 & 10 \\
+    \hline
+    1                    & 0  & 1  & *  & 0  \\
+    1                    & 0  & 0  & *  & 0  \\
+  \end{tabular}
+
+  KV-Diagramm für $z_1^+$:
+  \begin{tabular}{c|cccc}
+    $x\backslash z_1z_2$ & 00 & 01 & 11 & 10 \\
+    \hline
+    0                    & 1  & 0  & *  & 0  \\
+    1                    & 0  & 0  & *  & 0  \\
+  \end{tabular}
+
+  KV-Diagramm für $y$:
+  \begin{tabular}{c|cc}
+    $z_1\backslash z_2$ & 0 & 1 \\
+    \hline
+    0                   & 0 & 0 \\
+    1                   & 1 & * \\
+  \end{tabular}
+  \item
+  $z_2^+ = \bar x z_1$\par
+  $z_1^+ = \bar x \bar{z_2} \bar{z_1}$\par
+  $y = z_1$
+\end{solutions}
+
 \begin{exercises}{Codierung}
 \item Geben Sie einen Code mit vier Codeworten an, deren (paarweise) Hammingdistanz mindestens 4 ist.
 \item Wieviele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code erkennen?
 \item Wieviele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code korrigieren?
 \end{exercises}
+
+\begin{solutions}
+  \item $d_{min}=4$: z.B. $0000\ 0000, 0101\ 0101, 1010\ 1010, 1111\ 1111$
+  \item $d_{min}-1=3$ Fehler
+  \item $\lfloor\frac{d_{min}-1}{2}\rfloor=1$ Fehler
+\end{solutions}
 
 \begin{exercise}{Mikroprogrammierung}
   Schreiben Sie für eine Stack- \& eine 3-Adress-Maschine mit Load-Store Befehlssatz, jeweils ein Programm zur Berechnung des folgenden Ausdrucks:\par
