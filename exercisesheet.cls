@@ -68,11 +68,16 @@
 % Exercises
 % ---------------------------------------------------------------------
 \newcommand{\exercisesheet}[2][\relax]{
-  \ifx#1\relax
-    \section{#2}
+  \newpage
+
+  \ifx#1\empty
+    \section*{#2}\addcontentsline{toc}{section}{#2}
   \else
-    \setcounter{section}{#1}
-    \addtocounter{section}{-1}
+    \ifx#1\relax
+    \else
+      \setcounter{section}{#1}
+      \addtocounter{section}{-1}
+    \fi
     \section{#2}
   \fi
 }

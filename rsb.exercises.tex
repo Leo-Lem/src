@@ -384,7 +384,7 @@
   \textit{Bonus:} Kann (wie oben) zB. mit dem Horner-Schema erzielt werden (9 Operationen)
 \end{solution*}
 
-\exercisesheet[2021]{Probeklausur}
+\exercisesheet{Probeklausur}
 \exercise[5]{Codierung}{
   Geben Sie einen zyklisch-einschrittigen Binärcode mit 12 Codewörtern an.
 }
@@ -445,7 +445,7 @@
     }
   }
   \item Ist das Schaltwerk vom Typ Moore oder Mealy?
-  \item Tragen Sie die Ausgabewerte der Schaltfunktionen für die Ausgabe $y$ und den Folgezustand ($z_1^+, z_2^+$) in eine Funktions- \& KV-Tabelle ein.
+  \item Tragen Sie die Ausgabewerte der Schaltfunktionen für die Ausgabe $y$ und den Folgezustand ($z_1^+, z_2^+$) in eine Funktionstabelle ein.
   \item Übertragen Sie die Tabellenwerte in KV-Diagramme für $z_1^+, z_2^+, y$.
   \item Geben Sie minimale Ausdrücke für die Schaltfunktionen an.
 \end{exercise*}
@@ -457,8 +457,8 @@
 \end{exercise**}
 
 \exercise{Mikroprogrammierung}{
-  Schreiben Sie für eine Stack- \& eine 3-Adress-Maschine mit Load-Store Befehlssatz, jeweils ein Programm zur Berechnung des folgenden Ausdrucks:
-  \centering $W = A + B - C^2$
+  Schreiben Sie für eine Stack- \& eine 3-Adress-Maschine mit Load-Store Befehlssatz, jeweils ein Programm zur Berechnung des folgenden Ausdrucks:\par
+  \begin{center}$W = A + B - C^2$\end{center}
   $W, A, B$ und $C$ sind dabei als Speicheradressen der Operanden zu interpretieren. Die Werte an den Adressen $A, B$ und $C$ sollen vom Programm nicht modifiziert werden. Falls Sie temporäre Variablen benötigen, können Sie die Speicheradressen $D, E, ..., V$ benutzen. Dabei bedeutet $M$ jeweils eine Speicheradresse, $TOS$ steht für "Top of Stack" und $rX, rY, rZ$ bezeichnen je eines von 16 Universalregistern ($r0, ..., r15$) der 3-Adress-Maschine.
 
   \begin{multicols}{2}
@@ -491,7 +491,7 @@
 }
 
 \begin{exercise*}[14]{Betriebssysteme}{
-    Beantworten Sie schriftliche Fragen zu Betriebssystem-relevanten Themen. Dies können Inhalte, Eigenschaften oder Zusammenhänge sein. Es genügt eine Aufzählung von Schlüsselworten; Textantworten sollen kurz ausfallen: wenige Sätze, <5 Textzeilen!
+    Beantworten Sie schriftliche Fragen zu Betriebssystem-relevanten Themen. Dies können Inhalte, Eigenschaften oder Zusammenhänge sein. Es genügt eine Aufzählung von Schlüsselworten; Textantworten sollen kurz ausfallen: wenige Sätze, $<5$ Textzeilen!
   }
   \item Nennen Sie drei Aufgaben von Betriebssystemen?
   \item Was ist Scheduling?
@@ -499,8 +499,7 @@
   \item Welche Mechanismen implementieren Virtual Memory?
 \end{exercise*}
 
-\section{Ersttermin}
-\setcounter{subsection}{3}
+\exercisesheet{Ersttermin}
 \begin{exercise*}[4]{Rechnen mit IEEE-754 Gleitkommazahlen}{
     Gegeben seien die folgenden zwei Zahlen im IEEE-754 Format mit einfacher Genauigkeit (1-bit für das Vorzeichen, 8-bit für den Exponenten und 7-bit für die Mantisse)\par
     \centering $A = (0|00011010|1000000)$\par $B = (0|11100101|0100011)$
@@ -514,7 +513,7 @@
   \item Kann ein zyklisch einschrittiger Code eine ungerade Anzahl an Codewörtern enthalten? Begründen Sie.
 \end{exercise**}
 
-\section*{Multiple Choice}\label{sec:mc}\addcontentsline{toc}{section}{\nameref{sec:mc}}
+\exercisesheet[\empty]{Multiple Choice}
 
 \begin{enumerate}
   \item Für Zahlen im Zweierkomplement gilt das:
@@ -661,17 +660,17 @@
         \end{itemize}
 \end{enumerate}
 
-\section*{True/False}\label{sec:tf}\addcontentsline{toc}{section}{\nameref{sec:tf}}
+\exercisesheet[\empty]{True/False}
 \begin{enumerate}
   \item Im 1-Komplement wird mit dem Vektor "11...11" die -1 dargestellt.
-  \item Der Exponent denormalisierter IEEE-754 Fließkommazahlen ist immer der Vektor "00...00"
-  \item Die Entropie H ist unabhängig von der Codierung
-  \item Bei einem Code mit Hamming-Abstand von 3 können 2-bit Fehler erkannt werden
-  \item Beim Pipelining werden die Maschinenbefehle in einem Takt abgearbeitet
-  \item DRAM Speicher ist flächeneffizienter als SRAM
-  \item Bei RISC-Architekturen wird der Cache direkt vom Assemblercode angesprochen
-  \item Rekursive Funktionsaufrufe setzen einen Stack voraus
-  \item Durch den x86-Assembler werden Schleifen immer in bedingte Sprünge übersetzt
+  \item Der Exponent denormalisierter IEEE-754 Fließkommazahlen ist immer der Vektor "00...00".
+  \item Die Entropie H ist unabhängig von der Codierung.
+  \item Bei einem Code mit Hamming-Abstand von 3 können 2-bit Fehler erkannt werden.
+  \item Beim Pipelining werden die Maschinenbefehle in einem Takt abgearbeitet.
+  \item DRAM Speicher ist flächeneffizienter als SRAM.
+  \item Bei RISC-Architekturen wird der Cache direkt vom Assemblercode angesprochen.
+  \item Rekursive Funktionsaufrufe setzen einen Stack voraus.
+  \item Durch den x86-Assembler werden Schleifen immer in bedingte Sprünge übersetzt.
   \item Beim Symmetric Multiprocessing muss der Programmierer für die Datenkonsistenz sorgen, wenn mehrere Prozesse über den Speicher kommunizieren.
 \end{enumerate}
 
