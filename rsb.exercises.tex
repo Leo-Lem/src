@@ -5,7 +5,7 @@
 \subject{Rechnerstrukturen \& Betriebssysteme}
 \semester{Wintersemester 2023}
 \author{Leopold Lemmermann}
-\enablesolutions
+% \withsolutions
 
 \begin{document}
 \createtitle
@@ -49,7 +49,7 @@ gearbeitet wird.
 \end{solutions}
 
 \begin{eexercises}{Rechnen im Hexadezimalsystem}
-  {Gegeben seien die Hexadezimalzahlen $A = \mathrm{4B2F}$ und $B = \mathrm{3B32}$.}
+  {Gegeben seien die Hexedezimalzahlen $A = \mathrm{4B2F}$ und $B = \mathrm{3B32}$.}
   \item Addieren Sie $A+B$.
   \item Subtrahieren Sie $A-B$.
   \item Multiplizieren Sie $A\cdot (20)_{16}$.
@@ -340,8 +340,8 @@ gearbeitet wird.
 \end{solutions}
 
 \begin{exercise}{Mikroprogrammierung}
-  Schreiben Sie für eine 1-Address Maschine \& eine 2-Address Maschine jeweils ein Programm zur Berechnung des Ausdrucks:
-  \centering $W = A^3 - 3A^2 + A + 1$
+  Schreiben Sie für eine 1-Address Maschine \& eine 2-Address Maschine jeweils ein Programm zur Berechnung des Ausdrucks:\par
+  \begin{center}$W = A^3 - 3A^2 + A + 1$\end{center}
   $W$\&$A$ sind dabei als Speicheradressen der Operanden zu interpretieren. Der Wert an der Adresse $A$ soll vom Programm nicht modifiziert werden. Falls Sie temporäre Variablen benötigen, können Sie die Speicheradressen $B, C, ..., V$ benutzen. Dabei bedeutet $M$ die jeweilige Speicheradresse, $IMM$ einen Direktwert (immediate) \& $rX$ bzw. $rY$ stehen für eines von 16 Universalregistern ($r0, ..., r15$).\\
   \textit{Bonus: Ein besonders kurzes Programm gibt bis zu 3 Bonuspunkte.}
   \begin{multicols}{2}
@@ -536,8 +536,8 @@ gearbeitet wird.
 
 \begin{exercises}{Codierung}
 \item Geben Sie einen Code mit vier Codeworten an, deren (paarweise) Hammingdistanz mindestens 4 ist.
-\item Wieviele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code erkennen?
-\item Wieviele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code korrigieren?
+\item Wie viele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code erkennen?
+\item Wie viele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code korrigieren?
 \end{exercises}
 
 \begin{solutions}
@@ -650,7 +650,7 @@ gearbeitet wird.
           \item enthält verschiedene Codierungen für Zeilenumbrüche \psolution{\checkmark}
           \item macht die Konvertierung von Zeilenenden beim Datentransfer zwischen Computern überflüssig \psolution{\xmark}
           \item ist bei Länge von einem Byte identisch zu iso-8859-1 \psolution{\checkmark}
-          \item konvertiert Zeilenumbrüche bei Datentransfer zwischen verschiedenen Betriebsssystemen automatisch \psolution{\xmark}
+          \item konvertiert Zeilenumbrüche bei Datentransfer zwischen verschiedenen Betriebssystemen automatisch \psolution{\xmark}
         \end{itemize}
   \item Mit Hilfe der Oder-Verknüpfung können in einem Bitvektor gezielt einzelne Bits
         \begin{itemize}
@@ -773,20 +773,19 @@ gearbeitet wird.
           \item Swapping \psolution{\checkmark}
           \item Cache-Kohärenz \psolution{\xmark}
         \end{itemize}
-\end{enumerate}
-
-\exercisesheet[\empty]{True/False}
-\begin{enumerate}
-  \item Im 1-Komplement wird mit dem Vektor "11...11" die -1 dargestellt. \psolution{\xmark}
-  \item Der Exponent denormalisierter IEEE-754 Fließkommazahlen ist immer der Vektor "00...00". \psolution{\checkmark}
-  \item Die Entropie H ist unabhängig von der Codierung. \psolution{\checkmark}
-  \item Bei einem Code mit Hamming-Abstand von 3 können 2-bit Fehler erkannt werden. \psolution{\checkmark}
-  \item Beim Pipelining werden die Maschinenbefehle in einem Takt abgearbeitet. \psolution{\xmark}
-  \item DRAM Speicher ist flächeneffizienter als SRAM. \psolution{\checkmark}
-  \item Bei RISC-Architekturen wird der Cache direkt vom Assemblercode angesprochen. \psolution{\xmark}
-  \item Rekursive Funktionsaufrufe setzen einen Stack voraus. \psolution{\checkmark}
-  \item Durch den x86-Assembler werden Schleifen immer in bedingte Sprünge übersetzt. \psolution{\xmark}
-  \item Beim Symmetric Multiprocessing muss der Programmierer für die Datenkonsistenz sorgen, wenn mehrere Prozesse über den Speicher kommunizieren. \psolution{\checkmark}
+  \item True or false?
+        \begin{itemize}
+          \item Im 1-Komplement wird mit dem Vektor "11...11" die -1 dargestellt. \psolution{\xmark}
+          \item Der Exponent denormalisierter IEEE-754 Fließkommazahlen ist immer der Vektor "00...00". \psolution{\checkmark}
+          \item Die Entropie H ist unabhängig von der Codierung. \psolution{\checkmark}
+          \item Bei einem Code mit Hamming-Abstand von 3 können 2-bit Fehler erkannt werden. \psolution{\checkmark}
+          \item Beim Pipelining werden die Maschinenbefehle in einem Takt abgearbeitet. \psolution{\xmark}
+          \item DRAM Speicher ist flächeneffizienter als SRAM. \psolution{\checkmark}
+          \item Bei RISC-Architekturen wird der Cache direkt vom Assemblercode angesprochen. \psolution{\xmark}
+          \item Rekursive Funktionsaufrufe setzen einen Stack voraus. \psolution{\checkmark}
+          \item Durch den x86-Assembler werden Schleifen immer in bedingte Sprünge übersetzt. \psolution{\xmark}
+          \item Beim Symmetric Multiprocessing muss der Programmierer für die Datenkonsistenz sorgen, wenn mehrere Prozesse über den Speicher kommunizieren. \psolution{\checkmark}
+        \end{itemize}
 \end{enumerate}
 
 \end{document}

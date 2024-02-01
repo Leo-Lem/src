@@ -56,7 +56,7 @@
 % Solutions toggle
 % ---------------------------------------------------------------------
 \newif\ifsolutions
-\def\enablesolutions{\global\solutionstrue}
+\def\withsolutions{\global\solutionstrue}
 
 % ---------------------------------------------------------------------
 % Custom symbols
