@@ -5,7 +5,7 @@
 \subject{Rechnerstrukturen \& Betriebssysteme}
 \semester{Wintersemester 2023}
 \author{Leopold Lemmermann}
-% \solutions
+\solutions
 
 \begin{document}
 \createtitle
@@ -257,7 +257,7 @@
   Skizzieren Sie den ROBDD für die Boole'sche Funktion $f(a, b) = \overline{a \oplus b}$.
 }
 
-\begin{solution*}
+\solution{
   \tikz[auto] {
     \node (a) at (1,0) {$a$};
     \node (b1) at (0,-1) {$b$};
@@ -271,7 +271,7 @@
     \draw[->] (b1) -- (1) node[midway, right, yshift=1em] {1};
     \draw[->] (b2) -- (1) node[midway, right] {0};
   }
-\end{solution*}
+}
 
 \begin{exercise*}{Schaltwerke}{
     Gegeben sei ein Schaltwerk mit vier, in zwei Bit kodiernte, Zuständen ($z_1, z_2$), einem Eingang $x$ \& einem Ausgang $y$. Es gelte:
@@ -378,11 +378,11 @@
   \end{multicols}
 }
 
-\begin{solution*}
+\solution{
   1-Adress Maschine:\par LOADI 3; STORE B; LOAD A; SUB B; MUL A; ADDI 1; MUL A; ADDI 1; STORE W\newline
   2-Adress Maschine:\par LOADI r0, 3; LOAD r1, A; COPY r1, r2; SUB r2, r0; MUL r2, r1; INCR r2; MUL r2, r1; INCR r2; STORE W, r2\newline
   \textit{Bonus:} Kann (wie oben) zB. mit dem Horner-Schema erzielt werden (9 Operationen)
-\end{solution*}
+}
 
 \exercisesheet{Probeklausur}
 \exercise[5]{Codierung}{
@@ -514,7 +514,6 @@
 \end{exercise**}
 
 \exercisesheet[\empty]{Multiple Choice}
-
 \begin{enumerate}
   \item Für Zahlen im Zweierkomplement gilt das:
         \begin{itemize}
@@ -525,153 +524,153 @@
   \item Für IEEE-754 Gleitkommazahlen gilt das
         \begin{itemize}
           \item Kommutativgesetz \solution{\checkmark}
-          \item Assoziativgesetz
-          \item Distributivgesetz
+          \item Assoziativgesetz \solution{\xmark}
+          \item Distributivgesetz \solution{\xmark}
         \end{itemize}
   \item Die UTF-8 Codierung
         \begin{itemize}
           \item wird für Unicode-Zeichen benutzt \solution{\checkmark}
           \item entspricht in den ersten 128 Zeichen ASCII mit vorangestellter "0" \solution{\checkmark}
           \item enthält verschiedene Codierungen für Zeilenumbrüche \solution{\checkmark}
-          \item macht die Konvertierung von Zeilenenden beim Datentransfer zwischen Computern überflüssig
+          \item macht die Konvertierung von Zeilenenden beim Datentransfer zwischen Computern überflüssig \solution{\xmark}
           \item ist bei Länge von einem Byte identisch zu iso-8859-1 \solution{\checkmark}
-          \item konvertiert Zeilenumbrüche bei Datentransfer zwischen verschiedenen Betriebsssystemen automatisch
+          \item konvertiert Zeilenumbrüche bei Datentransfer zwischen verschiedenen Betriebsssystemen automatisch \solution{\xmark}
         \end{itemize}
   \item Mit Hilfe der Oder-Verknüpfung können in einem Bitvektor gezielt einzelne Bits
         \begin{itemize}
-          \item gelöscht werden
+          \item gelöscht werden \solution{\xmark}
           \item gesetzt werden \solution{\checkmark}
-          \item invertiert werden
+          \item invertiert werden \solution{\xmark}
         \end{itemize}
   \item Mit einer AND-Verknüpfung können in einem Bitvektor gezielt einzelne Bits
         \begin{itemize}
           \item gelöscht werden \solution{\checkmark}
-          \item gesetzt werden
-          \item invertiert werden
+          \item gesetzt werden \solution{\xmark}
+          \item invertiert werden \solution{\xmark}
         \end{itemize}
   \item Im 2-Komplement ist bei einem Ripple-Carry Addierer ein Carry-Out immer ein Zeichen für
         \begin{itemize}
-          \item einen Überlauf \solution{\checkmark}
-          \item einen Unterlauf
-          \item den Wechsel zwischen positiven ($\geq 0$) und negativen Zahlenbereichen
+          \item einen Überlauf \solution{\xmark}
+          \item einen Unterlauf \solution{\xmark}
+          \item den Wechsel zwischen positiven ($\geq 0$) und negativen Zahlenbereichen \solution{\checkmark}
         \end{itemize}
   \item Um einen Überlauf bei Zahlen im Zweierkomplement zu erkennen, benötigt man
         \begin{itemize}
-          \item nur den Carry-Out
+          \item nur den Carry-Out \solution{\xmark}
           \item den Carry-Out und die zwei höchsten Bits \solution{\checkmark}
-          \item nur die zwei höchsten Bits
+          \item nur die zwei höchsten Bits \solution{\xmark}
         \end{itemize}
   \item Die Menge der folgenden booleschen Operatoren ist funktional vollständig
         \begin{itemize}
-          \item (AND, OR) \solution{\checkmark}
+          \item (AND, OR) \solution{\xmark}
           \item (AND, NOR) \solution{\checkmark}
           \item (AND, OR, NOT) \solution{\checkmark}
-          \item (NAND)
+          \item (NAND) \solution{\checkmark}
         \end{itemize}
   \item Die oberen 8-bit einer Zahl (ganz links stehend) werden bei
         \begin{itemize}
           \item Big Endian Byteordnung an der niedrigsten Adresse gespeichert \solution{\checkmark}
-          \item Big Endian Byteordnung an der höchsten Adresse gespeichert
+          \item Big Endian Byteordnung an der höchsten Adresse gespeichert \solution{\xmark}
           \item Little Endian Byteordnung an der höchsten Adresse gespeichert \solution{\checkmark}
         \end{itemize}
   \item Die unteren 8-bit einer Zahl (ganz rechts stehend) werden bei
         \begin{itemize}
           \item Big Endian Byteordnung an der höchsten Adresse gespeichert \solution{\checkmark}
           \item Little Endian Byteordnung an der niedrigsten Adresse gespeichert \solution{\checkmark}
-          \item Little Endian Byteordnung an der höchsten Adresse gespeichert
+          \item Little Endian Byteordnung an der höchsten Adresse gespeichert \solution{\xmark}
         \end{itemize}
   \item Für RISC-Befehlssätze gilt
         \begin{itemize}
           \item Befehle sind alle gleich lang \solution{\checkmark}
-          \item Typisches Beispiel x86-Befehlssatz
-          \item Abarbeitung in mehreren Takten \solution{\checkmark}
+          \item Typisches Beispiel x86-Befehlssatz \solution{\xmark}
+          \item Abarbeitung in mehreren Takten \solution{\xmark}
           \item In der Regel: Pipelining \solution{\checkmark}
         \end{itemize}
   \item Für CISC gilt
         \begin{itemize}
-          \item alle Befehle sind gleich lang
+          \item alle Befehle sind gleich lang \solution{\xmark}
           \item Abarbeitung von Befehlen in mehreren Takten \solution{\checkmark}
-          \item Beispiel: MIPS-Befehlssatz
-          \item in der Regel: Pipelining
+          \item Beispiel: MIPS-Befehlssatz \solution{\xmark}
+          \item in der Regel: Pipelining \solution{\xmark}
         \end{itemize}
   \item Beim x86-Assembler wird der Stack genutzt für
         \begin{itemize}
           \item die Speicherung von callee-Save Registern \solution{\checkmark}
           \item die Parameterübergabe \solution{\checkmark}
-          \item Mehrfachverzweigungen
+          \item Mehrfachverzweigungen \solution{\xmark}
         \end{itemize}
   \item Durch Pipelining
         \begin{itemize}
           \item steigt die Latenz \solution{\checkmark}
-          \item sinkt die Latenz
+          \item sinkt die Latenz \solution{\xmark}
           \item steigt der Durchsatz \solution{\checkmark}
-          \item sinkt der Durchsatz
-          \item wird jede einzelne Assembleroperation schneller abgearbeitet
-          \item werden einzelne atomare Operationen schneller abgearbeitet
+          \item sinkt der Durchsatz \solution{\xmark}
+          \item wird jede einzelne Assembleroperation schneller abgearbeitet \solution{\xmark}
+          \item werden einzelne atomare Operationen schneller abgearbeitet \solution{\xmark}
           \item werden Programme schneller abgearbeitet \solution{\checkmark}
         \end{itemize}
   \item Für den Cache Speicher gilt
         \begin{itemize}
           \item wird durch die Hardware verwaltet \solution{\checkmark}
-          \item wird von der Software (Betriebssystem, Programmierer, …) verwaltet
-          \item beschleunigt den Speicherzugriff
+          \item wird von der Software (Betriebssystem, Programmierer, …) verwaltet \solution{\xmark}
+          \item beschleunigt den Speicherzugriff \solution{\checkmark}
           \item ist für schnell getaktete CPUs unverzichtbar \solution{\checkmark}
           \item nutzt die räumliche Lokalität von Programmen \solution{\checkmark}
           \item nutzt die zeitliche Lokalität von Programmen \solution{\checkmark}
         \end{itemize}
   \item Zu den Aufgaben des Betriebssystems gehört
         \begin{itemize}
-          \item das Compilieren von Programmcode
-          \item Behandlung von Interrupts bei Benutzereingaben
+          \item das Compilieren von Programmcode \solution{\xmark}
+          \item Behandlung von Interrupts bei Benutzereingaben \solution{\checkmark}
           \item das Laden von Programmen in den Hauptspeicher \solution{\checkmark}
-          \item das Laden von Programmen aus der Festplatte / SSD
+          \item das Laden von Programmen aus der Festplatte / SSD \solution{\checkmark}
           \item das Verwalten der Prozesse auf dem Computer \solution{\checkmark}
-          \item das Löschen nicht benötigter Dateien auf Festplatten
+          \item das Löschen nicht benötigter Dateien auf Festplatten \solution{\xmark}
         \end{itemize}
   \item Bei einem Interrupt
         \begin{itemize}
           \item wechselt das System in den privilegierten Modus \solution{\checkmark}
-          \item verlässt das System den User-Mode
-          \item werden geänderte Seiten des Hauptspeichers aktualisiert
+          \item verlässt das System den User-Mode \solution{\checkmark}
+          \item werden geänderte Seiten des Hauptspeichers aktualisiert \solution{\xmark}
           \item findet ein Kontextwechsel statt \solution{\checkmark}
         \end{itemize}
   \item Semaphore
         \begin{itemize}
           \item sind ein Mechanismus zur Prozesssynchronisation \solution{\checkmark}
-          \item sind ein Mechanismus zur Sicherung der Cache-Kohärenz
+          \item sind ein Mechanismus zur Sicherung der Cache-Kohärenz \solution{\xmark}
           \item sind ein Mechanismus zur Verwaltung beschränkter Ressourcen \solution{\checkmark}
-          \item basieren auf einer booleschen Variablen und zwei atomaren Operationen
-          \item basieren auf einer Integer-Variablen und drei atomaren Operationen
+          \item basieren auf einer booleschen Variablen und zwei atomaren Operationen \solution{\xmark}
+          \item basieren auf einer Integer-Variablen und drei atomaren Operationen \solution{\checkmark}
         \end{itemize}
   \item Short-Term Scheduling beinhaltet
         \begin{itemize}
           \item die Behandlung von Interrupts \solution{\checkmark}
           \item die Auswahl des Prozesses, der als nächstes auf der CPU läuft \solution{\checkmark}
-          \item die Auswahl des nächsten Programms
-          \item die Auslagerung von Daten in den sekundären Speicher
-          \item die Auslagerung von Daten in den Hauptspeicher
+          \item die Auswahl des nächsten Programms \solution{\xmark}
+          \item die Auslagerung von Daten in den sekundären Speicher \solution{\xmark}
+          \item die Auslagerung von Daten in den Hauptspeicher \solution{\xmark}
           \item die Prozesszustände: Running, Ready und Blocked \solution{\checkmark}
         \end{itemize}
   \item Virtual-Memory hat zu tun mit
         \begin{itemize}
           \item Segmentierung \solution{\checkmark}
           \item Swapping \solution{\checkmark}
-          \item Cache-Kohärenz
+          \item Cache-Kohärenz \solution{\xmark}
         \end{itemize}
 \end{enumerate}
 
 \exercisesheet[\empty]{True/False}
 \begin{enumerate}
-  \item Im 1-Komplement wird mit dem Vektor "11...11" die -1 dargestellt.
-  \item Der Exponent denormalisierter IEEE-754 Fließkommazahlen ist immer der Vektor "00...00".
-  \item Die Entropie H ist unabhängig von der Codierung.
-  \item Bei einem Code mit Hamming-Abstand von 3 können 2-bit Fehler erkannt werden.
-  \item Beim Pipelining werden die Maschinenbefehle in einem Takt abgearbeitet.
-  \item DRAM Speicher ist flächeneffizienter als SRAM.
-  \item Bei RISC-Architekturen wird der Cache direkt vom Assemblercode angesprochen.
-  \item Rekursive Funktionsaufrufe setzen einen Stack voraus.
-  \item Durch den x86-Assembler werden Schleifen immer in bedingte Sprünge übersetzt.
-  \item Beim Symmetric Multiprocessing muss der Programmierer für die Datenkonsistenz sorgen, wenn mehrere Prozesse über den Speicher kommunizieren.
+  \item Im 1-Komplement wird mit dem Vektor "11...11" die -1 dargestellt. \solution{\xmark}
+  \item Der Exponent denormalisierter IEEE-754 Fließkommazahlen ist immer der Vektor "00...00". \solution{\checkmark}
+  \item Die Entropie H ist unabhängig von der Codierung. \solution{\checkmark}
+  \item Bei einem Code mit Hamming-Abstand von 3 können 2-bit Fehler erkannt werden. \solution{\checkmark}
+  \item Beim Pipelining werden die Maschinenbefehle in einem Takt abgearbeitet. \solution{\xmark}
+  \item DRAM Speicher ist flächeneffizienter als SRAM. \solution{\checkmark}
+  \item Bei RISC-Architekturen wird der Cache direkt vom Assemblercode angesprochen. \solution{\xmark}
+  \item Rekursive Funktionsaufrufe setzen einen Stack voraus. \solution{\checkmark}
+  \item Durch den x86-Assembler werden Schleifen immer in bedingte Sprünge übersetzt. \solution{\xmark}
+  \item Beim Symmetric Multiprocessing muss der Programmierer für die Datenkonsistenz sorgen, wenn mehrere Prozesse über den Speicher kommunizieren. \solution{\checkmark}
 \end{enumerate}
 
 \end{document}

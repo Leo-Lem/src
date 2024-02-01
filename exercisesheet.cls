@@ -107,24 +107,27 @@
 
 \newcommand{\solution}[1]{
   \ifsolutions
-    \subsubsection*{Lösung:}
     #1
   \fi
 }
 
 \NewEnviron{solution*}[1]{
-  \solution{
+  \ifsolutions
+    \subsubsection*{Lösung:}
     #1
     \begin{enumerate}
       \BODY
     \end{enumerate}
-  }
+  \fi
 }
 
 \NewEnviron{solution**}{
-  \begin{solution*}{}
-    \BODY
-  \end{solution*}
+  \ifsolutions
+    \subsubsection*{Lösung:}
+    \begin{enumerate}
+      \BODY
+    \end{enumerate}
+  \fi
 }
 
 % ---------------------------------------------------------------------
