@@ -81,7 +81,7 @@
 
 \begin{exercise*}{Codierung}{
     Nachfolgend sind alle 4 Codewörter eines Codes angegeben:
-    \begin{center} $w_1 = 0000001$, $w_2 = 0001110$, $w_3 = 1110000$, $w_4 = 1111111$ \end{center}
+    \centering $w_1 = 0000001$, $w_2 = 0001110$, $w_3 = 1110000$, $w_4 = 1111111$
   }
   \item Bestimmen Sie den minimalen Hamming-Abstand der Codewörter.
   \item Welche Aussagen sind zutreffend?
@@ -105,13 +105,11 @@
 
 \begin{exercise*}{Codierung nach Fano \& Huffman}{
     Gegeben sei eine Menge $M = \{A, B, C, D, E\}$ von Symbolen, die mit folgenden Wahrscheinlichkeiten auftreten:
-    \begin{center}
-      \begin{tabular}{c|ccccc}
-        $m_i$ & $A$  & $B$  & $C$ & $D$  & $E$  \\
-        \hline
-        $p_i$ & 0,35 & 0,15 & 0,2 & 0,18 & 0,12 \\
-      \end{tabular}
-    \end{center}
+    \centering\begin{tabular}{c|ccccc}
+      $m_i$ & $A$  & $B$  & $C$ & $D$  & $E$  \\
+      \hline
+      $p_i$ & 0,35 & 0,15 & 0,2 & 0,18 & 0,12 \\
+    \end{tabular}
   }
   \item Geben Sie eine optimale Codierung der Elemente von $M$ nach Fano an.
   \item Geben Sie eine optimale Codierung der Elemente von $M$ nach Huffman an.
@@ -145,16 +143,14 @@
 
 \begin{exercise*}{Logische Funktionen}{
     Gegeben sei die folgende logische Funktion $F$:
-    \begin{center}
-      \begin{tabular}{c|cccc cccc cccc cccc}
-        $b_0$ & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 \\
-        $b_1$ & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\
-        $a_0$ & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
-        $a_1$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
-        \hline
-        $F$   & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 1 \\
-      \end{tabular}
-    \end{center}
+    \centering\begin{tabular}{c|cccc cccc cccc cccc}
+      $b_0$ & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 \\
+      $b_1$ & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+      $a_0$ & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+      $a_1$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+      \hline
+      $F$   & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 1 \\
+    \end{tabular}
   }
   \item Übertragen Sie $F$ in ein 4x4 KV-Diagramm.
   \item Finden Sie geeignete Schleifen \& geben Sie die minimale konjunktive Form von $F$ als logische Funktion $a_1, a_0, b_1, b_0$ an.
@@ -279,7 +275,7 @@
 
 \begin{exercise*}{Schaltwerke}{
     Gegeben sei ein Schaltwerk mit vier, in zwei Bit kodiernte, Zuständen ($z_1, z_2$), einem Eingang $x$ \& einem Ausgang $y$. Es gelte:
-    \begin{center}$z_1^+ = z_2 \lor \bar{x}\qquad z_2^+ = \bar{z_2} \lor \overline{z_1\bar{x}}\qquad y = z_1 \lor x$\end{center}
+    \centering$z_1^+ = z_2 \lor \bar{x}\qquad z_2^+ = \bar{z_2} \lor \overline{z_1\bar{x}}\qquad y = z_1 \lor x$
   }
   \item Ist das Schaltwerk vom Typ Moore oder Mealy? Begründen Sie Ihre Antwort.
   \item Füllen Sie eine Funktions- \& KV-Tabelle für $z_1, z_2, y$ mit entsprechenden Werten.
@@ -346,7 +342,7 @@
 
 \exercise{Mikroprogrammierung}{
   Schreiben Sie für eine 1-Address Maschine \& eine 2-Address Maschine jeweils ein Programm zur Berechnung des Ausdrucks:
-  \begin{center}$W = A^3 - 3A^2 + A + 1$\end{center}
+  \centering $W = A^3 - 3A^2 + A + 1$
   $W$\&$A$ sind dabei als Speicheradressen der Operanden zu interpretieren. Der Wert an der Adresse $A$ soll vom Programm nicht modifiziert werden. Falls Sie temporäre Variablen benötigen, können Sie die Speicheradressen $B, C, ..., V$ benutzen. Dabei bedeutet $M$ die jeweilige Speicheradresse, $IMM$ einen Direktwert (immediate) \& $rX$ bzw. $rY$ stehen für eines von 16 Universalregistern ($r0, ..., r15$).\\
   \textit{Bonus: Ein besonders kurzes Programm gibt bis zu 3 Bonuspunkte.}
   \begin{multicols}{2}
@@ -395,13 +391,11 @@
 
 \begin{exercise*}{Codierung nach Fano}{
     Gegeben sei die Menge $M = \{A, B, C, D, E\}$ von Symbolen, die mit folgenden Wahrscheinlichkeiten auftreten:
-    \begin{center}
-      \begin{tabular}{c|ccccc}
-        $m_i$ & $A$  & $B$  & $C$ & $D$  & $E$  \\
-        \hline
-        $p_i$ & 0,35 & 0,15 & 0,2 & 0,18 & 0,12 \\
-      \end{tabular}
-    \end{center}
+    \centering\begin{tabular}{c|ccccc}
+      $m_i$ & $A$  & $B$  & $C$ & $D$  & $E$  \\
+      \hline
+      $p_i$ & 0,35 & 0,15 & 0,2 & 0,18 & 0,12 \\
+    \end{tabular}
   }
   \item\label{fano:1} Geben Sie eine Codierung der Elemente von $M$ nach Fano an.
   \item Formulieren Sie die Fano-Bedingung.
@@ -412,23 +406,20 @@
 
 \begin{exercise*}{Entropie}{
     Wir betrachten eine Münze mit den Seiten Kopf \& Zahl.
-    \hint{Es gilt $\log_2(3) \approx 1,6$ und $\log(x \cdot y) = \log(x) + \log(y)$.}
   }
   \item Geben Sie die Entropie an für einen Wurf mit der unpräparierten Münze, d.h. Kopf \& Zahl treten gleich oft auf. (Formel \& Zahlenwert)
   \item Die Münze sei jetzt so präpariert, dass Kopf dreimal öfter als Zahl auftritt ($p(Kopf) = 0,75$ \& $p(Zahl) = 0,25$). Berechnen Sie wieder die Entropie (Formel \& Zahlenwert).
+  \hint{Es gilt $\log_2(3) \approx 1,6$ und $\log(x \cdot y) = \log(x) + \log(y)$.}
 \end{exercise*}
 
 \begin{exercise*}{Gray-Code}{
     Für die folgenden Gray-Codes ist ein Codeprüfer zu realisieren, d.h. eine Funktion $F$, die genau dann 1 liefert, wenn das als Argument angebotene Wort ein Codewort ist. Codewörter sind dabei:
-
-    \begin{center}
-      \begin{tabular}{c|cccc cccc cc}
-        $x_4$ & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
-        $x_3$ & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\
-        $x_2$ & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
-        $x_1$ & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-      \end{tabular}
-    \end{center}
+    \centering\begin{tabular}{c|cccc cccc cc}
+      $x_4$ & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
+      $x_3$ & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+      $x_2$ & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
+      $x_1$ & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    \end{tabular}
   }
   \item Bestimmen Sie aus dem KV-Diagramm die disjunktive Minimalform des Gray-Codeprüfers.
   \item Geben Sie die konjunktive Minimalform für den Gray-Codeprüfer an.
@@ -437,7 +428,7 @@
 \end{exercise*}
 
 \begin{exercise*}[10]{Schaltwerke}{
-    Ein Schaltwerk ist durch das folgende Zustandsdiagramm definiert. Die Codierung der Zustände ($z_1, z_2$) und der Ausgabe $y$ ist bereits in den Knoten des Graphen angegeben.
+    Ein Schaltwerk ist durch das folgende Zustandsdiagramm definiert. Die Codierung der Zustände ($z_1, z_2$) und der Ausgabe $y$ ist bereits in den Knoten des Graphen angegeben.\par
     \centering
     \tikz[->,auto,node distance=3cm,main node/.style={circle,draw}]{
       \node[main node] (-1) {$z_2z_1/y$};
@@ -467,9 +458,7 @@
 
 \exercise{Mikroprogrammierung}{
   Schreiben Sie für eine Stack- \& eine 3-Adress-Maschine mit Load-Store Befehlssatz, jeweils ein Programm zur Berechnung des folgenden Ausdrucks:
-  \begin{center}
-    $W = A + B - C^2$
-  \end{center}
+  \centering $W = A + B - C^2$
   $W, A, B$ und $C$ sind dabei als Speicheradressen der Operanden zu interpretieren. Die Werte an den Adressen $A, B$ und $C$ sollen vom Programm nicht modifiziert werden. Falls Sie temporäre Variablen benötigen, können Sie die Speicheradressen $D, E, ..., V$ benutzen. Dabei bedeutet $M$ jeweils eine Speicheradresse, $TOS$ steht für "Top of Stack" und $rX, rY, rZ$ bezeichnen je eines von 16 Universalregistern ($r0, ..., r15$) der 3-Adress-Maschine.
 
   \begin{multicols}{2}
@@ -513,11 +502,8 @@
 \section{Ersttermin}
 \setcounter{subsection}{3}
 \begin{exercise*}[4]{Rechnen mit IEEE-754 Gleitkommazahlen}{
-    Gegeben seien die folgenden zwei Zahlen im IEEE-754 Format mit einfacher Genauigkeit (1-bit für das Vorzeichen, 8-bit für den Exponenten und 7-bit für die Mantisse)
-    \begin{center}
-      $A = (0|00011010|1000000)$\\
-      $B = (0|11100101|0100011)$
-    \end{center}
+    Gegeben seien die folgenden zwei Zahlen im IEEE-754 Format mit einfacher Genauigkeit (1-bit für das Vorzeichen, 8-bit für den Exponenten und 7-bit für die Mantisse)\par
+    \centering $A = (0|00011010|1000000)$\par $B = (0|11100101|0100011)$
   }
   \item Berechnen Sie $C = A \cdot B$ im IEEE-754 Format.
   \item Wie lauten die Zahlen $A, B$ und $C$ im Dezimalsystem? Sehr große und sehr kleine Werte dürfen auch wie folgt dargestellt werden: $<s>*<Wert> \hat{} <Exponenten>$
