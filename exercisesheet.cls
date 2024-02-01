@@ -77,45 +77,49 @@
   \fi
 }
 
-\newenvironment{exercise*}[2][\relax]{
-  \ifx#1\relax
-    \subsection{#2}
-  \else
+\newcommand{\exercise}[2][\relax]{
+  \ifx#1\relax\else
     \setcounter{subsection}{#1}
     \addtocounter{subsection}{-1}
-    \subsection{#2}
   \fi
-}{
+  \subsection{#2}
 }
 
-\newenvironment{exercise}[2][\relax]{
-  \ifx#1\relax
-    \subsection{#2}
-  \else
-    \setcounter{subsection}{#1}
-    \addtocounter{subsection}{-1}
-    \subsection{#2}
-  \fi
-
+\newenvironment{exercise*}[3][\relax]{
+  \exercise[#1]{#2}
+  #3
   \begin{enumerate}
     }{
   \end{enumerate}
 }
 
-\NewEnviron{solution*}{
+
+\newenvironment{exercise**}[2][\relax]{
+  \begin{exercise*}[#1]{#2}{}
+    }{
+  \end{exercise*}
+}
+
+\newcommand{\solution}[1]{
   \ifsolutions
     \subsubsection*{Lösung:}
-    \BODY
+    #1
   \fi
 }
 
-\NewEnviron{solution}{
-  \ifsolutions
-    \subsubsection*{Lösung:}
+\NewEnviron{solution*}[1]{
+  \solution{
+    #1
     \begin{enumerate}
       \BODY
     \end{enumerate}
-  \fi
+  }
+}
+
+\NewEnviron{solution**}{
+  \begin{solution*}{}
+    \BODY
+  \end{solution*}
 }
 
 % ---------------------------------------------------------------------
@@ -123,6 +127,6 @@
 % ---------------------------------------------------------------------
 
 \newcommand{\hint}[1]{
-  \vspace{.5em}\newline
+  \vspace{.5em}\par
   \textbf{Hinweis}: \textit{#1}
 }
