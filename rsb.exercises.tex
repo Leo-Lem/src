@@ -5,26 +5,26 @@
 \subject{Rechnerstrukturen \& Betriebssysteme}
 \semester{Wintersemester 2023}
 \author{Leopold Lemmermann}
-\solutions
+\enablesolutions
 
 \begin{document}
 \createtitle
 
 \exercisesheet[2020]{Ersttermin}
-\begin{exercise**}{Zahlensysteme}
-  \item Wandeln Sie die Dezimalzahl $N = 1956$ in eine 16-stellige Binärzahl um.
-  \item Wie lautet die Darstellung von $N$ im Oktalsystem.
-  \item Wie lautet die Darstellung von $N$ im Hexadezimalsystem.
-  \item Wie lautet jeweils die Darstellung der negativen Zahl $N$ im Hexadezimalsystem (4 Stellen), wenn mit einer Angabe negativer Zahlen
-  \begin{itemize}
-    \item mit Vorzeichen/Betrag:
-    \item Einerkomplementdarstellung:
-    \item Zweierkomplementdarstellung:
-  \end{itemize}
-  gearbeitet wird.
-\end{exercise**}
+\begin{exercises}{Zahlensysteme}
+\item Wandeln Sie die Dezimalzahl $N = 1956$ in eine 16-stellige Binärzahl um.
+\item Wie lautet die Darstellung von $N$ im Oktalsystem.
+\item Wie lautet die Darstellung von $N$ im Hexadezimalsystem.
+\item Wie lautet jeweils die Darstellung der negativen Zahl $N$ im Hexadezimalsystem (4 Stellen), wenn mit einer Angabe negativer Zahlen
+\begin{itemize}
+  \item mit Vorzeichen/Betrag:
+  \item Einerkomplementdarstellung:
+  \item Zweierkomplementdarstellung:
+\end{itemize}
+gearbeitet wird.
+\end{exercises}
 
-\begin{solution**}
+\begin{solutions}
   \item $N = 1956_{10} = {0000\ 0111\ 1010\ 0100}_2$
   \item $N = 1956_{10} = {3644}_8$
   \item $N = 1956_{10} = {\mathrm{07A4}}_{16}$
@@ -34,34 +34,34 @@
     \item ${\mathrm{F85B}}_{16}$
     \item ${\mathrm{F85C}}_{16}$
   \end{itemize}
-\end{solution**}
+\end{solutions}
 
-\begin{exercise**}{Kommazahlen zwischen Basen}
-  \item Wandeln Sie die Dezimalzahl $N = 0.85$ in eine (möglicherweise periodische) Binärzahl mit 4 Vorkomma- \& der Zahl Nachkommastellen um.
-  \item Wie lautet die Darstellung von $N$ im Hexadezimalsystem?
-  \item Wie wird $N$ im Zweierkomplement mit 4 Vorkomma- \& 8 Nachkommastellen codiert?
-\end{exercise**}
+\begin{exercises}{Kommazahlen zwischen Basen}
+\item Wandeln Sie die Dezimalzahl $N = 0.85$ in eine (möglicherweise periodische) Binärzahl mit 4 Vorkomma- \& der Zahl Nachkommastellen um.
+\item Wie lautet die Darstellung von $N$ im Hexadezimalsystem?
+\item Wie wird $N$ im Zweierkomplement mit 4 Vorkomma- \& 8 Nachkommastellen codiert?
+\end{exercises}
 
-\begin{solution**}
+\begin{solutions}
   \item $N = 0.85_{10} = {0000.11\overline{01\ 10}}_2$
   \item $N = 0.85_{10} = {\mathrm{.D\bar{9}}}_{16}$
   \item ${N}_{2K} = (0.85_{10})_{2K} = {1111.0010\ 0111}_2$
-\end{solution**}
+\end{solutions}
 
-\begin{exercise*}{Rechnen im Hexadezimalsystem}
+\begin{eexercises}{Rechnen im Hexadezimalsystem}
   {Gegeben seien die Hexadezimalzahlen $A = \mathrm{4B2F}$ und $B = \mathrm{3B32}$.}
   \item Addieren Sie $A+B$.
   \item Subtrahieren Sie $A-B$.
   \item Multiplizieren Sie $A\cdot (20)_{16}$.
-\end{exercise*}
+\end{eexercises}
 
-\begin{solution**}
+\begin{solutions}
   \item $A + B = \mathrm{4B2F} + \mathrm{3B32} = \mathrm{8661}$
   \item $A - B = \mathrm{4B2F} - \mathrm{3B32} = \mathrm{0FFD}$
   \item $A \cdot B = \mathrm{4B2F} \cdot 20 = \mathrm{965E}$
-\end{solution**}
+\end{solutions}
 
-\begin{exercise*}{Umwandlung von IEEE-754 Gleitkommazahlen}{
+\begin{eexercises}{Umwandlung von IEEE-754 Gleitkommazahlen}{
     Wandeln Sie die folgenden normalisierten 32-bit Gleitkommazahlen im IEEE-754 float-Format (1-bit Vorzeichen, 8-bit Exponent in Exzess-127 Darstellung, 23-bit Mantisse) in Dezimalzahlen um. Dabei sind nur die oberen 7 Bit der Mantisse angegeben (alle anderen Bits sind 0).
   }
   \item $(0|0000 0000|0000 000)$:
@@ -69,41 +69,41 @@
   \item $(0|0111 1111|0000 000)$:
   \item $(0|0111 1110|1000 000)$:
   \item $(1|0111 1111|0100 000)$:
-\end{exercise*}
+\end{eexercises}
 
-\begin{solution**}
+\begin{solutions}
   \item $0.0$
   \item $-15.0$
   \item $1.0$
   \item $0.75$
   \item $-1.25$
-\end{solution**}
+\end{solutions}
 
-\begin{exercise*}{Codierung}{
+\begin{eexercises}{Codierung}{
     Nachfolgend sind alle 4 Codewörter eines Codes angegeben:
     \centering $w_1 = 0000001$, $w_2 = 0001110$, $w_3 = 1110000$, $w_4 = 1111111$
   }
   \item Bestimmen Sie den minimalen Hamming-Abstand der Codewörter.
   \item Welche Aussagen sind zutreffend?
   \begin{itemize}
-    \item Es handelt sich um einen Binärcode. \solution{\checkmark}
-    \item Es handelt sich um einen Blockcode. \solution{\checkmark}
-    \item Es handelt sich um einen linearen Code. \solution{\xmark}
-    \item Es handelt sich um einen zyklischen Code. \solution{\checkmark}
-    \item Mit dem Code können 2-bit Fehler erkannt werden. \solution{\checkmark}
-    \item Mit dem Code können 3-bit Fehler erkannt werden. \solution{\checkmark}
-    \item Mit dem Code können 1-bit Fehler korrigiert werden. \solution{\checkmark}
-    \item Mit dem Code können 2-bit Fehler korrigiert werden. \solution{\xmark}
-    \item Mit dem Code können 1-bit Fehler korrigiert und 2-bit Fehler erkannt werden. \solution{\checkmark}
+    \item Es handelt sich um einen Binärcode. \psolution{\checkmark}
+    \item Es handelt sich um einen Blockcode. \psolution{\checkmark}
+    \item Es handelt sich um einen linearen Code. \psolution{\xmark}
+    \item Es handelt sich um einen zyklischen Code. \psolution{\checkmark}
+    \item Mit dem Code können 2-bit Fehler erkannt werden. \psolution{\checkmark}
+    \item Mit dem Code können 3-bit Fehler erkannt werden. \psolution{\checkmark}
+    \item Mit dem Code können 1-bit Fehler korrigiert werden. \psolution{\checkmark}
+    \item Mit dem Code können 2-bit Fehler korrigiert werden. \psolution{\xmark}
+    \item Mit dem Code können 1-bit Fehler korrigiert und 2-bit Fehler erkannt werden. \psolution{\checkmark}
   \end{itemize}
-\end{exercise*}
+\end{eexercises}
 
-\begin{solution**}
+\begin{solutions}
   \item $d_{min} = 4$
   \item Zutreffende Aussagen: s.o.
-\end{solution**}
+\end{solutions}
 
-\begin{exercise*}{Codierung nach Fano \& Huffman}{
+\begin{eexercises}{Codierung nach Fano \& Huffman}{
     Gegeben sei eine Menge $M = \{A, B, C, D, E\}$ von Symbolen, die mit folgenden Wahrscheinlichkeiten auftreten:
     \centering\begin{tabular}{c|ccccc}
       $m_i$ & $A$  & $B$  & $C$ & $D$  & $E$  \\
@@ -114,9 +114,9 @@
   \item Geben Sie eine optimale Codierung der Elemente von $M$ nach Fano an.
   \item Geben Sie eine optimale Codierung der Elemente von $M$ nach Huffman an.
   \item Schreiben Sie die Formel auf, nach der die Entropie $H$ berechnet wird \& setzen Sie die Zahlen ein. Die Berechnung des Zahlenwertes entfällt.
-\end{exercise*}
+\end{eexercises}
 
-\begin{solution**}
+\begin{solutions}
   \item
   \begin{tabular}{c|ccccc}
     $m_i$ & $A$  & $B$  & $C$ & $D$  & $E$  \\
@@ -139,9 +139,9 @@
       ( & =2.18)
     \end{split}
   \end{equation*}
-\end{solution**}
+\end{solutions}
 
-\begin{exercise*}{Logische Funktionen}{
+\begin{eexercises}{Logische Funktionen}{
     Gegeben sei die folgende logische Funktion $F$:
     \centering\begin{tabular}{c|cccc cccc cccc cccc}
       $b_0$ & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 \\
@@ -156,9 +156,9 @@
   \item Finden Sie geeignete Schleifen \& geben Sie die minimale konjunktive Form von $F$ als logische Funktion $a_1, a_0, b_1, b_0$ an.
   \item Wie lautet die minimale disjunktive Form von $F$?
   \item Welche Vergleichsoperation der 2-bit Zahlen $(a_1a_0)$ \& $(b_1b_0)$ beschreibt $F$?
-\end{exercise*}
+\end{eexercises}
 
-\begin{solution**}
+\begin{solutions}
   \item
   \begin{tabular}{c|cccc}
     $b_1b_0 \backslash a_1a_0$ & 00 & 01 & 11 & 10 \\
@@ -171,24 +171,24 @@
   \item z.B. $F = (b_1 \lor \bar{a_1}) \land (b_0\lor \bar{a_1}\lor \bar{a_0}) \land (b_1\lor b_0\lor\bar{a_0})$
   \item z.B. $F = (\bar{b_1}\land\bar{b_0}) \lor (a_1\land a_0) \lor (\bar{b_0}\land a_1) \lor (\bar{b_1}\land a_0)\lor(\bar{b_1}\land a_1)$
   \item $(a_1a_0) \geq (b_1b_0)$
-\end{solution**}
+\end{solutions}
 
-\begin{exercise**}{Funktional vollständige Basismengen}
-  \item Zeigen Sie, dass $\{NAND\}$ eine funktionale vollständige Basismenge ist. Drücken Sie dazu die folgenden Funktionen nur unter Verwendung von NANDs aus.
-  \begin{enumerate}
-    \item $NOT\ \bar{a} = $
-    \item $AND\ a \land b = $
-    \item $OR\ a \lor b = $
-  \end{enumerate}
-  \item Zeigen Sie, dass $\{NOR\}$ eine funktionale vollständige Basismenge ist. Drücken Sie dazu die folgenden Funktionen nur unter Verwendung von NORs aus.
-  \begin{enumerate}
-    \item $NOT\ \bar{a} = $
-    \item $AND\ a \land b = $
-    \item $OR\ a \lor b = $
-  \end{enumerate}
-\end{exercise**}
+\begin{exercises}{Funktional vollständige Basismengen}
+\item Zeigen Sie, dass $\{NAND\}$ eine funktionale vollständige Basismenge ist. Drücken Sie dazu die folgenden Funktionen nur unter Verwendung von NANDs aus.
+\begin{enumerate}
+  \item $NOT\ \bar{a} = $
+  \item $AND\ a \land b = $
+  \item $OR\ a \lor b = $
+\end{enumerate}
+\item Zeigen Sie, dass $\{NOR\}$ eine funktionale vollständige Basismenge ist. Drücken Sie dazu die folgenden Funktionen nur unter Verwendung von NORs aus.
+\begin{enumerate}
+  \item $NOT\ \bar{a} = $
+  \item $AND\ a \land b = $
+  \item $OR\ a \lor b = $
+\end{enumerate}
+\end{exercises}
 
-\begin{solution**}
+\begin{solutions}
   \item
   \begin{enumerate}
     \item $NOT\ \bar{a} = a\ NAND\ a$
@@ -201,9 +201,9 @@
     \item $AND\ a \land b = \bar{a}\ NOR\ \bar{b}$
     \item $OR\ a \lor b = \overline{a\ NOR\ b}$
   \end{enumerate}
-\end{solution**}
+\end{solutions}
 
-\begin{exercise*}{Impulsdiagramme}{
+\begin{eexercises}{Impulsdiagramme}{
     Zeichnen Sie die Impulsdiagramme für die folgenden Schaltungen:\par
     \vspace{1em}
     \centering
@@ -222,9 +222,9 @@
   \item\label{impulse:1st} Vorderflankengesteuertes D-Flipflop
   \item\label{impulse:2nd} Rückflankengesteuertes D-Flipflop
   \item\label{impulse:3rd} Pegelgesteuertes D-Flipflop / Latch (high-aktiv)
-\end{exercise*}
+\end{eexercises}
 
-\solution{
+\begin{solution}
   \resizebox{\linewidth}{!}{
     \tikz{
       \node at (-1,0.5) {\textbf{C}lock};
@@ -251,38 +251,37 @@
       \draw{(2,-8) -- (3,-8) -- (3,-7) -- (4,-7) -- (4,-8) -- (8,-8) -- (8,-7) -- (14,-7) -- (14,-8) -- (15,-8) -- (15,-7) -- (21,-7) -- (21,-8) -- (25,-8)};
     }
   }
-}
+\end{solution}
 
-\exercise{ROBDDs}{
+\begin{exercise}{ROBDDs}
   Skizzieren Sie den ROBDD für die Boole'sche Funktion $f(a, b) = \overline{a \oplus b}$.
-}
+  \begin{solution}
+    \tikz[auto] {
+      \node (a) at (1,0) {$a$};
+      \node (b1) at (0,-1) {$b$};
+      \node (b2) at (2,-1) {$b$};
+      \node (0) at (0,-2) {$0$};
+      \node (1) at (2,-2) {$1$};
+      \draw[->] (a) -- (b1) node[midway, above] {0};
+      \draw[->] (a) -- (b2) node[midway, above] {1};
+      \draw[->] (b1) -- (0) node[midway, left] {1};
+      \draw[->] (b2) -- (0) node[midway, left, yshift=1em] {0};
+      \draw[->] (b1) -- (1) node[midway, right, yshift=1em] {1};
+      \draw[->] (b2) -- (1) node[midway, right] {0};
+    }
+  \end{solution}
+\end{exercise}
 
-\solution{
-  \tikz[auto] {
-    \node (a) at (1,0) {$a$};
-    \node (b1) at (0,-1) {$b$};
-    \node (b2) at (2,-1) {$b$};
-    \node (0) at (0,-2) {$0$};
-    \node (1) at (2,-2) {$1$};
-    \draw[->] (a) -- (b1) node[midway, above] {0};
-    \draw[->] (a) -- (b2) node[midway, above] {1};
-    \draw[->] (b1) -- (0) node[midway, left] {1};
-    \draw[->] (b2) -- (0) node[midway, left, yshift=1em] {0};
-    \draw[->] (b1) -- (1) node[midway, right, yshift=1em] {1};
-    \draw[->] (b2) -- (1) node[midway, right] {0};
-  }
-}
-
-\begin{exercise*}{Schaltwerke}{
+\begin{eexercises}{Schaltwerke}{
     Gegeben sei ein Schaltwerk mit vier, in zwei Bit kodiernte, Zuständen ($z_1, z_2$), einem Eingang $x$ \& einem Ausgang $y$. Es gelte:
     \centering$z_1^+ = z_2 \lor \bar{x}\qquad z_2^+ = \bar{z_2} \lor \overline{z_1\bar{x}}\qquad y = z_1 \lor x$
   }
   \item Ist das Schaltwerk vom Typ Moore oder Mealy? Begründen Sie Ihre Antwort.
   \item Füllen Sie eine Funktions- \& KV-Tabelle für $z_1, z_2, y$ mit entsprechenden Werten.
   \item Zeichnen Sie das Zustandsübergangsdiagramm des Schaltwerks.
-\end{exercise*}
+\end{eexercises}
 
-\begin{solution**}
+\begin{solutions}
   \item Das Schaltwerk ist vom Typ Mealy, da der Ausgang $y$ von den Eingängen $x$ \& $z_1$ abhängt.
   \item Funktionstabelle:
   \begin{tabular}{ccc|cc|c}
@@ -338,9 +337,9 @@
     (3) edge [loop right] node {$x/y$} (3)
     (3) edge [bend left] node {$\bar x/y$} (1);
   }
-\end{solution**}
+\end{solutions}
 
-\exercise{Mikroprogrammierung}{
+\begin{exercise}{Mikroprogrammierung}
   Schreiben Sie für eine 1-Address Maschine \& eine 2-Address Maschine jeweils ein Programm zur Berechnung des Ausdrucks:
   \centering $W = A^3 - 3A^2 + A + 1$
   $W$\&$A$ sind dabei als Speicheradressen der Operanden zu interpretieren. Der Wert an der Adresse $A$ soll vom Programm nicht modifiziert werden. Falls Sie temporäre Variablen benötigen, können Sie die Speicheradressen $B, C, ..., V$ benutzen. Dabei bedeutet $M$ die jeweilige Speicheradresse, $IMM$ einen Direktwert (immediate) \& $rX$ bzw. $rY$ stehen für eines von 16 Universalregistern ($r0, ..., r15$).\\
@@ -376,20 +375,20 @@
       \hline
     \end{tabular}
   \end{multicols}
-}
 
-\solution{
-  1-Adress Maschine:\par LOADI 3; STORE B; LOAD A; SUB B; MUL A; ADDI 1; MUL A; ADDI 1; STORE W\newline
-  2-Adress Maschine:\par LOADI r0, 3; LOAD r1, A; COPY r1, r2; SUB r2, r0; MUL r2, r1; INCR r2; MUL r2, r1; INCR r2; STORE W, r2\newline
-  \textit{Bonus:} Kann (wie oben) zB. mit dem Horner-Schema erzielt werden (9 Operationen)
-}
+  \begin{solution}
+    1-Adress Maschine:\par LOADI 3; STORE B; LOAD A; SUB B; MUL A; ADDI 1; MUL A; ADDI 1; STORE W\newline
+    2-Adress Maschine:\par LOADI r0, 3; LOAD r1, A; COPY r1, r2; SUB r2, r0; MUL r2, r1; INCR r2; MUL r2, r1; INCR r2; STORE W, r2\newline
+    \textit{Bonus:} Kann (wie oben) zB. mit dem Horner-Schema erzielt werden (9 Operationen)
+  \end{solution}
+\end{exercise}
 
 \exercisesheet{Probeklausur}
-\exercise[5]{Codierung}{
+\begin{exercise}[5]{Codierung}
   Geben Sie einen zyklisch-einschrittigen Binärcode mit 12 Codewörtern an.
-}
+\end{exercise}
 
-\begin{exercise*}{Codierung nach Fano}{
+\begin{eexercises}{Codierung nach Fano}{
     Gegeben sei die Menge $M = \{A, B, C, D, E\}$ von Symbolen, die mit folgenden Wahrscheinlichkeiten auftreten:
     \centering\begin{tabular}{c|ccccc}
       $m_i$ & $A$  & $B$  & $C$ & $D$  & $E$  \\
@@ -402,17 +401,17 @@
   \item Erfüllen die Code-Worte, die Sie unter \ref{fano:1} gefunden haben, die Fano-Bedingung?
   \item Ist jeder Code, der der Fano-Bedingung genügt, eindeutig decodierbar? Ist jeder Blockcode eindeutig decodierbar? Geben Sie eine Codierung der Elemente von $M$ an, die nicht eindeutig decodierbar ist.
 
-\end{exercise*}
+\end{eexercises}
 
-\begin{exercise*}{Entropie}{
+\begin{eexercises}{Entropie}{
     Wir betrachten eine Münze mit den Seiten Kopf \& Zahl.
   }
   \item Geben Sie die Entropie an für einen Wurf mit der unpräparierten Münze, d.h. Kopf \& Zahl treten gleich oft auf. (Formel \& Zahlenwert)
   \item Die Münze sei jetzt so präpariert, dass Kopf dreimal öfter als Zahl auftritt ($p(Kopf) = 0,75$ \& $p(Zahl) = 0,25$). Berechnen Sie wieder die Entropie (Formel \& Zahlenwert).
   \hint{Es gilt $\log_2(3) \approx 1,6$ und $\log(x \cdot y) = \log(x) + \log(y)$.}
-\end{exercise*}
+\end{eexercises}
 
-\begin{exercise*}{Gray-Code}{
+\begin{eexercises}{Gray-Code}{
     Für die folgenden Gray-Codes ist ein Codeprüfer zu realisieren, d.h. eine Funktion $F$, die genau dann 1 liefert, wenn das als Argument angebotene Wort ein Codewort ist. Codewörter sind dabei:
     \centering\begin{tabular}{c|cccc cccc cc}
       $x_4$ & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
@@ -425,9 +424,9 @@
   \item Geben Sie die konjunktive Minimalform für den Gray-Codeprüfer an.
   \item Geben Sie die Reed-Muller-Form für den Gray-Codeprüfer an.\par
   \hint{Es gilt $\bar{a}=1\oplus a$ und $a\lor b = a\oplus b\oplus ab$.}
-\end{exercise*}
+\end{eexercises}
 
-\begin{exercise*}[10]{Schaltwerke}{
+\begin{eexercises}[10]{Schaltwerke}{
     Ein Schaltwerk ist durch das folgende Zustandsdiagramm definiert. Die Codierung der Zustände ($z_1, z_2$) und der Ausgabe $y$ ist bereits in den Knoten des Graphen angegeben.\par
     \centering
     \tikz[->,auto,node distance=3cm,main node/.style={circle,draw}]{
@@ -448,15 +447,15 @@
   \item Tragen Sie die Ausgabewerte der Schaltfunktionen für die Ausgabe $y$ und den Folgezustand ($z_1^+, z_2^+$) in eine Funktionstabelle ein.
   \item Übertragen Sie die Tabellenwerte in KV-Diagramme für $z_1^+, z_2^+, y$.
   \item Geben Sie minimale Ausdrücke für die Schaltfunktionen an.
-\end{exercise*}
+\end{eexercises}
 
-\begin{exercise**}{Codierung}
-  \item Geben Sie einen Code mit vier Codeworten an, deren (paarweise) Hammingdistanz mindestens 4 ist.
-  \item Wieviele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code erkennen?
-  \item Wieviele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code korrigieren?
-\end{exercise**}
+\begin{exercises}{Codierung}
+\item Geben Sie einen Code mit vier Codeworten an, deren (paarweise) Hammingdistanz mindestens 4 ist.
+\item Wieviele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code erkennen?
+\item Wieviele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code korrigieren?
+\end{exercises}
 
-\exercise{Mikroprogrammierung}{
+\begin{exercise}{Mikroprogrammierung}
   Schreiben Sie für eine Stack- \& eine 3-Adress-Maschine mit Load-Store Befehlssatz, jeweils ein Programm zur Berechnung des folgenden Ausdrucks:\par
   \begin{center}$W = A + B - C^2$\end{center}
   $W, A, B$ und $C$ sind dabei als Speicheradressen der Operanden zu interpretieren. Die Werte an den Adressen $A, B$ und $C$ sollen vom Programm nicht modifiziert werden. Falls Sie temporäre Variablen benötigen, können Sie die Speicheradressen $D, E, ..., V$ benutzen. Dabei bedeutet $M$ jeweils eine Speicheradresse, $TOS$ steht für "Top of Stack" und $rX, rY, rZ$ bezeichnen je eines von 16 Universalregistern ($r0, ..., r15$) der 3-Adress-Maschine.
@@ -488,189 +487,215 @@
       \hline
     \end{tabular}
   \end{multicols}
-}
 
-\begin{exercise*}[14]{Betriebssysteme}{
+  \begin{solution}
+    Stack-Maschine:\par PUSH C; PUSH C; MUL; PUSH B; PUSH A; ADD; SUB; POP W\newline
+    3-Address Maschine:\par LOAD r0, A; LOAD r1, B; LOAD r2, C; ADD r3, r0, r1; MUL r4, r2, r2;  SUB r5, r4, r3; STORE W, r5
+  \end{solution}
+\end{exercise}
+
+\begin{eexercises}[14]{Betriebssysteme}{
     Beantworten Sie schriftliche Fragen zu Betriebssystem-relevanten Themen. Dies können Inhalte, Eigenschaften oder Zusammenhänge sein. Es genügt eine Aufzählung von Schlüsselworten; Textantworten sollen kurz ausfallen: wenige Sätze, $<5$ Textzeilen!
   }
   \item Nennen Sie drei Aufgaben von Betriebssystemen?
   \item Was ist Scheduling?
   \item Was haben Prozesse mit Threads zu tun?
   \item Welche Mechanismen implementieren Virtual Memory?
-\end{exercise*}
+\end{eexercises}
+
+\begin{solutions}
+  \item Ressourcenverwaltung, Prozessverwaltung, Speicherverwaltung, Dateiverwaltung, Benutzerschnittstelle, Systemkommunikation, Fehlerbehandlung, Sicherheitsfunktionen, ...
+  \item Scheduling ist die Zuweisung der Prozessorzeit an die verschiedenen Prozesse (bzw. Threads) eines Systems.
+  \item Threads sind leichtgewichtige Prozesse, die innerhalb eines Prozesses laufen und sich dessen Ressourcen teilen.
+  \item Paging, Swapping, Memory-Mapped Files, Demand Paging, Page Fault, ...
+\end{solutions}
 
 \exercisesheet{Ersttermin}
-\begin{exercise*}[4]{Rechnen mit IEEE-754 Gleitkommazahlen}{
+\begin{eexercises}[4]{Rechnen mit IEEE-754 Gleitkommazahlen}{
     Gegeben seien die folgenden zwei Zahlen im IEEE-754 Format mit einfacher Genauigkeit (1-bit für das Vorzeichen, 8-bit für den Exponenten und 7-bit für die Mantisse)\par
     \centering $A = (0|00011010|1000000)$\par $B = (0|11100101|0100011)$
   }
   \item Berechnen Sie $C = A \cdot B$ im IEEE-754 Format.
   \item Wie lauten die Zahlen $A, B$ und $C$ im Dezimalsystem? Sehr große und sehr kleine Werte dürfen auch wie folgt dargestellt werden: $<s>*<Wert> \hat{} <Exponenten>$
-\end{exercise*}
+\end{eexercises}
 
-\begin{exercise**}{Codierung}
-  \item Geben Sie einen zyklisch einschrittigen Code mit 10 Codewörtern an, von denen eines $1110$ ist.
-  \item Kann ein zyklisch einschrittiger Code eine ungerade Anzahl an Codewörtern enthalten? Begründen Sie.
-\end{exercise**}
+\begin{solutions}
+  \item $C = (0|10000000|1110100)$
+  \item
+  $A = {-1}^0 \cdot 2^{26-127} \cdot (1+2^{-1}) = 2^{-101} + 2^{-102}$\par
+  $B = {-1}^0 \cdot 2^{229-127} \cdot (1+2^{-2}+2^{-6}+2^{-7}) = 2^{102} + 2^{100} + 2^{96} + 2^{95}$\par
+  $C = {-1}^0 \cdot 2^{128-127} \cdot (1+2^{-1}+2^{-2}+2^{-3}+2^{-5}) = 2 + 2^0 + 2^{-1} + 2^{-2} + 2^{-4} = 3.8125$
+\end{solutions}
+
+
+\begin{exercises}{Codierung}
+\item Geben Sie einen zyklisch einschrittigen Code mit 10 Codewörtern an, von denen eines $1110$ ist.
+\item Kann ein zyklisch einschrittiger Code eine ungerade Anzahl an Codewörtern enthalten? Begründen Sie.
+\end{exercises}
+
+\begin{solutions}
+  \item $1110, 1010, 1000, 0000, 0001, 1001, 1101, 0101, 0111, 0110$
+  \item Nein, da bereits die Parität, auf Grund der Einschrittigkeit, nach einem Zyklus (ungerader Länge) nicht gleich sein kann.
+\end{solutions}
 
 \exercisesheet[\empty]{Multiple Choice}
 \begin{enumerate}
   \item Für Zahlen im Zweierkomplement gilt das:
         \begin{itemize}
-          \item Kommutativgesetz \solution{\checkmark}
-          \item Distributivgesetz \solution{\checkmark}
-          \item Assoziativgesetz \solution{\checkmark}
+          \item Kommutativgesetz \psolution{\checkmark}
+          \item Distributivgesetz \psolution{\checkmark}
+          \item Assoziativgesetz \psolution{\checkmark}
         \end{itemize}
   \item Für IEEE-754 Gleitkommazahlen gilt das
         \begin{itemize}
-          \item Kommutativgesetz \solution{\checkmark}
-          \item Assoziativgesetz \solution{\xmark}
-          \item Distributivgesetz \solution{\xmark}
+          \item Kommutativgesetz \psolution{\checkmark}
+          \item Assoziativgesetz \psolution{\xmark}
+          \item Distributivgesetz \psolution{\xmark}
         \end{itemize}
   \item Die UTF-8 Codierung
         \begin{itemize}
-          \item wird für Unicode-Zeichen benutzt \solution{\checkmark}
-          \item entspricht in den ersten 128 Zeichen ASCII mit vorangestellter "0" \solution{\checkmark}
-          \item enthält verschiedene Codierungen für Zeilenumbrüche \solution{\checkmark}
-          \item macht die Konvertierung von Zeilenenden beim Datentransfer zwischen Computern überflüssig \solution{\xmark}
-          \item ist bei Länge von einem Byte identisch zu iso-8859-1 \solution{\checkmark}
-          \item konvertiert Zeilenumbrüche bei Datentransfer zwischen verschiedenen Betriebsssystemen automatisch \solution{\xmark}
+          \item wird für Unicode-Zeichen benutzt \psolution{\checkmark}
+          \item entspricht in den ersten 128 Zeichen ASCII mit vorangestellter "0" \psolution{\checkmark}
+          \item enthält verschiedene Codierungen für Zeilenumbrüche \psolution{\checkmark}
+          \item macht die Konvertierung von Zeilenenden beim Datentransfer zwischen Computern überflüssig \psolution{\xmark}
+          \item ist bei Länge von einem Byte identisch zu iso-8859-1 \psolution{\checkmark}
+          \item konvertiert Zeilenumbrüche bei Datentransfer zwischen verschiedenen Betriebsssystemen automatisch \psolution{\xmark}
         \end{itemize}
   \item Mit Hilfe der Oder-Verknüpfung können in einem Bitvektor gezielt einzelne Bits
         \begin{itemize}
-          \item gelöscht werden \solution{\xmark}
-          \item gesetzt werden \solution{\checkmark}
-          \item invertiert werden \solution{\xmark}
+          \item gelöscht werden \psolution{\xmark}
+          \item gesetzt werden \psolution{\checkmark}
+          \item invertiert werden \psolution{\xmark}
         \end{itemize}
   \item Mit einer AND-Verknüpfung können in einem Bitvektor gezielt einzelne Bits
         \begin{itemize}
-          \item gelöscht werden \solution{\checkmark}
-          \item gesetzt werden \solution{\xmark}
-          \item invertiert werden \solution{\xmark}
+          \item gelöscht werden \psolution{\checkmark}
+          \item gesetzt werden \psolution{\xmark}
+          \item invertiert werden \psolution{\xmark}
         \end{itemize}
   \item Im 2-Komplement ist bei einem Ripple-Carry Addierer ein Carry-Out immer ein Zeichen für
         \begin{itemize}
-          \item einen Überlauf \solution{\xmark}
-          \item einen Unterlauf \solution{\xmark}
-          \item den Wechsel zwischen positiven ($\geq 0$) und negativen Zahlenbereichen \solution{\checkmark}
+          \item einen Überlauf \psolution{\xmark}
+          \item einen Unterlauf \psolution{\xmark}
+          \item den Wechsel zwischen positiven ($\geq 0$) und negativen Zahlenbereichen \psolution{\checkmark}
         \end{itemize}
   \item Um einen Überlauf bei Zahlen im Zweierkomplement zu erkennen, benötigt man
         \begin{itemize}
-          \item nur den Carry-Out \solution{\xmark}
-          \item den Carry-Out und die zwei höchsten Bits \solution{\checkmark}
-          \item nur die zwei höchsten Bits \solution{\xmark}
+          \item nur den Carry-Out \psolution{\xmark}
+          \item den Carry-Out und die zwei höchsten Bits \psolution{\checkmark}
+          \item nur die zwei höchsten Bits \psolution{\xmark}
         \end{itemize}
   \item Die Menge der folgenden booleschen Operatoren ist funktional vollständig
         \begin{itemize}
-          \item (AND, OR) \solution{\xmark}
-          \item (AND, NOR) \solution{\checkmark}
-          \item (AND, OR, NOT) \solution{\checkmark}
-          \item (NAND) \solution{\checkmark}
+          \item (AND, OR) \psolution{\xmark}
+          \item (AND, NOR) \psolution{\checkmark}
+          \item (AND, OR, NOT) \psolution{\checkmark}
+          \item (NAND) \psolution{\checkmark}
         \end{itemize}
   \item Die oberen 8-bit einer Zahl (ganz links stehend) werden bei
         \begin{itemize}
-          \item Big Endian Byteordnung an der niedrigsten Adresse gespeichert \solution{\checkmark}
-          \item Big Endian Byteordnung an der höchsten Adresse gespeichert \solution{\xmark}
-          \item Little Endian Byteordnung an der höchsten Adresse gespeichert \solution{\checkmark}
+          \item Big Endian Byteordnung an der niedrigsten Adresse gespeichert \psolution{\checkmark}
+          \item Big Endian Byteordnung an der höchsten Adresse gespeichert \psolution{\xmark}
+          \item Little Endian Byteordnung an der höchsten Adresse gespeichert \psolution{\checkmark}
         \end{itemize}
   \item Die unteren 8-bit einer Zahl (ganz rechts stehend) werden bei
         \begin{itemize}
-          \item Big Endian Byteordnung an der höchsten Adresse gespeichert \solution{\checkmark}
-          \item Little Endian Byteordnung an der niedrigsten Adresse gespeichert \solution{\checkmark}
-          \item Little Endian Byteordnung an der höchsten Adresse gespeichert \solution{\xmark}
+          \item Big Endian Byteordnung an der höchsten Adresse gespeichert \psolution{\checkmark}
+          \item Little Endian Byteordnung an der niedrigsten Adresse gespeichert \psolution{\checkmark}
+          \item Little Endian Byteordnung an der höchsten Adresse gespeichert \psolution{\xmark}
         \end{itemize}
   \item Für RISC-Befehlssätze gilt
         \begin{itemize}
-          \item Befehle sind alle gleich lang \solution{\checkmark}
-          \item Typisches Beispiel x86-Befehlssatz \solution{\xmark}
-          \item Abarbeitung in mehreren Takten \solution{\xmark}
-          \item In der Regel: Pipelining \solution{\checkmark}
+          \item Befehle sind alle gleich lang \psolution{\checkmark}
+          \item Typisches Beispiel x86-Befehlssatz \psolution{\xmark}
+          \item Abarbeitung in mehreren Takten \psolution{\xmark}
+          \item In der Regel: Pipelining \psolution{\checkmark}
         \end{itemize}
   \item Für CISC gilt
         \begin{itemize}
-          \item alle Befehle sind gleich lang \solution{\xmark}
-          \item Abarbeitung von Befehlen in mehreren Takten \solution{\checkmark}
-          \item Beispiel: MIPS-Befehlssatz \solution{\xmark}
-          \item in der Regel: Pipelining \solution{\xmark}
+          \item alle Befehle sind gleich lang \psolution{\xmark}
+          \item Abarbeitung von Befehlen in mehreren Takten \psolution{\checkmark}
+          \item Beispiel: MIPS-Befehlssatz \psolution{\xmark}
+          \item in der Regel: Pipelining \psolution{\xmark}
         \end{itemize}
   \item Beim x86-Assembler wird der Stack genutzt für
         \begin{itemize}
-          \item die Speicherung von callee-Save Registern \solution{\checkmark}
-          \item die Parameterübergabe \solution{\checkmark}
-          \item Mehrfachverzweigungen \solution{\xmark}
+          \item die Speicherung von callee-Save Registern \psolution{\checkmark}
+          \item die Parameterübergabe \psolution{\checkmark}
+          \item Mehrfachverzweigungen \psolution{\xmark}
         \end{itemize}
   \item Durch Pipelining
         \begin{itemize}
-          \item steigt die Latenz \solution{\checkmark}
-          \item sinkt die Latenz \solution{\xmark}
-          \item steigt der Durchsatz \solution{\checkmark}
-          \item sinkt der Durchsatz \solution{\xmark}
-          \item wird jede einzelne Assembleroperation schneller abgearbeitet \solution{\xmark}
-          \item werden einzelne atomare Operationen schneller abgearbeitet \solution{\xmark}
-          \item werden Programme schneller abgearbeitet \solution{\checkmark}
+          \item steigt die Latenz \psolution{\checkmark}
+          \item sinkt die Latenz \psolution{\xmark}
+          \item steigt der Durchsatz \psolution{\checkmark}
+          \item sinkt der Durchsatz \psolution{\xmark}
+          \item wird jede einzelne Assembleroperation schneller abgearbeitet \psolution{\xmark}
+          \item werden einzelne atomare Operationen schneller abgearbeitet \psolution{\xmark}
+          \item werden Programme schneller abgearbeitet \psolution{\checkmark}
         \end{itemize}
   \item Für den Cache Speicher gilt
         \begin{itemize}
-          \item wird durch die Hardware verwaltet \solution{\checkmark}
-          \item wird von der Software (Betriebssystem, Programmierer, …) verwaltet \solution{\xmark}
-          \item beschleunigt den Speicherzugriff \solution{\checkmark}
-          \item ist für schnell getaktete CPUs unverzichtbar \solution{\checkmark}
-          \item nutzt die räumliche Lokalität von Programmen \solution{\checkmark}
-          \item nutzt die zeitliche Lokalität von Programmen \solution{\checkmark}
+          \item wird durch die Hardware verwaltet \psolution{\checkmark}
+          \item wird von der Software (Betriebssystem, Programmierer, …) verwaltet \psolution{\xmark}
+          \item beschleunigt den Speicherzugriff \psolution{\checkmark}
+          \item ist für schnell getaktete CPUs unverzichtbar \psolution{\checkmark}
+          \item nutzt die räumliche Lokalität von Programmen \psolution{\checkmark}
+          \item nutzt die zeitliche Lokalität von Programmen \psolution{\checkmark}
         \end{itemize}
   \item Zu den Aufgaben des Betriebssystems gehört
         \begin{itemize}
-          \item das Compilieren von Programmcode \solution{\xmark}
-          \item Behandlung von Interrupts bei Benutzereingaben \solution{\checkmark}
-          \item das Laden von Programmen in den Hauptspeicher \solution{\checkmark}
-          \item das Laden von Programmen aus der Festplatte / SSD \solution{\checkmark}
-          \item das Verwalten der Prozesse auf dem Computer \solution{\checkmark}
-          \item das Löschen nicht benötigter Dateien auf Festplatten \solution{\xmark}
+          \item das Compilieren von Programmcode \psolution{\xmark}
+          \item Behandlung von Interrupts bei Benutzereingaben \psolution{\checkmark}
+          \item das Laden von Programmen in den Hauptspeicher \psolution{\checkmark}
+          \item das Laden von Programmen aus der Festplatte / SSD \psolution{\checkmark}
+          \item das Verwalten der Prozesse auf dem Computer \psolution{\checkmark}
+          \item das Löschen nicht benötigter Dateien auf Festplatten \psolution{\xmark}
         \end{itemize}
   \item Bei einem Interrupt
         \begin{itemize}
-          \item wechselt das System in den privilegierten Modus \solution{\checkmark}
-          \item verlässt das System den User-Mode \solution{\checkmark}
-          \item werden geänderte Seiten des Hauptspeichers aktualisiert \solution{\xmark}
-          \item findet ein Kontextwechsel statt \solution{\checkmark}
+          \item wechselt das System in den privilegierten Modus \psolution{\checkmark}
+          \item verlässt das System den User-Mode \psolution{\checkmark}
+          \item werden geänderte Seiten des Hauptspeichers aktualisiert \psolution{\xmark}
+          \item findet ein Kontextwechsel statt \psolution{\checkmark}
         \end{itemize}
   \item Semaphore
         \begin{itemize}
-          \item sind ein Mechanismus zur Prozesssynchronisation \solution{\checkmark}
-          \item sind ein Mechanismus zur Sicherung der Cache-Kohärenz \solution{\xmark}
-          \item sind ein Mechanismus zur Verwaltung beschränkter Ressourcen \solution{\checkmark}
-          \item basieren auf einer booleschen Variablen und zwei atomaren Operationen \solution{\xmark}
-          \item basieren auf einer Integer-Variablen und drei atomaren Operationen \solution{\checkmark}
+          \item sind ein Mechanismus zur Prozesssynchronisation \psolution{\checkmark}
+          \item sind ein Mechanismus zur Sicherung der Cache-Kohärenz \psolution{\xmark}
+          \item sind ein Mechanismus zur Verwaltung beschränkter Ressourcen \psolution{\checkmark}
+          \item basieren auf einer booleschen Variablen und zwei atomaren Operationen \psolution{\xmark}
+          \item basieren auf einer Integer-Variablen und drei atomaren Operationen \psolution{\checkmark}
         \end{itemize}
   \item Short-Term Scheduling beinhaltet
         \begin{itemize}
-          \item die Behandlung von Interrupts \solution{\checkmark}
-          \item die Auswahl des Prozesses, der als nächstes auf der CPU läuft \solution{\checkmark}
-          \item die Auswahl des nächsten Programms \solution{\xmark}
-          \item die Auslagerung von Daten in den sekundären Speicher \solution{\xmark}
-          \item die Auslagerung von Daten in den Hauptspeicher \solution{\xmark}
-          \item die Prozesszustände: Running, Ready und Blocked \solution{\checkmark}
+          \item die Behandlung von Interrupts \psolution{\checkmark}
+          \item die Auswahl des Prozesses, der als nächstes auf der CPU läuft \psolution{\checkmark}
+          \item die Auswahl des nächsten Programms \psolution{\xmark}
+          \item die Auslagerung von Daten in den sekundären Speicher \psolution{\xmark}
+          \item die Auslagerung von Daten in den Hauptspeicher \psolution{\xmark}
+          \item die Prozesszustände: Running, Ready und Blocked \psolution{\checkmark}
         \end{itemize}
   \item Virtual-Memory hat zu tun mit
         \begin{itemize}
-          \item Segmentierung \solution{\checkmark}
-          \item Swapping \solution{\checkmark}
-          \item Cache-Kohärenz \solution{\xmark}
+          \item Segmentierung \psolution{\checkmark}
+          \item Swapping \psolution{\checkmark}
+          \item Cache-Kohärenz \psolution{\xmark}
         \end{itemize}
 \end{enumerate}
 
 \exercisesheet[\empty]{True/False}
 \begin{enumerate}
-  \item Im 1-Komplement wird mit dem Vektor "11...11" die -1 dargestellt. \solution{\xmark}
-  \item Der Exponent denormalisierter IEEE-754 Fließkommazahlen ist immer der Vektor "00...00". \solution{\checkmark}
-  \item Die Entropie H ist unabhängig von der Codierung. \solution{\checkmark}
-  \item Bei einem Code mit Hamming-Abstand von 3 können 2-bit Fehler erkannt werden. \solution{\checkmark}
-  \item Beim Pipelining werden die Maschinenbefehle in einem Takt abgearbeitet. \solution{\xmark}
-  \item DRAM Speicher ist flächeneffizienter als SRAM. \solution{\checkmark}
-  \item Bei RISC-Architekturen wird der Cache direkt vom Assemblercode angesprochen. \solution{\xmark}
-  \item Rekursive Funktionsaufrufe setzen einen Stack voraus. \solution{\checkmark}
-  \item Durch den x86-Assembler werden Schleifen immer in bedingte Sprünge übersetzt. \solution{\xmark}
-  \item Beim Symmetric Multiprocessing muss der Programmierer für die Datenkonsistenz sorgen, wenn mehrere Prozesse über den Speicher kommunizieren. \solution{\checkmark}
+  \item Im 1-Komplement wird mit dem Vektor "11...11" die -1 dargestellt. \psolution{\xmark}
+  \item Der Exponent denormalisierter IEEE-754 Fließkommazahlen ist immer der Vektor "00...00". \psolution{\checkmark}
+  \item Die Entropie H ist unabhängig von der Codierung. \psolution{\checkmark}
+  \item Bei einem Code mit Hamming-Abstand von 3 können 2-bit Fehler erkannt werden. \psolution{\checkmark}
+  \item Beim Pipelining werden die Maschinenbefehle in einem Takt abgearbeitet. \psolution{\xmark}
+  \item DRAM Speicher ist flächeneffizienter als SRAM. \psolution{\checkmark}
+  \item Bei RISC-Architekturen wird der Cache direkt vom Assemblercode angesprochen. \psolution{\xmark}
+  \item Rekursive Funktionsaufrufe setzen einen Stack voraus. \psolution{\checkmark}
+  \item Durch den x86-Assembler werden Schleifen immer in bedingte Sprünge übersetzt. \psolution{\xmark}
+  \item Beim Symmetric Multiprocessing muss der Programmierer für die Datenkonsistenz sorgen, wenn mehrere Prozesse über den Speicher kommunizieren. \psolution{\checkmark}
 \end{enumerate}
 
 \end{document}
