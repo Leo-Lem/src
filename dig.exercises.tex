@@ -3,7 +3,7 @@
 \subject{Datenschutz in der Informationsgesellschaft}
 \semester{Wintersemester 2023}
 \author{Leopold Lemmermann}
-\withsolutions
+% \withsolutions
 
 \begin{document}
 
@@ -125,33 +125,82 @@
   \end{solution}
 \end{exercise}
 
-\begin{exercise}{Löschung}
+\begin{exercise}{Juristische Personen}
   Der Hamburger Verein Tier-Interessen \& ehrenamtliche Rettung von Tieren (kurz TIeR) hat ein Problem mit einem Hundehasser. Dieser hat aus Hass auf den Verein ein Protokoll der letzten Vorstandssitzung auf Facebook veröffentlicht. Kann TIeR von Facebook die Löschung der Daten nach Art. 17 DSGVO verlangen? Begründen Sie Ihre Antwort.
+
+  \begin{solution}
+    Nein, DSGVO nur für natürliche Personen (Verein=juristische Person) (Art. 1 I DSGVO).
+  \end{solution}
 \end{exercise}
 
-\begin{exercise}{Löschung II}
+\begin{exercise}{Löschung = Datenverarbeitung?}
   Stellt das Löschen von personenbezogenen Daten eine Verarbeitung dar? Begründen Sie anhand der DSGVO.
+
+  \begin{solution}
+    Löschen explizit erwähnt als Verarbeitung (Art. 4 2. DSGVO).
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{Datenminimierung}
   Bewerten Sie folgende Aussage zur DSGVO: "Der Grundsatz der Datenminimierung verbietet Verarbeitungstätigkeiten, bei denen personenbezogene Daten in großem Umfang erforderlich sind." Ist diese Aussage korrekt? Begründen Sie anhand der DSGVO.
+
+  \begin{solution}
+    Nicht korrekt, Datenminimierung erfordert lediglich Zweckbindung, verbietet Verarbeitung großer Datenmengen nicht explizit (Art. 5 I c) DSGVO).
+  \end{solution}
 \end{exercise}
 
 \begin{eexercises}{Betroffenenrechte}{
     Herrn K wird neuerdings verwehrt, im Onlineshop S auf Rechnung zu bezahlen. Auf Nachfrage nennt S eine erst nach wiederholter Mahnung bezahlte Rechnung aus einer früheren Bestellung als Ursache. Die deshalb schlechte Bonität führe zu einem automatischen Ausschluss von der Zahlung per Rechnung.
   }
-  \item Herr K bestreitet die verspätete Zahlung \& fordert S auf, die falschen Angaben ab sofort nicht mehr zu nutzen \& zu korrigieren. Hat K nach der DSGVO das Recht zu diesen Forderungen? Begründen Sie Ihre Antwort.
-  \item Herr K hat nach dem Ärger mit S nun doch genug \& verlangt von S die Löschung seiner personenbezogenen Daten. Anstatt zu löschen, anonymisiert S die Daten, um sie noch für Statistiken nutzen zu können. Ist eine Anonymisierung anstelle einer Löschung zulässig? Begründen Sie.
+  \item Herr K bestreitet die verspätete Zahlung und fordert S auf, die falschen Angaben ab sofort nicht mehr zu nutzen und zu korrigieren. Hat K nach der DSGVO das Recht zu diesen Forderungen? Begründen Sie Ihre Antwort.
+  \item Herr K hat nach dem Ärger mit S nun doch genug und verlangt von S die Löschung seiner personenbezogenen Daten. Anstatt zu löschen, anonymisiert S die Daten, um sie noch für Statistiken nutzen zu können. Ist eine Anonymisierung anstelle einer Löschung zulässig? Begründen Sie.
   \item Herr K findet außerdem, dass das Shop-System von S durch den automatischen Ausschluss der Bezahlung auf Rechnung gegen den Art. 22 DSGVO verstoßen hat \& möchte sich bei der Aufsichtsbehörde beschweren. Hat seine Beschwerde Aussicht auf Erfolg? Begründen Sie.
 \end{eexercises}
+
+\begin{solutions}
+  \item Ja, Richtigkeit \& Aktualität der Daten (Art 5 I d) DSGVO) und Recht auf Berichtigung (Art. 16 DSGVO).
+  \item Grundsätzlich Recht auf Löschung (Art. 17 DSGVO), Anonymisierung für statistische Zwecke allerdings ausnahmsweise erlaubt (Art. 17 III d) DSGVO i.V.m. Art. 89 DSGVO).
+  \item Grundsätzlich Recht auf nicht ausschließlich automatisierte Einzelfallentscheidung (Art. 22 DSGVO), allerdings Ausnahmen für Vertrag (Art. 22 II a) DSGVO). Daher keine Garantie für, aber Aussicht auf Erfolg.
+\end{solutions}
 
 \begin{exercises}{Rechtmäßigkeit der Verarbeitung}
 \item In welchen Fällen erlaubt die DSGVO die Verarbeitung von personenbezogenen Daten auch ohne die Einwilligung des Betroffenen? Nennen Sie drei Fälle samt Fundstelle im Gesetz \& beschreiben Sie diese kurz.
 \item Um ihrer Schwester eine Freude zu machen, beauftragt Frau K den Blumenhändler B der Schwester am Geburtstag Blumen zu bringen. Dazu teilt K dem Blumenhändler B die Anschrift \& das Geburtsdatum der Schwester mit. Prüfen Sie die Datenverarbeitung durch K \& B hinsichtlich ihrer Rechtmäßigkeit nach der DSGVO. Sechs Punkte genügen.
 \end{exercises}
 
+\begin{solutions}
+  \item Art. 6 DSGVO
+  \begin{itemize}
+    \item[b)] Vertrag: Falls notwendig zum Abschluss oder zur Erfüllung eines Vertrags
+    \item[c)] Rechtspflicht: Falls notwendig zur Erfüllung einer rechtlichen Verpflichtung
+    \item[d)] lebenswichtige Interessen: Falls notwendig zum Schutz lebenswichtiger Interessen des Betroffenen oder einer anderen natürlichen Person
+    \item[e)] öffentliches Interesse: Wahrnehmung einer Aufgabe im öffentlichen Interesse (durch EU oder Nationalrecht)
+    \item[f)] berechtigtes Interesse: Falls notwendig zur Wahrung berechtigter Interessen des Verantwortlichen oder eines Dritten
+  \end{itemize}
+  \item Prüfung des Art. 6 DSGVO
+  \begin{itemize}
+    \item Einwilligung? \xmark
+    \item Vertrag? \xmark
+    \item Rechtspflicht? \xmark
+    \item lebenswichtige Interessen? \xmark
+    \item öffentliches Interesse? \xmark
+    \item berechtigtes Interesse? K: Freude der Schwester \checkmark
+          \begin{itemize}
+            \item Grundrechte-/freiheiten eingeschränkt? \xmark
+            \item Kind? \xmark
+          \end{itemize}
+    \item[$\hookrightarrow$] Rechtmäßig, da berechtigtes Interesse von K.
+  \end{itemize}
+\end{solutions}
+
 \begin{exercise}{Zweckbindung}
-  Erklären Sie kurz den Begriff Zweckbindung. Wo wird die Zweckbindung in der DSGVO geregelt \& welche Ausnahmen gibt es?
+  Erklären Sie kurz den Begriff Zweckbindung. Wo wird die Zweckbindung in der DSGVO geregelt und welche Ausnahmen gibt es?
+
+  \begin{solution}
+    Zweckbindung: Daten dürfen nur für den Zweck verarbeitet werden, für den sie erhoben wurden.\par
+    Art. 5 I b) DSGVO\par
+    Ausnahmen (Art. 89 DSGVO): Weitere Verarbeitung für Archivzwecke, wissenschaftliche oder historische Forschungszwecke oder statistische Zwecke.
+  \end{solution}
 \end{exercise}
 
 \begin{exercises}{Einwilligung}
@@ -160,6 +209,12 @@
 \item In einem Online-Bestellformular soll ein Kästchen (Checkbox) zur Einwilligung in die Verarbeitung zu Werbezwecken eingebaut werden. Begründen Sie anhand der DSGVO, ob das Kästchen standardmäßig angekreuzt oder leer sein sollte, damit die Einwilligung wirksam ist. Nennen Sie die Fundstelle im Gesetz.
 \end{exercises}
 
+\begin{solutions}
+  \item Abhängigkeitsverhältnis, Freiwilligkeit fraglich, Widerruf schwer möglich.
+  \item Verbot der Verknüpfung der Einwilligung mit anderen Umständen.
+  \item Leer, Art. 7 I DSGVO.
+\end{solutions}
+
 \begin{eexercises}{Verarbeitung durch Dienstleister}{
     Das Start-up-Unternehmen S geht mit einem neuen, innovativen Telemediendienst auf den Markt. Da es noch über keine eigene Infrastruktur verfügt, beaucragt es Hosting-Dienstleister H mit dem Hosting des Dienstes. Die Administration des Dienstes erfolgt durch Mitarbeiter des Unternehmens S über Fernzugriff. Sowohl S als auch H sitzen in Deutschland.
   }
@@ -167,16 +222,37 @@
   \item In welchem der beiden Fälle Auftragsdatenverarbeitung oder Funktionsübertragung läge eine Übermittlung im Sinne des BDSG vor? Begründen Sie.
 \end{eexercises}
 
+\begin{solutions}
+  \item Auftragsdatenverarbeitung, da H weisungsgebunden (Art. 28 DSGVO).
+  \item Funktionsübertragung, da S die Administration selbst übernimmt. Relevante Paragraphen des BDSG wurden 2018 in die DSGVO überführt, sind daher nicht mehr anzugeben.
+\end{solutions}
+
 \begin{exercise}{Data Protection by Design}
   Art. 25 (1) DSGVO benennt Aspekte, die ein Verantwortlicher bei der Auswahl geeigneter technischer \& organisatorischer Maßnahmen zu berücksichtigen hat. Beschreiben Sie den Einfluss von zwei der genannten Aspekte auf die Eignung einer Maßnahme.
+
+  \begin{solution}
+    \begin{itemize}
+      \item Stand der Technik: Maßnahmen müssen auf dem neuesten Stand der Technik sein, um Sicherheit zu gewährleisten.
+      \item Implementierungskosten: Maßnahmen müssen wirtschaftlich vertretbar sein, um die Umsetzung zu ermöglichen.
+      \item Umfang: Maßnahmen müssen auf den Umfang der Verarbeitung abgestimmt sein, um effektiv zu sein.
+      \item Umstände: Maßnahmen müssen auf die Umstände der Verarbeitung abgestimmt sein, um effektiv zu sein.
+      \item Verarbeitungszweck: Maßnahmen müssen auf den Verarbeitungszweck abgestimmt sein, um effektiv zu sein.
+      \item Risiken: Maßnahmen müssen auf die Eintrittswahrscheinlichkeit \& Schwere der Risiken abgestimmt sein, um effektiv zu sein.
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 
 \begin{eexercises}{Safe Harbour}{
     Der Europäische Gerichtshof (EuGH) hat im Oktober 2015 die Entscheidung der EU-Kommission zum "Sicheren Hafen" (Safe Harbour) anulliert.
   }
   \item Was versteht man unter Safe Harbour?
-  \item Warum hat der EuGH die Safe Harbour-Entscheidung der EU-Kommission annulliert? c) Was ändert sich mit Privacy Shield?
+  \item Warum hat der EuGH die Safe Harbour-Entscheidung der EU-Kommission annulliert?
 \end{eexercises}
+
+\begin{solutions}
+  \item Safe Harbour war ein Abkommen zwischen der EU \& den USA, das den Datentransfer in die USA regelte.
+  \item Der EuGH hat die Safe Harbour-Entscheidung der EU-Kommission annulliert, weil die USA keine ausreichenden Datenschutzstandards gewährleisten (insbesondere durch den Patriot Act). Safe Harbour wurde durch das (inzwischen ebenfalls gekippte) Privacy Shield ersetzt.
+\end{solutions}
 
 \begin{exercise}{Datenschutzerklärung}
   Sie haben folgende Datenschutzerklärung einer Firma vorliegen. Die Firma bietet eine Reihe von Apps für Handys an. Bei einer Überprüfung der Datenschutzerklärung fallen Ihnen Punkte auf, die unter Berufung auf die DSGVO anfechtbar sind.
@@ -199,12 +275,39 @@
     Mit der Einwilligung stimmen Sie dem Vertrag und der Nutzung zu sowie der Weitergabe und Verarbeitung Ihrer Daten von uns und an Dritte.
   \end{quote}
 
-  Bitte nennen Sie fünf Punkte, die Ihrer Meinung nach nicht erfüllt sind oder gegen die verstoßen wird, jeweils mit Benennung des Artikels \& Erläuterung warum \& gegen was verstoßen wird oder was nicht erfüllt wird.
+  Bitte nennen Sie fünf Punkte, die Ihrer Meinung nach nicht erfüllt sind oder gegen die verstoßen wird, jeweils mit Benennung des Artikels. Erläutern Sie zudem warum und gegen was verstoßen wird oder was nicht erfüllt wird.
+
+  \begin{solution}
+    % Alle Punkte aufzählen
+    \begin{itemize}
+      \item (Verantwortlicher) Art. 13 I a: Anschrift des Verantwortlichen fehlt.
+      \item (Allgemeine Informationen) Art. 5 I b: Zwecke sind nicht eindeutig bestimmt (zB. "unsere Weiterentwicklung" ist zu unbestimmt).
+      \item (Allgemeine Informationen) Art. 5 I c: Datenminimierung nicht gewährleistet, da unverhältnismäßig viele Daten verarbeitet werden.
+      \item (Allgemeine Informationen) Art. 7 IV: Einwilligung ist an Vertrag gekoppelt.
+      \item (Allgemeine Informationen) Art. 13 I e: Empfänger der Daten werden nicht konkretisiert.
+      \item (Widerrufs- \& Betroffenenrechte) Art. 7 III: Widerruf der Einwilligung ist zu restriktiv.
+      \item (Widerrufs- \& Betroffenenrechte) Art. 15 I: Recht auf Auskunft nicht gewährleistet.
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{Privacy Design Strategies}
   Bitte nennen Sie je ein Beispiel für die folgenden Privacy Design Strategies im Kontext von Big Data: Demonstrate, Separate, Enforce, Inform, Hide, Minimise, Perturbate, Aggregate, Control.
   \hint{Bitte geben Sie je eine Antwort für diese neun Privacy Design Strategies.}
+
+  \begin{solution}
+    \begin{itemize}
+      \item Demonstrate: Bericht über Datenschutzmaßnahmen veröffentlichen
+      \item Separate: Trennung von Posts \& Profilinformationen
+      \item Enforce: Passwortrichtlinien
+      \item Inform: Datenschutzerklärung bereitstellen
+      \item Hide: Profildaten anonymisieren
+      \item Minimise: Ungenutzte Nutzungsdaten nach 30 Tagen löschen
+      \item Perturbate: Zufällige "tote Profile" in Datenbank
+      \item Aggregate: Zugriffsdaten nach Ländern zusammenfassen
+      \item Control: Opt-out für personalisierte Werbung
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 
 \exercisesheet[2020]{Erstttermin}
