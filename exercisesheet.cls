@@ -8,7 +8,10 @@
 \LoadClass{article}
 
 \RequirePackage[margin=2cm]{geometry}
-\RequirePackage{hyperref, tikz, amsmath, multicol, environ}
+\RequirePackage{hyperref, multicol, environ}
+\RequirePackage{amsmath, amssymb}
+\RequirePackage{tikz}
+\RequirePackage[ruled]{algorithm2e}
 
 % ---------------------------------------------------------------------
 % Document setup
@@ -57,12 +60,6 @@
 % ---------------------------------------------------------------------
 \newif\ifsolutions
 \def\withsolutions{\global\solutionstrue}
-
-% ---------------------------------------------------------------------
-% Custom symbols
-% ---------------------------------------------------------------------
-\newcommand\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
-\newcommand\xmark{$\times$}
 
 % ---------------------------------------------------------------------
 % Exercises
@@ -162,3 +159,12 @@
     \hfill(\textit{$#1$~Punkte})
   \fi
 }
+
+\newcommand{\bigO}[1]{
+  \ensuremath{\mathcal{O}(#1)}
+}
+
+% ---------------------------------------------------------------------
+% Custom symbols
+% ---------------------------------------------------------------------
+\newcommand\xmark{$\times$}
