@@ -154,3 +154,11 @@
   \vspace{.5em}\par
   \textbf{Hinweis}: \textit{#1}
 }
+
+\newcommand{\points}[1][\relax]{
+  \ifx#1\relax
+    \hfill(\textit{$1$~Punkt})
+  \else
+    \hfill(\textit{$#1$~Punkte})
+  \fi
+}
