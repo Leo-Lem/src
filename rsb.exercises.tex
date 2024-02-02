@@ -49,7 +49,7 @@ gearbeitet wird.
 \end{solutions}
 
 \begin{eexercises}{Rechnen im Hexadezimalsystem}
-  {Gegeben seien die Hexedezimalzahlen $A = \mathrm{4B2F}$ und $B = \mathrm{3B32}$.}
+  {Gegeben seien die Hexadezimalzahlen $A = \mathrm{4B2F}$ und $B = \mathrm{3B32}$.}
   \item Addieren Sie $A+B$.
   \item Subtrahieren Sie $A-B$.
   \item Multiplizieren Sie $A\cdot (20)_{16}$.
@@ -383,9 +383,85 @@ gearbeitet wird.
   \end{solution}
 \end{exercise}
 
-\exercisesheet{Probeklausur}
-\begin{exercise}[5]{Codierung}
-  Geben Sie einen zyklisch-einschrittigen Binärcode mit 12 Codewörtern an.
+\exercisesheet[2022]{Ersttermin}
+\begin{eexercises}[4]{Rechnen mit IEEE-754 Gleitkommazahlen}{
+    Gegeben seien die folgenden zwei Zahlen im IEEE-754 Format mit einfacher Genauigkeit (1-bit für das Vorzeichen, 8-bit für den Exponenten und 7-bit für die Mantisse)\par
+    \centering $A = (0|00011010|1000000)$\par $B = (0|11100101|0100011)$
+  }
+  \item Berechnen Sie $C = A \cdot B$ im IEEE-754 Format.
+  \item Wie lauten die Zahlen $A, B$ und $C$ im Dezimalsystem? Sehr große und sehr kleine Werte dürfen auch wie folgt dargestellt werden: $<s>*<Wert> \hat{} <Exponenten>$
+\end{eexercises}
+
+\begin{solutions}
+  \item $C = (0|10000000|1110100)$
+  \item
+  $A = {-1}^0 \cdot 2^{26-127} \cdot (1+2^{-1}) = 2^{-101} + 2^{-102}$\par
+  $B = {-1}^0 \cdot 2^{229-127} \cdot (1+2^{-2}+2^{-6}+2^{-7}) = 2^{102} + 2^{100} + 2^{96} + 2^{95}$\par
+  $C = {-1}^0 \cdot 2^{128-127} \cdot (1+2^{-1}+2^{-2}+2^{-3}+2^{-5}) = 2 + 2^0 + 2^{-1} + 2^{-2} + 2^{-4} = 3.8125$
+\end{solutions}
+
+\begin{exercises}{Codierung}
+\item Geben Sie einen zyklisch einschrittigen Code mit 10 Codewörtern an, von denen eines $1110$ ist.
+\item Kann ein zyklisch einschrittiger Code eine ungerade Anzahl an Codewörtern enthalten? Begründen Sie.
+\end{exercises}
+
+\begin{solutions}
+  \item $1110, 1010, 1000, 0000, 0001, 1001, 1101, 0101, 0111, 0110$
+  \item Nein, da bereits die Parität, auf Grund der Einschrittigkeit, nach einem Zyklus (ungerader Länge) nicht gleich sein kann.
+\end{solutions}
+
+\exercisesheet[2024]{Probeklausur}
+\begin{exercises}{Zahlensysteme}
+\item Wandeln Sie die Dezimalzahl $1850$ in eine 16-stellige Binärzahl um.\hfill(4~Punkte)
+\item Wie lautet die Darstellung der Zahl im Oktalsystem.\hfill(1~Punkt)
+\item Wie lautet die Darstellung der Zahl im Hexadezimalsystem.\hfill(1~Punkt)
+\end{exercises}
+
+\begin{solutions}
+  \item $1850{10} = {}_2$
+  \item $1850{10} = {}_8$
+  \item $1850{10} = {\mathrm{}}_{16}$
+\end{solutions}
+
+\begin{exercises}{Kommazahlen zwischen Basen}
+\item Wandeln Sie die Dezimalzahl $0.8$ in eine Binärzahl mit 4 Vorkomma- \& der Zahl Nachkommastellen um.\hfill(4~Punkte)
+\item Wie lautet die Darstellung von $-0.8$ im Zweierkomplement, mit 4 Vorkomma- \& 8 Nachkommastellen.\hfill(2~Punkte)
+\item Bonus: Was ist dabei arithmetisch zu beachten? (mit kurzer Begründung)\hfill(3~Punkte)
+\end{exercises}
+
+\begin{solutions}
+  \item $0.85_{10} = {}_2$
+  \item $ (0.85_{10})_{2K} = {}_2$
+  \item
+\end{solutions}
+
+\begin{exercise}{Rechnen im Hexadezimalsystem}
+  Addieren Sie die Hexadezimalzahlen $ABCD + 1634$.\hfill(4~Punkte)
+\end{exercise}
+
+\begin{solution}
+  $\mathrm{} + \mathrm{} = \mathrm{}$
+\end{solution}
+
+\begin{eexercises}{Umwandlung zu IEEE-754 Gleitkommazahlen}{
+    Wandeln Sie folgende Dezimalzahlen in normalisierte 32-bit Gleitkommazahlen im IEEE-754 float Format um (1-bit Vorzeichen, 8-bit Exponent in Exzess-127 Darstellung, 23-bit Mantisse). Es genügt, wenn Sie die ersten 8-bit der Mantisse angeben. (8~Punkte)
+  }
+  \item $-1$
+  \item $15$
+  \item $1.25$
+  \item $0$
+\end{eexercises}
+
+\begin{solutions}
+  \item $0.0$
+  \item $-15.0$
+  \item $1.0$
+  \item $0.75$
+  \item $-1.25$
+\end{solutions}
+
+\begin{exercise}{Codierung}
+  Geben Sie einen zyklisch-einschrittigen Binärcode mit 12 Codewörtern an.\hfill(5~Punkte)
 
   \begin{solution}
     zB. $0000, 0001, 0011, 0111, 0110, 0100, 0101, 1101, 1100, 1110, 1010, 0010$
@@ -400,10 +476,10 @@ gearbeitet wird.
       $p_i$ & 0,35 & 0,15 & 0,2 & 0,18 & 0,12 \\
     \end{tabular}
   }
-  \item\label{fano:1} Geben Sie eine Codierung der Elemente von $M$ nach Fano an.
-  \item Formulieren Sie die Fano-Bedingung.
-  \item Erfüllen die Code-Worte, die Sie unter \ref{fano:1} gefunden haben, die Fano-Bedingung?
-  \item Ist jeder Code, der der Fano-Bedingung genügt, eindeutig decodierbar? Ist jeder Blockcode eindeutig decodierbar? Geben Sie eine Codierung der Elemente von $M$ an, die nicht eindeutig decodierbar ist.
+  \item\label{fano:1} Geben Sie eine Codierung der Elemente von $M$ nach Fano an.\hfill(7~Punkte)
+  \item Formulieren Sie die Fano-Bedingung.\hfill(1~Punkt)
+  \item Erfüllen die Code-Worte, die Sie unter \ref{fano:1} gefunden haben, die Fano-Bedingung?\hfill(1~Punkt)
+  \item Ist jeder Code, der der Fano-Bedingung genügt, eindeutig decodierbar? Ist jeder Blockcode eindeutig decodierbar? Geben Sie eine Codierung der Elemente von $M$ an, die nicht eindeutig decodierbar ist.\hfill(3~Punkte)
 \end{eexercises}
 
 \begin{solutions}
@@ -426,8 +502,8 @@ gearbeitet wird.
 \begin{eexercises}{Entropie}{
     Wir betrachten eine Münze mit den Seiten Kopf \& Zahl.
   }
-  \item Geben Sie die Entropie an für einen Wurf mit der unpräparierten Münze, d.h. Kopf \& Zahl treten gleich oft auf. (Formel \& Zahlenwert)
-  \item Die Münze sei jetzt so präpariert, dass Kopf dreimal öfter als Zahl auftritt ($p(Kopf) = 0,75$ \& $p(Zahl) = 0,25$). Berechnen Sie wieder die Entropie (Formel \& Zahlenwert).
+  \item Geben Sie die Entropie an für einen Wurf mit der unpräparierten Münze, d.h. Kopf \& Zahl treten gleich oft auf. (Formel \& Zahlenwert)\hfill(3~Punkte)
+  \item Die Münze sei jetzt so präpariert, dass Kopf dreimal öfter als Zahl auftritt ($p(Kopf) = 0,75$ \& $p(Zahl) = 0,25$). Berechnen Sie wieder die Entropie (Formel \& Zahlenwert).(3~Punkte)
   \hint{Es gilt $\log_2(3) \approx 1.6$ und $\log(x \cdot y) = \log(x) + \log(y)$.}
 \end{eexercises}
 
@@ -445,9 +521,9 @@ gearbeitet wird.
       $x_1$ & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
     \end{tabular}
   }
-  \item Bestimmen Sie aus dem KV-Diagramm die disjunktive Minimalform des Gray-Codeprüfers.
-  \item Geben Sie die konjunktive Minimalform für den Gray-Codeprüfer an.
-  \item Geben Sie die Reed-Muller-Form für den Gray-Codeprüfer an.\par
+  \item Bestimmen Sie aus dem KV-Diagramm die disjunktive Minimalform des Gray-Codeprüfers.\hfill(5~Punkte)
+  \item Geben Sie die konjunktive Minimalform für den Gray-Codeprüfer an.\hfill(3~Punkte)
+  \item Geben Sie die Reed-Muller-Form für den Gray-Codeprüfer an.\hfill(3~Punkte)\par
   \hint{Es gilt $\bar{a}=1\oplus a$ und $a\lor b = a\oplus b\oplus ab$.}
 \end{eexercises}
 
@@ -466,7 +542,27 @@ gearbeitet wird.
   \item Reed-Muller-Form: zB. $x_1\oplus x_4x_3\oplus x_4x_3x_1$
 \end{solutions}
 
-\begin{eexercises}[10]{Schaltwerke}{
+\begin{exercise}{ROBDDs}
+  Skizzieren Sie den ROBDD für die boole’sche Funktion $f (x, y, z) = \overline{x \land y \land z}$.\hfill (8~Punkte)
+
+  \begin{solution}
+    \tikz[auto] {
+      \node (x) at (1,0) {$x$};
+      \node (y) at (0,-1) {$y$};
+      \node (z) at (2,-1) {$z$};
+      \node (0) at (0,-2) {$0$};
+      \node (1) at (2,-2) {$1$};
+      \draw[->] (x) -- (y) node[midway, above] {0};
+      \draw[->] (x) -- (z) node[midway, above] {1};
+      \draw[->] (y) -- (0) node[midway, left] {1};
+      \draw[->] (z) -- (0) node[midway, right] {1};
+      \draw[->] (y) -- (1) node[midway, right, yshift=1em] {0};
+      \draw[->] (z) -- (1) node[midway, right] {0};
+    }
+  \end{solution}
+\end{exercise}
+
+\begin{eexercises}{Schaltwerke}{
     Ein Schaltwerk ist durch das folgende Zustandsdiagramm definiert. Die Codierung der Zustände ($z_1, z_2$) und der Ausgabe $y$ ist bereits in den Knoten des Graphen angegeben.\par
     \centering
     \tikz[->,auto,node distance=3cm,main node/.style={circle,draw}]{
@@ -483,10 +579,10 @@ gearbeitet wird.
       (2) edge node {*} (0);
     }
   }
-  \item Ist das Schaltwerk vom Typ Moore oder Mealy?
-  \item Tragen Sie die Ausgabewerte der Schaltfunktionen für die Ausgabe $y$ und den Folgezustand ($z_1^+, z_2^+$) in eine Funktionstabelle ein.
-  \item Übertragen Sie die Tabellenwerte in KV-Diagramme für $z_1^+, z_2^+, y$.
-  \item Geben Sie minimale Ausdrücke für die Schaltfunktionen an.
+  \item Ist das Schaltwerk vom Typ Moore oder Mealy?\hfill(1~Punkt)
+  \item Tragen Sie die Ausgabewerte der Schaltfunktionen für die Ausgabe $y$ und den Folgezustand ($z_1^+, z_2^+$) in eine Funktionstabelle ein.\hfill(2~Punkte)
+  \item Übertragen Sie die Tabellenwerte in KV-Diagramme für $z_1^+, z_2^+, y$.\hfill(3~Punkte)
+  \item Geben Sie minimale Ausdrücke für die Schaltfunktionen an.\hfill(4~Punkte)
 \end{eexercises}
 
 \begin{solutions}
@@ -535,9 +631,9 @@ gearbeitet wird.
 \end{solutions}
 
 \begin{exercises}{Codierung}
-\item Geben Sie einen Code mit vier Codeworten an, deren (paarweise) Hammingdistanz mindestens 4 ist.
-\item Wie viele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code erkennen?
-\item Wie viele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code korrigieren?
+\item Geben Sie einen Code mit vier Codeworten an, deren (paarweise) Hammingdistanz mindestens 4 ist.\hfill(4~Punkte)
+\item Wie viele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code erkennen?\hfill(1~Punkt)
+\item Wie viele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code korrigieren?\hfill(1~Punkt)
 \end{exercises}
 
 \begin{solutions}
@@ -547,7 +643,7 @@ gearbeitet wird.
 \end{solutions}
 
 \begin{exercise}{Mikroprogrammierung}
-  Schreiben Sie für eine Stack- \& eine 3-Adress-Maschine mit Load-Store Befehlssatz, jeweils ein Programm zur Berechnung des folgenden Ausdrucks:\par
+  Schreiben Sie für eine Stack- \& eine 3-Adress-Maschine mit Load-Store Befehlssatz, jeweils ein Programm zur Berechnung des folgenden Ausdrucks:\hfill(8~Punkte)\par
   \begin{center}$W = A + B - C^2$\end{center}
   $W, A, B$ und $C$ sind dabei als Speicheradressen der Operanden zu interpretieren. Die Werte an den Adressen $A, B$ und $C$ sollen vom Programm nicht modifiziert werden. Falls Sie temporäre Variablen benötigen, können Sie die Speicheradressen $D, E, ..., V$ benutzen. Dabei bedeutet $M$ jeweils eine Speicheradresse, $TOS$ steht für "Top of Stack" und $rX, rY, rZ$ bezeichnen je eines von 16 Universalregistern ($r0, ..., r15$) der 3-Adress-Maschine.
 
@@ -585,13 +681,17 @@ gearbeitet wird.
   \end{solution}
 \end{exercise}
 
+\begin{exercise}{True/False}
+  siehe \ref{mc:tf} \hfill(10 Punkte)
+\end{exercise}
+
 \begin{eexercises}[14]{Betriebssysteme}{
     Beantworten Sie schriftliche Fragen zu Betriebssystem-relevanten Themen. Dies können Inhalte, Eigenschaften oder Zusammenhänge sein. Es genügt eine Aufzählung von Schlüsselworten; Textantworten sollen kurz ausfallen: wenige Sätze, $<5$ Textzeilen!
   }
-  \item Nennen Sie drei Aufgaben von Betriebssystemen?
-  \item Was ist Scheduling?
-  \item Was haben Prozesse mit Threads zu tun?
-  \item Welche Mechanismen implementieren Virtual Memory?
+  \item Nennen Sie drei Aufgaben von Betriebssystemen?\hfill(3~Punkte)
+  \item Was ist Scheduling?\hfill(5~Punkte)
+  \item Was haben Prozesse mit Threads zu tun?\hfill(4~Punkte)
+  \item Welche Mechanismen implementieren Virtual Memory?\hfill(3~Punkte)
 \end{eexercises}
 
 \begin{solutions}
@@ -599,34 +699,6 @@ gearbeitet wird.
   \item Scheduling ist die Zuweisung der Prozessorzeit an die verschiedenen Prozesse (bzw. Threads) eines Systems.
   \item Threads sind leichtgewichtige Prozesse, die innerhalb eines Prozesses laufen und sich dessen Ressourcen teilen.
   \item Paging, Swapping, Memory-Mapped Files, Demand Paging, Page Fault, ...
-\end{solutions}
-
-\exercisesheet{Ersttermin}
-\begin{eexercises}[4]{Rechnen mit IEEE-754 Gleitkommazahlen}{
-    Gegeben seien die folgenden zwei Zahlen im IEEE-754 Format mit einfacher Genauigkeit (1-bit für das Vorzeichen, 8-bit für den Exponenten und 7-bit für die Mantisse)\par
-    \centering $A = (0|00011010|1000000)$\par $B = (0|11100101|0100011)$
-  }
-  \item Berechnen Sie $C = A \cdot B$ im IEEE-754 Format.
-  \item Wie lauten die Zahlen $A, B$ und $C$ im Dezimalsystem? Sehr große und sehr kleine Werte dürfen auch wie folgt dargestellt werden: $<s>*<Wert> \hat{} <Exponenten>$
-\end{eexercises}
-
-\begin{solutions}
-  \item $C = (0|10000000|1110100)$
-  \item
-  $A = {-1}^0 \cdot 2^{26-127} \cdot (1+2^{-1}) = 2^{-101} + 2^{-102}$\par
-  $B = {-1}^0 \cdot 2^{229-127} \cdot (1+2^{-2}+2^{-6}+2^{-7}) = 2^{102} + 2^{100} + 2^{96} + 2^{95}$\par
-  $C = {-1}^0 \cdot 2^{128-127} \cdot (1+2^{-1}+2^{-2}+2^{-3}+2^{-5}) = 2 + 2^0 + 2^{-1} + 2^{-2} + 2^{-4} = 3.8125$
-\end{solutions}
-
-
-\begin{exercises}{Codierung}
-\item Geben Sie einen zyklisch einschrittigen Code mit 10 Codewörtern an, von denen eines $1110$ ist.
-\item Kann ein zyklisch einschrittiger Code eine ungerade Anzahl an Codewörtern enthalten? Begründen Sie.
-\end{exercises}
-
-\begin{solutions}
-  \item $1110, 1010, 1000, 0000, 0001, 1001, 1101, 0101, 0111, 0110$
-  \item Nein, da bereits die Parität, auf Grund der Einschrittigkeit, nach einem Zyklus (ungerader Länge) nicht gleich sein kann.
 \end{solutions}
 
 \exercisesheet[\empty]{Multiple Choice}
@@ -773,7 +845,7 @@ gearbeitet wird.
           \item Swapping \psolution{\checkmark}
           \item Cache-Kohärenz \psolution{\xmark}
         \end{itemize}
-  \item True or false?
+  \item\label{mc:tf} True or false?
         \begin{itemize}
           \item Im 1-Komplement wird mit dem Vektor "11...11" die -1 dargestellt. \psolution{\xmark}
           \item Der Exponent denormalisierter IEEE-754 Fließkommazahlen ist immer der Vektor "00...00". \psolution{\checkmark}
