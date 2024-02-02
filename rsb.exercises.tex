@@ -5,7 +5,7 @@
 \subject{Rechnerstrukturen \& Betriebssysteme}
 \semester{Wintersemester 2023}
 \author{Leopold Lemmermann}
-% \withsolutions
+\withsolutions
 
 \begin{document}
 \createtitle
@@ -169,6 +169,7 @@ gearbeitet wird.
     10                         & 0  & 0  & 0  & 1  \\
   \end{tabular}
   \item z.B. $F = (b_1 \lor \bar{a_1}) \land (b_0\lor \bar{a_1}\lor \bar{a_0}) \land (b_1\lor b_0\lor\bar{a_0})$
+  % TODO: verify
   \item z.B. $F = (\bar{b_1}\land\bar{b_0}) \lor (a_1\land a_0) \lor (\bar{b_0}\land a_1) \lor (\bar{b_1}\land a_0)\lor(\bar{b_1}\land a_1)$
   \item $(a_1a_0) \geq (b_1b_0)$
 \end{solutions}
@@ -418,9 +419,9 @@ gearbeitet wird.
 \end{exercises}
 
 \begin{solutions}
-  \item $1850{10} = {}_2$
-  \item $1850{10} = {}_8$
-  \item $1850{10} = {\mathrm{}}_{16}$
+  \item $1850{10} = {0000\ 0111\ 0011\ 1010}_2$
+  \item $1850{10} = {3472}_8$
+  \item $1850{10} = {\mathrm{73A}}_{16}$
 \end{solutions}
 
 \begin{exercises}{Kommazahlen zwischen Basen}
@@ -430,18 +431,18 @@ gearbeitet wird.
 \end{exercises}
 
 \begin{solutions}
-  \item $0.85_{10} = {}_2$
-  \item $ (0.85_{10})_{2K} = {}_2$
-  \item
+  \item $0.85_{10} = {0000.\overline{1100}}_2$
+  \item $ (0.85_{10})_{2K} = {1111.0011\ 0100}_2$
+  \item Arithmetisch ist zu beachten, dass auf Grund der Rundung nur ein ungefähres 2-Komplement berechnet werden kann.
 \end{solutions}
 
 \begin{exercise}{Rechnen im Hexadezimalsystem}
   Addieren Sie die Hexadezimalzahlen $ABCD + 1634$.\points[4]
-\end{exercise}
 
-\begin{solution}
-  $\mathrm{} + \mathrm{} = \mathrm{}$
-\end{solution}
+  \begin{solution}
+    $\mathrm{ABCD} + \mathrm{1634} = \mathrm{C201}$
+  \end{solution}
+\end{exercise}
 
 \begin{eexercises}{Umwandlung zu IEEE-754 Gleitkommazahlen}{
     Wandeln Sie folgende Dezimalzahlen in normalisierte 32-bit Gleitkommazahlen im IEEE-754 float Format um (1-bit Vorzeichen, 8-bit Exponent in Exzess-127 Darstellung, 23-bit Mantisse). Es genügt, wenn Sie die ersten 8-bit der Mantisse angeben. (8~Punkte)
@@ -453,18 +454,17 @@ gearbeitet wird.
 \end{eexercises}
 
 \begin{solutions}
-  \item $0.0$
-  \item $-15.0$
-  \item $1.0$
-  \item $0.75$
-  \item $-1.25$
+  \item $-1 = (1|0111\ 1111|0000\ 0000)$
+  \item $15 = (0|1000\ 0100|1110\ 0000)$
+  \item $1.25 = (0|0111\ 1111|0100\ 0000)$
+  \item $0 = (0|0000\ 0000|0000\ 0000)$
 \end{solutions}
 
 \begin{exercise}{Codierung}
   Geben Sie einen zyklisch-einschrittigen Binärcode mit 12 Codewörtern an.\points[5]
 
   \begin{solution}
-    zB. $0000, 0001, 0011, 0111, 0110, 0100, 0101, 1101, 1100, 1110, 1010, 0010$
+    zB. $0000, 0001, 0011, 0111, 0101, 0100, 0110, 0010, 1010, 1110, 1100, 1000$
   \end{solution}
 \end{exercise}
 
@@ -538,26 +538,26 @@ gearbeitet wird.
     10                        & 1  & 0  & 0  & 1  \\
   \end{tabular}\par
   Disjunktive Normalform: $\bar{x_1}\lor\bar{x_4}\bar{x_3}$
-  \item Konjunktive Minimalform: $(x_3\lor x_1)\land(x_4\lor x_1)$
-  \item Reed-Muller-Form: zB. $x_1\oplus x_4x_3\oplus x_4x_3x_1$
+  \item Konjunktive Minimalform: $(\bar{x_3}\lor\bar{x_1})\land(\bar{x_4}\lor\bar{x_1})$
+  \item Reed-Muller-Form: zB. $x_4x_1\oplus x_3x_1\oplus x_4x_3x_1$
 \end{solutions}
 
 \begin{exercise}{ROBDDs}
-  Skizzieren Sie den ROBDD für die boole’sche Funktion $f (x, y, z) = \overline{x \land y \land z}$.\hfill (8~Punkte)
+  Skizzieren Sie den ROBDD für die Boole’sche Funktion $f (x, y, z) = \overline{x \land y \land z}$.\hfill (8~Punkte)
 
   \begin{solution}
     \tikz[auto] {
-      \node (x) at (1,0) {$x$};
-      \node (y) at (0,-1) {$y$};
-      \node (z) at (2,-1) {$z$};
-      \node (0) at (0,-2) {$0$};
-      \node (1) at (2,-2) {$1$};
-      \draw[->] (x) -- (y) node[midway, above] {0};
-      \draw[->] (x) -- (z) node[midway, above] {1};
-      \draw[->] (y) -- (0) node[midway, left] {1};
-      \draw[->] (z) -- (0) node[midway, right] {1};
-      \draw[->] (y) -- (1) node[midway, right, yshift=1em] {0};
-      \draw[->] (z) -- (1) node[midway, right] {0};
+      \node (x) at (0,0) {$x$};
+      \node (y) at (1,-1) {$y$};
+      \node (z) at (2,-2) {$z$};
+      \node (1) at (0,-3) {$1$};
+      \node (0) at (3,-3) {$0$};
+      \draw[->] (x) -- (1) node[midway] {0};
+      \draw[->] (x) -- (y) node[midway] {1};
+      \draw[->] (y) -- (1) node[midway] {0};
+      \draw[->] (y) -- (z) node[midway] {1};
+      \draw[->] (z) -- (1) node[midway] {0};
+      \draw[->] (z) -- (0) node[midway] {1};
     }
   \end{solution}
 \end{exercise}
@@ -619,7 +619,7 @@ gearbeitet wird.
 
   KV-Diagramm für $y$:
   \begin{tabular}{c|cc}
-    $z_1\backslash z_2$ & 0 & 1 \\
+    $z_2\backslash z_1$ & 0 & 1 \\
     \hline
     0                   & 0 & 0 \\
     1                   & 1 & * \\
@@ -627,7 +627,7 @@ gearbeitet wird.
   \item
   $z_2^+ = \bar x z_1$\par
   $z_1^+ = \bar x \bar{z_2} \bar{z_1}$\par
-  $y = z_1$
+  $y = z_2$
 \end{solutions}
 
 \begin{exercises}{Codierung}
@@ -677,7 +677,7 @@ gearbeitet wird.
 
   \begin{solution}
     Stack-Maschine:\par PUSH C; PUSH C; MUL; PUSH B; PUSH A; ADD; SUB; POP W\newline
-    3-Address Maschine:\par LOAD r0, A; LOAD r1, B; LOAD r2, C; ADD r3, r0, r1; MUL r4, r2, r2;  SUB r5, r4, r3; STORE W, r5
+    3-Address Maschine:\par LOAD r0, A; LOAD r1, B; LOAD r2, C; ADD r3, r0, r1; MUL r4, r2, r2;  SUB r5, r3, r4; STORE W, r5
   \end{solution}
 \end{exercise}
 
