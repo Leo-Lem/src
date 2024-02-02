@@ -160,8 +160,8 @@
   \fi
 }
 
-\newcommand{\bigO}[1]{
-  \ensuremath{\mathcal{O}(#1)}
+\newcommand{\bigO}{
+  \ensuremath{\mathcal{O}}
 }
 
 % ---------------------------------------------------------------------
