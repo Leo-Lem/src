@@ -9,8 +9,7 @@
 
 \createtitle
 
-\exercisesheet[1]{Präsenzaufgaben}
-\setcounter{section}{0}
+\sheet[0]{Grundlagen}
 \begin{eexercises}{Vollständige Induktion}{
     Beweisen Sie die folgenden Aussagen mit vollständiger Induktion:
   }
@@ -34,7 +33,9 @@
   Entwerfen Sie einen Algorithmus, der für gegebene ganze Zahlen $a_1, \ldots, a_n \in \mathbb{Z}$ das Minimum und das Maximum bestimmt. Versuchen Sie dabei möglichst wenige Vergleiche zu verwenden ($\leq 1,5n$ sind möglich).
 \end{exercise}
 
-\newpage\setcounter{section}{1}\setcounter{subsection}{0}
+
+
+\sheet{Big O \& Algorithmen}
 \begin{eexercises}{Big-O Notation}{
     Beweisen oder widerlegen Sie die folgenden Aussagen:}
   \item $2n = \bigO(n)$
@@ -59,98 +60,6 @@
   \end{algorithm}
   \noindent Beweisen Sie, dass die letzte Kugel in der Urne schwarz ist. Geben Sie dazu eine geeignete Schleifeninvariante an.
 \end{exercise}
-
-\newpage\setcounter{section}{2}\setcounter{subsection}{0}
-\begin{eexercises}{Erweiterte Big-O Notation}{
-    Beweisen oder widerlegen Sie die folgenden Aussagen:
-  }
-  \item $2n = \Omega(n)$
-  \item $\log_a(n+1) = \Theta(\log_b(n+1))$ für $a,b \in \mathbb{R}_{>1}$.
-  \item $n = o(2n)$
-\end{eexercises}
-
-\begin{exercise}{Mastertheorem}\setcounter{subsection}{0}
-  Bestimmen Sie die Größenordnung der Funktionen, wenn möglich mittels Mastertheorem. Falls das Mastertheorem nicht anwendbar sein sollte, begründen Sie dies und verwenden stattdessen die Substitutionsmethode.
-  \hint{Es ist hier kein Induktionsbeweis erforderlich bei Anwendung der Substitutionsmethode.}
-  \begin{enumerate}
-    \item $T_1(n) = \begin{cases}
-              1                               & \text{falls } n = 1 \\
-              16 \cdot T_1(\frac{n}{2}) + n^2 & \text{sonst}
-            \end{cases}$
-    \item $T_2(n) = \begin{cases}
-              1                              & \text{falls } n = 1 \\
-              8 \cdot T_2(\frac{n}{2}) + n^4 & \text{sonst}
-            \end{cases}$
-    \item $T_3(n) = \begin{cases}
-              0                    & \text{falls } n = 0 \\
-              3 \cdot T_3(n-1) + 2 & \text{sonst}
-            \end{cases}$
-  \end{enumerate}
-\end{exercise}
-
-\newpage\setcounter{section}{3}\setcounter{subsection}{0}
-\begin{eexercises}{Sortieralgorithmen}{
-    Beantworten Sie die folgenden Fragen:
-  }
-  \item Sortieren Sie das folgende Feld mit Radixsort. Die Basis ist 8 und die Zahlen sind zur Basis 8 angegeben.
-  \begin{align*}
-    142, 204, 154, 7, 104, 162, 521, 17, 262, 504, 370, 252
-  \end{align*}
-  \item Argumentieren Sie, dass $n$ natürliche Zahlen aus dem Bereich $\{0, 1, \ldots, n \cdot c - 1\}$ für eine Konstante $c \in \mathbb{N}$ mit Laufzeit $\bigO(n)$ sortiert werden können.
-\end{eexercises}
-
-\begin{exercise}{HEAPSORT}
-  Stellen Sie das Verfahren von HEAPSORT angewendet auf die Instanz $[1,5,6,7,8,7,9,9,10]$ grafisch dar.
-\end{exercise}
-
-\newpage\setcounter{section}{4}\setcounter{subsection}{0}
-\begin{exercise}{Rot-Schwarz-Bäume}
-  Führen Sie die folgenden Operationen (einfügen bzw. löschen von Schlüsseln) mit einem initial leeren Rot-Schwarz-Baum aus. Geben Sie den Baum nach jedem Einfügen bzw. Löschen sowie nach jeder Rotation bzw. Umfärbung an.
-  \begin{enumerate}
-    \item Insert(40), Insert(48), Insert(68), Insert(55), Insert(39), Delete(40), Delete(48)
-  \end{enumerate}
-\end{exercise}
-
-\begin{eexercises}{Hashtabellen}{
-    Konstruieren Sie die Hashtabelle der Größe $m = 23$, die durch Einfügen der Elemente
-    \begin{align*}
-      47, 17, 24, 70, 22, 01, 40, 45, 36, 59
-    \end{align*}
-    mit der nachfolgenden Methode entsteht:
-  }
-  \item Divisionsmethode,
-  \item Multiplikationsmethode mit $c = 1/2$ und
-  \item erweiterter Divisionsmethode mit $a = 5$ und $b = 3$
-\end{eexercises}
-
-\newpage\setcounter{section}{5}\setcounter{subsection}{0}
-\begin{exercise}{Topologische Sortierung}
-  Finden Sie für den unten gezeigten Graph aus Abb. 1 eine Topologische Sortierung. Ist es möglich mehrere verschiedene Lösungen zu finden?
-  \begin{figure}[ht]
-    % TODO: add graph
-  \end{figure}
-\end{exercise}
-
-\begin{exercise}{Kruskals Algorithmus}
-  Bestimmen Sie mit Kruskals Algorithmus aus der Vorlesung einen minimalen Spannbaum für den Graphen aus Abb. 2. Machen Sie die Reihenfolge in der die Kanten abgearbeitet wurden deutlich.
-  \begin{figure}[ht]
-    % TODO: add graph
-  \end{figure}
-\end{exercise}
-
-\newpage\setcounter{section}{6}\setcounter{subsection}{0}
-\begin{exercise}{Independent Set}
-  Ein Independent Set in einem Graphen $G = (V, E)$ ist eine Menge von Knoten $I$, so dass für je zwei Knoten $i, j \in I$ gilt, dass $\{i, j\} \notin E$. Für das Problem INDEPENDENT SET ist ein Graph $G = (V, E)$ sowie eine Zahl $k \in \mathbb{N}$ gegeben und es soll entschieden werden, ob es in $G$ ein Independent Set mit $k$ Knoten gibt.\par
-  Zeigen Sie, dass das Problem INDEPENDENT SET NP-vollständig ist, indem Sie eine Reduktion von CLIQUE auf INDEPENDENT SET angeben.
-\end{exercise}
-
-\begin{exercise}{Textumbruch}
-  Gegeben seien Wörter $w_1, \ldots, w_n$. Diese Wörter sollen auf Textzeilen aufgeteilt werden. Dazu seien $c(i, j)$ die Kosten, um Wörter die $w_i, \ldots, w_j$ in eine Textzeile zu schreiben für alle $1 \leq i \leq j \leq n$.\par
-  Geben Sie mithilfe dynamischer Programmierung einen Algorithmus an, der Linebreaks $l_1, \ldots, l_m$ so setzt, sodass $c(1,l_1)+c(l_1 +1,l_2)+\ldots+c(l_m +1,n)$ minimiert wird.
-\end{exercise}
-
-\exercisesheet[2]{Hausaufgaben}
-\setcounter{section}{1}
 
 \begin{eexercises}{Eigenschaften der Big-O Notation}{
     Sei F die Menge der Funktionen $\mathbb{N} \rightarrow \mathbb{R}_{>0}$ und seien $f, g, h \in F$.
@@ -198,7 +107,36 @@
   \item Beweisen Sie mit Hilfe der Schleifeninvariante die Korrektheit des Algorithmus.
 \end{eexercises}
 
-\newpage\setcounter{section}{2}\setcounter{subsection}{0}
+
+
+\sheet{Big O, Mastertheorem, Rekursion \& Queues}
+\begin{eexercises}{Erweiterte Big-O Notation}{
+    Beweisen oder widerlegen Sie die folgenden Aussagen:
+  }
+  \item $2n = \Omega(n)$
+  \item $\log_a(n+1) = \Theta(\log_b(n+1))$ für $a,b \in \mathbb{R}_{>1}$.
+  \item $n = o(2n)$
+\end{eexercises}
+
+\begin{exercise}{Mastertheorem}
+  Bestimmen Sie die Größenordnung der Funktionen, wenn möglich mittels Mastertheorem. Falls das Mastertheorem nicht anwendbar sein sollte, begründen Sie dies und verwenden stattdessen die Substitutionsmethode.
+  \hint{Es ist hier kein Induktionsbeweis erforderlich bei Anwendung der Substitutionsmethode.}
+  \begin{enumerate}
+    \item $T_1(n) = \begin{cases}
+              1                               & \text{falls } n = 1 \\
+              16 \cdot T_1(\frac{n}{2}) + n^2 & \text{sonst}
+            \end{cases}$
+    \item $T_2(n) = \begin{cases}
+              1                              & \text{falls } n = 1 \\
+              8 \cdot T_2(\frac{n}{2}) + n^4 & \text{sonst}
+            \end{cases}$
+    \item $T_3(n) = \begin{cases}
+              0                    & \text{falls } n = 0 \\
+              3 \cdot T_3(n-1) + 2 & \text{sonst}
+            \end{cases}$
+  \end{enumerate}
+\end{exercise}
+
 \begin{eexercises}{Erweiterte Big-O Notation}{
     Sei F die Menge der Funktionen $\mathbb{N} \rightarrow \mathbb{R}_{>0}$ und seien $f, g, h \in F$.
   }
@@ -267,7 +205,23 @@
 \item Analysieren Sie die Laufzeit der Queueoperationen aus 1. unter der Annahme, dass die Stackoperationen Zeit $\bigO(1)$ benötigen.
 \end{exercises}
 
-\newpage\setcounter{section}{3}\setcounter{subsection}{0}
+
+
+\sheet{Listen, Sortieren \& Auswählen}
+\begin{eexercises}{Sortieralgorithmen}{
+    Beantworten Sie die folgenden Fragen:
+  }
+  \item Sortieren Sie das folgende Feld mit Radixsort. Die Basis ist 8 und die Zahlen sind zur Basis 8 angegeben.
+  \begin{align*}
+    142, 204, 154, 7, 104, 162, 521, 17, 262, 504, 370, 252
+  \end{align*}
+  \item Argumentieren Sie, dass $n$ natürliche Zahlen aus dem Bereich $\{0, 1, \ldots, n \cdot c - 1\}$ für eine Konstante $c \in \mathbb{N}$ mit Laufzeit $\bigO(n)$ sortiert werden können.
+\end{eexercises}
+
+\begin{exercise}{HEAPSORT}
+  Stellen Sie das Verfahren von HEAPSORT angewendet auf die Instanz $[1,5,6,7,8,7,9,9,10]$ grafisch dar.
+\end{exercise}
+
 \begin{eexercises}{Listen}{
     Eine zyklische einfach verkettete Liste ist eine einfach verkettete Liste, bei der zusätzlich der next-Zeiger des letzten Elements auf das erste Element der Liste zeigt. Im Folgenden seien außerdem die Elemente der Liste sortiert (aufsteigend oder absteigend, wählen sie selbst).
   }
@@ -296,7 +250,28 @@
   \item Stellen Sie eine Rekurrenzgleichung für eine Variante von QUICKSORT auf, die den SELECT-Algorithmus für die Wahl des Pivotelements verwendet und schätzen Sie die Laufzeit mit dem Mastertheorem ab.
 \end{eexercises}
 
-\newpage\setcounter{section}{4}\setcounter{subsection}{0}
+
+
+\sheet{Suchen: Bäume \& Hashing}
+\begin{exercise}{Rot-Schwarz-Bäume}
+  Führen Sie die folgenden Operationen (einfügen bzw. löschen von Schlüsseln) mit einem initial leeren Rot-Schwarz-Baum aus. Geben Sie den Baum nach jedem Einfügen bzw. Löschen sowie nach jeder Rotation bzw. Umfärbung an.
+  \begin{enumerate}
+    \item Insert(40), Insert(48), Insert(68), Insert(55), Insert(39), Delete(40), Delete(48)
+  \end{enumerate}
+\end{exercise}
+
+\begin{eexercises}{Hashtabellen}{
+    Konstruieren Sie die Hashtabelle der Größe $m = 23$, die durch Einfügen der Elemente
+    \begin{align*}
+      47, 17, 24, 70, 22, 01, 40, 45, 36, 59
+    \end{align*}
+    mit der nachfolgenden Methode entsteht:
+  }
+  \item Divisionsmethode,
+  \item Multiplikationsmethode mit $c = 1/2$ und
+  \item erweiterter Divisionsmethode mit $a = 5$ und $b = 3$
+\end{eexercises}
+
 \begin{eexercises}{Suchbäume}{
     Im Folgenden betrachten wir Zahlen $n = 2^k - 1$ mit $k \in \mathbb{N}_{>0}$.
   }
@@ -329,10 +304,53 @@
   \item Begründen Sie, warum eurer Algorithmus die Laufzeitschranke einhält.
 \end{eexercises}
 
-\newpage\setcounter{section}{5}\setcounter{subsection}{0}
-\begin{eexercises}{Graphen}{
-    Betrachten Sie obigen Graphen $G$ aus Abb. 1. Wenden Sie jeweils das verlangte Verfahren an bzw. beantworten Sie die Frage oder begründen Sie, warum dies nicht geht.
+
+
+\sheet{Graphen, Topologische Sortierung \& MSTs}
+\begin{exercise}{Topologische Sortierung}
+  Finden Sie für den unten gezeigten Graph aus \ref{fig:topo} eine Topologische Sortierung. Ist es möglich mehrere verschiedene Lösungen zu finden?
+  \begin{figure}[ht]\label{fig:topo}
     % TODO: add graph
+  \end{figure}
+\end{exercise}
+
+\begin{exercise}{Kruskals Algorithmus}
+  Bestimmen Sie mit Kruskals Algorithmus aus der Vorlesung einen minimalen Spannbaum für den Graphen aus Abb. 2. Machen Sie die Reihenfolge in der die Kanten abgearbeitet wurden deutlich.
+  \begin{figure}[ht]
+    % TODO: add graph
+  \end{figure}
+\end{exercise}
+
+\begin{eexercises}{Graphen}{
+    Betrachten Sie obigen Graphen $G$ aus \ref{fig:simplegraph}. Wenden Sie jeweils das verlangte Verfahren an bzw. beantworten Sie die Frage oder begründen Sie, warum dies nicht geht.
+    \begin{figure}[ht]\label{fig:simplegraph}
+      \tikz[->, auto, node distance=2cm, every node /.style={circle, draw}]{
+        \node (S) at (0,0) {S};
+        \node (B) [right of=S] {B};
+        \node (A) [above of=B] {A};
+        \node (C) [below of=B] {C};
+        \node (D) [right of=A] {D};
+        \node (E) [below of=D] {E};
+        \node (F) [below of=E] {F};
+        \node (G) [right of=E] {G};
+
+        \path[every node]
+        (S) edge (A)
+        (S) edge (B)
+        (S) edge (C)
+        (B) edge (A)
+        (C) edge (B)
+        (A) edge (D)
+        (A) edge (E)
+        (B) edge (E)
+        (C) edge (F)
+        (D) edge (G)
+        (D) edge (B)
+        (E) edge (C)
+        (F) edge (G)
+        (G) edge (E);
+      }
+    \end{figure}
   }
   \item Ermitteln Sie mit der Breitensuche einen Breitensuchbaum (BFS-Baum). Starten Sie den Algorithmus bei $s$.
   \item Ist das Ergebnis der Breitensuche eindeutig?
@@ -369,7 +387,19 @@
   \item Modifizieren Sie den Pseudocode von Dijkstras Algorithmus so, dass er als Input einen Graphen, einen Startknoten $s$ und einen Zielknoten $v$ als Input nimmt und als Output die explizite Darstellung des kürzesten Pfades von $s$ nach $v$ als Sequenz von Knoten ausgibt. Begründen Sie kurz die Korrektheit Ihrer Lösung. Die Laufzeit des modifizierten Algorithmus darf dabei nicht die asymptotische Laufzeitschranke $\bigO(|V| \log |V| + |E|)$ des Dijkstra Algorithmus überschreiten.
 \end{eexercises}
 
-\newpage\setcounter{section}{6}\setcounter{subsection}{0}
+
+
+\sheet{NP-Vollständigkeit \& dynamische Programmierung}
+\begin{exercise}{Independent Set}
+  Ein Independent Set in einem Graphen $G = (V, E)$ ist eine Menge von Knoten $I$, so dass für je zwei Knoten $i, j \in I$ gilt, dass $\{i, j\} \notin E$. Für das Problem INDEPENDENT SET ist ein Graph $G = (V, E)$ sowie eine Zahl $k \in \mathbb{N}$ gegeben und es soll entschieden werden, ob es in $G$ ein Independent Set mit $k$ Knoten gibt.\par
+  Zeigen Sie, dass das Problem INDEPENDENT SET NP-vollständig ist, indem Sie eine Reduktion von CLIQUE auf INDEPENDENT SET angeben.
+\end{exercise}
+
+\begin{exercise}{Textumbruch}
+  Gegeben seien Wörter $w_1, \ldots, w_n$. Diese Wörter sollen auf Textzeilen aufgeteilt werden. Dazu seien $c(i, j)$ die Kosten, um Wörter die $w_i, \ldots, w_j$ in eine Textzeile zu schreiben für alle $1 \leq i \leq j \leq n$.\par
+  Geben Sie mithilfe dynamischer Programmierung einen Algorithmus an, der Linebreaks $l_1, \ldots, l_m$ so setzt, sodass $c(1,l_1)+c(l_1 +1,l_2)+\ldots+c(l_m +1,n)$ minimiert wird.
+\end{exercise}
+
 \begin{eexercises}{Kursauswahl}{
     Stellen Sie sich vor Sie arbeiten in einer Behörde und haben ein bestimmtes Budget $B \in \mathbb{N}$, welches Sie ausgeben müssen. Dabei ist ein Kursangebot $K_1, \ldots, K_n$ gegeben wobei jeder Kurs $K_i$ gewisse Kosten $C_i \in \mathbb{N}$ hat und einen gewissen Organisationsaufwand $A_i \in \mathbb{N}$ benötigt. Gesucht ist eine Auswahl von Kursen, so dass mindestens das Budget $B$ ausgegeben wird und der gesamte Organisationsaufwand minimal ist.
   }
@@ -409,9 +439,9 @@
   % TODO: graph
 \end{exercise}
 
-\exercisesheet[3]{Altklausuren}
-\setcounter{section}{2019}\setcounter{subsection}{0}
 
+
+\sheet[2019]{Ersttermin}
 \begin{eexercises}{Laufzeitkomplexität}{
     Geben Sie für folgenden Probleme die asymptotische worst-case Laufzeitkomplexität in O-Notation an und begründen Sie diese jeweils knapp. Hinweis: Die Arrays enthalten jeweils keine Duplikate.
   }
@@ -531,7 +561,9 @@
 \item Erklären Sie kurz die Begriffe Zertifikatsfunktion \& Reduktion im Kontext der Prüfung auf NP-Vollständigkeit.
 \end{exercises}
 
-\newpage\setcounter{section}{2020}\setcounter{subsection}{0}
+
+
+\sheet{Ersttermin}
 \begin{exercise}{Depth-first search}
   Betrachten Sie einen Aufruf der in der Vorlesung vorgestellten Tiefensuche (Pseudocode siehe Algorithmen 1 \& 2) auf dem gerichteten Graphen $G = (V, E)$ aus Abbildung 1. Nehmen Sie an, dass alle Adjazenzlisten lexikographisch sortiert sind \& for-Schleifen über alle Knoten diese auch in lexikographischer Reihenfolge betrachten.
   \begin{algorithm}[ht]
@@ -648,7 +680,9 @@
   \item Beweisen Sie, dass Ihr Algorithmus eine optimale Lösung liefert.
 \end{eexercises}
 
-\newpage\setcounter{section}{20211}\setcounter{subsection}{0}
+
+
+\sheet[20211]{Ersttermin}
 \begin{exercises}{Big-O Notation}
 \item Sei $f(n) = 23 \cdot n^{\log_2{9}}$. Nennen Sie zwei Funktionen $g_1(n)$ und $g_2(n)$, so dass die folgenden Eigenschaften erfüllt sind:
 \begin{itemize}
@@ -745,7 +779,9 @@ Bestimmen und beweisen Sie eine möglichst exakte obere Schranke (im $\bigO$-Kal
   \item Geben Sie Ihren Algorithmus in Pseudocode an. Der Algorithmus soll die Indizes der auszuwählenden Anfragen sowie die dadurch erzielten Einnahmen ausgeben.
 \end{eexercises}
 
-\newpage\setcounter{section}{20212}\setcounter{subsection}{0}
+
+
+\sheet[20212]{Zweittermin}
 \begin{eexercises}{Big-O Notation}{
     Entscheiden Sie, ob die folgenden Aussagen über Funktionen der Form $N \to R$ wahr oder falsch sind und beweisen bzw. widerlegen Sie diese. Falls Sie bekannte Rechenregeln oder Resultate aus der Vorlesung benutzen, so nennen Sie diese beim Namen bzw. referenzieren Sie diese.
     \hint{Der Ausdruck $\log n$ bezeichnet den Logarithmus von $n$ zur Basis 2. Der Ausdruck $\ln n$ bezeichnet den Logarithmus von $n$ zur Basis $e$.}
@@ -828,7 +864,9 @@ Bestimmen und beweisen Sie eine möglichst exakte obere Schranke (im $\bigO$-Kal
   \item Beweisen Sie, dass Ihr Algorithmus aus Punkt (b) die Gesamtzahl der Vergleiche in allen Merge-Aufrufen minimiert.
 \end{eexercises}
 
-\newpage\setcounter{section}{2022}\setcounter{subsection}{0}
+
+
+\sheet[2022]{Ersttermin}
 \begin{exercises}{Algorithmen}
 \item Betrachten Sie folgenden Algorithmus in ihrer aus der Vorlesung bekannten Implementierung. Wählen Sie geeignete Parameter zur Beschreibung der Eingabegröße und nutzen Sie diese, um eine möglichst gute obere Schranke an die asymptotische Laufzeitkomplexität (worst-case) anzugeben.
 \hint{Beispiel PRIM: $n$ Anzahl Knoten, $m$ Anzahl Kanten $\to$ Laufzeit $\mathcal{O}(n \cdot \log^2(n) + m \cdot \log(n))$}
@@ -933,5 +971,9 @@ keiner der drei Fälle des Master-Theorems angewendet werden kann. Begründen Si
   \item Entwerfen Sie einen Algorithmus mittels dynamischer Programmierung für die Eingaben $l, P \& R$ die minimale Anzahl an notwendigen Rasensprengern in Zeit $\mathcal{O}(n \cdot l)$ zurückgibt ($n = \lvert P \rvert$). Geben Sie dazu zunächst eine geeignete mathematische Rekursionsgleichung an \& entwickeln Sie darauf aufbauend einen iterativen Algorithmus in Pseudocode.
   \hint{Bemerkung zu möglichem Ansatz für die Rekursion: Unterscheiden Sie die beiden Fälle, ob die optimale Lösung den letzten Rasensprenger einschaltet oder nicht.}
 \end{eexercises}
+
+
+
+\sheet[2023]{Probeklausur}
 
 \end{document}

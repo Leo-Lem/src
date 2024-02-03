@@ -7,7 +7,7 @@
 \ProcessOptions\relax
 \LoadClass{article}
 
-\RequirePackage[margin=2cm]{geometry}
+\RequirePackage[margin=5em]{geometry}
 \RequirePackage{hyperref, multicol, environ}
 \RequirePackage{amsmath, amssymb}
 \RequirePackage{tikz}
@@ -64,7 +64,7 @@
 % ---------------------------------------------------------------------
 % Exercises
 % ---------------------------------------------------------------------
-\newcommand{\exercisesheet}[2][\relax]{
+\newcommand{\sheet}[2][\relax]{
   \newpage
 
   \ifx#1\empty
