@@ -255,16 +255,12 @@
 \sheet{Suchen: Bäume \& Hashing}
 \begin{exercise}{Rot-Schwarz-Bäume}
   Führen Sie die folgenden Operationen (einfügen bzw. löschen von Schlüsseln) mit einem initial leeren Rot-Schwarz-Baum aus. Geben Sie den Baum nach jedem Einfügen bzw. Löschen sowie nach jeder Rotation bzw. Umfärbung an.
-  \begin{enumerate}
-    \item Insert(40), Insert(48), Insert(68), Insert(55), Insert(39), Delete(40), Delete(48)
-  \end{enumerate}
+  \begin{align*}\texttt{Insert(40), Insert(48), Insert(68), Insert(55), Insert(39), Delete(40), Delete(48)}\end{align*}
 \end{exercise}
 
 \begin{eexercises}{Hashtabellen}{
     Konstruieren Sie die Hashtabelle der Größe $m = 23$, die durch Einfügen der Elemente
-    \begin{align*}
-      47, 17, 24, 70, 22, 01, 40, 45, 36, 59
-    \end{align*}
+    \begin{align*}47, 17, 24, 70, 22, 01, 40, 45, 36, 59\end{align*}
     mit der nachfolgenden Methode entsteht:
   }
   \item Divisionsmethode,
@@ -309,22 +305,80 @@
 \sheet{Graphen, Topologische Sortierung \& MSTs}
 \begin{exercise}{Topologische Sortierung}
   Finden Sie für den unten gezeigten Graph aus \ref{fig:topo} eine Topologische Sortierung. Ist es möglich mehrere verschiedene Lösungen zu finden?
-  \begin{figure}[ht]\label{fig:topo}
-    % TODO: add graph
+  \begin{figure}[ht]
+    \caption{Ein gerichteter Graph}
+    \label{fig:topo}
+    \centering
+    \tikz[->, auto, node distance=2cm, every node/.style={circle, draw, minimum size=1cm}]{
+      \node (s) {s};
+      \node (a) [left of=s] {a};
+      \node (b) [above of=s] {b};
+      \node (c) [right of=s] {c};
+      \node (d) [below of=a] {d};
+      \node (e) [right of=d] {e};
+
+      \path[every node]
+      (s) edge (a)
+      (s) edge (c)
+      (a) edge (b)
+      (c) edge (b)
+      (e) edge (d)
+      (e) edge (a)
+      ;
+    }
   \end{figure}
 \end{exercise}
 
 \begin{exercise}{Kruskals Algorithmus}
-  Bestimmen Sie mit Kruskals Algorithmus aus der Vorlesung einen minimalen Spannbaum für den Graphen aus Abb. 2. Machen Sie die Reihenfolge in der die Kanten abgearbeitet wurden deutlich.
+  Bestimmen Sie mit Kruskals Algorithmus aus der Vorlesung einen minimalen Spannbaum für den Graphen aus \ref{fig:kruskal}. Machen Sie die Reihenfolge in der die Kanten abgearbeitet wurden deutlich.
   \begin{figure}[ht]
-    % TODO: add graph
+    \caption{Ein gewichteter Graph}
+    \label{fig:kruskal}
+    \centering
+    \tikz[auto, node distance=2cm, main node/.style={circle, draw, minimum size=.5em}]{
+      \node[main node] (0) {};
+      \node[main node] (1) [right of=0, below of=0] {};
+      \node[main node] (2) [above of=1, above of=1] {};
+      \node[main node] (3) [right of=2, below of=2] {};
+      \node[main node] (4) [right of=3, above of=3] {};
+      \node[main node] (5) [right of=4] {};
+      \node[main node] (6) [below of=3] {};
+      \node[main node] (7) [right of=6] {};
+      \node[main node] (8) [right of=7] {};
+      \node[main node] (9) [above of=8] {};
+      \node[main node] (10) [left of=9] {};
+
+      \path[every node]
+      (0) edge node {3} (1)
+      (0) edge node {2} (2)
+      (1) edge node {8} (2)
+      (1) edge node {4} (3)
+      (2) edge node {9} (3)
+      (3) edge node {6} (4)
+      (3) edge node {9} (6)
+      (4) edge node {1} (5)
+      (4) edge node {5} (6)
+      (4) edge node {9} (9)
+      (4) edge node {3} (10)
+      (5) edge[bend left] node {7} (8)
+      (9) edge node {5} (5)
+      (6) edge node {3} (7)
+      (7) edge node {1} (8)
+      (8) edge node {3} (9)
+      (8) edge node {2} (10)
+      (9) edge node {2} (10)
+      ;
+    }
   \end{figure}
 \end{exercise}
 
 \begin{eexercises}{Graphen}{
-    Betrachten Sie obigen Graphen $G$ aus \ref{fig:simplegraph}. Wenden Sie jeweils das verlangte Verfahren an bzw. beantworten Sie die Frage oder begründen Sie, warum dies nicht geht.
-    \begin{figure}[ht]\label{fig:simplegraph}
-      \tikz[->, auto, node distance=2cm, every node /.style={circle, draw}]{
+    Betrachten Sie Graphen $G$ aus \ref{fig:simplegraph}. Wenden Sie jeweils das verlangte Verfahren an bzw. beantworten Sie die Frage oder begründen Sie, warum dies nicht geht.
+    \begin{figure}[ht]
+      \caption{Graph $G$}
+      \label{fig:simplegraph}
+      \centering
+      \tikz[->, auto, node distance=2cm, every node/.style={circle, draw, minimum size=1cm}]{
         \node (S) at (0,0) {S};
         \node (B) [right of=S] {B};
         \node (A) [above of=B] {A};
@@ -360,7 +414,14 @@
 \end{eexercises}
 
 \begin{eexercises}{Minimale Spannbäume}{
-    % TODO: add graph
+    \begin{figure}[ht]
+      \caption{Graph $G$}
+      \label{fig:mstgraph}
+      \centering
+      \tikz[auto, every node/.style={circle, draw, minimum size=.5em}]{
+        % TODO: add graph
+      }
+    \end{figure}
   }
   \item Bestimmen Sie mit Hilfe des Algorithmus von Prim einen minimalen Spannbaum des Graphen und skizzieren diesen. Der Startknoten ist grau gefärbt. Geben Sie zusätzlich die Reihenfolge an, in der die Kanten des Spannbaums gemäß Algorithmus hinzugefügt werden.
   \item Sei $G = (V, E)$ ein zusammenhängender gewichteter Graph mit Gewichtsfunktion $w : E \rightarrow \mathbb{R}$ und $T = (V, E_0)$ ein minimaler Spannbaum von $G$.
