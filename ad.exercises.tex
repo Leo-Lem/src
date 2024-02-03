@@ -410,8 +410,528 @@
 \end{exercise}
 
 \exercisesheet[3]{Altklausuren}
-\setcounter{section}{2019}
+\setcounter{section}{2019}\setcounter{subsection}{0}
 
+\begin{eexercises}{Laufzeitkomplexität}{
+    Geben Sie für folgenden Probleme die asymptotische worst-case Laufzeitkomplexität in O-Notation an und begründen Sie diese jeweils knapp. Hinweis: Die Arrays enthalten jeweils keine Duplikate.
+  }
+  \item Das kleinste Element in einem unsortierten Array finden.
+  \item Ein Element in einem unsortierten Array finden, das nicht das kleinste ist.
+  \item Das kleinste Element in einem sortierten Array finden.
+  \item Aus einem sortierten Array einen balancierten binären Suchbaum konstruieren.
+  \item Nennen Sie mindestens 3 Gründe, warum ein Algorithmus $f$ einer niedrigeren Komplexitätsklasse (zum Beispiel $\bigO(n \log n)$) weniger geeignet sein kann als ein Algorithmus $f$ einer höheren Komplexitätsklasse (zum Beispiel $\bigO(n^2)$).
+  \hint{Maximal 2 Bonuspunkte für mehr als 3 gute Gründe.}
+\end{eexercises}
 
+\begin{exercises}{O-Notation}
+\item Geben Sie für folgenden Funktionen möglichst einfache und scharfe O-, $\Omega$- und ggf. $\Theta$-Klassen an.
+\begin{align*}
+  f(n) & = 1.5n + n^2                                     \\
+  g(n) & = (-1)^3 \log n - \sqrt{n^5} + \log n + \sqrt{n}
+\end{align*}
+\item Ordnen Sie $5n^2, 28, \sqrt{n}, \log n, n^2, (n \log n)^2, 2\sqrt{n}, n!, n^3$ gemäß asymptotischem Wachstum. Begründen Sie Ihre Antwort.
+\item Ist $(\log n)n^2 \in \bigO(n^2)$? Begründen Sie Ihre Antwort.
+\item Berechnen Sie eine scharfe asymptotische Schranke für die Rekurrenzgleichung $T(n) = 4T(n/2) + n$ mit $T(1) = 1$. Geben Sie den Lösungsweg an.
+\end{exercises}
+
+\begin{eexercises}{Algorithmenanalyse}{
+    Analysieren Sie den angegebenen Pseudocode zur Sortierung der Liste $A$ durch den Aufruf SOMESORT($A, 0, A.\text{length}$):
+    \begin{algorithm}[ht]
+      \caption{SOMESORT($A, i, j$)}
+      \KwData{$A[i], i = 1, 2, \ldots, n, A[i] \in \mathbb{N}$}
+      \KwResult{$\text{result} \in \mathbb{N}_{>0}$}
+      \If{$i \geq j$}{
+        \Return
+      }
+      $m \gets \lfloor (i+j)/2 \rfloor$ \\
+      SOMESORT($A, i, m$) \\
+      SOMESORT($A, m+1, j$) \\
+      \If{$A[j] \leq A[m]$}{
+        \text{swap} $A[j]$ and $A[m]$
+      }
+      SOMESORT($A, i, j-1$)
+    \end{algorithm}
+  }
+  \item Beschreiben Sie, wie der Algorithmus sortiert.
+  \item Beweisen Sie die Korrektheit des Algorithmus (z.B. mittels Induktion).
+  \item Stellen Sie die Rekurrenzgleichung auf und erläutern Sie, warum sich das Master-Theorem nicht anwenden lässt.
+  \item Die ersten fünf Zeilen des Algorithmus entsprechen einem aus der Vorlesung bekannten Sortieralgorithmus. Welchem? Warum ist der hier gezeigte Algorithmus viel weniger effizient als der aus der Vorlesung bekannte?
+  \item Was bedeutet 'Stabilität' eines Sortierverfahrens? Ist SOMESORT stabil und begründen Sie Ihre Antwort.
+\end{eexercises}
+
+\begin{eexercises}{Graphen}{
+    Gegeben ist folgender ungerichteter, kantengewichteter Graph:
+    \begin{align*}
+      G & = (V, E)                                                                                                           \\
+      V & = \{a, b, c, d, e, f, g, h\}                                                                                       \\
+      E & = \{(a, b, 2), (a, c, 1), (a, d, 6), (b, c, 6), (b, e, 4), (b, e, 6), (b, f, 6), (c, d, 5), (c, f, 3), (c, g, 7)\}
+    \end{align*}
+  }
+  \item Zeichnen Sie den Graphen (leserlich!).
+  \item Nennen Sie die Definitionen für den minimalen Spannbaum (MST).
+  \item Erklären Sie die Vorgehensweise des PRIMschen Algorithmus und bestimmen Sie damit den oben gegebenen Graphen.
+  \item Gegeben sei ein Graph $G$, ein zugehöriger Spannbaum $S$ und eine Kante $e$ im Spannbaum. Sei $G' = (V, E')$ mit $E' = E \setminus \{e\}$. Geben Sie einen effizienten Algorithmus an, welcher einen MST für $G'$ auf Basis von $S$ bestimmt.
+  \item Beweisen Sie: Eine Kante $e$ in einem zusammenhängenden Graphen $G$ ist genau dann eine Brückenkante, wenn $e$ in jedem $ST$ von $G$ enthalten ist.
+\end{eexercises}
+
+\begin{eexercises}{Datenstrukturen}{
+    Gegeben sei folgende Hashtabelle $T$ mit $h(x, i) = (x + 2i) \mod 9$:
+    \begin{tabular}{c|c|c|c|c|c|c|c|c}
+      0 & 1 & 2 & 3  & 4  & 5 & 6  & 7  & 8 \\
+      \hline
+      0 &   & 7 & 12 & 13 &   & 24 & 16 &   \\
+    \end{tabular}
+  }
+  \item Nennen und beschreiben Sie die Ihnen aus der Vorlesung bekannten Strategien zur Kollisionsauflösung.
+  \item Betrachten Sie eine (andere) Hashtabelle mit 1000 Einträgen. Welche der folgenden Hashfunktionen ist am geeignetsten für offene Adressierung? Begründen Sie Ihre Antwort!
+  \begin{align*}
+    h_1(x, i) & = (x + 5i) \mod 1000  \\
+    h_2(x, i) & = (x + 17i) \mod 1000 \\
+    h_3(x, i) & = (x + 32i) \mod 1000
+  \end{align*}
+  \item Führen Sie nacheinander aus und stellen Sie jeweils den Inhalt von $T$ dar:
+  \begin{itemize}
+    \item $\text{insert}(21)$
+    \item $\text{insert}(95)$
+    \item $\text{delete}(12)$
+    \item $\text{delete}(21)$
+    \item $\text{delete}(95)$
+  \end{itemize}
+  \item Definieren Sie den Begriff (Min-)Heap.
+  \item Geben Sie einen Algorithmus an, der in $\bigO(n)$ Zeit einen binären Suchbaum in einen MinHeap umwandelt. Begründen Sie seine Korrektheit.
+\end{eexercises}
+
+\begin{eexercises}{Dynamische Programmierung}{
+    Die PERRIN-Folge kann wie dargestellt rekursiv berechnet werden:
+    \begin{algorithm}[ht]
+      \caption{PERRIN($n$)}
+      \KwData{$n \in \mathbb{N}$}
+      \KwResult{$\text{result} \in \mathbb{N}$}
+      \If{$n = 0$}{
+        \Return{3}
+      }
+      \If{$n = 1$}{
+        \Return{0}
+      }
+      \If{$n = 2$}{
+        \Return{2}
+      }
+      \Return{PERRIN($n-2$) + PERRIN($n-3$)}
+    \end{algorithm}
+  }
+  \item Stellen Sie für die angegebene Funktion die Rekurrenzformel auf. Vereinfachen Sie, sodass Sie zeigen können, dass die obere und untere Schranke exponentiell wachsen.
+  \item Erklären Sie, warum die angegebene Funktion nicht effizient ist und erläutern Sie die Entwicklungsschritte bei der Anwendung dynamischer Programmierung.
+  \item Begründen Sie, weshalb für die gegebene Funktion dynamische Programmierung anwendbar ist.
+  \item Spezifizieren Sie einen effizienteren Algorithmus zur Berechnung der PERRIN-Funktion unter Verwendung dynamischer Programmierung und nennen Sie seine Zeitkomplexität.
+  \hint{2 Zusatzpunkte für einen Algorithmus mit $\bigO(1)$ Platzkomplexität}
+\end{eexercises}
+
+\begin{exercises}{NP-Vollständigkeit}
+\item Geben Sie die formalen Definitionen für P, NP an und erklären Sie die Begriffe NP-vollständig und NP-schwer.
+\item Erklären Sie kurz die Begriffe Zertifikatsfunktion \& Reduktion im Kontext der Prüfung auf NP-Vollständigkeit.
+\end{exercises}
+
+\newpage\setcounter{section}{2020}\setcounter{subsection}{0}
+\begin{exercise}{Depth-first search}
+  Betrachten Sie einen Aufruf der in der Vorlesung vorgestellten Tiefensuche (Pseudocode siehe Algorithmen 1 \& 2) auf dem gerichteten Graphen $G = (V, E)$ aus Abbildung 1. Nehmen Sie an, dass alle Adjazenzlisten lexikographisch sortiert sind \& for-Schleifen über alle Knoten diese auch in lexikographischer Reihenfolge betrachten.
+  \begin{algorithm}[ht]
+    \caption{DFS($G$)}
+    \KwData{$G = (V, E)$}
+    \KwResult{Knoteneigenschaften $d(u), f(u), \pi(u)$ für alle $u \in V$}
+    \For{$u \in V$}{
+      \If{$\text{color}(u) = \text{white}$}{
+        $\text{DFS-VISIT}(u)$
+      }
+    }
+  \end{algorithm}
+
+  \begin{algorithm}[ht]
+    \caption{DFS-VISIT($G, u$)}
+    \KwData{$G = (V, E)$, $u \in V$}
+    \KwResult{Knoteneigenschaften $d(u), f(u), \pi(u)$}
+    $\text{color}(u) \gets \text{gray}$ \\
+    $time \gets time + 1$ \\
+    $d(u) \gets time$ \\
+    \For{$v \in \text{Adj}(u)$}{
+      \If{$\text{color}(v) = \text{white}$}{
+        $\pi(v) \gets u$ \\
+        $\text{DFS-VISIT}(v)$
+      }
+    }
+    $\text{color}(u) \gets \text{black}$ \\
+    $time \gets time + 1$ \\
+    $f(u) \gets time$
+  \end{algorithm}
+
+  \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+      \node[draw, circle] (a) at (0, 0) {a};
+      \node[draw, circle] (b) at (2, 0) {b};
+      \node[draw, circle] (c) at (4, 0) {c};
+      \node[draw, circle] (d) at (6, 0) {d};
+      \node[draw, circle] (e) at (0, -2) {e};
+      \node[draw, circle] (f) at (2, -2) {f};
+      \node[draw, circle] (g) at (4, -2) {g};
+      \node[draw, circle] (h) at (6, -2) {h};
+      % TODO: draw graph
+    \end{tikzpicture}
+    \caption{Gerichteter Graph $G$}
+  \end{figure}
+
+  Zeichnen Sie den entstehenden Tiefensuchwald. Geben Sie außerdem für alle Knoten $u \in V$ die berechneten Knoteneigenschaften $d(u)$ \& $f(u)$ am Ende des Algorithmus an.
+\end{exercise}
+
+\setcounter{subsection}{2}
+\begin{eexercises}{Hashing}{
+    Es seien die Hashfunktionen $h_1$ \& $h_2$ wie folgt definiert:
+    \begin{align*}
+      h_1(x) & = (3x + 5) \mod 7 \\
+      h_2(x) & = (4x + 6) \mod 8
+    \end{align*}
+  }
+  \item Illustrieren Sie die Hashatabelle der Größe 7, die entsteht, wenn zur Einfügung aller Elemente aus $K = \{1, 2, 4, 16, 20, 23, 26\}$ nacheinander in der angegebene Reihenfolge mit Hilfe von $h_1$ eingefügt werden.
+  \item Illustrieren Sie die Hashatabelle der Größe 8, die entsteht, wenn zur Einfügung aller Elemente aus $K = \{1, 2, 4, 16, 20, 23, 26\}$ nacheinander in der angegebene Reihenfolge mit Hilfe von $h_2$ eingefügt werden
+  \item Geben Sie jeweils für $h_1$ \& $h_2$ an, ob es sich um eine gute Wahl zur Konstruktion einer Hashtabelle mittels geschlossener Adressierung handelt oder nicht. Begründen Sie Ihre Aussage.
+\end{eexercises}
+
+\begin{eexercises}{O-Notation}{
+  Jede der folgenden Teilaufgaben spezifiziert zwei Funktionen $f(n)$ \& $g(n)$. Bestimmen Sie jeweils, ob die vier Relationen $f(n) = \mathcal{O}(g(n)), f(n) = \mathcal{O}(g(n)), f(n) = \Omega(g(n)), f(n) = \omega(g(n))$ gelten (es sind also pro Teilaufgabe vier Antworten zu geben). Beweisen Sie Ihre Antwort jeweils kurz. Nutzen Sie dazu die Eigenschaften der asymptotischen Landau-Notation aus der Vorlesung (wie z.B. die ursprüngliche Definition, die Charakterisierung über Grenzwerte oder die darauffolgenden Lemmata).
+    \hint{Die Basis des Logarithmus ist 2.}
+    }
+    \item $f(n) = 2n^2 + 23n^{3/2} + \log{n} -42$ und $g(n) = n^{2.001}$
+    \item $f(n) = n \cdot (1 + (-1)^n)$ und $g(n) = 2n$
+    \item $f(n) = 2\sqrt{n}$ und $g(n) = (3/2)^n$
+    \item $f(n) = \sum_{i=1}^n \log{i}$ und $g(n) = n \log{n}$
+\end{eexercises}
+
+\begin{eexercises}{Algorithmenentwurf}{
+    Gegeben sei ein ungerichteter, zusammenhängender Graph $G = (V, E)$. Ein Knoten $u \in V$ heißt Nadelöhr, wenn der Graph $G - u = (V \setminus \{u\}, E \setminus \{(v, w) \in E | v = u \lor w = u\})$ unzusammenhängend ist. Abbildung 2 zeigt ein Beispiel eines Graphen mit Nadelöhr.
+  }
+  \item Beschreiben Sie einen Algorithmus (als Pseudocode oder in Textform), der bei Eingabe eines ungerichteten, zusammenhängenden Graphen $G$ in Adjazenzlistendarstellung bestimmt, ob $G$ ein Nadelöhr besitzt. Ihr Algorithmus sollte Laufzeit $\bigO(|V| + |V| \cdot |E|)$ haben.
+  \item Analysieren Sie die Laufzeit Ihres Algorithmus.
+  \item Beweisen Sie die Korrektheit Ihres Algorithmus.
+\end{eexercises}
+
+\begin{eexercises}{Algorithmenentwurf II}{
+    Entwerfen Sie anhand der folgenden Arbeitsschritte einen Divide \& Conquer Algorithmus, der bei Eingabe zweier natürlicher Zahlen $x \in \mathbb{N}$ und $n \in \mathbb{N}$ die Potenz
+    \begin{equation*}
+      x^n = x \cdot x \cdot \ldots \cdot x
+    \end{equation*}
+    in Laufzeit $\bigO(\log n)$ berechnet. Als arithmetische Operationen mit konstanter Laufzeit sind dabei lediglich die Addition, Subtraktion sowie Multiplikation zweier ganzer Zahlen erlaubt. Auch die Abfrage ob eine Zahl gerade oder ungerade ist, kann in konstanter Laufzeit erfolgen.
+  }
+  \item Beschreiben Sie Ihre algorithmische Idee zunächst informell.
+  \hint{Überlegen Sie sich eine rekursive Formulierung für $x^n$ und erklären Sie, wie Ihr Algorithmus diese nutzt. Achten Sie darauf, dass die rekursive Formulierung die geforderte Laufzeitschranke ermöglicht.}
+  \item Formulieren Sie Ihren Algorithmus in Pseudocode.
+  \item Geben Sie die Laufzeit Ihres Algorithmus als Rekursionsgleichung an.
+  \item Analysieren Sie die Laufzeit Ihres Algorithmus möglichst genau in der $\bigO$-Notation mit Hilfe der Substitutionsmethode. Sie können dabei annehmen, dass $n$ eine Zweierpotenz ist. Sollten Sie keine Lösung zu 3. haben, dürfen Sie stattdessen die Rekursionsgleichung $T(n) = 3 \cdot T(n/3) + 42$ mit $T(1) = 23$ auflösen.
+  \hint{Ein Induktionsbeweis der Laufzeit ist nicht notwendig, aber aus Ihrer Rechnung muss klar hervorgehen, wie Sie zu Ihrer Lösung kommen.}
+\end{eexercises}
+
+\begin{eexercises}{Dynamische Programmierung}{
+    Das Unternehmen Alset möchte aus $n$ verschiedenen Prototypen eines neuen elektrischen Traktors eine möglichst große Teilmenge realisieren. Die Realisierung von Protoyp $i$ verursacht Kosten $c_i \in \mathbb{N}$. Zur Umsetzung der ausgewählten Prototypen steht ein Budget $B \in \mathbb{N}$ zur Verfügung, welches die Kosten aller ausgewählten Prototypen decken muss.
+  }
+  \item Sei $\text{OPT}(i, b)$ die maximale Anzahl der ersten $i \in \{0, 1, \ldots, n\}$ Prototypen, die mit dem Budget $b \in \{0, 1, \ldots, B\}$ realisierbar sind. Finden Sie eine rekursive Formulierung für $\text{OPT}(i, b)$ und begründen Sie kurz deren Korrektheit.
+  \hint{Nutzen Sie zur Lösung dieser Teilaufgabe ein aus der Vorlesung bekanntes Problem, welches die obige Situation modelliert.}
+  \item Zur Realisierung von Prototyp $i$ müssen nun zusätzlich $m_i \in \mathbb{N}$ Mitarbeiter bereitgestellt werden. Es stehen insgesamt $M \in \mathbb{N}$, von denen jeder bei der Umsetzung von höchstens einem (beliebigen) Prototypen helfen kann. Entwickeln Sie eine rekursive Formulierung für die maximale Anzahl realisierbarer Projekte unter diesen zusätzlichen Randbedingungen \& begründen Sie kurz deren Korrektheit. Beachten Sie dabei die Laufzeitanforderung aus 3.
+  \item Beschreiben Sie in Pseudocode einen Algorithmus, der mittels dynamischer Programmierung in Zeit $\bigO(n \cdot B \cdot M)$ die maximale Anzahl realisierbarer Projekte, unter Berücksichtigung des Gesamtbudgets und der verfügbaren Mitarbeiter, bestimmt. Die konkrete Teilmenge der zugehörigen Prototypen muss nicht bestimmt werden. Als Eingabe erhält Ihr Algorithmus die Werte $B$ und $M$ sowie die $n$-elementigen Arrays $c = [c_1, \ldots, c_n]$ und $m = [m_1, \ldots, m_n]$.
+\end{eexercises}
+
+\begin{eexercises}{Algorithmenentwurf III}{
+    Um den Netzausbau in Deutschland voran zu treiben, hat sich der Telekommunikationsanbieter Mokelet dazu entschlossen, jedes Haus in dem Dorf Hintertupfingen mit 5G-Empfang zu versorgen. In Hintertupfingen gibt es genau $n \in \mathbb{N}$ Häuser, die alle entlang einer schnurgeraden, $k \in \mathbb{N}$ Kilometer langen Straße stehen. Um ein Haus mit 5G-Empfang zu versorgen, muss Mokelet 5G-Masten entlang der Straße aufstellen. Ein einzelner 5G-Mast kann beliebig viele Häuser in einer Entfernung bis zu 3 Kilometer versorgen. Da Hintertupfingen nur spärlich besiedelt ist, muss Mokelet genau planen, wo die teuren 5G-Masten errichtet werden sollen.\par
+    Wir modellieren die Straße als Strecke auf dem Zahlenstrahl zwischen 0 und $k$. Der Standort des $i$-ten Hauses kann als (rationale) Zahl $h_i \in [0, k]$ beschrieben werden. Masten können an beliebigen (rationalen) Punkten im Intervall $[0, k]$ errichtet werden.
+    \hint{Die Lösung einer Strategie $A$, die 5G-Masten aufstellt, kann zum Beispiel als Folge von rationalen Zahlen $a_1 < a_2$ beschrieben mit $a_2 \in [0, k]$ beschreiben werden. Der $i$-te 5G-Mast wird dabei an Position $a_i$ errichtet.}
+  }
+  \item Wo wäre (im Hinblick auf eine optimale Lösung) ein geeigneter Standort für die 5G-Mast, der das erste ("am weitesten links liegende") Haus versorgt?
+  \item Beschreiben Sie einen Greedy-Algorithmus, der bei Eingabe eines Arrays $H = [h_1, \ldots h_n]$ der $n$ Haus-Standorte (in aufsteigender Reihenfolge) und der Länge $k$ der Straße in Laufzeit $\bigO(n)$ die minimale Anzahl an 5G-Masten bestimmt, die zur vollständigen Versorgung von Hintertupfingen notwendig sind.
+  \item Analysieren Sie die Laufzeit Ihres Algorithmus.
+  \item Beweisen Sie, dass Ihr Algorithmus eine optimale Lösung liefert.
+\end{eexercises}
+
+\newpage\setcounter{section}{20211}\setcounter{subsection}{0}
+\begin{exercises}{Big-O Notation}
+\item Sei $f(n) = 23 \cdot n^{\log_2{9}}$. Nennen Sie zwei Funktionen $g_1(n)$ und $g_2(n)$, so dass die folgenden Eigenschaften erfüllt sind:
+\begin{itemize}
+  \item $g_1$ und $g_2$ wachsen asymptotisch echt schneller als $f$
+  \item $g_1$ und $g_2$ wachsen nicht polynomiell schneller als $f$
+  \item $g_1$ und $g_2$ wachsen asymptotisch nicht gleich schnell
+\end{itemize}
+Begründen Sie kurz, warum Ihre gewählten Funktionen die geforderten Eigenschaften erfüllen.
+\item Entscheiden Sie, ob die folgenden Aussagen über Funktionen der Form $f: \mathbb{N} \to \mathbb{R}$ wahr oder falsch sind und beweisen bzw. widerlegen Sie diese. Falls Sie bekannte Rechenregeln aus der Vorlesung benutzen, so nennen Sie diese beim Namen bzw. referenzieren Sie diese.
+\begin{itemize}
+  \item $\log n = \bigO(\sqrt{n})$
+  \item $\sum_{i=1}^n 3i - 7 = \Theta(n^2)$
+  \item $\frac{n^2\cdot 2\sqrt{n})^3}{n^3-3} = \Omega(n) $
+  \item $\prod_{i=1}^n (i + n) = \bigO(n^{2n})$
+\end{itemize}
+\end{exercises}
+
+\begin{exercises}{Master-Theorem}
+\item Entscheiden Sie, ob die folgende Rekursionsgleichung mithilfe des Mastertheorems lösbar ist oder nicht. Ist das Mastertheorem anwendbar, so lösen Sie die Rekursionsgleichung damit. Ist das Mastertheorem nicht anwendbar, so lösen Sie die Rekursionsgleichung mit der Substitutionsmethode.
+\begin{equation*}
+  T(n) = \begin{cases}
+    2\cdot T(n/8)+\sqrt{n} & \text{für } n > 1 \\
+    17                     & \text{sonst}
+  \end{cases}
+\end{equation*}
+\item Für die Laufzeit $T(n)$ eines Algorithmus $A$ gelte die Rekursion
+\begin{equation*}
+  T(n) \leq \begin{cases}
+    \max_{1\leq k\leq n}(3T(k-1)+T(n-k))+2\cdot n^2 & \text{für } n > 0 \\
+    1                                               & \text{sonst}
+  \end{cases}
+\end{equation*}
+Bestimmen und beweisen Sie eine möglichst exakte obere Schranke (im $\bigO$-Kalkül) für die Laufzeit von Algorithmus $A$.
+\hint{Raten Sie eine Lösung \& verifizieren Sie diese dann durch vollständige Induktion.}
+\end{exercises}
+
+\begin{exercise}{Mergesort}
+  Sortieren Sie das Array $A = [13,11,5, -1,3,0,42,1]$ durch Anwendung des Algorithmus MERGESORT aus der Vorlesung. Zur Erinnerung finden Sie Teile des zugehörigen Pseudocodes in Algorithmus 1. Geben Sie den Inhalt des Arrays $A$ nach jeder Durchführung der Merge-Operation in Zeile 5 an.
+  \begin{algorithm}[ht]
+    \caption{MERGESORT($A, l, r$)}
+    \KwData{$A = [A[1], \ldots, A[n]]$}
+    \KwResult{$A$ sortiert}
+    \If{$l < r$}{
+      $p \gets \lfloor (l + r)/2 \rfloor$ \\
+      MERGESORT($A, l, p$) \\
+      MERGESORT($A, p + 1, r$) \\
+      MERGE($A, l, p, r$)
+    }
+  \end{algorithm}
+\end{exercise}
+
+\begin{eexercises}{Algorithmenentwurf}{
+    Für ein Array $A[1, \ldots, n]$ von $n \in \mathbb{N}$ ganzen Zahlen nennen wir ein Index-Paar $(i, j)$ verdreht, wenn $i < j$ und $A[i] < A[j]$.
+  }
+  \item Geben Sie ein Array $A$ bestehend aus vier Zahlen und der kleinstmöglichen Anzahl an verdrehten Index-Paaren an. Um wieviele verdrehte Index-Paare handelt es sich genau?
+  \item Geben Sie ein Array $A$ bestehend aus vier Zahlen und der größtmöglichen Anzahl an verdrehten Index-Paaren an. Um wieviele verdrehte Index-Paare handelt es sich genau?
+  \item Geben Sie ein Array $A$ bestehend aus vier Zahlen und exakt drei verdrehten Index-Paaren an.
+  \item Entwerfen Sie einen rekursiven Algorithmus, der bei Eingabe eines Array $A$ von $n$ ganzen Zahlen in Zeit $\mathcal{O}(n \log n)$ die Anzahl an verdrehten Index-Paaren bestimmt. Sie dürfen Pseudocode angeben, müssen es aber nicht. Sollte Ihr Algorithmus auf bekannten Algorithmen aus der Vorlesung basieren, reicht es die notwendigen Änderungen (klar \& deutlich!) zu beschreiben.
+  \item Beweisen Sie, dass Ihr Algorithmus die geforderte Laufzeitschranke einhält.
+\end{eexercises}
+
+\begin{exercises}{Suchbäume}
+\item Wählen Sie sechs unterschiedliche Zahlen mit Werten zwischen 0 und 50. In welcher Reihenfolge müssen Ihre gewählten Zahlen in einen (anfangs leeren) binären Suchbaum eingefügt werden, damit dieser maximal unbalanciert ist? Zeichnen Sie den resultierenden binären Suchbaum.
+\item Wählen Sie sechs (neue) unterschiedliche Zahlen mit Werten zwischen 0 und 50. In welcher Reihenfolge müssen Ihre gewählten Zahlen in einen (anfangs leeren) binären Suchbaum eingefügt werden, damit dieser minimal unbalanciert ist? Zeichnen Sie den resultierenden binären Suchbaum.
+\item Gegeben sei ein AVL-Baum für die Schlüssel $\{17,19,21,23,42,45,47,53,66\}$. Der Zustand der Datenstruktur ist in Abbildung 1 dargestellt. Löschen Sie das Element mit Schlüssel 42 gemäß der Löschoperation für AVL-Bäume aus der Vorlesung. Geben Sie dabei den Zustand der Datenstruktur nach jedem Entfernen eines Knotens und nach jeder Rotation an.
+% TODO: insert avl tree
+\end{exercises}
+
+\begin{eexercises}{Dynamische Programmierung}{
+    Betrachten Sie ein eindimensionales Gitter aus $n$ Feldern nummeriert von 1 bis $n$. Die kleine Ameise Esiema startet auf Feld 1. Befindet sich Esiema auf einem Feld am Rand (Feld 1 oder $n$), so bewegt sie sich im nächsten Schritt mit Wahrscheinlichkeit 1 in die freie Richtung (weg vom Rand). Befindet sich Esiema auf einem anderen Feld, so bewegt sie sich im nächsten Schritt mit Wahrscheinlichkeit 1/2 um ein Feld nach links und mit Wahrscheinlichkeit 1/2 um ein Feld nach rechts.
+  }
+  \item Abbildung 2 zeigt einen Ausschnitt der Tabelle mit den Wahrscheinlichkeiten, dass Esiema nach $i$ Schritten auf Feld $x$ ist. Ergänzen Sie die sechs fehlenden Werte für $x \in \{1,2,\ldots,6\}$ und $i = 5$. Sie können die fehlenden Werte direkt in die Tabelle eintragen oder auf eigenes Papier schreiben.
+  \begin{tabular}{c|cccc ccc}
+    $i \backslash x$ & 1      & 2      & 3      & 4      & 5      & 6      & \ldots \\
+    \hline
+    0                & 1      & 0      & 0      & 0      & 0      & 0      & \ldots \\
+    1                & 0      & 1      & 0      & 0      & 0      & 0      & \ldots \\
+    2                & 1/2    & 0      & 1/2    & 0      & 0      & 0      & \ldots \\
+    3                & 0      & 3/4    & 0      & 1/4    & 0      & 0      & \ldots \\
+    4                & 3/8    & 0      & 1/2    & 0      & 1/8    & 0      & \ldots \\
+    5                &        &        &        &        &        &        & \ldots \\
+    \ldots           & \ldots & \ldots & \ldots & \ldots & \ldots & \ldots & \ldots \\
+  \end{tabular}
+  \item Betrachten Sie ein zweidimensionales Array (Tabelle) $D$ der Größe $(n + 1) \times n$. Ein Eintrag $D[i,x]$ für $i \in \{0,1,\ldots,n\}$ und $x \in \{1,2,\ldots,n\}$ entspricht dabei der Wahrscheinlichkeit, dass Esiema nach $i$ Schritten auf Feld $x$ ist. Entwerfen Sie eine Rekursion zum Berechnen von $D$ und begründen Sie kurz (!) in Worten die Korrektheit der Rekursion.
+  \item Geben Sie einen Algorithmus in Pseudocode an, der mittels dynamischer Programmierung bestimmt, auf welchen Feldern sich Esiema nach $n$ Schritten mit der größten Wahrscheinlichkeit aufhält.
+\end{eexercises}
+
+\begin{eexercises}{Algorithmenentwurf II}{
+    Nach Ihrem Informatik-Studium starten Sie als Comedian durch. Sie sind sehr erfolgreich und haben bald mehr Anfragen als Sie annehmen können. Jede Anfrage besteht aus einer angebotenen Gage (in Euro) und einer Deadline (in Tagen), bis zu der der Auftritt erfolgen muss. Aus zeitlichen Gründen können Sie pro Tag maximal einen Auftritt absolvieren. Sie wollen eine Teilmenge von Anfragen annehmen, die Ihre Einnahmen maximiert. Sie erinnern sich an Ihr Informatik-Studium und entwerfen einen gierigen Algorithmus, der dieses Problem optimal in polynomieller Zeit löst. Als Eingabe erhält Ihr Algorithmus zwei Arrays $G$ und $D$ mit jeweils $n \in \mathbb{N}$ Elementen. Der Eintrag $G[i] > 0$ entspricht der Gage die Sie bei der $i$-ten Anfrage erhalten. Der Eintrag $D[i] > 0$ entspricht der Deadline der $i$-ten Anfrage.
+    \hint{zB. seien ihre aktuellen Anfragen gegeben durch 1. Gage: 100€, Deadline: 2 Tage 2. Gage: 200€, Deadline: 2 Tage 3. Gage: 300€, Deadline: 1 Tag 4. Gage: 50€, Deadline: 1 Tag. Eine optimale Auswahl an Anfragen wären Anfragen 2 und 3 für insgesamt 500€.}
+  }
+  \item Welches Angebot sollte Ihr Algorithmus zuerst akzeptieren und an welchem Tag sollte der zugehörige Auftritt stattfinden? Welches Angebot sollte Ihr Algorithmus als zweites akzeptieren und an welchem Tag sollte der zugehörige Auftritt stattfinden? Begründen Sie diese Wahlen kurz (!) in Worten.
+  \item Beschreiben Sie die allgemeine Vorgehensweise des gierigen Algorithmus kurz in Worten.
+  \item Geben Sie Ihren Algorithmus in Pseudocode an. Der Algorithmus soll die Indizes der auszuwählenden Anfragen sowie die dadurch erzielten Einnahmen ausgeben.
+\end{eexercises}
+
+\newpage\setcounter{section}{20212}\setcounter{subsection}{0}
+\begin{eexercises}{Big-O Notation}{
+    Entscheiden Sie, ob die folgenden Aussagen über Funktionen der Form $N \to R$ wahr oder falsch sind und beweisen bzw. widerlegen Sie diese. Falls Sie bekannte Rechenregeln oder Resultate aus der Vorlesung benutzen, so nennen Sie diese beim Namen bzw. referenzieren Sie diese.
+    \hint{Der Ausdruck $\log n$ bezeichnet den Logarithmus von $n$ zur Basis 2. Der Ausdruck $\ln n$ bezeichnet den Logarithmus von $n$ zur Basis $e$.}
+  }
+  \item $n^2\cdot \ln{n} = o(n^{3/2}\cdot \log{n})$
+  \item $\frac{(2n^2)\cdot \sqrt{n^5}}{n^{3.5}+n^2} = \Omega{0.001\cdot n}$
+  \item $2^n = \Theta(2^{n/2})$
+  \item $\sum_{i=1}^n \log{i} = \bigO(2n\cdot \log{n})$
+\end{eexercises}
+
+\begin{exercises}{Master-Theorem}
+\item Geben Sie eine Funktion $f$ an, so dass auf die Rekursion $T(n) \leq 4 \cdot T(n/2) + f(n)$ keiner der drei Fälle des Master-Theorems angewendet werden kann. Begründen Sie Ihre Antwort!
+\item Entscheiden und begründen Sie, ob die folgende Rekursionsgleichung mithilfe des Mastertheorems lösbar ist oder nicht. Ist das Mastertheorem anwendbar, so lösen Sie die Rekursionsgleichung damit. Ist das Mastertheorem nicht anwendbar, so lösen Sie die Rekursionsgleichung mit der Substitutionsmethode.
+\begin{equation*}
+  T(n) = \begin{cases}
+    9 \cdot T(n/\log_{1/2}(1/8)) + n^3 & \text{für } n > 1 \\
+    1                                  & \text{sonst}
+  \end{cases}
+\end{equation*}
+\hint{Sollten Sie die Substitutionsmethode nutzen, müssen Sie in dieser Teilaufgabe nicht noch zusätzlich einen Induktionsbeweis zur Korrektheit aufführen.}
+\item Sei $T(n)$ die Laufzeit eines gegebenen Algorithmus $A$. Für diese Laufzeit gelte die folgende rekursive obere Schranke:
+\begin{equation*}
+  T(n) \leq \begin{cases}
+    1/3                & \text{für } n \leq 1 \\
+    3 \cdot T(n-2) + 3 & \text{sonst}
+  \end{cases}
+  % T(n) \leq \frac{1}{3}, \text{ für } n \leq 1, 3 \cdot T(n-2) + 3, \text{ sonst}
+\end{equation*}
+\item Bestimmen und beweisen Sie eine möglichst exakte (nicht-rekursive) obere Schranke (im $\bigO$-Kalkül) für die Laufzeit von Algorithmus $A$.
+\hint{Raten Sie eine Lösung der Rekursion und beweisen Sie deren Korrektheit durch vollständige Induktion. Beim Raten der Lösung muss ersichtlich werden, wie Sie zu der geratenen Lösung gekommen sind (z.B. durch Angabe der zugehörigen Rechnung beim Anwenden der Substitutionsmethode).}
+\end{exercises}
+
+\begin{exercise}{Quicksort}
+  Sortieren Sie das Array $A = [13,11,5, -1,3,0,42,1]$ durch Anwendung des Algorithmus QUICKSORT aus der Vorlesung. Zur Erinnerung finden Sie die zugehörigen Pseudocodes als Algorithmen 1 \& 2. Geben Sie den Inhalt des Arrays $A$ nach vollständigen Ausführung des PARTITION-Aufrufs in Zeile 2 von Algorithmus 1 an.
+  \begin{algorithm}[ht]
+    \caption{QUICKSORT($A, l, r$)}
+    \KwData{$A = [A[1], \ldots, A[n]]$}
+    \KwResult{$A$ sortiert}
+    \If{$l < r$}{
+      $p \gets \text{PARTITION}(A, l, r)$ \\
+      QUICKSORT($A, l, p - 1$) \\
+      QUICKSORT($A, p + 1, r$)
+    }
+  \end{algorithm}
+\end{exercise}
+
+\begin{eexercises}{Graphen}{
+    Wir wollen die zuverlässigsten Kommunikationswege zwischen je zwei Computern in einem gegebenen Computer-Netzwerk ermitteln. Dazu sei das Computer-Netzwerk Abbildung 1 zeigt als Beispiel den Graphen zu dem Computer-Netzwerk der (sehr kleinen) Universität Grubmah.
+    % TODO: insert graph
+  }
+  \item Betrachten Sie den Graphen in Abbildung 1. Nennen Sie einen Pfad von g nach d mit der höchsten Zuverlässigkeit \& geben Sie die entsprechende Zuverlässigkeit an. Nennen Sie außerdem einen kreisfreien Pfad von g nach d mit der niedrigsten Zuverlässigkeit und geben Sie die entsprechende Zuverlässigkeit an.
+  \item Entwerfen Sie einen Algorithmus, der einen zuverlässigsten Pfad von einem gegebenen Computer zu einem anderen gegebenen Computer in Laufzeit $\bigO(|V| \cdot \log|V| + |E| \cdot \log|V|)$ findet. Sie dürfen Pseudocode angeben, müssen es aber nicht. Sollte Ihr Algorithmus auf bekannten Algorithmen aus der Vorlesung basieren, reicht es die notwendigen Änderungen (klar und deutlich!) zu beschreiben.
+  \item Analysieren Sie die Laufzeit Ihres Algorithmus.
+\end{eexercises}
+
+\begin{eexercises}{UNION-FIND Datenstruktur}{
+    Wir betrachten die Datenstruktur für disjunkte dynamische Mengen wie in der Vorlesung definiert. Die Grundmenge (das Universum) sei $U = \mathbb{Z}$, also die Menge aller ganzen Zahlen.
+    % TODO: insert visualisation
+  }
+  \item Wählen Sie eine Menge $A$ von $|A| = 8$ unterschiedlichen Zahlen mit Werten zwischen 50 und 50. Geben Sie eine Folge von Aufrufen der Operationen MAKE-SET und UNION an, welche die von Ihnen gewählten Zahlen in drei disjunkte Mengen $A_1, A_2$ und $A_3$ aufteilt, so dass $|A_1| = 3, |A_2| = 4$ und $|A_3| = 1$ gilt.
+  \item Skizzieren Sie die zwei Mengenobjekte für $A_1$ und $A_2$, nachdem die disjunkten Mengen gemäß Ihrer Lösung zu Punkt (a) erzeugt wurden. Eine mögliche Darstellung eines Mengenobjektes ist in Abbildung 2 zu sehen.
+  \item Seien $M := \max A$ und $m := \min A$ jeweils die maximale und minimale der von Ihnen in Punkt (a) gewählten Zahlen. Geben Sie die Rückgabewerte der Aufrufe FIND-SET($M$) und FIND-SET($m$) an, nachdem die disjunkten Mengen gemäß Ihrer Lösung zu Punkt (a) erzeugt wurden.
+  \item Geben Sie zwei verschiedene Aufrufe an, welche die beiden zu $A_1$ und $A_2$ gehörigen Mengenobjekte aus Punkt (a) zu einem neuen Mengenobjekt vereinigen. Geben Sie außerdem für einen der beiden Aufrufe an, in welcher Reihenfolge die Zahlen in der Liste des erzeugten Mengenobjektes gespeichert sind.
+\end{eexercises}
+
+\begin{eexercises}{Dynamische Programmierung}{
+    Früh am Ostersonntag fehlt dem Osterhasen nur noch Hamburg, bevor er endlich in den wohlverdienten Feierabend kann. Leider befindet er sich auf der falschen Seite der Elbe und der Elbtunnel ist gesperrt. Glücklicherweise findet er eine Stelle, an der die beiden Ufer der Elbe über eine Reihe von $n$ Holzpfählen modelliert als Kantengewichten zuverlässig verbunden sind. Die Holzpfähle sind unterschiedlich hoch: der $i$-te Pfahl vom Ufer aus hat Höhe $h_i > 0$. Der Osterhase kann – als geübter Hoch- und Weitspringer – vom $i$-ten Pfahl entweder auf Pfahl $i+1$ oder Pfahl $i+2$ springen. Springt er von Pfahl $i$ nach Pfahl $j \in \{i + 1, i + 2\}$, verliert er leider immer $|h_i - h_j|$ Ostereier. Kurzentschlossen zückt der Osterhase sein Handy, ruft Sie als Experten für Elbüberquerungen auf Holzpfählen an und bittet Sie darum, ihm zu helfen von Pfahl 1 nach Pfahl $n$ zu kommen und dabei möglichst wenige Ostereier zu verlieren.
+  }
+  \item Angenommen, Sie wissen für jeden der ersten vier Pfähle, wie Sie unter dem geringsten Verlust an Ostereiern von Pfahl 1 zu dem jeweiligen Pfahl kommen. Beschreiben Sie in Worten ein rekursives Vorgehen, um mit diesem Wissen unter dem geringsten Verlust an Ostereiern von Pfahl 1 zu Pfahl 5 zu kommen.
+  \item Geben Sie aufbauend auf Ihrer Rekursion aus Punkt 1. eine vollständige mathematische Rekursionsformel für die geringste Anzahl an verlorenen Eiern zum Erreichen von Pfahl $i \in \{1, 2, \ldots, n\}$ an. Begründen Sie kurz in Worten die Korrektheit Ihrer Rekursionsformel.
+  \item Geben Sie einen Algorithmus in Pseudocode an, der miiels dynamischer Programmierung besXmmt, in welcher Reihenfolge der Osterhase auf welche Pfähle springen muss, um die Elbe mit einem möglichst geringen Verlust an Ostereiern zu überqueren.
+\end{eexercises}
+
+\begin{eexercises}{MERGE Algorithmus}{
+    Gegeben seien $n$ jeweils aufsteigend sortierte Arrays $A_1, \ldots, A_n$. Unser Ziel ist es, alle $n$ Arrays durch wiederholte Anwendung des aus der Vorlesung bekannten Merge-Algorithmus zu einem einzigen aufsteigend sortierten Array zusammenzufügen. Im Folgenden gehen wir davon aus, dass Merge zwei aufsteigend sortierte Arrays $L$ und $R$ als Eingabe erhält und ein neues aufsteigend sortiertes Array $A$ mit allen Elementen aus $L$ und $R$ zurück gibt. Abgesehen davon funktioniert Merge wie in der Vorlesung beschrieben.
+  }
+  \item Zur Erzeugung des Arrays $A$ muss Merge jeweils Elemente aus den Eingabearrays $L$ und $R$ miteinander vergleichen. Wie viele solcher Vergleiche führt Merge bei Eingabe zweier Arrays der Längen $l$ und $l'$ durch? Begründen Sie Ihre Antwort.
+  \item Beschreiben Sie einen gierigen Algorithmus, der die $n$ aufsteigend sortierten Eingabearrays $A_1, \ldots, A_n$ zu einem einzigen, aufsteigend sortierten Array zusammen fügt. Ihr Algorithmus darf die gegebenen/erzeugten Arrays nicht direkt verändern sondern muss dazu ausschließlich Merge-Aufrufe verwenden. Dabei soll ihr Algorithmus die Gesamtzahl der Vergleiche in allen Merge-Aufrufen minimieren. Sie dürfen Pseudocode verwenden, müssen es allerdings nicht.
+  \hint{Es dürfen auch nicht benachbarte Arrays zusammengefügt werden.}
+  \item Beweisen Sie, dass Ihr Algorithmus aus Punkt (b) die Gesamtzahl der Vergleiche in allen Merge-Aufrufen minimiert.
+\end{eexercises}
+
+\newpage\setcounter{section}{2022}\setcounter{subsection}{0}
+\begin{exercises}{Algorithmen}
+\item Betrachten Sie folgenden Algorithmus in ihrer aus der Vorlesung bekannten Implementierung. Wählen Sie geeignete Parameter zur Beschreibung der Eingabegröße und nutzen Sie diese, um eine möglichst gute obere Schranke an die asymptotische Laufzeitkomplexität (worst-case) anzugeben.
+\hint{Beispiel PRIM: $n$ Anzahl Knoten, $m$ Anzahl Kanten $\to$ Laufzeit $\mathcal{O}(n \cdot \log^2(n) + m \cdot \log(n))$}
+\begin{itemize}
+  \item QUICKSORT
+  \item COUNTINGSORT
+  \item DIJKSTRA (single-source shortest path)
+  \item FLOYD-WARSHALL (all-pairs shortest path)
+\end{itemize}
+\item Wann ist ein Sortieralgorithmus stabil? Nennen Sie einen stabilen Sortieralgorithmus aus der Vorlesung.
+\item Wie wurden die folgenden Begriffe in der Vorlesung definiert?
+\begin{itemize}
+  \item polynomialzeit-berechenbar
+  \item polynomialzeit-verifizierbar
+\end{itemize}
+\end{exercises}
+
+\begin{exercise}{Heapsort}
+  Das Array $A = [2,3,4,9,6,5]$ soll mit Hilfe des in der Vorlesung vorgestellten HEAPSORT Algorithmus aufsteigend sortiert werden. Zur Erinnerung finden Sie Teile des Pseudocodes in Algorithmen 1 \& 2. Geb
+  \begin{algorithm}[ht]
+    \caption{HEAPSORT($A$)}
+    \KwData{$A = [A[1], \ldots, A[n]]$}
+    \KwResult{$A$ sortiert}
+    BUILDHEAP($A$) \\
+    \For{$i \gets n$ \textbf{downto} 2}{
+      DELETEMAX($A$)
+    }
+  \end{algorithm}
+\end{exercise}
+
+\begin{exercises}{O-Notation}
+\item Ordnen Sie die folgenden Funktionen aufsteigend gemäß ihres asymptotischen Wachstums (ohne Begründung):
+\begin{equation*}
+  n^5,\sqrt{n},n^{1/3},n!,1/100,\sqrt{2^n},n,\log_3(n),n/\log_2{n},16^{\log_2{n}}
+\end{equation*}
+\item Berechnen Sie für die folgenden Funktionen scharfe Schranken in möglichst einfacher Darstellung der $\bigO$- \& $\Omega$-Notation. Ihr Rechenweg muss nachvollziehbar sein. Sie dürfen auf die aus der Vorlesung bekannten Eigenschaften der $\bigO$- \& $\Omega$-Notation zurückgreifen.
+\begin{align*}
+  f(n) = 42\log_2(n) + 23\sqrt{n} + n^{1/16} \\
+  g(n) = n^{3+\cos{\frac{n\pi}{2}}}
+\end{align*}
+\item Beweisen oder widerlegen Sie:\par Für zwei nicht-negative Funktionen $f_1, f_2: \mathbb{N} \to \mathbb{R}$ gilt immer $f_1(n) = \bigO(f_2(n))$ oder $f_1(n) = \Omega(f_2(n))$.
+\end{exercises}
+
+\begin{exercises}{Master-Theorem}
+\item Geben Sie eine Funktion $f$ an, so dass auf die Rekursion
+\begin{equation*}
+  T(n) = \begin{cases}
+    4\cdot T(n/2) + f(n) & \text{für } n > 1 \\
+    1                    & \text{sonst}
+  \end{cases}
+\end{equation*}
+keiner der drei Fälle des Master-Theorems angewendet werden kann. Begründen Sie Ihre Antwort!
+\item Lösen Sie die folgende Rekursion mit Hilfe des Mastertheorems:
+\begin{equation*}
+  T(n) = \begin{cases}
+    3\cdot T(n/9) + n & \text{für } n > 1 \\
+    1                 & \text{sonst}
+  \end{cases}
+\end{equation*}
+\end{exercises}
+
+\begin{eexercises}{Algorithmenanalyse}{
+    Betrachten Sie Algorithmus 3:
+    \begin{algorithm}[ht]
+      \caption{WHOAMI($a, b$)}
+      $n \gets 0$ \\
+      \For{$i \gets a$ \textbf{to} $b$}{
+        $n \gets n + i$ \\
+        \If{$a \mod 2 = 1$}{
+          $a \gets a + 1$
+        }
+        \If{$b \mod 2 = 1$}{
+          $b \gets b - 1$
+        }
+        $m \gets 0$ \\
+        $i \gets a$ \\
+        \While{$i \leq b$}{
+          $m \gets m + i$ \\
+          $i \gets i + 2$
+        }
+      }
+      \Return $n + m$
+    \end{algorithm}
+  }
+  \item Geben Sie den Rückgabewert des Aufrufs WHOAMI(1,6) sowie den Inhalt der Variablen $a, b, n$ \& $m$ am Ende des Algorithmus an.
+  \item Was berechnet Algorithmus 3 für die Eingabe $a, b \in \mathbb{N}$ mit $a < b$? Begründen Sie Ihre Antwort.
+  \item Analysieren Sie die Laufzeit des Algorithmus in Abhängigkeit der Eingaben $a, b \in \mathbb{N}$ mit $a < b$ und begründen Sie ihre Antwort.
+  \item Formulieren Sie eine sinvolle Invariante für den Wert der Variable $m$ zu Beginn eines Durchlaufs der While-Schleife mit dem Zählerwert $i$.
+  \hint{Die Invariante muss geeignet sein, die Korrektheit von Algorithmus zu zeigen. Sie müssen die Korrektheit der Invariante/des Algorithmus nicht beweisen.}
+\end{eexercises}
+
+\begin{exercise}{Graphen}
+  Sei $G = (V, E)$ ein kantengewichteter, ungerichteter Graph und $A \subseteq E$ eine Teilmenge der Kanten eines minimalen Spannbaums (MST) von $G$. Weiter sei $(C, V \setminus C)$ ein mit $A$ verträglicher Schnitt und $e = \{u, v\} \in E$ eine leichte Kante, die $(C, V \setminus C)$ kreuzt.\par
+  Beweisen Sie: $A \cup \{e\}$ ist auch Teilmenge der Kanten eines MST von $G$.
+\end{exercise}
+
+\begin{eexercises}{Dynamische Programmierung}{
+    Sie haben ein sehr langes, sehr schmales Rasenstück der Länge $l \in \mathbb{N}$ zu bewässern. Entlang des Rasenstücks sind $n \in \mathbb{N}$ Rasensprenger an den Positionen $0 \leq p_1 < \ldots < p_n \leq l$ platziert. Der Rasensprenger an Position $p_i$ hat Reichweite $r_i \geq 0$ in beide Richtungen entlang der langen Kante, so dass er den Rasen von Position $p_i - r_i$ bis Position $p_i + r_i$ (auf der gesamten Breite) bewässert. Wenn alle Rasensprenger eingeschaltet sind, wird der gesamte Rasen (von Position 0 bis Position $l$) bewässert. Ihre Aufgabe ist es, so wenig Rasensprenger wie möglich einzuschalten, damit der gesamte Rasen bewässert wird. Die Positionen \& Reichweiten der $n$ Rasensprenger sind als ganzzahlige Arrays $P = \langle p_1, \ldots, p_n \rangle$ und $R = \langle r_1, \ldots, r_n \rangle$ gegeben.
+  }
+  \item Betrachten Sie die Eingabe für ein Rasenstück der Länge $l = 7$ mit $n = 3$ Rasensprengern an den Positionen $P = \langle 1,3,6 \rangle$ und den zugehörigen Reichweiten $R = \langle 4,2,2 \rangle$. Welche Rasensprenger müssen Sie anschalten um den gesamten Rasen mit möglichst wenigen Rasensprengern zu bewässern?
+  \item Betrachten Sie die folgende gierige algorithmische Idee: Schalte zunächst alle Rasensprenger aus. Schalte dann der Reihe nach die Rasensprenger ein, die die insgesamt bewässerte Fläche am meisten vergrößern, bis die gesamte Rasenfläche bewässert ist. Zeigen Sie, dass diese Strategie nicht optimal ist.
+  \item Entwerfen Sie einen Algorithmus mittels dynamischer Programmierung für die Eingaben $l, P \& R$ die minimale Anzahl an notwendigen Rasensprengern in Zeit $\mathcal{O}(n \cdot l)$ zurückgibt ($n = \lvert P \rvert$). Geben Sie dazu zunächst eine geeignete mathematische Rekursionsgleichung an \& entwickeln Sie darauf aufbauend einen iterativen Algorithmus in Pseudocode.
+  \hint{Bemerkung zu möglichem Ansatz für die Rekursion: Unterscheiden Sie die beiden Fälle, ob die optimale Lösung den letzten Rasensprenger einschaltet oder nicht.}
+\end{eexercises}
 
 \end{document}

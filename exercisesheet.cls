@@ -11,7 +11,7 @@
 \RequirePackage{hyperref, multicol, environ}
 \RequirePackage{amsmath, amssymb}
 \RequirePackage{tikz}
-\RequirePackage[ruled]{algorithm2e}
+\RequirePackage[longend,ruled,vlined]{algorithm2e}
 
 % ---------------------------------------------------------------------
 % Document setup
