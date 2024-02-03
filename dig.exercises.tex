@@ -137,12 +137,14 @@
   Stellt das Löschen von personenbezogenen Daten eine Verarbeitung dar? Begründen Sie anhand der DSGVO.
 
   \begin{solution}
-    Löschen explizit erwähnt als Verarbeitung (Art. 4 2. DSGVO).
+    Löschen explizit erwähnt als Verarbeitung (Art. 4 2. DSGVO). Allerdings ist dann keine Identifizierung nötig (Art. 11 DSGVO), somit entfallen viele Pflichten.
   \end{solution}
 \end{exercise}
 
-\begin{exercise}{Datenminimierung}
-  Bewerten Sie folgende Aussage zur DSGVO: "Der Grundsatz der Datenminimierung verbietet Verarbeitungstätigkeiten, bei denen personenbezogene Daten in großem Umfang erforderlich sind." Ist diese Aussage korrekt? Begründen Sie anhand der DSGVO.
+\begin{exercise}{Datenminimierung}\label{ex:datenminimierung}
+  Bewerten Sie folgende Aussage zur DSGVO:
+  \begin{quote}"Der Grundsatz der Datenminimierung verbietet Verarbeitungstätigkeiten, bei denen personenbezogene Daten in großem Umfang erforderlich sind."\end{quote}
+  Ist diese Aussage korrekt? Begründen Sie anhand der DSGVO.
 
   \begin{solution}
     Nicht korrekt, Datenminimierung erfordert lediglich Zweckbindung, verbietet Verarbeitung großer Datenmengen nicht explizit (Art. 5 I c DSGVO).
@@ -254,7 +256,7 @@
   \item Der EuGH hat die Safe Harbour-Entscheidung der EU-Kommission annulliert, weil die USA keine ausreichenden Datenschutzstandards gewährleisten (insbesondere durch den Patriot Act). Safe Harbour wurde durch das (inzwischen ebenfalls gekippte) Privacy Shield ersetzt.
 \end{solutions}
 
-\begin{exercise}{Datenschutzerklärung}
+\begin{exercise}{Datenschutzerklärung}\label{ex:datenschutzerklaerung}
   Sie haben folgende Datenschutzerklärung einer Firma vorliegen. Die Firma bietet eine Reihe von Apps für Handys an. Bei einer Überprüfung der Datenschutzerklärung fallen Ihnen Punkte auf, die unter Berufung auf die DSGVO anfechtbar sind.
 
   \begin{quote}
@@ -352,7 +354,7 @@
     Sie haben die Aufgabe, zu prüfen, ob die Datenverarbeitung einer Webseite der DSGVO zuwiderläuft.
   }
   \item Ordnen Sie die folgenden 3 Begriffe nach der Reihenfolge Ihres Vorgehens bei der Prüfung: Anwendungsbereich, Informationspflichten, Rechtmäßigkeit der Verarbeitung. Nennen Sie die dazugehörigen Artikel \& begründen Sie die Reihenfolge.
-  \item Ordnen Sie die folgenden 6 Phrasen den obigen Schritten zu: Ausübung ausschließlich persönlicher Tätigkeiten, Direkterhebung, Einwilligung, klare \& einfache Sprache, Marktortprinzip, Vertragserfüllung. Nennen Sie jeweils eine möglichst präzise dazugehörige Gesetzesstelle.
+  \item Ordnen Sie die folgenden 6 Phasen den obigen Schritten zu: Ausübung ausschließlich persönlicher Tätigkeiten, Direkterhebung, Einwilligung, klare \& einfache Sprache, Marktortprinzip, Vertragserfüllung. Nennen Sie jeweils eine möglichst präzise dazugehörige Gesetzesstelle.
 \end{eexercises}
 
 \begin{solutions}
@@ -406,42 +408,66 @@
 \end{solutions}
 
 \exercisesheet[20212]{Zweittermin}
-\begin{eexercises}[2]{Datenschutzerklärung}{
+\begin{exercise}{Datenschutzerklärung}
+  siehe \ref{ex:datenschutzerklaerung}
+\end{exercise}
+
+\begin{eexercises}[2]{DSGVO}{
     Bewerten Sie die folgenden Aussagen zur DSGVO. Sind diese korrekt? Begründen Sie jeweils anhand der DSGVO.
   }
-  \item "Der Grundsatz der Datenminimierung verbietet Verarbeitungstätigkeiten, bei denen personenbezogene Daten in großem Umfang erforderlich sind."
+  \item siehe \ref{ex:datenminimierung}
   \item "Das Anonymisieren von personenbezogenen Daten bedarf einer Rechtsgrundlage nach Art. 6."
 \end{eexercises}
 
+\begin{solutions}
+  \item Nicht korrekt, Datenminimierung erfordert lediglich Zweckbindung, verbietet Verarbeitung großer Datenmengen nicht explizit (Art. 5 I c DSGVO).
+  \item Nicht korrekt, da bei der Anonymisierung keine Identifizierung mehr erforderlich ist, muss keine Einwilligung eingeholt werden (Art. 11 DSGVO).
+\end{solutions}
+
 \begin{eexercises}{Betroffenenrechte}{
-    Patient P braucht eine lebensnotwendige Blutspende, hat aber eine äußerst seltene Blutgruppe. Ärzen A erinnert sich, dass sie auch Ps 14-jährigen Cousin C behandelt hat \& testet dessen Blutprobe auf Übereinsemmung mit P.
+    Patient P braucht eine lebensnotwendige Blutspende, hat aber eine äußerst seltene Blutgruppe. Ärztin A erinnert sich, dass sie auch Ps 14-jährigen Cousin C behandelt hat und testet dessen Blutprobe auf Übereinstimmung mit P.
   }
-  \item Erläutern Sie, ob die Ärzten nach der DSGVO dazu eine Einwilligung von C häYe einholen müssen.
+  \item Erläutern Sie, ob die Ärzten nach der DSGVO dazu eine Einwilligung von C hätte einholen müssen.
   \item Cousin C möchte seine Patientendaten nun von As Praxis an ein Ahnenforschungsinstitut übertragen lassen. Nennen \& erläutern Sie zwei Gründe, warum C eine Datenweitergabe nicht nach Art. 20 einfordern kann.
   \item Gibt es (auch) andere Betroffenenrechte, mit denen C seine Daten erhalten kann?
   \item Das Ahnenforschungsinstitut lässt sich von C eine Einwilligung für die Datenverarbeitung geben. Was muss das Institut – außer Art. 7 – beachten, damit in Cs Fall eine Einwilligung wirksam ist?
 \end{eexercises}
+
+\begin{solutions}
+  \item Nein. Blutgruppe ist besondere Kategorie personenbezogener Daten (Gesundheitsdaten), aber lebenswichtige Interessen von P (Art. 9 II c DSGVO).
+  \item Art. 20 Ia: Daten mit Einwilligung (Art. 6 Ia bzw. Art. 9 IIa) oder Vertrag (Art. 6 Ib) verarbeitet.\xmark\par
+  Art. 20 Ib: Daten automatisiert verarbeitet. \xmark
+  \item Art. 15: Recht auf Auskunft
+  \item C ist Kind (<16 Jahre), daher Einwilligung nur von Erziehungsberechtigten wirksam (Art. 8 I DSGVO).
+\end{solutions}
 
 \exercisesheet[2022]{Ersttermin}
 \begin{eexercises}{DSGVO}{
     Bewerten Sie die folgenden Aussagen zur DSGVO. Sind diese korrekt? Begründen Sie jeweils anhand der DSGVO.
   }
   \item "Personenbezogene Daten dürfen nicht ohne Einwilligung verarbeitet werden."
-  \item "Der Grundsatz der Datenminimierung verbietet Verarbeitungstätigkeiten, für die personenbezogene Daten in großem Umfang erforderlich sind."
+  \item siehe \ref{ex:datenminimierung}
   \item "Verantwortliche müssen keine Daten zur Identifizierung einer Person (beispielsweise bei Anfragen nach Art. 15) erheben, wenn diese ansonsten nicht erforderlich wären."
 \end{eexercises}
+
+\begin{solutions}
+  \item Nicht korrekt, es gibt auch andere Rechtsgrundlagen (Art. 6 DSGVO).
+  \item Nicht korrekt, Datenminimierung erfordert lediglich Zweckbindung, verbietet Verarbeitung großer Datenmengen nicht explizit (Art. 5 I c DSGVO).
+  \item Nicht korrekt, sonstige Erfordernis ist bei Auskunftsanfragen irrelevant, Verantwortliche müssen Identifizierung (soweit möglich) durchführen (Art. 11 II DSGVO).
+\end{solutions}
+
 
 \begin{exercise}{DSGVO Konformität}
   Sie beraten einen Hersteller von Software für virtuelle Klassenzimmer im Hinblick auf das Datenschutzrecht. H betreibt die Software nicht selbst, sondern verkauft sie an Schulen \& Bildungseinrichtungen zum Betrieb vor Ort. Bezüglich einer neuen Funktionalität in der kürzlich veröffentlichten Version möchte H Ihre Einschätzung, ob diese aus Sicht der DSGVO problematisch sein könnte:
   \begin{quote}
-    Das virtuelle Klassenzimmer protokolliert automatisch die aktive Teilnahme der Schüler am Unterricht (zB. Anzahl der gestellten Fragen pro Schüler) \& gibt den Lehrenden darüber Bericht.
+    Das virtuelle Klassenzimmer protokolliert automatisch die aktive Teilnahme der Schüler am Unterricht (zB. Anzahl der gestellten Fragen pro Schüler) und gibt den Lehrenden darüber Bericht.
   \end{quote}
 
   \begin{enumerate}
-    \item H meint, die Lehrenden könnten ja auch vorher schon alle Aktivitäten manuell erfassen \& Notizen über Schüler machen. Erläutern Sie, worin für die Anwendbarkeit der DSGVO rechtlich der Unterschied zwischen der manuellen Notiz \& Protokollierung durch die Software besteht.
+    \item H meint, die Lehrenden könnten ja auch vorher schon alle Aktivitäten manuell erfassen und Notizen über Schüler machen. Erläutern Sie, worin für die Anwendbarkeit der DSGVO rechtlich der Unterschied zwischen der manuellen Notiz und Protokollierung durch die Software besteht.
   \end{enumerate}
 
-  Die neue Funktionalität berechnet zudem pro Schüler einen Score-Wert für die Mitarbeit. Darin ließen Faktoren wie die individuelle Sprechzeit \& die Häufigkeit verschiedener Aktionen mit ein.
+  Die neue Funktionalität berechnet zudem pro Schüler einen Score-Wert für die Mitarbeit. Darin ließen Faktoren wie die individuelle Sprechzeit und die Häufigkeit verschiedener Aktionen mit ein.
 
   \begin{enumerate}
     \setcounter{enumi}{1}
@@ -450,7 +476,13 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{eexercises}{Datenschutzbeauftragter}{
+\begin{solutions}
+  \item Der Unterschied liegt in der Automatisierung der Verarbeitung. Die DSGVO sieht besondere Anforderungen an die Verarbeitung personenbezogener Daten durch automatisierte Mittel vor (Art. 22 DSGVO).
+  \item Unzulässig, wenn keine explizite Einwilligung der Schüler vorliegt (Art. 6 I a DSGVO).
+  \item Ja, da H als Hersteller der Software Verantwortlicher ist (entscheidet über Verarbeitung) (Art. 4 7 DSGVO).
+\end{solutions}
+
+\begin{eexercises}{Identifizierung bei Auskunftsanfragen}{
     Sie sind Datenschutzbeauftragter bei einem Online-Versandhändler. Per E-Mail erreicht Sie eine Auskunftsanfrage nach Art. 15 DSGVO. Der Absender ist namentlich als Kunde bekannt, jedoch ist im Kundenkonto eine andere E-Mail-Adresse hinterlegt. Zusätzlich hat das Kundenkonto die Wohnungsanschrift des Kunden als Rechnungsadresse gespeichert.
     \hint{Es handelt sich um personenbezogene Daten}
   }
@@ -459,10 +491,26 @@
   \item Sie fordern zur Identitätsbestätigung vom Anfragenden eine Kopie eines amtlichen Ausweisdokumentes an, das dessen Wohnanschrift ausweist. Dürfen Sie das? Gehen Sie auf die Erforderlichkeit eines amtlichen Dokumentes ein.
 \end{eexercises}
 
+\begin{solutions}
+  \item Ja, Identität nicht eindeutig geklärt $\to$ Verstoß gegen Art. 12 I DSGVO.
+  \item Nein, Identität nicht eindeutig geklärt $\to$ Verstoß gegen Art. 12 IV DSGVO, Unterrichtung der betroffenen Person.
+  \item Ja, Identität nicht eindeutig geklärt $\to$ Anforderung von Identitätsnachweisen zulässig (Art. 12 VI DSGVO).
+\end{solutions}
+
 \begin{exercise}{Privacy by Design: Strategien}
   Aus der Vorlesung kennen Sie fünf technische Strategien zum Schutz personenbezogener Daten: Aggregate, Hide, Minimise, Perturbate \& Separate.
   Erläutern Sie jede dieser Strategien knapp \& geben Sie jeweils zusätzlich ein konkretes Beispiel.
 \end{exercise}
+
+\begin{solution}
+  \begin{itemize}
+    \item Aggregate: Zusammenfassen von Daten, um Rückschlüsse auf Einzelpersonen zu erschweren. Beispiel: Zugriffsdaten nach Ländern zusammenfassen.
+    \item Hide: Anonymisieren von Daten, um Rückschlüsse auf Einzelpersonen zu erschweren. Beispiel: Profildaten anonymisieren.
+    \item Minimise: Reduzieren von Daten, um Rückschlüsse auf Einzelpersonen zu erschweren. Beispiel: Ungenutzte Nutzungsdaten nach 30 Tagen löschen.
+    \item Perturbate: Verfälschen von Daten, um Rückschlüsse auf Einzelpersonen zu erschweren. Beispiel: Zufällige "tote Profile" in Datenbank.
+    \item Separate: Trennen von Daten, um Rückschlüsse auf Einzelpersonen zu erschweren. Beispiel: Trennung von Posts \& Profilinformationen.
+  \end{itemize}
+\end{solution}
 
 \exercisesheet[2023]{Ersttermin}
 \begin{eexercises}{Räumlicher Zuständigkeitsbereich}{
@@ -472,18 +520,58 @@
   \item K will außerdem eine Anfrage an L senden, muss L auf diese Anfrage antworten? Gehen Sie hierauf \& auf die verschiedenen möglichen Verhältnisformen zwischen L \& dem Online-Shop ein \& nennen die entsprechenden Artikel.
 \end{eexercises}
 
+\begin{solutions}
+  \item Die Antwort muss die genutzten Daten, die Verarbeitungszwecke, die Empfänger der Daten, die Speicherdauer, die Rechte des Betroffenen und die Quelle der Daten enthalten (Art. 15 I DSGVO).
+  \item L muss nicht auf die Anfrage antworten, wenn es sich um eine Auftragsdatenverarbeitung handelt (Art. 28 DSGVO). Ansonsten müsste vertraglich die Zuständigkeit für die Beantwortung geregelt sein (Art. 26 DSGVO).
+\end{solutions}
+
 \begin{exercises}{Datenschutzverletzungen}
-\item In welchen Fällen muss ein Verantwortlicher im Falle einer Datenschutzverletzung diese melden?
-\item Drei Beispiele einer Datenschutzverletzung gegeben. Begründen Sie nach der Definition in a), ob diese meldungspflichtig sind.
+\item\label{ex:datenschutzverletzungen:meldungspflicht} In welchen Fällen muss ein Verantwortlicher im Falle einer Datenschutzverletzung diese melden?
+\item Begründen Sie nach der Definition in \ref{ex:datenschutzverletzungen:meldungspflicht}, ob die nachfolgenden Datenschutzverletzungen meldungspflichtig sind.\par
+Ein Mitarbeiter des Online-Shops hat Zugriff auf die Kundendatenbank und \ldots
+\begin{itemize}
+  \item verkauft die Daten an Dritte.
+  \item löscht alle Daten.
+  \item liest die Daten von einem verstorbenen Kunden.
+\end{itemize}
 \item Was für Präventivmaßnahmen können getroffen werden um Datenschutzverletzungen vorzubeugen? Nennen Sie zwei.
 \item Was für Maßnahmen müssen nach einer Datenschutzverletzung durchgeführt werden? Nennen Sie zwei.
 \end{exercises}
 
+\begin{solutions}
+  \item Bei einer Datenschutzverletzung, die voraussichtlich ein hohes Risiko für die Rechte und Freiheiten natürlicher Personen zur Folge hat (Art. 33 I DSGVO).
+  \item
+  \begin{itemize}
+    \item Ja, da die Daten an Dritte verkauft wurden.
+    \item Ja, da die Daten gelöscht wurden.
+    \item Nein, da die DSGVO nicht für verstorbene Personen gilt (Art. 1 I DSGVO i.V.m. §1 BGB).
+  \end{itemize}
+  \item Schulungen für Mitarbeiter, um Datenschutzverletzungen zu vermeiden, sowie die Implementierung von technischen Maßnahmen (z.B. Zugriffsbeschränkungen).
+  \item Meldung an zuständige Behörden (Art. 33 I DSGVO) und Information der betroffenen Personen (Art. 34 I DSGVO).
+\end{solutions}
+
 \begin{eexercises}{DSGVO-Konformität}{
     Eine Website soll auf Konformität zur DSGVO überprüft werden.
   }
-  \item Sortieren Sie die folgenden Punkte nach einer sinnvollen Reihenfolge der Überprüfung \& begründen Sie diese: Informationspflichten, Anwendungsbereich, Rechtmäßigkeit der Datenverarbeitung
+  \item Sortieren Sie die folgenden Punkte nach einer sinnvollen Reihenfolge der Überprüfung und begründen Sie diese: Informationspflichten, Anwendungsbereich, Rechtmäßigkeit der Datenverarbeitung
   \item Ordnen Sie die folgenden fünf Begriffe den unterschiedlichen Aspekten aus 1. zu und nennen möglichst genau die dazugehörige Stelle der DSGVO: berechtigtes Interesse, Kopplungsverbot, persönliche Tätigkeiten, einfache \& verständliche Sprache, Erhebung aus dritter Quelle
 \end{eexercises}
+
+\begin{solutions}
+  \item
+  \begin{itemize}
+    \item Anwendungsbereich: Zuerst muss geklärt werden, ob die DSGVO überhaupt anwendbar ist.
+    \item Rechtmäßigkeit der Datenverarbeitung: Anschließend muss geprüft werden, ob die Datenverarbeitung rechtmäßig ist.
+    \item Informationspflichten: Zuletzt müssen die Informationspflichten geprüft werden.
+  \end{itemize}
+  \item
+  \begin{itemize}
+    \item Anwendungsbereich: persönliche Tätigkeiten (Art. 2 II c DSGVO)
+    \item Rechtmäßigkeit der Datenverarbeitung: berechtigtes Interesse (Art. 6 I f DSGVO)
+    \item Informationspflichten: einfache \& verständliche Sprache (Art. 12 I DSGVO)
+    \item Rechtmäßigkeit der Datenverarbeitung: Kopplungsverbot (Art. 7 IV DSGVO)
+    \item Informationspflichten: Erhebung aus dritter Quelle (Art. 14 DSGVO)
+  \end{itemize}
+\end{solutions}
 
 \end{document}
