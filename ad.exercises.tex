@@ -3,7 +3,7 @@
 \subject{Algorithmen \& Datenstrukturen}
 \semester{Wintersemester 2023}
 \author{Leopold Lemmermann}
-% \withsolutions
+\withsolutions
 
 \begin{document}
 
@@ -13,9 +13,26 @@
 \begin{eexercises}{Vollständige Induktion}{
     Beweisen Sie die folgenden Aussagen mit vollständiger Induktion:
   }
-  \item $\sum_{k=1}^{n}{k} = \frac{n(n+1)}{2}\forall n \in \mathbb{Z}_{\geq 0}$.
-  \item $\sum_{k=0}^{n-1} = 2^n-1\forall n \in \mathbb{Z}_{\geq 0}$.
+  \item $\sum_{k=1}^{n}{k} = \frac{n(n+1)}{2}\forall n \in \mathbb{Z}_{\ge 0}$.
+  \item $\sum_{k=0}^{n-1} 2^k = 2^n-1\forall n \in \mathbb{Z}_{\ge 0}$.
 \end{eexercises}
+
+\begin{solutions}
+  \item \induction{
+    \sum_{k=1}^{0}{k} = 0 = \frac{0(0+1)}{2}
+  }{
+    \sum_{k=1}^{n}{k} = \frac{n(n+1)}{2}
+  }{
+    \sum_{k=1}^{n+1}{k} = \sum_{k=1}^{n}{k} + (n+1) = \frac{n(n+1)}{2} + (n+1) = \frac{n(n+1)+2(n+1)}{2} = \frac{(n+1)(n+2)}{2}
+  }
+  \item \induction{
+    \sum_{k=0}^{0-1} 2^k = 0 = 2^0-1
+  }{
+    \sum_{k=0}^{n-1} 2^k = 2^n-1
+  }{
+    \sum_{k=0}^{n} 2^k = 2^n-1 + 2^n = 2^{n+1}-1
+  }
+\end{solutions}
 
 \begin{exercise}{Algorithmenanalyse}
   Was berechnet der Algorithmus Alg? Finden Sie einen Aufruf für den der Algorithmus besonders langsam ist. Wie verhält sich der Algorithmus bei Eingabe von rationalen oder reelen Zahlen?
@@ -27,10 +44,45 @@
     \If{$a<b$}{\Return{$\text{Alg}(b-a,a)$}}
     \If{$b<a$}{\Return{$\text{Alg}(a-b,b)$}}
   \end{algorithm}
+
+  \begin{solution}
+    Der Algorithmus berechnet den größten gemeinsamen Teiler von $a$ und $b$. Der Algorithmus ist besonders langsam, wenn $a$ und $b$ sehr unterschiedlich groß sind. Da u. U. kein gemeinsamer Teiler existiert, kann es sein, dass der Algorithmus nicht terminiert.
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{Algorithmenentwurf}
   Entwerfen Sie einen Algorithmus, der für gegebene ganze Zahlen $a_1, \ldots, a_n \in \mathbb{Z}$ das Minimum und das Maximum bestimmt. Versuchen Sie dabei möglichst wenige Vergleiche zu verwenden ($\leq 1,5n$ sind möglich).
+
+  \begin{solution}
+    \begin{algorithm}[ht]
+      \caption{MinMax mit Pairwise Comparison (Kompakte Version)}
+      \KwData{$a_1, \ldots, a_n \in \mathbb{Z}$}
+      \KwResult{$\min, \max \in \mathbb{Z}$}
+
+      $\min \gets a_1$
+      $\max \gets a_1$
+
+      \For{$i \gets 2$ to $n$ in Schritten von 2}{
+        \If{$i = n$}{
+          \If{$a_i < \min$}{$\min \gets a_i$}
+          \If{$a_i > \max$}{$\max \gets a_i$}
+        }
+        \Else{
+          \If{$a_i < a_{i+1}$}{
+            $\min' \gets a_i$;
+            $\max' \gets a_{i+1}$
+          }
+          \Else{
+            $\min' \gets a_{i+1}$;
+            $\max' \gets a_i$
+          }
+
+          \If{$\min' < \min$}{$\min \gets \min'$}
+          \If{$\max' > \max$}{$\max \gets \max'$}
+        }
+      }
+    \end{algorithm}
+  \end{solution}
 \end{exercise}
 
 

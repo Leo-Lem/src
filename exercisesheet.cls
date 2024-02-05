@@ -162,11 +162,17 @@
   \fi
 }
 
-\newcommand{\bigO}{
-  \ensuremath{\mathcal{O}}
+\newcommand{\induction}[3]{
+  \textbf{IA} ($n\leftarrow 0$):\quad$#1$\\
+  \textbf{IV} ($n\leftarrow n$):\quad$#2$\\
+  \textbf{IS} ($n\leftarrow n+1$): \begin{align*}\ensuremath{#3}\end{align*}
 }
 
 % ---------------------------------------------------------------------
 % Custom symbols
 % ---------------------------------------------------------------------
 \newcommand\xmark{$\times$}
+
+\newcommand{\bigO}{
+  \ensuremath{\mathcal{O}}
+}
