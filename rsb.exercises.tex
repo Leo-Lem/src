@@ -367,7 +367,7 @@ gearbeitet wird.
       LOAD rX, M    & rX = MEM[M]  \\
       LOADI rX, IMM & rX = IMM     \\
       STORE M, rX   & MEM[M] = rX  \\
-      COPY rx, rY   & rX = rY      \\
+      COPY rX, rY   & rX = rY      \\
       INCR rX       & rX = rX + 1  \\
       ADD rX, rY    & rX = rX + rY \\
       SUB rX, rY    & rX = rX - rY \\
@@ -378,9 +378,9 @@ gearbeitet wird.
   \end{multicols}
 
   \begin{solution}
-    1-Adress Maschine:\par LOADI 3; STORE B; LOAD A; SUB B; MUL A; ADDI 1; MUL A; ADDI 1; STORE W\newline
-    2-Adress Maschine:\par LOADI r0, 3; LOAD r1, A; COPY r1, r2; SUB r2, r0; MUL r2, r1; INCR r2; MUL r2, r1; INCR r2; STORE W, r2\newline
-    \textit{Bonus:} Kann (wie oben) zB. mit dem Horner-Schema erzielt werden (9 Operationen)
+    1-Adress Maschine:\par LOAD A; ADDI -3; MUL A; ADDI 1; MUL A; ADDI 1; STORE W\newline
+    2-Adress Maschine:\par LOADI r0, 3; LOAD r1, A; COPY r2, r1; SUB r2, r0; MUL r2, r1; INCR r2; MUL r2, r1; INCR r2; STORE W, r2\newline
+    \textit{Bonus:} Kann (wie oben) zB. mit dem Horner-Schema erzielt werden (7 bzw. 9 Operationen)
   \end{solution}
 \end{exercise}
 
@@ -539,7 +539,7 @@ gearbeitet wird.
   \end{tabular}\par
   Disjunktive Normalform: $\bar{x_1}\lor\bar{x_4}\bar{x_3}$
   \item Konjunktive Minimalform: $(\bar{x_3}\lor\bar{x_1})\land(\bar{x_4}\lor\bar{x_1})$
-  \item Reed-Muller-Form: zB. $x_4x_1\oplus x_3x_1\oplus x_4x_3x_1$
+  \item Reed-Muller-Form: zB. $1\oplus x_4x_1\oplus x_3x_1\oplus x_4x_3x_1$
 \end{solutions}
 
 \begin{exercise}{ROBDDs}
@@ -855,7 +855,7 @@ gearbeitet wird.
           \item DRAM Speicher ist flächeneffizienter als SRAM. \psolution{\checkmark}
           \item Bei RISC-Architekturen wird der Cache direkt vom Assemblercode angesprochen. \psolution{\xmark}
           \item Rekursive Funktionsaufrufe setzen einen Stack voraus. \psolution{\checkmark}
-          \item Durch den x86-Assembler werden Schleifen immer in bedingte Sprünge übersetzt. \psolution{\xmark}
+          \item Durch den x86-Assembler werden Schleifen immer in bedingte Sprünge übersetzt. \psolution{\checkmark}
           \item Beim Symmetric Multiprocessing muss der Programmierer für die Datenkonsistenz sorgen, wenn mehrere Prozesse über den Speicher kommunizieren. \psolution{\checkmark}
         \end{itemize}
 \end{enumerate}
