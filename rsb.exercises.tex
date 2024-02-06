@@ -5,7 +5,7 @@
 \subject{Rechnerstrukturen \& Betriebssysteme}
 \semester{Wintersemester 2023}
 \author{Leopold Lemmermann}
-\withsolutions
+% \withsolutions
 
 \begin{document}
 \createtitle
@@ -340,7 +340,7 @@ gearbeitet wird.
   }
 \end{solutions}
 
-\begin{exercise}{Mikroprogrammierung}
+\begin{exercise}{Assemblerprogrammierung}
   Schreiben Sie für eine 1-Address Maschine \& eine 2-Address Maschine jeweils ein Programm zur Berechnung des Ausdrucks:\par
   \begin{center}$W = A^3 - 3A^2 + A + 1$\end{center}
   $W$\&$A$ sind dabei als Speicheradressen der Operanden zu interpretieren. Der Wert an der Adresse $A$ soll vom Programm nicht modifiziert werden. Falls Sie temporäre Variablen benötigen, können Sie die Speicheradressen $B, C, ..., V$ benutzen. Dabei bedeutet $M$ die jeweilige Speicheradresse, $IMM$ einen Direktwert (immediate) \& $rX$ bzw. $rY$ stehen für eines von 16 Universalregistern ($r0, ..., r15$).\\
@@ -642,7 +642,7 @@ gearbeitet wird.
   \item $\lfloor\frac{d_{min}-1}{2}\rfloor=1$ Fehler
 \end{solutions}
 
-\begin{exercise}{Mikroprogrammierung}
+\begin{exercise}{Assemblerprogrammierung}
   Schreiben Sie für eine Stack- \& eine 3-Adress-Maschine mit Load-Store Befehlssatz, jeweils ein Programm zur Berechnung des folgenden Ausdrucks:\points[8]\par
   \begin{center}$W = A + B - C^2$\end{center}
   $W, A, B$ und $C$ sind dabei als Speicheradressen der Operanden zu interpretieren. Die Werte an den Adressen $A, B$ und $C$ sollen vom Programm nicht modifiziert werden. Falls Sie temporäre Variablen benötigen, können Sie die Speicheradressen $D, E, ..., V$ benutzen. Dabei bedeutet $M$ jeweils eine Speicheradresse, $TOS$ steht für "Top of Stack" und $rX, rY, rZ$ bezeichnen je eines von 16 Universalregistern ($r0, ..., r15$) der 3-Adress-Maschine.
