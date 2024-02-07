@@ -55,7 +55,7 @@
 
   \begin{solution}
     \begin{algorithm}[ht]
-      \caption{MinMax mit Pairwise Comparison (Kompakte Version)}
+      \caption{MinMax mit Pairwise Comparison}
       \KwData{$a_1, \ldots, a_n \in \mathbb{Z}$}
       \KwResult{$\min, \max \in \mathbb{Z}$}
 
@@ -91,13 +91,24 @@
 \begin{eexercises}{Big-O Notation}{
     Beweisen oder widerlegen Sie die folgenden Aussagen:}
   \item $2n = \bigO(n)$
+  \item $\frac{1}{n} = \bigO(1)$
+  \item $n = \bigO(1)$
   \item $n^2 = \bigO(n)$
   \item $n \log n = \bigO(n^2)$
   \item $n^2 + n = \bigO(n^2)$
 \end{eexercises}
 
+\begin{solutions}
+  \item Gilt für $c = 2$ und $n_0 = 1$.
+  \item Gilt für $c = 1$ und $n_0 = 1$.
+  \item Da $\lim_{n\to\infty} \frac{n}{1} = \infty \not\le c$ ist $n \neq \bigO(1)$.
+  \item Da $\lim_{n\to\infty} \frac{n^2}{n} = \infty \not\le c$ ist $n^2 \neq \bigO(n)$.
+  \item Gilt für $c = 1$ und $n_0 = 1$.
+  \item Gilt für $c = 2$ und $n_0 = 1$.
+\end{solutions}
+
 \begin{exercise}{Algorithmus BALLSELECTION}
-  Betrachten Sie den folgenden, umgangssprachlich formulierten Algorithmus. Gegeben sei eine Urne mit einer geraden Anzahl $n = 2k - 1$ weißer Kugeln und einer beliebigen Anzahl $m \geq 1$ schwarzer Kugeln.\par
+  Betrachten Sie den folgenden, umgangssprachlich formulierten Algorithmus. Gegeben sei eine Urne mit einer geraden Anzahl $n = 2k \ge 1$ weißer Kugeln und einer beliebigen Anzahl $m \geq 1$ schwarzer Kugeln.\par
   \begin{algorithm}[ht]
     \caption{BALLSELECTION}
     \While{wenigstens zwei Kugeln in der Urne sind}{
@@ -111,24 +122,61 @@
     }
   \end{algorithm}
   \noindent Beweisen Sie, dass die letzte Kugel in der Urne schwarz ist. Geben Sie dazu eine geeignete Schleifeninvariante an.
+
+  \begin{solution}
+    Schleifeninvariante: $n$ ist gerade. Terminationsszenarien:
+    \begin{itemize}
+      \item Zwei weisse Kugeln in der Urne: Beide werden gezogen, eine schwarze hineingelegt und die Schleife terminiert.\par $\hookrightarrow$ Die letzte Kugel ist schwarz.
+      \item Es sind nur noch schwarze Kugeln in der Urne $\to$ Die letzte Kugel ist schwarz, da keine weisse Kugel mehr hinzugefügt wird.
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 
 \begin{eexercises}{Eigenschaften der Big-O Notation}{
-    Sei F die Menge der Funktionen $\mathbb{N} \rightarrow \mathbb{R}_{>0}$ und seien $f, g, h \in F$.
-    Hierbei sind $\cdot, +, \max : F \times F \rightarrow F$ punktweise aufzufassen, also ist zum Beispiel $(e \cdot g)$ die durch $(e \cdot g)(n) = e(n) \cdot g(n)$ definierte Funktion.
-    Beweisen oder widerlegen Sie die folgenden Aussagen:
+    Sei F die Menge der Funktionen $\mathbb{N} \rightarrow \mathbb{R}_{>0}$ und seien $e, f, g, h \in F$. Beweisen oder widerlegen Sie die folgenden Aussagen:
   }
   \item Aus $e = \bigO(f)$ und $g = \bigO(h)$ folgt $(e \cdot g) = \bigO(f \cdot h)$.
   \item Aus $e = \bigO(f)$ und $g = \bigO(h)$ folgt $(e + g) = \bigO(f + h)$.
   \item Aus $e = \bigO(f)$ und $g = \bigO(h)$ folgt $(e + g) = \bigO(\max(f,h))$.
 \end{eexercises}
+\hint{$\cdot, +, \max : F \times F \rightarrow F$ sind punktweise aufzufassen, also ist zum Beispiel $(e \cdot g)$ die durch $(e \cdot g)(n) = e(n) \cdot g(n)$ definierte Funktion.}
+
+\begin{solutions}
+  \item $\forall n>\max(n_1,n_2)$ gilt:
+  \begin{align*}
+    e \cdot g & \leq c_1 f \cdot c_2 h \quad|\ c=c_1c_2 \\
+    e \cdot g & \leq c (f \cdot h)
+  \end{align*}
+  \item $\forall n>\max(n_1,n_2)$ gilt:
+  \begin{align*}
+    e + g & \leq c_1 f + c_2 h \quad|\ c_1 \text{ und } c_2 \leq c=c_1+c_2 \\
+    e + g & \leq cf + ch                                                   \\
+    e + g & \leq c(f + h)
+  \end{align*}
+  \item $\forall n>\max(n_1,n_2)$ gilt:
+  \begin{align*}
+    e + g & \leq c_1 \cdot f + c_2 \cdot h \quad|\ f\text{ und } h \leq max(f,h) \\
+    e + g & \leq c_1 \cdot \max(f,h) + c_2 \cdot \max(f,h)                       \\
+    e + g & \leq c \cdot \max(f,h)
+  \end{align*}
+\end{solutions}
 
 \begin{exercise}{Größenordnung}
   Ordnen Sie die über die folgenden Ausdrücke definierten Funktionen $f_i : \mathbb{N}_{>0} \rightarrow \mathbb{R}_{\geq 0}, i = 1, \ldots, 10$ der Größe nach im Sinne der $\bigO$-Notation:
-  \begin{center}
-    $f_1(n) = n^3, f_2(n) = \log(\log(n)), f_3(n) = n^n, f_4(n) = \sqrt{n}, f_5(n) = n \log(n),$
-    $f_6(n) = n, f_7(n) = \log_2(n), f_8(n) = 2^n, f_9(n) = n^{\frac{1}{2}}, f_{10}(n) = \log(n)$.
-  \end{center}
+  \begin{table}
+    \centering
+    \begin{tabular}[ht]{c|c|c|c|c | c|c|c|c|c}
+      $f_1(n)$  & $f_2(n)$      & $f_3(n)$ & $f_4(n)$   & $f_5(n)$    & $f_6(n)$ & $f_7(n)$    & $f_8(n)$ & $f_9(n)$                                     & $f_{10}(n)$ \\
+      \hline
+      $n^{3/2}$ & $\log\log{n}$ & $n^n$    & $\sqrt{n}$ & $n \log{n}$ & $n$      & $\log^2{n}$ & $2^n$    & $n^{\epsilon}\forall 0<\epsilon<\frac{1}{2}$ & $\log{n}$
+    \end{tabular}
+  \end{table}
+
+  \begin{solution}
+    \begin{equation*}
+      f_2 < f_{10} < f_7 < f_9 < f_4 < f_6 < f_5 < f_1 < f_8 < f_3
+    \end{equation*}
+  \end{solution}
 \end{exercise}
 
 \begin{eexercises}{Big-O Notation}{
@@ -136,15 +184,22 @@
   }
   \item $n^3 = \bigO(3n^2)$
   \item $n + \log(n) = \bigO(n \cdot \log(n))$
-  \item $n^5 = \bigO(2 \cdot \log_2(n))$
-  \item $3n = \bigO(2n)$
+  \item $n^5 = \bigO(2^{log^2{n}})$
+  \item $3^n = \bigO(2^n)$
 \end{eexercises}
+
+\begin{solutions}
+  \item Gilt nicht, da $\lim_{n\to\infty} \frac{n^3}{3n^2} = \infty \not\le c$.
+  \item Gilt für $c = 2$ und $n_0 = 1$.
+  \item Gilt, für $c = 1$ und $n_0 = 2^5 = 32$.
+  \item Gilt nicht, da $\lim_{n\to\infty} \frac{3^n}{2^n} = \infty \not\le c$.
+\end{solutions}
 
 \begin{eexercises}{Algorithmus}{
     Die folgende Funktion erhält ein Eingabearray aus natürlichen Zahlen als Eingabe.
     \begin{algorithm}[ht]
       \caption{Alg}
-      \KwData{$A[i], i = 1, 2, \ldots, n, A[i] \in \mathbb{N}$}
+      \KwData{$A[i], i \in [1,n], A[i] \in \mathbb{N}$}
       \KwResult{$\text{result} \in \mathbb{R}_{>0}$}
       $\text{result} \gets 0$ \\
       \For{$i = 1$ to $n$}{
@@ -158,6 +213,43 @@
   \item Bestimmen Sie eine geeignete Schleifeninvariante.
   \item Beweisen Sie mit Hilfe der Schleifeninvariante die Korrektheit des Algorithmus.
 \end{eexercises}
+
+
+\begin{solutions}
+  \item Beispielarray: $A = [3,10,11]$:
+  \begin{align*}
+    \text{result} & = 0                                   \\
+    \text{result} & = ((1-1) \cdot 0 + 3)/1 = 3/1 = 3     \\
+    \text{result} & = ((2-1) \cdot 3 + 10)/2 = 13/2 = 6.5 \\
+    \text{result} & = ((3-1) \cdot 6.5 + 11)/3 = 24/3 = 8
+  \end{align*}
+  \item Der Algorithmus berechnet den Durchschnitt der Elemente im Array.
+  \item Schleifeninvariante: $\text{result} = \sum_{k=1}^{i} A[k]/i$.
+  \item \invariant{
+    In erster Iteration ist die Invariante trivialerweise korrekt, da Durchschnitt von einem Element gleich dem Element ist.
+    \begin{align*}
+      \text{result} & = ((1-1)\cdot 0 + A[1])/1 \\
+                    & = A[1]                    \\
+                    & = \sum_{k=1}^{1} A[k]/1
+    \end{align*}
+  }{
+    Wird eine korrekte Schleifeninvariante vor Iteration $i$ angenommen, ist die Invariante danach ebenfalls korrekt.
+    \begin{align*}
+      \text{result} & = ((i-1)\cdot \text{result} + A[i-1])/(i-1)        \\
+                    & = ((i-1)\cdot\sum_{k=1}^{i-1} A[k]/(i-1) + A[i])/i \\
+                    & = (\sum_{k=1}^{i-1} A[k] + A[i])/i                 \\
+                    & = \sum_{k=1}^{i} A[k]/i
+    \end{align*}
+  }{
+    Die Korrektheit bei Termination leitet sich aus der Korrektheit in der Erhaltung ab.
+    \begin{align*}
+      \text{result} & = ((n-1)\cdot \text{result} + A[n-1])/(n-1)        \\
+                    & = ((n-1)\cdot\sum_{k=1}^{n-1} A[k]/(n-1) + A[n])/n \\
+                    & = (\sum_{k=1}^{n-1} A[k] + A[n])/n                 \\
+                    & = \sum_{k=1}^{n} A[k]/n
+    \end{align*}
+  }
+\end{solutions}
 
 
 
@@ -676,7 +768,13 @@
 
 
 
-\sheet{Ersttermin}
+\sheet[20201]{Ersttermin}
+% TODO: add
+
+
+
+
+\sheet[20202]{Zweittermin}
 \begin{exercise}{Depth-first search}
   Betrachten Sie einen Aufruf der in der Vorlesung vorgestellten Tiefensuche (Pseudocode siehe Algorithmen 1 \& 2) auf dem gerichteten Graphen $G = (V, E)$ aus Abbildung 1. Nehmen Sie an, dass alle Adjazenzlisten lexikographisch sortiert sind \& for-Schleifen über alle Knoten diese auch in lexikographischer Reihenfolge betrachten.
   \begin{algorithm}[ht]
