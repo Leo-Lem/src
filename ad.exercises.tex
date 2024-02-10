@@ -390,38 +390,155 @@
 
 
 \sheet{Listen, Sortieren \& Auswählen}
-\begin{eexercises}{Sortieralgorithmen}{
+\begin{eexercises}{Radixsort}{
     Beantworten Sie die folgenden Fragen:
   }
   \item Sortieren Sie das folgende Feld mit Radixsort. Die Basis ist 8 und die Zahlen sind zur Basis 8 angegeben.
   \begin{align*}
-    142, 204, 154, 7, 104, 162, 521, 17, 262, 504, 370, 252
+    [142, 204, 154, 7, 104, 162, 521, 17, 262, 504, 370, 252]
   \end{align*}
-  \item Argumentieren Sie, dass $n$ natürliche Zahlen aus dem Bereich $\{0, 1, \ldots, n \cdot c - 1\}$ für eine Konstante $c \in \mathbb{N}$ mit Laufzeit $\bigO(n)$ sortiert werden können.
+  \item Argumentieren Sie, dass $n$ natürliche Zahlen aus dem Bereich $[0, n^c - 1]$ für eine Konstante $c \in \mathbb{N}$ mit Laufzeit $\bigO(n)$ sortiert werden können.
 \end{eexercises}
 
-\begin{exercise}{HEAPSORT}
-  Stellen Sie das Verfahren von HEAPSORT angewendet auf die Instanz $[1,5,6,7,8,7,9,9,10]$ grafisch dar.
-\end{exercise}
+\begin{solutions}
+  \item Das Feld wird in 3 Schritten sortiert:
+  \begin{itemize}
+    \item Nach der hintersten Stelle: $[142, 162, 104, 154, 504, 204, 17, 370, 262, 521, 252, 7]$
+    \item Nach der mittleren Stelle: $[104, 204, 142, 154, 162, 262, 252, 370, 504, 521, 17, 7]$
+    \item Nach der vordersten Stelle: $[7, 17, 104, 142, 154, 162, 204, 252, 262, 370, 504, 521]$
+  \end{itemize}
+  \item Zahlen zur Basis $n$ hätten bei einem Wertebereich von $[0,n^c-1]$ maximal $c$ Stellen. Somit wären bei einem Radixsort maximal $c$ Schritte notwendig, um die Zahlen zu sortieren. Da die Anzahl der Zahlen $n$ ist, ergibt sich eine Laufzeit von $\bigO(c\cdot n)=\bigO(n)$ für ein konstantes $c\in \mathbb{N}$.
+\end{solutions}
+
+\begin{exercises}{HEAPSORT \& SELECT}
+\item Stellen Sie das Verfahren von HEAPSORT angewendet auf die Instanz $[1,5,6,7,8,7,9,9,10]$ grafisch dar.
+\item Welches Pivotelement wird durch den SELECT-Algorithmus angewandt auf folgendes Array ausgewählt und warum?
+\begin{equation*}
+  [8,22,2,6,15,11,12,1,13,9,7,55,3,30,41]
+\end{equation*}
+\end{exercises}
+
+\begin{solutions}
+  \item Zunächst muss der Heap aus $[1, 5,6, 7,8,7,9, 9,10]$ von unten gebaut werden (BUILD-MAX-HEAP):
+  \begin{itemize}
+    \item MAX-HEAPIFY(H,4): $[1, 5,6, 10,8,7,9, 9,7]$
+    \item MAX-HEAPIFY(H,3): $[1, 5,9, 10,8,7,9, 6,7]$
+    \item MAX-HEAPIFY(H,2): $[1, 10,9, 7,8,7,9, 6,5]$
+    \item MAX-HEAPIFY(H,1): $[10, 8,9, 7,1,7,9, 6,5]$
+  \end{itemize}
+  Nun wird wiederholt das Maximum des Heaps entfernt und an das Ende des Arrays geschrieben bis der heap leer ist (HEAP-EXTRACT-MAX).
+  \begin{itemize}
+    \item HEAP-EXTRACT-MAX(H): $[9, 8,7, 7,1,5,6, 9|10]$
+    \item HEAP-EXTRACT-MAX(H): $[9, 8,7, 7,1,5,6|9,10]$
+    \item HEAP-EXTRACT-MAX(H): $[8, 7,6, 7,1,5|9,9,10]$
+    \item HEAP-EXTRACT-MAX(H): $[7, 7,6, 5,1|8,9,9,10]$
+    \item HEAP-EXTRACT-MAX(H): $[7, 5,6, 1|7,8,9,9,10]$
+    \item HEAP-EXTRACT-MAX(H): $[6, 5,1|7,7,8,9,9,10]$
+    \item HEAP-EXTRACT-MAX(H): $[5, 1|6,7,7,8,9,9,10]$
+    \item HEAP-EXTRACT-MAX(H): $[1|5,6,7,7,8,9,9,10]$
+    \item HEAP-EXTRACT-MAX(H): $[1,5,6,7,7,8,9,9,10]$
+  \end{itemize}
+  Somit ist das sortierte Array: $[1,5,6,7,7,8,9,9,10]$.
+  \item Die Eingabe ist zunächst durch 5 teilbar, somit müssen keine weiteren Schritte durchgeführt werden. Es werden (vertikale) 5er-Gruppen jeweils sortiert, sodass die Medianelemente in der mittleren 5er-Gruppe liegen. Das wären hier die Elemente 8, 11, 12, 9 und 30. Nun wird erneut der Select Algorithmus aufgerufen, um das Medianelement dieser 5 Elemente zu finden. Das ist hier 11.
+\end{solutions}
 
 \begin{eexercises}{Listen}{
     Eine zyklische einfach verkettete Liste ist eine einfach verkettete Liste, bei der zusätzlich der next-Zeiger des letzten Elements auf das erste Element der Liste zeigt. Im Folgenden seien außerdem die Elemente der Liste sortiert (aufsteigend oder absteigend, wählen sie selbst).
   }
-  \item Geben Sie für die Operationen INSERT und DELETE einer solchen sortierten zyklischen Liste Pseudocode an. Achten Sie darauf, dass die Element
-  \item Begründen Sie, warum ihre Implementationen aus Punkt 1 O(n) Zeit benötigen.
+  \item\label{listen:1} Geben Sie für die Operationen INSERT und DELETE einer solchen sortierten zyklischen Liste Pseudocode an. Achten Sie darauf, dass die Element nach den Operationen sortiert bleiben und dass ihre Operationen O(n) Zeit benötigen. (Achten Sie auf Randfälle!)
+  \item Begründen Sie, warum ihre Implementationen aus \ref{listen:1} O(n) Zeit benötigen.
 \end{eexercises}
+
+\begin{solutions}
+  \item Pseudocode für beispielhafte Implementierungen:
+  \begin{algorithm}[ht]
+    \caption{INSERT}
+    \KwData{$\text{sortierte Liste } L,  \text{Element } p$}
+    \KwResult{\text{sortierte Liste}}
+    \If{$\text{L ist leer}$}{
+      $L.head \gets p$
+    }
+    \ElseIf(\comment*[f]{Elemente sind wertmäßig vergleichbar}){$p < L.head$}{
+      $p.\text{next} \gets L.head$ \\
+      $L.head \gets p$
+    }
+    \Else{
+      $i \gets L.head$ \\
+      \While{$i.\text{next} < p \land i.\text{next} \neq L.head$}{
+        $i \gets i.\text{next}$
+      }
+      $p \gets i.\text{next}$ \\
+      $i.\text{next} \gets p$
+    }
+  \end{algorithm}
+
+  \begin{algorithm}[ht]
+    \caption{DELETE}
+    \KwData{$\text{sortierte Liste } L,  \text{Element } p$}
+    \KwResult{\text{sortierte Liste}}
+    \If{$L.head = p$}{
+      \If{$L.head = L.head.\text{next}$}{
+        $L.head \gets \text{null}$
+      }
+      \Else{
+        $i \gets L.head$ \\
+        \While{$i.\text{next} \neq L.head$}{
+          $i \gets i.\text{next}$
+        }
+        $i.\text{next} \gets L.head.\text{next}$ \\
+        $L.head \gets L.head.\text{next}$
+      }
+    }
+    \Else{
+      $i \gets L.head$ \\
+      \While{$i.\text{next} \neq p \land i.\text{next} \neq L.head$}{
+        $i \gets i.\text{next}$
+      }
+      \If{$i.\text{next} = p$}{
+        $i.\text{next} \gets p.\text{next}$
+      }
+    }
+  \end{algorithm}
+
+  \item Die Operationen benötigen O(n) Zeit, da im worst-case alle Elemente der Liste durchlaufen werden müssen, um das richtige Element zu finden.
+\end{solutions}
 
 \begin{exercises}{Quicksort}
 \item Sortieren Sie das Array $(12, 10, 6, 3, 1, 14, 9)$ mithilfe des QUICKSORT-Algorithmus aus der Vorlesung. Wählen Sie hierzu das Pivotelement wie im QUICKSORT-Algorithmus aus der Vorlesung vorgegeben. Stellen Sie den Inhalt des Arrays nach jedem Aufruf von PARTITION dar.
-\item Welchen Einfluss auf die Laufzeit hat allgemein die Auswahl des Pivotelements bei QUICKSORT? Skizzieren Sie worst-case- und best-case-Eingaben für eine konkrete Auswahl des Pivot- elements (z.B. immer am linken oder rechten Rand). Begründen Sie Ihre Antwort.
+\item Welchen Einfluss auf die Laufzeit hat allgemein die Auswahl des Pivotelements bei QUICKSORT? Skizzieren Sie worst-case- und best-case-Eingaben für eine konkrete Auswahl des Pivotelements (z.B. immer am linken oder rechten Rand). Begründen Sie Ihre Antwort.
 \item Ist der QUICKSORT-Algorithmus aus der Vorlesung stabil? Begründen Sie Ihre Antwort.
 \end{exercises}
+
+\begin{solutions}
+  \item Das Array wird in 3 Schritten sortiert:
+  \begin{itemize}
+    \item PARTITION(A,1,7): $[1,3,6,9,12,14,10]$ mit pivot=9 und q=4
+    \item PARTITION(A,1,3): $[1,3,6|9,12,14,10]$ mit pivot=6 und q=3
+    \item PARTITION(A,1,2): $[1,3|6,9,10,12,14]$ mit pivot=3 und q=2
+    \item PARTITION(A,5,7): $[1,3,6,9|12,14,10]$ mit pivot=12 und q=6
+    \item PARTITION(A,6,7): $[1,3,6,9,10|12,14]$ mit pivot=14 und q=7
+    \item[] $\hookrightarrow A = [1,3,6,9,10,12,14]$
+  \end{itemize}
+  \item Die Auswahl des Pivotelements hat Einfluss auf die Laufzeit von QUICKSORT. Im worst-case ist die Laufzeit $\bigO(n^2)$, wenn das Pivotelement immer das kleinste oder größte Element ist. Im best-case ist die Laufzeit $\bigO(n \log n)$, wenn das Pivotelement immer das Medianelement ist.
+  \item Der QUICKSORT-Algorithmus ist nicht stabil, da er die Reihenfolge von gleichen Elementen verändern kann (mit der Hoare-Partition).
+\end{solutions}
 
 \begin{exercise}{Heaps}
   Zeigen Sie per struktureller Induktion, dass in jedem (binären) Heap $H$ für die Anzahl Blätter $b(H)$ und Anzahl Nicht-Blätter $n(H)$ gilt:
   \begin{equation*}
     n(H) \leq b(H) \leq n(H)+1
   \end{equation*}
+
+  \begin{solution}
+    \textbf{IA:} Für $n(H) = 0$ und $b(H) = 0$ ist die Aussage trivialerweise erfüllt. \\
+    \textbf{IV:} Die Aussage gelte für einen beliebigen Heap $H$ mit $n(H) \leq b(H) \leq n(H)+1$. \\
+    \textbf{IS:} Sei $H'$ ein Heap, der aus $H$ durch Hinzufügen eines Knotens entsteht. Dann gilt:
+    \begin{itemize}
+      \item Wenn der Knoten ein Blatt ist, dann ist $n(H') = n(H)$ und $b(H') = b(H)+1$. Dann gilt $n(H') \leq b(H') \leq n(H')+1$.
+      \item Wenn der Knoten kein Blatt ist, dann ist $n(H') = n(H)+1$ und $b(H') = b(H)$. Dann gilt $n(H') \leq b(H') \leq n(H')+1$.
+    \end{itemize}
+    Somit ist die Aussage für $H'$ erfüllt und die Aussage gilt für alle Heaps.
+  \end{solution}
 \end{exercise}
 
 \begin{eexercises}{SELECT-Algorithmus}{
@@ -431,6 +548,12 @@
   \item Finden und begründen Sie eine entsprechende Rekurrenzgleichung für den Fall mit 3er-Gruppen. Geben Sie zudem eine kurze Einschätzung dazu an, ob in diesem Fall auch eine lineare Laufzeit erreicht wird (hier ist kein formaler Beweis gefordert).
   \item Stellen Sie eine Rekurrenzgleichung für eine Variante von QUICKSORT auf, die den SELECT-Algorithmus für die Wahl des Pivotelements verwendet und schätzen Sie die Laufzeit mit dem Mastertheorem ab.
 \end{eexercises}
+
+\begin{solutions}
+  \item Die Argumente für die Laufzeitabschätzung gelten auch für 7er-Gruppen. Die Rekurrenzgleichung ist $T(n) = T(n/7) + T(5n/7) + \bigO(n)$ und die Laufzeit ist $\bigO(n)$.
+  \item Die Rekurrenzgleichung für 3er-Gruppen ist $T(n) = T(n/3) + T(2n/3) + \bigO(n)$ und die Laufzeit ist $\bigO(n \log n)$.
+  \item Der SELECT-Algorithmus findet (wie bereits festgestellt) in $\bigO(n)$ den Median. Da bei perfekter Wahl des Pivotelements lediglich eine Rekursionstiefe von $\log n$ erreicht wird, ist die Laufzeit von QUICKSORT in diesem Fall $\bigO(n \log n)$.
+\end{solutions}
 
 
 
