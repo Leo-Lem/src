@@ -1,0 +1,150 @@
+\documentclass{article}
+
+\usepackage{xcolor}
+\usepackage[longend,ruled,vlined]{algorithm2e}
+\usepackage[margin=5em]{geometry}
+
+\counterwithin{algocf}{section}
+\SetKwComment{comment}{// }{}
+\SetKwComment{explain}{$\triangleright$\ }{}
+\newcommand\commentfont[1]{\textcolor{lightgray}{#1}}
+\SetCommentSty{commentfont}
+\DontPrintSemicolon
+
+\begin{document}
+\section{Selection}
+
+
+\section{Red-Black Trees}
+
+\subsection{Properties}
+\begin{itemize}
+  \item[I.]\label{properties:1} [Colored] Every node is either red or black.
+  \item[II.]\label{properties:2} [Black Root] The root is black.
+  \item[III.]\label{properties:3} [Black Leafs] Every leaf (NIL) is black.
+  \item[IV.]\label{properties:4} [Red $\to$ Black Children] If a red node has children, then the children are black.
+  \item[V.]\label{properties:5} [Black Height] For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
+\end{itemize}
+
+\subsection{Insertion}
+
+\begin{algorithm}[H]
+  \caption{\texttt{insert(T, x)}}
+
+  \KwData{A red-black tree $T$ and a node $x$}
+  \KwResult{A red-black tree $T$ with node $x$}
+  \BlankLine
+
+  \comment{find insertion point (and stop at guard/after leaf)}
+  $next = T.root$\;
+  \Repeat{$next$ is  a leaf}{
+    \lIf{$x < next$}{$next \gets next.left$}
+    \lElse{$next \gets next.right$}
+  }
+
+  \comment{connect $x$ to parent}
+  $x.parent \gets next.parent$\;
+  \lIf{$x.parent = nil$}{$T.root \gets x$}
+  \lElseIf{$x < x.parent$}{$x.parent.left \gets x$}
+  \lElse{$x.parent.right \gets x$}
+
+  \comment{fix the properties}
+  color $x$ red\;
+  \texttt{fixupAfterInsert($T, x$)}\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+  \caption{\texttt{fixupAfterInsert(T, x)}}
+
+  \KwData{A red-black tree $T$ and a newly inserted node $x$}
+  \KwResult{A fixed red-black tree $T$}
+  \BlankLine
+
+  \comment*[h]{fix I}\explain*{$x.parent$ is left child in cases 1-3, right child in cases 4-6}
+  \While{$x.parent$ is red}{
+    \If(\explain*[f]{cases 1 and 4 (only differ in uncle)}){$x.uncle$ is red}{
+      color $x.parent$ and $x.uncle$ black\\
+      color $x.grandparent$ red\\
+      \textbf{continue} with $x \gets x.grandparent$
+    }
+    \Else(\comment*[h]{if $x.uncle$ is black}){
+      \If(\explain*[f]{case 2 $|$ $x$ is left child for case 5}){$x$ is a right child}{
+        rotate $x.parent$ left\explain*{rotate right for case 5}
+        \textbf{continue} with $x \gets x.parent$
+      }
+      \Else(\tcp*[h]{if $x$ is left child}\explain*[f]{case 3 $|$ $x$ is right child for case 6 }){
+        color $x.parent$ black\\
+        color $x.grandparent$ red\\
+        rotate $x.grandparent$ right\explain*{for case 6 rotate left}
+        \textbf{continue} with $x$
+      }
+    }
+  }
+
+  \comment{fix II}
+  color $T.root$ black
+\end{algorithm}
+
+\subsection{Deletion}
+
+\begin{algorithm}[H]
+  \caption{\texttt{delete(T, x)}}
+
+  \KwData{A red-black tree $T$ and a node $x$}
+  \KwResult{A red-black tree $T$ without node $x$}
+  \BlankLine
+
+  \comment{swap x with minimum}
+  \If{$x$ has two children}{
+    $swappee \gets $ minimum$(x.right)$\explain*{alternative: successor(x)}
+    $x.key \gets swappee.key$\;
+    $x \gets swappee$
+  }
+  \comment{remove x (or swappee)}
+  connect $x.child$ with $x.parent$ ?? $T.root$\explain*{use $T.root$ if $x.parent$ is $nil$}
+  \lIf(\explain*[f]{$x$ is red $\to$ no violations}){$x$ is black}{\texttt{fixupAfterDelete($T, x.child$)}}
+  \textbf{delete} $x$\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+  \caption{\texttt{fixupAfterDelete(T, x)}}
+
+  \KwData{A red-black tree $T$ and a node $x$}
+  \KwResult{A fixed red-black tree $T$}
+  \BlankLine
+
+  \comment*[h]{fix V}\explain*{$x.parent$ is left child in cases 1-4, right child in cases 5-8}
+  \While{$x \neq T.root$ \textbf{and} $x$ is black}{
+    \If(\explain*[f]{cases 1 and 5 (only differ in sibling)}){$x.sibling$ is red}{
+      color $x.sibling$ black\\
+      color $x.parent$ red\\
+      rotate $x.parent$ left\\
+      \textbf{continue} with $x \gets x.sibling$
+    }
+    \Else(\comment*[h]{if $x.sibling$ is black}){
+      \If(\explain*[f]{cases 2 and 6 (only differ in sibling)}){$x.sibling.children$ are black}{
+        color $x.sibling$ red\\
+        \textbf{continue} with $x \gets x.parent$
+      }
+      \Else(\comment*[h]{if $x.sibling$ has red child}){
+        \If(\explain*[f]{case 3 $|$ $x.sibling.left$ for case 7}){$x.sibling.right$ is black}{
+          color $x.sibling.left$ black\explain*{$x.sibling.right$ for case 7}
+          color $x.sibling$ red\\
+          rotate $x.sibling$ right\explain*{rotate left for case 7}
+          \textbf{continue} with $x \gets x.sibling$
+        }
+        \Else(\comment*[h]{if $x.sibling.left$ is black}\explain*[f]{case 4 $|$ $x.sibling.right$ for case 8}){
+          color $x.sibling$ like $x.parent$\\
+          color $x.parent$ \textbf{and} $x.sibling.right$ black\explain*{$x.sibling.left$ for case 8}
+          rotate $x.parent$ left\explain*{rotate right for case 8}
+          \textbf{break} with $x \gets T.root$
+        }
+      }
+    }
+  }
+
+  \comment{fix II and IV}
+  color $x$ black
+\end{algorithm}
+
+\end{document}

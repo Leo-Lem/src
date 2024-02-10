@@ -8,9 +8,9 @@
 \LoadClass{article}
 
 \RequirePackage[margin=5em]{geometry}
-\RequirePackage{hyperref, multicol, environ}
+\RequirePackage{hyperref, multicol, environ, xcolor}
 \RequirePackage{amsmath, amssymb}
-\RequirePackage{tikz}
+\RequirePackage{tikz, subfig}
 \RequirePackage[longend,ruled,vlined]{algorithm2e}
 
 % ---------------------------------------------------------------------
@@ -34,8 +34,14 @@
 }
 
 \counterwithin{figure}{section}
+\counterwithin{algocf}{section}
 
-\SetKwComment{comment}{$\triangleright$\ }{}
+\counterwithin{algocf}{section}
+\SetKwComment{comment}{// }{}
+\SetKwComment{explain}{$\triangleright$\ }{}
+\newcommand\commentfont[1]{\textcolor{lightgray}{#1}}
+\SetCommentSty{commentfont}
+\DontPrintSemicolon
 
 % ---------------------------------------------------------------------
 % Title page
