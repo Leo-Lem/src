@@ -898,10 +898,9 @@
 \begin{exercise}{Topologische Sortierung}
   Finden Sie für den unten gezeigten Graph aus \ref{fig:topo} eine Topologische Sortierung. Ist es möglich mehrere verschiedene Lösungen zu finden?
   \begin{figure}[ht]
-    \caption{Ein gerichteter Graph}
-    \label{fig:topo}
     \centering
-    \tikz[->, auto, node distance=2cm, every node/.style={circle, draw, minimum size=1cm}]{
+
+    \begin{tikzpicture}[->, auto, node distance=2cm, every node/.style={circle, draw, minimum size=1cm}]
       \node (s) {s};
       \node (a) [left of=s] {a};
       \node (b) [above of=s] {b};
@@ -917,17 +916,16 @@
       (e) edge (d)
       (e) edge (a)
       ;
-    }
+    \end{tikzpicture}
+    \caption{Ein gerichteter Graph}\label{fig:topo}
   \end{figure}
 \end{exercise}
 
 \begin{exercise}{Kruskals Algorithmus}
   Bestimmen Sie mit Kruskals Algorithmus aus der Vorlesung einen minimalen Spannbaum für den Graphen aus \ref{fig:kruskal}. Machen Sie die Reihenfolge in der die Kanten abgearbeitet wurden deutlich.
   \begin{figure}[ht]
-    \caption{Ein gewichteter Graph}
-    \label{fig:kruskal}
     \centering
-    \tikz[auto, node distance=2cm, main node/.style={circle, draw, minimum size=.5em}]{
+    \begin{tikzpicture}[auto, node distance=2cm, main node/.style={circle, draw, minimum size=.5em}]
       \node[main node] (0) {};
       \node[main node] (1) [right of=0, below of=0] {};
       \node[main node] (2) [above of=1, above of=1] {};
@@ -960,18 +958,18 @@
       (8) edge node {2} (10)
       (9) edge node {2} (10)
       ;
-    }
+    \end{tikzpicture}
+
+    \caption{Ein gewichteter Graph}\label{fig:kruskal}
   \end{figure}
 \end{exercise}
 
 \begin{eexercises}{Graphen}{
     Betrachten Sie Graphen $G$ aus \ref{fig:simplegraph}. Wenden Sie jeweils das verlangte Verfahren an bzw. beantworten Sie die Frage oder begründen Sie, warum dies nicht geht.
     \begin{figure}[ht]
-      \caption{Graph $G$}
-      \label{fig:simplegraph}
       \centering
-      \tikz[->, auto, node distance=2cm, every node/.style={circle, draw, minimum size=1cm}]{
-        \node (S) at (0,0) {S};
+      \begin{tikzpicture}[->, auto, node distance=5em, every node/.style={circle, draw, minimum size=3em}]
+        \node (S) {S};
         \node (B) [right of=S] {B};
         \node (A) [above of=B] {A};
         \node (C) [below of=B] {C};
@@ -981,21 +979,17 @@
         \node (G) [right of=E] {G};
 
         \path[every node]
-        (S) edge (A)
-        (S) edge (B)
-        (S) edge (C)
-        (B) edge (A)
-        (C) edge (B)
-        (A) edge (D)
-        (A) edge (E)
-        (B) edge (E)
-        (C) edge (F)
-        (D) edge (G)
-        (D) edge (B)
+        (S) edge (A) edge (B) edge (C)
+        (A) edge (D) edge (E)
+        (B) edge (A) edge (E)
+        (C) edge (B) edge (F)
+        (D) edge (G) edge (B)
         (E) edge (C)
         (F) edge (G)
         (G) edge (E);
-      }
+      \end{tikzpicture}
+
+      \caption{Graph $G$}\label{fig:simplegraph}
     \end{figure}
   }
   \item Ermitteln Sie mit der Breitensuche einen Breitensuchbaum (BFS-Baum). Starten Sie den Algorithmus bei $s$.
@@ -1007,15 +1001,55 @@
 
 \begin{eexercises}{Minimale Spannbäume}{
     \begin{figure}[ht]
-      \caption{Graph $G$}
-      \label{fig:mstgraph}
       \centering
-      \tikz[auto, every node/.style={circle, draw, minimum size=.5em}]{
-        % TODO: add graph
-      }
+      \begin{tikzpicture}[auto, on grid, node distance=6em, main node/.style={circle, draw, minimum size=.1em}]
+        \node [main node, fill=gray] (housefloorright) {};
+        \node [main node] (housefloorleft) [left=of housefloorright] {};
+        \node [main node] (houseroofright) [above=of housefloorright] {};
+        \node [main node] (houseroofleft) [above=of housefloorleft] {};
+        \node [main node] (houseroof) [above right=5em and 3em of houseroofleft] {};
+        \node [main node] (treestumpleft) [right=of housefloorright] {};
+        \node [main node] (treestumpright) [right=2em of treestumpleft] {};
+        \node [main node] (treemidleft1) [above=2em of treestumpleft] {};
+        \node [main node] (treemidright1) [above=2em of treestumpright] {};
+        \node [main node] (treeleft1) [left=4em of treemidleft1] {};
+        \node [main node] (treeright1) [right=4em of treemidright1] {};
+        \node [main node] (treemidleft2) [above=2em of treemidleft1] {};
+        \node [main node] (treemidright2) [above=2em of treemidright1] {};
+        \node [main node] (treeleft2) [left=3em of treemidleft2] {};
+        \node [main node] (treeright2) [right=3em of treemidright2] {};
+        \node [main node] (treemidleft3) [above=3em of treemidleft2] {};
+        \node [main node] (treemidright3) [above=3em of treemidright2] {};
+        \node [main node] (treeleft3) [left=2em of treemidleft3] {};
+        \node [main node] (treeright3) [right=2em of treemidright3] {};
+        \node [main node] (treetop) [above right=4em and 1em of treemidleft3] {};
+
+        \path[every node]
+        (housefloorright) edge node {5} (housefloorleft) edge node [below right=.5 and .1] {5} (houseroofleft) edge node {3} (houseroofright) edge node [below] {1} (treestumpleft)
+        (housefloorleft) edge node {3} (houseroofleft) edge node [above left=.5 and .1] {4} (houseroofright)
+        (houseroofright) edge node [above] {20} (houseroofleft) edge node [above right] {-3} (houseroof)
+        (houseroofleft) edge node {6} (houseroof)
+        (treestumpleft) edge node [below] {2} (treestumpright) edge node {4} (treemidleft1)
+        (treestumpright) edge node [right] {1} (treemidright1)
+        (treemidleft1) edge node {9} (treemidright1) edge node {5} (treeleft1)
+        (treemidright1) edge node [below] {3} (treeright1)
+        (treeleft1) edge node [left] {6} (treemidleft2)
+        (treeright1) edge node [right] {4} (treemidright2)
+        (treemidleft2) edge node [above] {7} (treeleft2)
+        (treemidright2) edge node {5} (treeright2)
+        (treeleft2) edge node [left] {1} (treemidleft3)
+        (treeright2) edge node [right] {-2} (treemidright3)
+        (treemidleft3) edge node [above] {2} (treeleft3)
+        (treemidright3) edge node {1} (treeright3)
+        (treeleft3) edge node {6} (treetop)
+        (treeright3) edge node [above right] {8} (treetop)
+        ;
+      \end{tikzpicture}
+
+      \caption{Graph $G$}\label{fig:mstgraph}
     \end{figure}
   }
-  \item Bestimmen Sie mit Hilfe des Algorithmus von Prim einen minimalen Spannbaum des Graphen und skizzieren diesen. Der Startknoten ist grau gefärbt. Geben Sie zusätzlich die Reihenfolge an, in der die Kanten des Spannbaums gemäß Algorithmus hinzugefügt werden.
+  \item Bestimmen Sie mit Hilfe des Algorithmus von Prim einen minimalen Spannbaum des Graphen aus \ref{fig:mstgraph} und skizzieren diesen. Der Startknoten ist grau gefärbt. Geben Sie zusätzlich die Reihenfolge an, in der die Kanten des Spannbaums gemäß Algorithmus hinzugefügt werden.
   \item Sei $G = (V, E)$ ein zusammenhängender gewichteter Graph mit Gewichtsfunktion $w : E \rightarrow \mathbb{R}$ und $T = (V, E_0)$ ein minimaler Spannbaum von $G$.
   \begin{enumerate}
     \item Für eine beliebige Kante $e \in E \setminus E_0$ wird deren Gewicht $w(e)$ erhöht. Wir bezeichnen diesen modifizierten Graphen als $G'$. Zeigen Sie, dass $T$ ebenfalls ein minimaler Spannbaum von $G'$ ist.
@@ -1024,19 +1058,85 @@
 \end{eexercises}
 
 \begin{eexercises}{Brückenkanten}{
-    % TODO: add graph
+    \begin{figure}[ht]
+      \centering
+      \begin{tikzpicture}[auto, node distance=5em, main node/.style={circle, draw, minimum size=3em}]
+        \node (1) [main node] {1};
+        \node (2) [main node, above right of=1] {2};
+        \node (3) [main node, above left of=2] {3};
+        \node (4) [main node, above left of=1] {4};
+        \node (5) [main node, below of=2] {5};
+        \node (6) [main node, right of=2] {6};
+        \node (7) [main node, right of=5] {7};
+        \node (8) [main node, above right of=6] {8};
+        \node (9) [main node, left of=8] {9};
+        \node (10) [main node, right of=8] {10};
+        \node (11) [main node, right of=6] {11};
+        \node (12) [main node, right of=7] {12};
+        \node (13) [main node, right of=11] {13};
+        \node (14) [main node, below right of=11] {14};
+        \node (15) [main node, right of=14] {15};
+
+        \path[every node]
+        (1) edge (2) edge (3) edge (4) edge (5)
+        (2) edge (3) edge (5) edge (6)
+        (3) edge (4)
+        (5) edge (7)
+        (6) edge (7) edge (8) edge (11)
+        (7) edge (12)
+        (8) edge (9) edge (10) edge (11)
+        (11) edge (12) edge (13)
+        (13) edge (14) edge (15)
+        (14) edge (15)
+        ;
+      \end{tikzpicture}
+
+      \caption{Graph $G$}\label{fig:bridgegraph}
+    \end{figure}
     Eine Kante $e \in E$ eines zusammenhängenden, ungerichteten Graphen $G = (V, E)$ heißt Brückenkante, falls der Graph $G_0 = (V, E \setminus \{e\})$, der durch das Entfernen der Kante $e$ aus $G$ entsteht, nicht mehr zusammenhängend ist.
   }
-  \item Bestimmen Sie alle Brückenkanten im oben abgebildeten Graphen.
+  \item Bestimmen Sie alle Brückenkanten im abgebildeten Graphen aus \ref{fig:bridgegraph}.
   \item Geben Sie einen Algorithmus in Pseudocode an, der in Laufzeit $\bigO(|V| \cdot |E| + |E|^2)$ entscheidet, ob ein zusammenhängender, ungerichteter Graph $G$ eine Brückenkante besitzt oder nicht.
   \item Zeigen Sie, dass Ihr Algorithmus korrekt arbeitet.
   \item Zeigen Sie, dass Ihr Algorithmus die Laufzeitschranke einhält.
 \end{eexercises}
 
 \begin{eexercises}{Dijkstras Algorithmus}{
-    % TODO: add graph
+    \begin{figure}[ht]
+      \centering
+
+      \begin{tikzpicture}[->, auto, node distance=6em, main node/.style={circle, draw, minimum size=3em}]
+        \node (s) [main node] {s};
+        \node (a) [main node, below left of=s] {a};
+        \node (b) [main node, right of=a] {b};
+        \node (c) [main node, right of=b] {c};
+        \node (d) [main node, below of=a] {d};
+        \node (e) [main node, right of=d] {e};
+        \node (f) [main node, right of=e] {f};
+        \node (t) [main node, below of=f] {t};
+
+        \path[every node]
+        (s) edge node [above left] {12} (a)
+        (s) edge node {3} (c)
+        (a) edge node {1} (b)
+        (c) edge node [above] {2} (b)
+        (a) edge [bend left] node {3} (d)
+        (d) edge [bend left] node {2} (a)
+        (b) edge node {4} (d)
+        (d) edge node [below] {4} (e)
+        (b) edge node {2} (e)
+        (c) edge node {1} (f)
+        (e) edge [bend left] node {3} (f)
+        (f) edge [bend left] node {4} (e)
+        (e) edge node [below left] {3} (t)
+        (f) edge node {8} (t)
+        ;
+      \end{tikzpicture}
+
+      \caption{Graph $G$}\label{fig:dijkstra}
+    \end{figure}
   }
-  \item Wenden Sie Dijkstras Algorithmus auf den Graphen aus Abb. 4 an. Beginnen Sie bei Knoten $s$. Geben Sie tabellarisch die am Ende jeder Iteration der While-Schleife in der Queue enthaltenen Keys an.
+  \item Wenden Sie Dijkstras Algorithmus auf den Graphen aus \ref{fig:dijkstra} an. Beginnen Sie bei Knoten $s$. Geben Sie tabellarisch die am Ende jeder Iteration der While-Schleife in der Queue enthaltenen Keys an.
   \item Modifizieren Sie den Pseudocode von Dijkstras Algorithmus so, dass er als Input einen Graphen, einen Startknoten $s$ und einen Zielknoten $v$ als Input nimmt und als Output die explizite Darstellung des kürzesten Pfades von $s$ nach $v$ als Sequenz von Knoten ausgibt. Begründen Sie kurz die Korrektheit Ihrer Lösung. Die Laufzeit des modifizierten Algorithmus darf dabei nicht die asymptotische Laufzeitschranke $\bigO(|V| \log |V| + |E|)$ des Dijkstra Algorithmus überschreiten.
 \end{eexercises}
 
@@ -1088,15 +1188,33 @@
 \end{eexercises}
 
 \begin{exercise}{Floyd-Warshall Algorithmus}
-  Wenden Sie auf den folgenden Graphen den Algorithmus von Floyd-Warshall an und geben Sie nach jeder Iteration der ersten Schleife die zugehörige Distanzmatrix an. Nehmen Sie an, dass Knoten zu sich selbst einen Abstand von 0 haben. Betrachten Sie die Knoten in der Reihenfolge A, B, C, D. Welches Knotenpaar besitzt den größten/kürzesten Abstand?
-  % TODO: graph
+  \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[->, auto, on grid, bend left=.5cm, node distance=4cm, main node/.style={circle, draw, minimum size=.5em}]
+      \node[main node] (A) {A};
+      \node[main node] (B) [left=of A] {B};
+      \node[main node] (C) [below right=2cm and 2cm of B] {C};
+      \node[main node] (D) [below of=B] {D};
+
+      \path[every node]
+      (A) edge node {6} (B) edge node {3} (C) edge [bend left=2cm] node {10} (D)
+      (B) edge node {13} (A) edge node {-2} (C) edge node {7} (D)
+      (C) edge node {5} (A) edge node {5} (B) edge node {10} (D)
+      (D) edge [bend right=1.5cm] node {-7} (A) edge node {7} (B) edge node {5} (C)
+      ;
+    \end{tikzpicture}
+
+    \caption{Graph zum Floyd-Warshall Algorithmus.}\label{fig:floydwarshall}
+  \end{figure}
+  Wenden Sie auf den Graphen aus \ref{fig:floydwarshall} den Algorithmus von Floyd-Warshall an und geben Sie nach jeder Iteration der ersten Schleife die zugehörige Distanzmatrix an. Nehmen Sie an, dass Knoten zu sich selbst einen Abstand von 0 haben. Betrachten Sie die Knoten in der Reihenfolge A, B, C, D. Welches Knotenpaar besitzt den größten/kürzesten Abstand?
 \end{exercise}
 
 
 
 \sheet[2019]{Ersttermin}
 \begin{eexercises}{Laufzeitkomplexität}{
-    Geben Sie für folgenden Probleme die asymptotische worst-case Laufzeitkomplexität in O-Notation an und begründen Sie diese jeweils knapp. Hinweis: Die Arrays enthalten jeweils keine Duplikate.
+    Geben Sie für folgenden Probleme die asymptotische worst-case Laufzeitkomplexität in O-Notation an und begründen Sie diese jeweils knapp.
+    \hint{Die Arrays enthalten jeweils keine Duplikate.}
   }
   \item Das kleinste Element in einem unsortierten Array finden.
   \item Ein Element in einem unsortierten Array finden, das nicht das kleinste ist.

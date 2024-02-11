@@ -13,6 +13,8 @@
 \RequirePackage{tikz, subfig}
 \RequirePackage[longend,ruled,vlined]{algorithm2e}
 
+\usetikzlibrary{positioning}
+
 % ---------------------------------------------------------------------
 % Document setup
 % ---------------------------------------------------------------------
