@@ -8,7 +8,7 @@
 \LoadClass{article}
 
 \RequirePackage[margin=5em]{geometry}
-\RequirePackage{hyperref, multicol, environ, xcolor}
+\RequirePackage{hyperref, multicol, environ, xcolor, graphicx}
 \RequirePackage{amsmath, amssymb}
 \RequirePackage{tikz, subfig}
 \RequirePackage[longend,ruled,vlined]{algorithm2e}
@@ -191,5 +191,13 @@
 \newcommand\xmark{$\times$}
 
 \newcommand{\bigO}{
-  \ensuremath{\mathcal{O}}
+  \mathcal{O}
+}
+
+\newcommand\littleO{
+  \mathchoice
+  {{\scriptstyle\mathcal{O}}}% \displaystyle
+  {{\scriptstyle\mathcal{O}}}% \textstyle
+  {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+  {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
 }

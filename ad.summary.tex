@@ -3,6 +3,8 @@
 \usepackage{xcolor}
 \usepackage[longend,ruled,vlined]{algorithm2e}
 \usepackage[margin=5em]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
 
 \counterwithin{algocf}{section}
 \SetKwComment{comment}{// }{}
@@ -11,7 +13,46 @@
 \SetCommentSty{commentfont}
 \DontPrintSemicolon
 
+\newcommand{\bigO}{
+  \mathcal{O}
+}
+
+\newcommand\littleO{
+  \mathchoice
+  {{\scriptstyle\mathcal{O}}}% \displaystyle
+  {{\scriptstyle\mathcal{O}}}% \textstyle
+  {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
+  {\scalebox{.6}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
+}
+
 \begin{document}
+\section{Asymptotic View}
+\subsection{Bachmann-Landau Notation}
+\begin{itemize}
+  \item[$\bigO$] (big O: upper bound) $f\in \bigO(g) \Leftrightarrow ^{\exists c > 0}_{\exists n_0 > 0}: f \leq c \cdot g \forall n > n_0$
+  \item[$\Omega$] (big Omega: lower bound) $f\in \Omega(g) \Leftrightarrow ^{\exists c > 0}_{\exists n_0 > 0}: f \geq c \cdot g \forall n > n_0$
+  \item[$\littleO$] (little o: strict upper bound) $f\in \littleO(g) \Leftrightarrow ^{\forall c > 0}_{\exists n_0 > 0}: f < c \cdot g \forall n > n_0$
+  \item[$\omega$] (little omega: strict lower bound) $f\in \omega(g) \Leftrightarrow ^{\forall c > 0}_{\exists n_0 > 0}: f > c \cdot g \forall n > n_0$
+  \item[$\Theta$] (big Theta: tight bound) $f\in \Theta(g) \Leftrightarrow f\in \bigO(g) \land f\in \Omega(g)$
+\end{itemize}
+
+\subsection{Master Theorem}
+The master theorem is a method for solving recurrences of the form
+\begin{equation}
+  T(n) = \begin{cases}
+    \bigO(1)                                                                                   & \forall n \leq n_0 \\
+    \underbrace{aT(\frac{n}{b})}_{\text{recursion}} + \underbrace{f(n)}_{\text{non-recursion}} & \text{else}
+  \end{cases}
+\end{equation}
+where $a \geq 1$, $b > 1$, $f(n)$ is a given function, and $n_0$ is a given constant.
+
+\begin{itemize}
+  \item[I.] (recursion dominates) $\exists \epsilon > 0: f(n) \in \bigO(n^{\log_b(a)-\epsilon}) \Rightarrow T(n) \in \Theta(n^{\log_b a})$
+  \item[II.] (recursion and non-recursion are balanced) $\exists k \ge 0: f(n) \in \Theta(n^{\log_b a}\log^k n) \Rightarrow T(n) \in \Theta(n^{\log_b a} \log^{k+1} n)$
+  \item[III.] (non-recursion dominates) $\underbrace{^{\exists \epsilon > 0: f(n) \in \Omega(n^{\log_b(a)+\epsilon})}_{\exists c \in [0\dots1]: a f(\frac{n}{b}) \leq c f(n)}}_{\text{\tiny regularity condition}} \Rightarrow T(n) \in \Theta(f(n))$
+\end{itemize}
+
+
 \section{Selection}
 
 
@@ -145,6 +186,43 @@
 
   \comment{fix II and IV}
   color $x$ black
+\end{algorithm}
+
+\section{Graphs}
+\subsection{Topological Sort}
+\begin{algorithm}[H]
+  \caption{\texttt{topologicalSort(G)}}
+
+  \KwData{A graph $G$}
+  \KwResult{A topological sorted list of vertices $L$}
+  \BlankLine
+
+  $L \gets \emptyset$\;
+  \ForEach{vertex $v$ of $G$}{
+    \lIf{$v$ is not visited}{
+      \texttt{DFS($v, L$)}
+    }
+  }
+  \Return $L$\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+  \caption{\texttt{DFS(u, L)}}
+
+  \KwData{A vertex $u$ and a list $L$}
+  \BlankLine
+
+  \ForEach{vertex $v$ of $u$'s neighbors}{
+    mark $u$ as found\;
+    \lIf{$v$ is not visited}{
+      \texttt{visit($v$)}
+    }
+    \lElseIf{$v$ is found}{
+      \textbf{error} "cycle detected"
+    }
+    mark $u$ as visited\;
+    $L \gets \{u\} \cup L$\;
+  }
 \end{algorithm}
 
 \end{document}
