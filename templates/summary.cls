@@ -65,7 +65,7 @@
 \newcommand\subtitle[1]{\def\@subtitle{#1}}
 \newcommand\semester[1]{\def\@semester{#1}}
 
-\providecommand\@subtitle{Summary}
+\providecommand\@subtitle{Zusammenfassung}
 
 \newcommand\createtitle{
   \begin{titlepage}

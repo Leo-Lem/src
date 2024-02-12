@@ -6,4 +6,124 @@
 
 \begin{document}\createtitle
 
+\section{Automaten}
+\subsection{Potenz}
+$A^2$: Umwandlung von NFAs zu DFAs
+
+\begin{enumerate}
+  \item Powerset über States $\mathcal{P}(S)$ bilden (alle Kombinationen inkl. $\epsilon$)
+  \item State $\times$ Transition Tabelle für neue Übergangsrelation $\delta$
+\end{enumerate}
+
+\subsection{Komplement}
+$\bar{A}$: für $L_{\bar{A}} =\Sigma^* \setminus L_A$
+
+\begin{enumerate}
+  \item $A$ zu $DFA$ transformieren
+  \item alle Endstates invertieren: $F_{\bar{A}}=Q_A\setminus F_A$
+\end{enumerate}
+
+\subsection{Konkatenation}
+$A\cdot B$: für $L_{A\cdot B}=L_A\cdot L_B$
+
+\begin{enumerate}
+  \item Wenn $\epsilon\in L_A$, dann $Q_{A\cdot B}^0=Q_A^0+Q_B^0$, sonst $Q_{A\cdot B}=Q_A^0$
+  \item Wenn Kante von $q\in Q_A$ zu $q_f\in F_A$, dann $\forall q_0\in Q_B^0$: Kante von $q$ nach $q_0$ ziehen.
+  \item $F_{a\cdot B}=F_B$
+\end{enumerate}
+
+\subsection{Produkt}
+$A\cap B$: Durchschnitt bilden für $L_{A\cap B}=L_A\cap L_B$
+
+\begin{enumerate}
+  \item kartesisches Produkt der Zustände bilden $Q=Q_A\times Q_B$
+  \item Zustände synchronisieren
+\end{enumerate}
+
+
+
+\section{Prozesse}
+
+\begin{enumerate}
+  \item[Symbole]
+        \begin{itemize}
+          \item P/T-Netz $N = (P,T,F,W,m_0)$
+          \item (Verzweigungs-)prozess $R=(B,E,F_R)$: (Ereignis-/)Kausalnetz
+          \item Abbildung $\Phi =(\Phi_P,\Phi_T)$
+        \end{itemize}
+  \item Passende Struktur: $(x,y)\in F_R \to (\Phi(x), \Phi(y))\in f$
+        \begin{quote}
+          Alle Elemente eines Prozesses bilden Elemente des Netzes ab.
+        \end{quote}
+  \item Stellen beschreiben Initialmarkierung: $\forall p\in P: m_0(p)=|\Phi^{-1}(p)\cap \circ R|$
+        \begin{quote}
+          Die Initialmarkierung eines Netzplatzes entspricht der Anzahl der Abbildungen dieses Platzes im minimalen Bereich (vor Schaltungen bzw. Transitionen) des Prozesses.
+        \end{quote}
+  \item Verträgliche Kantengewichtungen: …
+        \begin{quote}
+          Sowohl Vor-, als auch Rückkanten von Transitionen des Prozesses, entsprechen anzahlsmäßig den Kantengewichtungen zu den Netzplätze.
+        \end{quote}
+\end{enumerate}
+
+\section{Überdeckungsgraphen}
+
+\begin{algorithm}[H]
+  \caption{\texttt{drawCoverage($N$)}}
+
+  \KwData{A P/T net $N$}
+  \KwResult{A coverage graph}
+  \BlankLine
+
+  \While{uncolored nodes in $V$}{
+    choose next node and color\;
+    \ForEach{active transition}{
+      replace strictly larger fields in successive marking with $\omega$\;
+      \lIf{successive marking not in coverage graph}{add successive marking to coverage graph}
+      add transition edge from marking to successive marking in coverage graph
+    }
+  }
+\end{algorithm}
+
+\section{CTL-Algorithmus}
+
+Der CTL-Algorithmus formalisiert die Analyse über CTL statements.
+
+\begin{algorithm}[H]
+  \caption{\texttt{check($f$)}}
+
+  \KwData{a CTL statement $f$}
+  \KwResult{States are labeled with whether they satisfy $f$}
+  \BlankLine
+
+  \Switch{$f$}{
+    \Case{$\in AP$}{
+      \ForEach{$s\in S$}{
+        \lIf{$f\in E_S(s)$}{$s.labels\gets s.labels\cup f$}
+      }
+    }
+    \Case{$\lnot f_1$}{
+      \texttt{check($f_1$)}\;
+      \ForEach{$s\in S$}{\lIf{$f_1\not\in s.labels$}{$s.labels\gets s.labels\cup \lnot f_1$}}
+    }
+    \Case{$f_1\lor f_2$}{
+      \texttt{check($f_1$)}; \texttt{check($f_2$)}\;
+      \ForEach{$s\in S$}{\lIf{$f_1\in s.labels\lor f_2\in s.labels$}{$s.labels\gets s.labels\cup f_1\lor f_2$}}
+    }
+    \Case{$EXf_1$}{
+      \texttt{check($f_1$)}\;
+      \ForEach{$s\in S$}{\lIf{$\exists t\in R(s): f_1\in s.labels$}{$s.labels\gets s.labels\cup EXf_1$}}
+    }
+    \Case{$E[f_1\textbf{U}f_2]$}{
+      \texttt{check($f_1$)}; \texttt{check($f_2$)}\;
+      \texttt{checkEU($f_1,f_2$)}\explain*{mark all $f_2$ states, traverse backwards and mark $f_1$ states with $E[f_1\textbf{U}f_2]$}
+    }
+    \Case{$EGf_1$}{
+      \texttt{check($f_1$)}\;
+      \texttt{checkEG($f_1$)}\explain*{find SCCs (cycles) in $f_1$ states, label states in SCCs and leading to SCCs with $EGf_1$}
+    }
+  }
+
+\end{algorithm}
+
+
 \end{document}
