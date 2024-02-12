@@ -1,77 +1,28 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{exercisesheet}
 
-\DeclareOption*{
-  \PassOptionsToClass{\CurrentOption}{article}
-}
+% Updating the subtitle
+\providecommand\@subtitle{Übungsaufgaben \ifsolutions mit Lösungen\fi}
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{summary}}
 \ProcessOptions\relax
-\LoadClass{article}
+\LoadClass{summary}
 
-\RequirePackage[margin=5em]{geometry}
-\RequirePackage{hyperref, multicol, environ, xcolor, graphicx}
-\RequirePackage{amsmath, amssymb}
-\RequirePackage{tikz, subfig}
-\RequirePackage[longend,ruled,vlined]{algorithm2e}
 
-\usetikzlibrary{positioning}
 
 % ---------------------------------------------------------------------
 % Document setup
 % ---------------------------------------------------------------------
-\hypersetup{
-  pdfpagemode=UseOutlines,
-  bookmarksnumbered
-}
+\RequirePackage{multicol, environ, graphicx, subfig}
 
-\newcommand\subject[1]{
-  \def\@subject{#1}
-}
-
-\newcommand\semester[1]{
-  \def\@semester{#1}
-}
-
-\newcommand{\resources}[1]{
-  \graphicspath{{#1}}
-}
-
-\counterwithin{figure}{section}
-\counterwithin{algocf}{section}
-
-\counterwithin{algocf}{section}
-\SetKwComment{comment}{// }{}
-\SetKwComment{explain}{$\triangleright$\ }{}
-\newcommand\commentfont[1]{\textcolor{lightgray}{#1}}
-\SetCommentSty{commentfont}
-\DontPrintSemicolon
-
-% ---------------------------------------------------------------------
-% Title page
-% ---------------------------------------------------------------------
-\renewcommand*{\numberline}[1]{\hb@xt@4em{#1\hfil}}
-
-\newcommand{\createtitle}{
-  \begin{titlepage}
-    \title{
-      \@subject
-      \vspace{.5em}\\
-      \large Übungsaufgaben \ifsolutions mit Lösungen\fi\\
-      \small\@semester
-    }
-    \date{}
-    \maketitle
-    \thispagestyle{empty}
-
-    \tableofcontents
-    \label{toc}\addcontentsline{toc}{section}{\nameref{toc}}
-  \end{titlepage}
-}
 
 % ---------------------------------------------------------------------
 % Solutions toggle
 % ---------------------------------------------------------------------
 \newif\ifsolutions
 \def\withsolutions{\global\solutionstrue}
+
+
 
 % ---------------------------------------------------------------------
 % Exercises
@@ -155,6 +106,8 @@
   \fi
 }
 
+
+
 % ---------------------------------------------------------------------
 % Custom commands
 % ---------------------------------------------------------------------
@@ -184,20 +137,4 @@
   \textbf{Termination}: #3
 }
 
-
-% ---------------------------------------------------------------------
-% Custom symbols
-% ---------------------------------------------------------------------
 \newcommand\xmark{$\times$}
-
-\newcommand{\bigO}{
-  \mathcal{O}
-}
-
-\newcommand\littleO{
-  \mathchoice
-  {{\scriptstyle\mathcal{O}}}% \displaystyle
-  {{\scriptstyle\mathcal{O}}}% \textstyle
-  {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
-  {\scalebox{.7}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
-}

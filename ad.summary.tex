@@ -1,31 +1,11 @@
-\documentclass{article}
+\documentclass{summary}
 
-\usepackage{xcolor}
-\usepackage[longend,ruled,vlined]{algorithm2e}
-\usepackage[margin=5em]{geometry}
-\usepackage{graphicx}
-\usepackage{amsmath}
+\subject{Algorithms and Data Structures}
+\semester{Winter 2023/24}
+\author{Leopold Lemmermann}
 
-\counterwithin{algocf}{section}
-\SetKwComment{comment}{// }{}
-\SetKwComment{explain}{$\triangleright$\ }{}
-\newcommand\commentfont[1]{\textcolor{lightgray}{#1}}
-\SetCommentSty{commentfont}
-\DontPrintSemicolon
+\begin{document}\createtitle
 
-\newcommand{\bigO}{
-  \mathcal{O}
-}
-
-\newcommand\littleO{
-  \mathchoice
-  {{\scriptstyle\mathcal{O}}}% \displaystyle
-  {{\scriptstyle\mathcal{O}}}% \textstyle
-  {{\scriptscriptstyle\mathcal{O}}}% \scriptstyle
-  {\scalebox{.6}{$\scriptscriptstyle\mathcal{O}$}}%\scriptscriptstyle
-}
-
-\begin{document}
 \section{Asymptotic View}
 \subsection{Bachmann-Landau Notation}
 \begin{itemize}
