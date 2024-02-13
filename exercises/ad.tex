@@ -996,7 +996,7 @@
   \item Ist das Ergebnis der Breitensuche eindeutig?
   \item Ermitteln Sie mit der Tiefensuche einen Tiefensuchwald und insb. die Zeiten $u.d$ und $u.f$ für jeden Knoten. Starten Sie den Algorithmus wieder bei $s$.
   \item Geben Sie eine topologische Sortierung des Graphen $G$ an.
-  \item Bestimmen Sie mit dem Algorithmus aus der Vorlesung die starken Zusammenhangskomponenten von $G$.
+  \item Bestimmen Sie mit dem Algorithmus aus der Vorlesung die starken Zusammenhangskomponenten von $G$. Geben Sie dazu den transponierten Graph und den Komponentengraph an.
 \end{eexercises}
 
 \begin{eexercises}{Minimale Spannbäume}{
@@ -1026,7 +1026,7 @@
 
         \path[every node]
         (housefloorright) edge node {5} (housefloorleft) edge node [below right=.5 and .1] {5} (houseroofleft) edge node {3} (houseroofright) edge node [below] {1} (treestumpleft)
-        (housefloorleft) edge node {3} (houseroofleft) edge node [above left=.5 and .1] {4} (houseroofright)
+        (housefloorleft) edge node {3} (houseroofleft) edge node [above right=.5 and .1] {4} (houseroofright)
         (houseroofright) edge node [above] {20} (houseroofleft) edge node [above right] {-3} (houseroof)
         (houseroofleft) edge node {6} (houseroof)
         (treestumpleft) edge node [below] {2} (treestumpright) edge node {4} (treemidleft1)
@@ -1053,7 +1053,8 @@
   \item Sei $G = (V, E)$ ein zusammenhängender gewichteter Graph mit Gewichtsfunktion $w : E \rightarrow \mathbb{R}$ und $T = (V, E_0)$ ein minimaler Spannbaum von $G$.
   \begin{enumerate}
     \item Für eine beliebige Kante $e \in E \setminus E_0$ wird deren Gewicht $w(e)$ erhöht. Wir bezeichnen diesen modifizierten Graphen als $G'$. Zeigen Sie, dass $T$ ebenfalls ein minimaler Spannbaum von $G'$ ist.
-    \item Für eine beliebige Kante $e \in E$ wird deren Gewicht $w(e)$ verringert. Wir bezeichnen diesen modifizierten Graphen als $G'$. Konstruieren Sie einen Algorithmus, welcher einen minimalen Spannbaum von $G'$ mit Hilfe von $T$ in Zeit $\bigO(|V| + |E|)$ berechnet. Hinweis: Hier ist kein Pseudocode gefordert.
+    \item Für eine beliebige Kante $e \in E$ wird deren Gewicht $w(e)$ verringert. Wir bezeichnen diesen modifizierten Graphen als $G'$. Konstruieren Sie einen Algorithmus, welcher einen minimalen Spannbaum von $G'$ mit Hilfe von $T$ in Zeit $\bigO(|V| + |E|)$ berechnet.
+          \hint{Hier ist kein Pseudocode gefordert.}
   \end{enumerate}
 \end{eexercises}
 

@@ -233,31 +233,121 @@ where $a \geq 1$, $b > 1$, $f(n)$ is a given function, and $n_0$ is a given cons
   \BlankLine
 
   $L \gets \emptyset$\;
-  \ForEach{vertex $v$ of $G$}{
-    \lIf{$v$ is not visited}{
-      \texttt{DFS($v, L$)}
+  \ForEach{vertex $u$ of $G$}{
+    \lIf{$u$ is not visited}{
+      \texttt{dfs($u, L$)}
     }
   }
   \Return $L$\;
 \end{algorithm}
 
 \begin{algorithm}[H]
-  \caption{\texttt{DFS(u, L)}}
+  \caption{\texttt{dfs(u, L)}}
 
   \KwData{A vertex $u$ and a list $L$}
   \BlankLine
 
+  mark $u$ as found\;
   \ForEach{vertex $v$ of $u$'s neighbors}{
-    mark $u$ as found\;
     \lIf{$v$ is not visited}{
-      \texttt{visit($v$)}
+      \texttt{dfs($v$)}
     }
     \lElseIf{$v$ is found}{
       \textbf{error} "cycle detected"
     }
-    mark $u$ as visited\;
-    $L \gets \{u\} \cup L$\;
   }
+  mark $u$ as visited\;
+  $L \gets \{u\} \cup L$
 \end{algorithm}
+
+\subsection{Strongly Connected Components: Kosaraju-Sharir's Algorithm}
+\begin{algorithm}[H]
+  \caption{\texttt{findSCCs(G)}}
+
+  \KwData{A graph $G$}
+  \KwResult{A list of strongly connected components $SCCs$}
+  \BlankLine
+
+  $L \gets \emptyset$\explain*{$L$ is a list to allow backtracking}
+  \ForEach{vertex $u$ of $G$}{
+    \lIf{$u$ is not visited}{\texttt{dfs($G, u, L$)}}
+  }
+
+  \BlankLine
+  invert edges of $G$ and reset visited flags\;
+  \BlankLine
+
+  $SCCs \gets \emptyset$\;
+  \ForEach{vertex $u\in L$ in reverse order}{
+    \lIf{$u$ is not visited}{
+      $scc \gets \emptyset$\;
+      \texttt{dfs($G, u, scc$)}\explain*{$scc$ is used in place of $L$ to collect the vertices of the SCC}
+      $SCCs \gets SCCs \cup \{scc\}$
+    }
+  }
+  \Return $SCCs$\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+  \caption{\texttt{dfs($G, u, L$)}}
+
+  \KwData{A graph $G$, a vertex $u$, and a list $L$}
+  \BlankLine
+
+  mark $u$ as found\;
+  \ForEach{vertex $v$ of $u$'s neighbors}{
+    \lIf{$v$ is not found}{\texttt{dfs($v$)}}
+  }
+  mark $u$ as visited\;
+  $L \gets L \cup \{u\}$
+\end{algorithm}
+
+\subsection{Minimal Spanning Trees}
+\begin{algorithm}[H]
+  \caption{\texttt{kruskal(G)}}
+
+  \KwData{A graph $G$}
+  \KwResult{A minimal spanning tree $T$}
+  \BlankLine
+
+  $T \gets \emptyset$\;
+  \lForEach(\explain*[f]{interpret $V$ as forest of trees, each connected by $E$}){vertex $v$ of $G$}{
+    \texttt{makeSet($v$)}
+  }
+  sort edges of $G$ by weight\;
+  \ForEach{edge $(u, v)$ of $G$}{
+    \If{\texttt{findSet($u$)} $\neq$ \texttt{findSet($v$)}}{
+      $T \gets T \cup \{(u, v)\}$\;
+      \texttt{union($u, v$)}
+    }
+  }
+  \Return $T$\;
+\end{algorithm}
+
+% Prim's Algorithm
+\begin{algorithm}[H]
+  \caption{\texttt{prim($G, w, r$)}}
+
+  \KwData{A graph $G$ with weights $w$, and a root vertex $r$}
+  \KwResult{A minimal spanning tree $T$}
+  \BlankLine
+
+  $T \gets \emptyset$\;
+  $Q \gets G.V$ with $\infty$ priorities\explain*{$Q$ is a (min-)priority queue}
+  $r.priority \gets 0$\;
+  \While{$Q$ is not empty}{
+    $u \gets \texttt{extractMin(Q)}$\;
+    \ForEach{vertex $v$ of $u$'s neighbors}{
+      \If{$v \in Q$ \textbf{and} $w(u, v) < v.priority$}{
+        $v.priority \gets w(u, v)$\;
+        $T \gets T \cup \{(u, v)\}$
+      }
+    }
+  }
+  \Return $T$\;
+\end{algorithm}
+
+\subsection{Shortest Path: Dijkstra's Algorithm}
+
 
 \end{document}
