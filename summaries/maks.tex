@@ -38,6 +38,7 @@ $A\cap B$: Durchschnitt bilden für $L_{A\cap B}=L_A\cap L_B$
 \begin{enumerate}
   \item kartesisches Produkt der Zustände bilden $Q=Q_A\times Q_B$
   \item Zustände synchronisieren
+  \item[Büchi:] zusätzliche Komponente um mehrere Endzustände zu garantieren.
 \end{enumerate}
 
 
@@ -77,7 +78,7 @@ $A\cap B$: Durchschnitt bilden für $L_{A\cap B}=L_A\cap L_B$
   \While{uncolored nodes in $V$}{
     choose next node and color\;
     \ForEach{active transition}{
-      replace strictly larger fields in successive marking with $\omega$\;
+      replace larger fields in strictly larger successive marking with $\omega$\;
       \lIf{successive marking not in coverage graph}{add successive marking to coverage graph}
       add transition edge from marking to successive marking in coverage graph
     }
@@ -86,7 +87,7 @@ $A\cap B$: Durchschnitt bilden für $L_{A\cap B}=L_A\cap L_B$
 
 \section{CTL-Algorithmus}
 
-Der CTL-Algorithmus formalisiert die Analyse über CTL statements.
+Der CTL-Algorithmus formalisiert das Model-Checking über CTL statements.
 
 \begin{algorithm}[H]
   \caption{\texttt{check($f$)}}
