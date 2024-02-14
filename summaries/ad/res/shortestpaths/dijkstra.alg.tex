@@ -1,0 +1,17 @@
+\begin{algorithm}[H]
+  \caption{\texttt{dijkstra($G, w, s$)}}\label{alg:dijkstra}
+
+  \KwData{A graph $G$ with weights $w$, and a source vertex $s$}
+  \KwResult{A shortest path by traversing the parent pointers from a vertex $u$}
+  \BlankLine
+
+  \texttt{initializeSingleSource($G, s$)}\;
+  $S \gets \emptyset$\explain*{$S$ is a set of vertices with known shortest paths}
+  $Q \gets G.V$\explain*{$Q$ is a (min-)priority queue by vertex distance}
+
+  \While{$Q$ is not empty}{
+    $u \gets \texttt{extractMin(Q)}$\;
+    $S \gets S \cup \{u\}$\;
+    \lForEach(\explain*[f]{position in $Q$ is implicitly updated}){vertex $v$ of $u$'s neighbors}{\texttt{relax($u, v, w$)}}
+  }
+\end{algorithm}

@@ -1,0 +1,40 @@
+\begin{algorithm}[H]
+  \caption{\texttt{findSCCs(G)}}
+
+  \KwData{A graph $G$}
+  \KwResult{A list of strongly connected components $SCCs$}
+  \BlankLine
+
+  $L \gets \emptyset$\explain*{$L$ is a list to allow backtracking}
+  \ForEach{vertex $u$ of $G$}{
+    \lIf{$u$ is not visited}{\texttt{dfs($G, u, L$)}}
+  }
+
+  \BlankLine
+  invert edges of $G$ and reset visited flags\;
+  \BlankLine
+
+  $SCCs \gets \emptyset$\;
+  \ForEach{vertex $u\in L$ in reverse order}{
+    \lIf{$u$ is not visited}{
+      $scc \gets \emptyset$\;
+      \texttt{dfs($G, u, scc$)}\explain*{$scc$ is used in place of $L$ to collect the vertices of the SCC}
+      $SCCs \gets SCCs \cup \{scc\}$
+    }
+  }
+  \Return $SCCs$\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+  \caption{\texttt{dfs($G, u, L$)}}
+
+  \KwData{A graph $G$, a vertex $u$, and a list $L$}
+  \BlankLine
+
+  mark $u$ as found\;
+  \ForEach{vertex $v$ of $u$'s neighbors}{
+    \lIf{$v$ is not found}{\texttt{dfs($v$)}}
+  }
+  mark $u$ as visited\;
+  $L \gets L \cup \{u\}$
+\end{algorithm}

@@ -1,0 +1,34 @@
+\begin{algorithm}[H]
+  \caption{\texttt{topologicalSort(G)}}
+
+  \KwData{A graph $G$}
+  \KwResult{A topological sorted list of vertices $L$}
+  \BlankLine
+
+  $L \gets \emptyset$\;
+  \ForEach{vertex $u$ of $G$}{
+    \lIf{$u$ is not visited}{
+      \texttt{dfs($u, L$)}
+    }
+  }
+  \Return $L$\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+  \caption{\texttt{dfs(u, L)}}
+
+  \KwData{A vertex $u$ and a list $L$}
+  \BlankLine
+
+  mark $u$ as found\;
+  \ForEach{vertex $v$ of $u$'s neighbors}{
+    \lIf{$v$ is not visited}{
+      \texttt{dfs($v$)}
+    }
+    \lElseIf{$v$ is found}{
+      \textbf{error} "cycle detected"
+    }
+  }
+  mark $u$ as visited\;
+  $L \gets \{u\} \cup L$
+\end{algorithm}

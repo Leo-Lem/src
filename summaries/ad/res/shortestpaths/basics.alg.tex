@@ -1,0 +1,24 @@
+\begin{algorithm}[H]
+  \caption{\texttt{initializeSingleSource($G, s$)}}
+
+  \KwData{A graph $G$ and a source vertex $s$}
+  \BlankLine
+
+  \ForEach{vertex $v\in G.V$}{
+    $v.distance \gets \infty$\;
+    $v.parent \gets nil$\;
+  }
+  $s.distance \gets 0$
+\end{algorithm}
+
+\begin{algorithm}[H]
+  \caption{\texttt{relax($u, v, w$)}}
+
+  \KwData{Two vertices $u$ and $v$, and a weight $w$}
+  \BlankLine
+
+  \If{$v.distance > u.distance + w(u, v)$}{
+    $v.distance \gets u.distance + w(u, v)$\;
+    $v.parent \gets u$
+  }
+\end{algorithm}

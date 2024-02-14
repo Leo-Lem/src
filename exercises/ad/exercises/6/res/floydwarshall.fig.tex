@@ -1,0 +1,18 @@
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[->, auto, on grid, bend left=.5cm, node distance=4cm, main node/.style={circle, draw, minimum size=.5em}]
+    \node[main node] (A) {A};
+    \node[main node] (B) [left=of A] {B};
+    \node[main node] (C) [below right=2cm and 2cm of B] {C};
+    \node[main node] (D) [below of=B] {D};
+
+    \path[every node]
+    (A) edge node {6} (B) edge node {3} (C) edge [bend left=2cm] node {10} (D)
+    (B) edge node {13} (A) edge node {-2} (C) edge node {7} (D)
+    (C) edge node {5} (A) edge node {5} (B) edge node {10} (D)
+    (D) edge [bend right=1.5cm] node {-7} (A) edge node {7} (B) edge node {5} (C)
+    ;
+  \end{tikzpicture}
+
+  \caption{Graph zum Floyd-Warshall Algorithmus.}\label{fig:floydwarshall}
+\end{figure}

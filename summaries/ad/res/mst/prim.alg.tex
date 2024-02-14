@@ -1,0 +1,21 @@
+\begin{algorithm}[H]
+  \caption{\texttt{prim($G, w, r$)}}
+
+  \KwData{A graph $G$ with weights $w$, and a root vertex $r$}
+  \KwResult{A minimal spanning tree $T$}
+  \BlankLine
+
+  $T \gets \emptyset$\;
+  $Q \gets G.V$ with $\infty$ priorities\explain*{$Q$ is a (min-)priority queue}
+  $r.priority \gets 0$\;
+  \While{$Q$ is not empty}{
+    $u \gets \texttt{extractMin(Q)}$\;
+    \ForEach{vertex $v$ of $u$'s neighbors}{
+      \If{$v \in Q$ \textbf{and} $w(u, v) < v.priority$}{
+        $v.priority \gets w(u, v)$\;
+        $T \gets T \cup \{(u, v)\}$
+      }
+    }
+  }
+  \Return $T$\;
+\end{algorithm}

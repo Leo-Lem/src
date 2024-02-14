@@ -1,0 +1,59 @@
+\begin{algorithm}[H]
+  \caption{\texttt{delete(T, x)}}
+
+  \KwData{A red-black tree $T$ and a node $x$}
+  \KwResult{A red-black tree $T$ without node $x$}
+  \BlankLine
+
+  \comment{swap x with minimum}
+  \If{$x$ has two children}{
+    $swappee \gets $ minimum$(x.right)$\explain*{alternative: successor(x)}
+    $x.key \gets swappee.key$\;
+    $x \gets swappee$
+  }
+  \comment{remove x (or swappee)}
+  connect $x.child$ with $x.parent$ ?? $T.root$\explain*{use $T.root$ if $x.parent$ is $nil$}
+  \lIf(\explain*[f]{$x$ is red $\to$ no violations}){$x$ is black}{\texttt{fixupAfterDelete($T, x.child$)}}
+  \textbf{delete} $x$\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+  \caption{\texttt{fixupAfterDelete(T, x)}}
+
+  \KwData{A red-black tree $T$ and a node $x$}
+  \KwResult{A fixed red-black tree $T$}
+  \BlankLine
+
+  \comment*[h]{fix V}\explain*{$x.parent$ is left child in cases 1-4, right child in cases 5-8}
+  \While{$x \neq T.root$ \textbf{and} $x$ is black}{
+    \If(\explain*[f]{cases 1 and 5 (only differ in sibling)}){$x.sibling$ is red}{
+      color $x.sibling$ black\\
+      color $x.parent$ red\\
+      rotate $x.parent$ left\\
+      \textbf{continue} with $x \gets x.sibling$
+    }
+    \Else(\comment*[h]{if $x.sibling$ is black}){
+      \If(\explain*[f]{cases 2 and 6 (only differ in sibling)}){$x.sibling.children$ are black}{
+        color $x.sibling$ red\\
+        \textbf{continue} with $x \gets x.parent$
+      }
+      \Else(\comment*[h]{if $x.sibling$ has red child}){
+        \If(\explain*[f]{case 3 $|$ $x.sibling.left$ for case 7}){$x.sibling.right$ is black}{
+          color $x.sibling.left$ black\explain*{$x.sibling.right$ for case 7}
+          color $x.sibling$ red\\
+          rotate $x.sibling$ right\explain*{rotate left for case 7}
+          \textbf{continue} with $x \gets x.sibling$
+        }
+        \Else(\comment*[h]{if $x.sibling.left$ is black}\explain*[f]{case 4 $|$ $x.sibling.right$ for case 8}){
+          color $x.sibling$ like $x.parent$\\
+          color $x.parent$ \textbf{and} $x.sibling.right$ black\explain*{$x.sibling.left$ for case 8}
+          rotate $x.parent$ left\explain*{rotate right for case 8}
+          \textbf{break} with $x \gets T.root$
+        }
+      }
+    }
+  }
+
+  \comment{fix II and IV}
+  color $x$ black
+\end{algorithm}

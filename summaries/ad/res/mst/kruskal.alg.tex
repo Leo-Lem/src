@@ -1,0 +1,20 @@
+\begin{algorithm}[H]
+  \caption{\texttt{kruskal(G)}}
+
+  \KwData{A graph $G$}
+  \KwResult{A minimal spanning tree $T$}
+  \BlankLine
+
+  $T \gets \emptyset$\;
+  \lForEach(\explain*[f]{interpret $V$ as forest of trees, each connected by $E$}){vertex $v$ of $G$}{
+    \texttt{makeSet($v$)}
+  }
+  sort edges of $G$ by weight\;
+  \ForEach{edge $(u, v)$ of $G$}{
+    \If{\texttt{findSet($u$)} $\neq$ \texttt{findSet($v$)}}{
+      $T \gets T \cup \{(u, v)\}$\;
+      \texttt{union($u, v$)}
+    }
+  }
+  \Return $T$\;
+\end{algorithm}

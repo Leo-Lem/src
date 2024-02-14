@@ -1,0 +1,25 @@
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[->, auto, node distance=1.5cm, every node/.style={circle, draw, minimum size=.5cm}]
+    \node (S) {S};
+    \node (B) [right of=S] {B};
+    \node (A) [above of=B] {A};
+    \node (C) [below of=B] {C};
+    \node (D) [right of=A] {D};
+    \node (E) [below of=D] {E};
+    \node (F) [below of=E] {F};
+    \node (G) [right of=E] {G};
+
+    \path[every node]
+    (S) edge (A) edge (B) edge (C)
+    (A) edge (D) edge (E)
+    (B) edge (A) edge (E)
+    (C) edge (B) edge (F)
+    (D) edge (G) edge (B)
+    (E) edge (C)
+    (F) edge (G)
+    (G) edge (E);
+  \end{tikzpicture}
+
+  \caption{Graph $G$}\label{fig:simplegraph}
+\end{figure}

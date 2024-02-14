@@ -1,0 +1,86 @@
+\documentclass{article}
+
+\usepackage{summary}
+
+\subject{Algorithms and Data Structures}
+\semester{Winter 2023/24}
+\author{Leopold Lemmermann}
+
+\begin{document}\createtitle
+
+\section{Asymptotic View}
+\subsection{Bachmann-Landau Notation}
+\begin{itemize}
+  \item[$\bigO$] (big O: upper bound) $f\in \bigO(g) \Leftrightarrow ^{\exists c > 0}_{\exists n_0 > 0}: f \leq c \cdot g \forall n > n_0$
+  \item[$\Omega$] (big Omega: lower bound) $f\in \Omega(g) \Leftrightarrow ^{\exists c > 0}_{\exists n_0 > 0}: f \geq c \cdot g \forall n > n_0$
+  \item[$\littleO$] (little o: strict upper bound) $f\in \littleO(g) \Leftrightarrow ^{\forall c > 0}_{\exists n_0 > 0}: f < c \cdot g \forall n > n_0$
+  \item[$\omega$] (little omega: strict lower bound) $f\in \omega(g) \Leftrightarrow ^{\forall c > 0}_{\exists n_0 > 0}: f > c \cdot g \forall n > n_0$
+  \item[$\Theta$] (big Theta: tight bound) $f\in \Theta(g) \Leftrightarrow f\in \bigO(g) \land f\in \Omega(g)$
+\end{itemize}
+
+\subsection{Master Theorem}
+The master theorem is a method for solving recurrences of the form
+\input{res/master.eqt}
+where $a \geq 1$, $b > 1$, $f(n)$ is a given function, and $n_0$ is a given constant.
+
+\begin{itemize}
+  \item[I.] (recursion dominates) $\exists \epsilon > 0: f(n) \in \bigO(n^{\log_b(a)-\epsilon}) \Rightarrow T(n) \in \Theta(n^{\log_b a})$
+  \item[II.] (recursion and non-recursion are balanced) $\exists k \ge 0: f(n) \in \Theta(n^{\log_b a}\log^k n) \Rightarrow T(n) \in \Theta(n^{\log_b a} \log^{k+1} n)$
+  \item[III.] (non-recursion dominates) $\underbrace{^{\exists \epsilon > 0: f(n) \in \Omega(n^{\log_b(a)+\epsilon})}_{\exists c \in [0\dots1]: a f(\frac{n}{b}) \leq c f(n)}}_{\text{\tiny regularity condition}} \Rightarrow T(n) \in \Theta(f(n))$
+\end{itemize}
+
+
+\section{Selection}
+\input{res/select.alg}
+
+\section{Red-Black Trees}
+
+\subsection{Properties}
+\begin{itemize}
+  \item[I.]\label{properties:1} [Colored] Every node is either red or black.
+  \item[II.]\label{properties:2} [Black Root] The root is black.
+  \item[III.]\label{properties:3} [Black Leafs] Every leaf (NIL) is black.
+  \item[IV.]\label{properties:4} [Red $\to$ Black Children] If a red node has children, then the children are black.
+  \item[V.]\label{properties:5} [Black Height] For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
+\end{itemize}
+
+\subsection{Insertion}
+\input{res/rb/insert.alg}
+
+\subsection{Deletion}
+\input{res/rb/delete.alg}
+
+\section{Graphs}
+\subsection{Topological Sort}
+\input{res/graphs/topo.alg}
+
+\subsection{Strongly Connected Components: Kosaraju-Sharir's Algorithm}
+\input{res/graphs/sccs.alg}
+
+\subsection{Minimal Spanning Trees}
+\subsubsection{Kruskal}
+\input{res/mst/kruskal.alg.tex}
+
+\subsubsection{Prim}
+\input{res/mst/prim.alg.tex}
+
+\subsection{Bridges}
+The \texttt{findBridges} algorithm finds all bridges in a graph. A bridge is an edge whose removal increases the number of connected components in the graph. The algorithm has a time complexity of $\bigO(E(V+E))=\bigO(E\cdot V+E^2)$.\par
+\input{res/graphs/bridges.alg}
+The DFS algorithm \ref{alg:findicc} \texttt{findICC} finds an initial connected component (ICC) of a graph $G$ starting from a vertex $u$. The algorithm (like other DFSs) has a time complexity of $\bigO(V+E)$.\par
+
+\subsection{Shortest Paths}
+\input{res/shortestpaths/basics.alg}
+
+\subsubsection{Bellman-Ford}
+The Bellman-Ford algorithm \ref{alg:bellmanford} finds the shortest path from a source vertex $s$ to all other vertices in a graph $G$. The algorithm has a time complexity of $\bigO(V\cdot E)$.\par
+\input{res/shortestpaths/bellmanford.alg}
+
+\subsubsection{Dijkstra}
+The Dijkstra algorithm \ref{alg:dijkstra} finds the shortest path from a source vertex $s$ to all other vertices in a graph $G$. The algorithm has a time complexity of $\bigO(E\log V)$ when the Queue is implemented with a Min-Heap. Using Fibonacci-Heaps the time complexity can be reduced to $\bigO(E+V\log V)$.\par
+\input{res/shortestpaths/dijkstra.alg}
+
+The Dijkstra algorithm \ref{alg:dijkstrasinglepair} finds the shortest path from a source vertex $s$ to a target vertex $t$ in a graph $G$. The algorithm has a time complexity of $\bigO(V\log V+E)+\bigO(V)=\bigO(V\log V+E)$ (based on the single source \texttt{dijsktra}).\par
+\input{res/shortestpaths/dijkstrasp.alg}
+
+\end{document}

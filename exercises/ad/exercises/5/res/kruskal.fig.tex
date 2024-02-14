@@ -1,0 +1,39 @@
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[auto, node distance=2cm, main node/.style={circle, draw, minimum size=.5em}]
+    \node[main node] (0) {};
+    \node[main node] (1) [right of=0, below of=0] {};
+    \node[main node] (2) [above of=1, above of=1] {};
+    \node[main node] (3) [right of=2, below of=2] {};
+    \node[main node] (4) [right of=3, above of=3] {};
+    \node[main node] (5) [right of=4] {};
+    \node[main node] (6) [below of=3] {};
+    \node[main node] (7) [right of=6] {};
+    \node[main node] (8) [right of=7] {};
+    \node[main node] (9) [above of=8] {};
+    \node[main node] (10) [left of=9] {};
+
+    \path[every node]
+    (0) edge node {3} (1)
+    (0) edge node {2} (2)
+    (1) edge node {8} (2)
+    (1) edge node {4} (3)
+    (2) edge node {9} (3)
+    (3) edge node {6} (4)
+    (3) edge node {9} (6)
+    (4) edge node {1} (5)
+    (4) edge node {5} (6)
+    (4) edge node {9} (9)
+    (4) edge node {3} (10)
+    (5) edge[bend left] node {7} (8)
+    (9) edge node {5} (5)
+    (6) edge node {3} (7)
+    (7) edge node {1} (8)
+    (8) edge node {3} (9)
+    (8) edge node {2} (10)
+    (9) edge node {2} (10)
+    ;
+  \end{tikzpicture}
+
+  \caption{Ein gewichteter Graph}\label{fig:kruskal}
+\end{figure}

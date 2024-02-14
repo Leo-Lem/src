@@ -1,0 +1,46 @@
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[auto, on grid, node distance=6em, main node/.style={circle, draw, minimum size=.1em}]
+    \node [main node, fill=gray] (housefloorright) {};
+    \node [main node] (housefloorleft) [left=of housefloorright] {};
+    \node [main node] (houseroofright) [above=of housefloorright] {};
+    \node [main node] (houseroofleft) [above=of housefloorleft] {};
+    \node [main node] (houseroof) [above right=5em and 3em of houseroofleft] {};
+    \node [main node] (treestumpleft) [right=of housefloorright] {};
+    \node [main node] (treestumpright) [right=2em of treestumpleft] {};
+    \node [main node] (treemidleft1) [above=2em of treestumpleft] {};
+    \node [main node] (treemidright1) [above=2em of treestumpright] {};
+    \node [main node] (treeleft1) [left=4em of treemidleft1] {};
+    \node [main node] (treeright1) [right=4em of treemidright1] {};
+    \node [main node] (treemidleft2) [above=2em of treemidleft1] {};
+    \node [main node] (treemidright2) [above=2em of treemidright1] {};
+    \node [main node] (treeleft2) [left=3em of treemidleft2] {};
+    \node [main node] (treeright2) [right=3em of treemidright2] {};
+    \node [main node] (treemidleft3) [above=3em of treemidleft2] {};
+    \node [main node] (treemidright3) [above=3em of treemidright2] {};
+    \node [main node] (treeleft3) [left=2em of treemidleft3] {};
+    \node [main node] (treeright3) [right=2em of treemidright3] {};
+    \node [main node] (treetop) [above right=4em and 1em of treemidleft3] {};
+
+    \path[every node]
+    (housefloorright) edge node {3\tiny{(4)}} (houseroofright) edge node [below] {1\tiny{(1)}} (treestumpleft)
+    (houseroofright) edge node [above left] {4\tiny{(7)}} (housefloorleft) edge node {-3\tiny{(5)}} (houseroof)
+    (housefloorleft) edge node {3\tiny{(8)}} (houseroofleft)
+    (treestumpleft) edge node [below] {2\tiny{(2)}} (treestumpright) edge node {4\tiny{(9)}} (treemidleft1)
+    (treestumpright) edge node [right] {1\tiny{(3)}} (treemidright1)
+    (treemidright1) edge node [below right] {3\tiny{(6)}} (treeright1)
+    (treemidleft1) edge node [below left] {5\tiny{(11)}} (treeleft1)
+    (treeright1) edge node [left] {4\tiny{(10)}} (treemidright2)
+    (treeleft1) edge node [right] {6\tiny{(15)}} (treemidleft2)
+    (treemidright2) edge node [below right] {5\tiny{(12)}} (treeright2)
+    (treemidleft2) edge node [below left] {7\tiny{(16)}} (treeleft2)
+    (treeright2) edge node [left] {-2\tiny{(13)}} (treemidright3)
+    (treeleft2) edge node [right] {1\tiny{(17)}} (treemidleft3)
+    (treemidright3) edge node [below right] {1\tiny{(14)}} (treeright3)
+    (treemidleft3) edge node [below left] {2\tiny{(18)}} (treeleft3)
+    (treeleft3) edge node [left] {6\tiny{(19)}} (treetop)
+    ;
+  \end{tikzpicture}
+
+  \caption{Ein MST des Graphen.}
+\end{figure}

@@ -1,0 +1,57 @@
+
+\begin{algorithm}[H]
+  \caption{\texttt{insert(T, x)}}
+
+  \KwData{A red-black tree $T$ and a node $x$}
+  \KwResult{A red-black tree $T$ with node $x$}
+  \BlankLine
+
+  \comment{find insertion point (and stop at guard/after leaf)}
+  $next = T.root$\;
+  \Repeat{$next$ is  a leaf}{
+    \lIf{$x < next$}{$next \gets next.left$}
+    \lElse{$next \gets next.right$}
+  }
+
+  \comment{connect $x$ to parent}
+  $x.parent \gets next.parent$\;
+  \lIf{$x.parent = nil$}{$T.root \gets x$}
+  \lElseIf{$x < x.parent$}{$x.parent.left \gets x$}
+  \lElse{$x.parent.right \gets x$}
+
+  \comment{fix the properties}
+  color $x$ red\;
+  \texttt{fixupAfterInsert($T, x$)}\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+  \caption{\texttt{fixupAfterInsert(T, x)}}
+
+  \KwData{A red-black tree $T$ and a newly inserted node $x$}
+  \KwResult{A fixed red-black tree $T$}
+  \BlankLine
+
+  \comment*[h]{fix I}\explain*{$x.parent$ is left child in cases 1-3, right child in cases 4-6}
+  \While{$x.parent$ is red}{
+    \If(\explain*[f]{cases 1 and 4 (only differ in uncle)}){$x.uncle$ is red}{
+      color $x.parent$ and $x.uncle$ black\\
+      color $x.grandparent$ red\\
+      \textbf{continue} with $x \gets x.grandparent$
+    }
+    \Else(\comment*[h]{if $x.uncle$ is black}){
+      \If(\explain*[f]{case 2 $|$ $x$ is left child for case 5}){$x$ is a right child}{
+        rotate $x.parent$ left\explain*{rotate right for case 5}
+        \textbf{continue} with $x \gets x.parent$
+      }
+      \Else(\tcp*[h]{if $x$ is left child}\explain*[f]{case 3 $|$ $x$ is right child for case 6 }){
+        color $x.parent$ black\\
+        color $x.grandparent$ red\\
+        rotate $x.grandparent$ right\explain*{for case 6 rotate left}
+        \textbf{continue} with $x$
+      }
+    }
+  }
+
+  \comment{fix II}
+  color $T.root$ black
+\end{algorithm}
