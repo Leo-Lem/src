@@ -1,0 +1,19 @@
+\documentclass{article}
+
+\usepackage{exercises}
+
+\begin{document}
+\begin{algorithm}[ht]
+  \caption{Alg}\label{alg:avg}
+
+  \KwData{$A[i], i \in [1,n], A[i] \in \mathbb{N}$}
+  \KwResult{$\text{result} \in \mathbb{R}_{>0}$}
+  \BlankLine
+
+  $\text{result} \gets 0$ \\
+  \For{$i = 1$ to $n$}{
+    $\text{result} \gets ((i - 1) \cdot \text{result} + A[i])/i$
+  }
+  \Return{$\text{result}$}
+\end{algorithm}
+\end{document}

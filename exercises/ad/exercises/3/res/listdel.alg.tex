@@ -1,0 +1,36 @@
+\documentclass{article}
+
+\usepackage{exercises}
+
+\begin{document}
+\begin{algorithm}[H]
+  \caption{\texttt{delete($ L, p$)}}\label{alg:listdelete}
+
+  \KwData{$\text{sortierte Liste } L,  \text{Element } p$}
+  \KwResult{sortierte Liste $L$ ohne $p$}
+  \BlankLine
+
+  \If{$L.head = p$}{
+    \If{$L.head = L.head.\text{next}$}{
+      $L.head \gets \text{null}$
+    }
+    \Else{
+      $i \gets L.head$ \\
+      \While{$i.\text{next} \neq L.head$}{
+        $i \gets i.\text{next}$
+      }
+      $i.\text{next} \gets L.head.\text{next}$ \\
+      $L.head \gets L.head.\text{next}$
+    }
+  }
+  \Else{
+    $i \gets L.head$ \\
+    \While{$i.\text{next} \neq p \land i.\text{next} \neq L.head$}{
+      $i \gets i.\text{next}$
+    }
+    \If{$i.\text{next} = p$}{
+      $i.\text{next} \gets p.\text{next}$
+    }
+  }
+\end{algorithm}
+\end{document}

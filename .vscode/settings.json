@@ -9,7 +9,7 @@
   "latex-workshop.message.warning.show": false,
   "latex-workshop.message.badbox.show": false,
   "latex-workshop.message.error.show": false,
-  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.latex.autoClean.run": "never",
   "latex-workshop.latex.clean.args": ["-c", "%DOC_EXT%", "-outdir=%OUTDIR%"],
   "latex-workshop.latexindent.args": [
     "%TMPFILE%",

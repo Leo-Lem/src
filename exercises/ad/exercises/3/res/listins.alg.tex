@@ -1,0 +1,29 @@
+\documentclass{article}
+
+\usepackage{exercises}
+
+\begin{document}
+\begin{algorithm}[H]
+  \caption{\texttt{insert($ L, p$)}}\label{alg:listinsert}
+
+  \KwData{sortierte Liste $L$, Element $p$}
+  \KwResult{sortierte Liste $L$ mit $p$}
+  \BlankLine
+
+  \If{$\text{L ist leer}$}{
+    $L.head \gets p$
+  }
+  \ElseIf(\explain*[f]{Elemente sind wertmäßig vergleichbar}){$p < L.head$}{
+    $p.\text{next} \gets L.head$ \\
+    $L.head \gets p$
+  }
+  \Else{
+    $i \gets L.head$ \\
+    \While{$i.\text{next} < p \land i.\text{next} \neq L.head$}{
+      $i \gets i.\text{next}$
+    }
+    $p \gets i.\text{next}$ \\
+    $i.\text{next} \gets p$
+  }
+\end{algorithm}
+\end{document}

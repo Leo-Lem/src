@@ -4,6 +4,7 @@
 \withsolutions
 
 \begin{document}
+\sheet{Big O \& Schleifeninvarianten}
 \begin{eexercises}{Big-O Notation}{
     Beweisen oder widerlegen Sie die folgenden Aussagen:}
   \item $2n = \bigO(n)$
@@ -79,14 +80,7 @@
 
 \begin{exercise}{Größenordnung}
   Ordnen Sie die über die folgenden Ausdrücke definierten Funktionen $f_i : \mathbb{N}_{>0} \rightarrow \mathbb{R}_{\geq 0}, i = 1, \ldots, 10$ der Größe nach im Sinne der $\bigO$-Notation:
-  \begin{table}
-    \centering
-    \begin{tabular}[ht]{c|c|c|c|c | c|c|c|c|c}
-      $f_1(n)$  & $f_2(n)$      & $f_3(n)$ & $f_4(n)$   & $f_5(n)$    & $f_6(n)$ & $f_7(n)$    & $f_8(n)$ & $f_9(n)$                                     & $f_{10}(n)$ \\
-      \hline
-      $n^{3/2}$ & $\log\log{n}$ & $n^n$    & $\sqrt{n}$ & $n \log{n}$ & $n$      & $\log^2{n}$ & $2^n$    & $n^{\epsilon}\forall 0<\epsilon<\frac{1}{2}$ & $\log{n}$
-    \end{tabular}
-  \end{table}
+  \input{res/func.tbl}
 
   \begin{solution}
     \begin{equation*}
@@ -113,16 +107,7 @@
 
 \begin{eexercises}{Schleifeninvarianten}{
     Die folgende Funktion erhält ein Eingabearray aus natürlichen Zahlen als Eingabe.
-    \begin{algorithm}[ht]
-      \caption{Alg}
-      \KwData{$A[i], i \in [1,n], A[i] \in \mathbb{N}$}
-      \KwResult{$\text{result} \in \mathbb{R}_{>0}$}
-      $\text{result} \gets 0$ \\
-      \For{$i = 1$ to $n$}{
-        $\text{result} \gets ((i - 1) \cdot \text{result} + A[i])/i$
-      }
-      \Return{$\text{result}$}
-    \end{algorithm}
+    \input{res/avg.alg.tex}
   }
   \item Wenden Sie den Algorithmus auf ein Beispielarray der Länge mindestens drei an.
   \item Geben Sie an, was der Algorithmus berechnet.

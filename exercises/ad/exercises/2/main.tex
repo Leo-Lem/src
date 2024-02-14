@@ -4,6 +4,7 @@
 \withsolutions
 
 \begin{document}
+\sheet{Erweitertes Big O, Mastertheorem, Rekursion \& Queues}
 \begin{eexercises}{Erweiterte Big-O Notation}{
     Beweisen oder widerlegen Sie die folgenden Aussagen:
   }
@@ -79,37 +80,8 @@
 \end{solutions}
 
 \begin{eexercises}{Rekursiver Algorithmus}{
-    Gegeben sei folgender Pseudocode:
-    \begin{algorithm}[ht]
-      \caption{Alg($A,x,y$)}
-      \KwData{$A[i], i=[1,n], A[i] \in \mathbb{N}, 0 < x \leq y \leq n$}
-      \KwResult{$\text{result} \in \mathbb{N}_{>0}$}
-      $\text{result} \gets 0$ \\
-      \If{$x = y$}{
-        $\text{result} \gets 1$
-      }
-      \ElseIf{$x < y$}{
-        $k \gets x + \lfloor 2 \frac{y-x}{3} \rfloor$ \\
-        $\text{value1} \gets \text{Alg}(A, x, k-1)$ \\
-        $\text{value2} \gets \text{Alg}(A, k, y)$ \\
-        $\text{value3} \gets 0$ \\
-        $i \gets k-1, j \gets k$ \\
-        \While{$A[i] \geq A[i-1] \land i > x$}{
-          $i \gets i-1$
-        }
-        \While{$A[j] \leq A[j+1] \land j < y$}{
-          $j \gets j+1$
-        }
-        \If{$A[k-1] \leq A[k]$}{
-          $\text{value3} \gets j-i+1$
-        }
-        \Else{
-          $\text{value3} \gets \max(j-k+1, k-i)$
-        }
-        $\text{result} \gets \max(\text{value1}, \text{value2}, \text{value3})$
-      }
-      \Return{$\text{result}$}
-    \end{algorithm}
+    Gegeben sei der Algorithmus \ref{alg:maxsub}:
+    \input{res/maxsub.alg}
   }
   \item Geben Sie an, was der Algorithmus berechnet.
   \item Bestimmen Sie eine Rekurrenzgleichung, welche die Laufzeit im worst-case beschreibt. Begründen Sie die Terme in der Gleichung.

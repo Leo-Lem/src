@@ -1,0 +1,17 @@
+\begin{algorithm}[H]
+  \caption{\texttt{INSERT-SORTED(x, A)}}\label{alg:insertsorted}
+
+  \KwData{Wurzel eines (leeren) Suchbaums $x$, sortierter Array $A$}
+  \KwResult{balancierter Suchbaum T}
+  \BlankLine
+
+  $median \gets \lfloor A.size/2 \rfloor$\;
+
+  \lIf{$x$ has no children}{\textbf{continue}}
+  \lElseIf{$x.key < A[median]$}{$x\gets x.left$}
+  \lElse{$x\gets x.right$}
+
+  $x.key = A[median]$\;
+  \texttt{INSERT-SORTED($x, A[\text{:median-1}]$)}\;
+  \texttt{INSERT-SORTED($x, A[\text{median+1:}]$)}
+\end{algorithm}

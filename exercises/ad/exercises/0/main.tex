@@ -4,6 +4,7 @@
 \withsolutions
 
 \begin{document}
+\sheet[0]{Grundlagen}
 \begin{eexercises}{Vollständige Induktion}{
     Beweisen Sie die folgenden Aussagen mit vollständiger Induktion:
   }
@@ -30,7 +31,7 @@
 
 \begin{exercise}{Algorithmenanalyse}
   Was berechnet der Algorithmus Alg? Finden Sie einen Aufruf für den der Algorithmus besonders langsam ist. Wie verhält sich der Algorithmus bei Eingabe von rationalen oder reellen Zahlen?
-  \import{../algorithms}{gcd}
+  \input{res/gcd}
 
   \begin{solution}
     Der Algorithmus berechnet den größten gemeinsamen Teiler von $a$ und $b$. Der Algorithmus ist besonders langsam, wenn $a$ und $b$ sehr unterschiedlich groß sind. Da u. U. kein gemeinsamer Teiler existiert, kann es sein, dass der Algorithmus nicht terminiert.
@@ -41,7 +42,7 @@
   Entwerfen Sie einen Algorithmus, der für gegebene ganze Zahlen $a_1, \ldots, a_n \in \mathbb{Z}$ das Minimum und das Maximum bestimmt. Versuchen Sie dabei möglichst wenige Vergleiche zu verwenden ($\leq 1,5n$ sind möglich).
 
   \begin{solution}
-    \import{../algorithms}{minMaxPairwise}
+    \input{res/minMaxPairwise}
   \end{solution}
 \end{exercise}
 \end{document}
