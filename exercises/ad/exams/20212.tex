@@ -1,0 +1,88 @@
+\documentclass{article}
+
+\usepackage{exercises}
+\withsolutions
+
+\begin{document}
+\begin{eexercises}{Big-O Notation}{
+    Entscheiden Sie, ob die folgenden Aussagen über Funktionen der Form $N \to R$ wahr oder falsch sind und beweisen bzw. widerlegen Sie diese. Falls Sie bekannte Rechenregeln oder Resultate aus der Vorlesung benutzen, so nennen Sie diese beim Namen bzw. referenzieren Sie diese.
+    \hint{Der Ausdruck $\log n$ bezeichnet den Logarithmus von $n$ zur Basis 2. Der Ausdruck $\ln n$ bezeichnet den Logarithmus von $n$ zur Basis $e$.}
+  }
+  \item $n^2\cdot \ln{n} = o(n^{3/2}\cdot \log{n})$
+  \item $\frac{(2n^2)\cdot \sqrt{n^5}}{n^{3.5}+n^2} = \Omega{0.001\cdot n}$
+  \item $2^n = \Theta(2^{n/2})$
+  \item $\sum_{i=1}^n \log{i} = \bigO(2n\cdot \log{n})$
+\end{eexercises}
+
+\begin{exercises}{Master-Theorem}
+\item Geben Sie eine Funktion $f$ an, so dass auf die Rekursion $T(n) \leq 4 \cdot T(n/2) + f(n)$ keiner der drei Fälle des Master-Theorems angewendet werden kann. Begründen Sie Ihre Antwort!
+\item Entscheiden und begründen Sie, ob die folgende Rekursionsgleichung mithilfe des Mastertheorems lösbar ist oder nicht. Ist das Mastertheorem anwendbar, so lösen Sie die Rekursionsgleichung damit. Ist das Mastertheorem nicht anwendbar, so lösen Sie die Rekursionsgleichung mit der Substitutionsmethode.
+\begin{equation*}
+  T(n) = \begin{cases}
+    9 \cdot T(n/\log_{1/2}(1/8)) + n^3 & \text{für } n > 1 \\
+    1                                  & \text{sonst}
+  \end{cases}
+\end{equation*}
+\hint{Sollten Sie die Substitutionsmethode nutzen, müssen Sie in dieser Teilaufgabe nicht noch zusätzlich einen Induktionsbeweis zur Korrektheit aufführen.}
+\item Sei $T(n)$ die Laufzeit eines gegebenen Algorithmus $A$. Für diese Laufzeit gelte die folgende rekursive obere Schranke:
+\begin{equation*}
+  T(n) \leq \begin{cases}
+    1/3                & \text{für } n \leq 1 \\
+    3 \cdot T(n-2) + 3 & \text{sonst}
+  \end{cases}
+  % T(n) \leq \frac{1}{3}, \text{ für } n \leq 1, 3 \cdot T(n-2) + 3, \text{ sonst}
+\end{equation*}
+\item Bestimmen und beweisen Sie eine möglichst exakte (nicht-rekursive) obere Schranke (im $\bigO$-Kalkül) für die Laufzeit von Algorithmus $A$.
+\hint{Raten Sie eine Lösung der Rekursion und beweisen Sie deren Korrektheit durch vollständige Induktion. Beim Raten der Lösung muss ersichtlich werden, wie Sie zu der geratenen Lösung gekommen sind (z.B. durch Angabe der zugehörigen Rechnung beim Anwenden der Substitutionsmethode).}
+\end{exercises}
+
+\begin{exercise}{Quicksort}
+  Sortieren Sie das Array $A = [13,11,5, -1,3,0,42,1]$ durch Anwendung des Algorithmus QUICKSORT aus der Vorlesung. Zur Erinnerung finden Sie die zugehörigen Pseudocodes als Algorithmen 1 \& 2. Geben Sie den Inhalt des Arrays $A$ nach vollständigen Ausführung des PARTITION-Aufrufs in Zeile 2 von Algorithmus 1 an.
+  \begin{algorithm}[ht]
+    \caption{QUICKSORT($A, l, r$)}
+    \KwData{$A = [A[1], \ldots, A[n]]$}
+    \KwResult{$A$ sortiert}
+    \If{$l < r$}{
+      $p \gets \text{PARTITION}(A, l, r)$ \\
+      QUICKSORT($A, l, p - 1$) \\
+      QUICKSORT($A, p + 1, r$)
+    }
+  \end{algorithm}
+\end{exercise}
+
+\begin{eexercises}{Graphen}{
+    Wir wollen die zuverlässigsten Kommunikationswege zwischen je zwei Computern in einem gegebenen Computer-Netzwerk ermitteln. Dazu sei das Computer-Netzwerk Abbildung 1 zeigt als Beispiel den Graphen zu dem Computer-Netzwerk der (sehr kleinen) Universität Grubmah.
+    % TODO: insert graph
+  }
+  \item Betrachten Sie den Graphen in Abbildung 1. Nennen Sie einen Pfad von g nach d mit der höchsten Zuverlässigkeit \& geben Sie die entsprechende Zuverlässigkeit an. Nennen Sie außerdem einen kreisfreien Pfad von g nach d mit der niedrigsten Zuverlässigkeit und geben Sie die entsprechende Zuverlässigkeit an.
+  \item Entwerfen Sie einen Algorithmus, der einen zuverlässigsten Pfad von einem gegebenen Computer zu einem anderen gegebenen Computer in Laufzeit $\bigO(|V| \cdot \log|V| + |E| \cdot \log|V|)$ findet. Sie dürfen Pseudocode angeben, müssen es aber nicht. Sollte Ihr Algorithmus auf bekannten Algorithmen aus der Vorlesung basieren, reicht es die notwendigen Änderungen (klar und deutlich!) zu beschreiben.
+  \item Analysieren Sie die Laufzeit Ihres Algorithmus.
+\end{eexercises}
+
+\begin{eexercises}{UNION-FIND Datenstruktur}{
+    Wir betrachten die Datenstruktur für disjunkte dynamische Mengen wie in der Vorlesung definiert. Die Grundmenge (das Universum) sei $U = \mathbb{Z}$, also die Menge aller ganzen Zahlen.
+    % TODO: insert visualisation
+  }
+  \item Wählen Sie eine Menge $A$ von $|A| = 8$ unterschiedlichen Zahlen mit Werten zwischen 50 und 50. Geben Sie eine Folge von Aufrufen der Operationen MAKE-SET und UNION an, welche die von Ihnen gewählten Zahlen in drei disjunkte Mengen $A_1, A_2$ und $A_3$ aufteilt, so dass $|A_1| = 3, |A_2| = 4$ und $|A_3| = 1$ gilt.
+  \item Skizzieren Sie die zwei Mengenobjekte für $A_1$ und $A_2$, nachdem die disjunkten Mengen gemäß Ihrer Lösung zu Punkt (a) erzeugt wurden. Eine mögliche Darstellung eines Mengenobjektes ist in Abbildung 2 zu sehen.
+  \item Seien $M := \max A$ und $m := \min A$ jeweils die maximale und minimale der von Ihnen in Punkt (a) gewählten Zahlen. Geben Sie die Rückgabewerte der Aufrufe FIND-SET($M$) und FIND-SET($m$) an, nachdem die disjunkten Mengen gemäß Ihrer Lösung zu Punkt (a) erzeugt wurden.
+  \item Geben Sie zwei verschiedene Aufrufe an, welche die beiden zu $A_1$ und $A_2$ gehörigen Mengenobjekte aus Punkt (a) zu einem neuen Mengenobjekt vereinigen. Geben Sie außerdem für einen der beiden Aufrufe an, in welcher Reihenfolge die Zahlen in der Liste des erzeugten Mengenobjektes gespeichert sind.
+\end{eexercises}
+
+\begin{eexercises}{Dynamische Programmierung}{
+    Früh am Ostersonntag fehlt dem Osterhasen nur noch Hamburg, bevor er endlich in den wohlverdienten Feierabend kann. Leider befindet er sich auf der falschen Seite der Elbe und der Elbtunnel ist gesperrt. Glücklicherweise findet er eine Stelle, an der die beiden Ufer der Elbe über eine Reihe von $n$ Holzpfählen modelliert als Kantengewichten zuverlässig verbunden sind. Die Holzpfähle sind unterschiedlich hoch: der $i$-te Pfahl vom Ufer aus hat Höhe $h_i > 0$. Der Osterhase kann – als geübter Hoch- und Weitspringer – vom $i$-ten Pfahl entweder auf Pfahl $i+1$ oder Pfahl $i+2$ springen. Springt er von Pfahl $i$ nach Pfahl $j \in \{i + 1, i + 2\}$, verliert er leider immer $|h_i - h_j|$ Ostereier. Kurzentschlossen zückt der Osterhase sein Handy, ruft Sie als Experten für Elbüberquerungen auf Holzpfählen an und bittet Sie darum, ihm zu helfen von Pfahl 1 nach Pfahl $n$ zu kommen und dabei möglichst wenige Ostereier zu verlieren.
+  }
+  \item Angenommen, Sie wissen für jeden der ersten vier Pfähle, wie Sie unter dem geringsten Verlust an Ostereiern von Pfahl 1 zu dem jeweiligen Pfahl kommen. Beschreiben Sie in Worten ein rekursives Vorgehen, um mit diesem Wissen unter dem geringsten Verlust an Ostereiern von Pfahl 1 zu Pfahl 5 zu kommen.
+  \item Geben Sie aufbauend auf Ihrer Rekursion aus Punkt 1. eine vollständige mathematische Rekursionsformel für die geringste Anzahl an verlorenen Eiern zum Erreichen von Pfahl $i \in \{1, 2, \ldots, n\}$ an. Begründen Sie kurz in Worten die Korrektheit Ihrer Rekursionsformel.
+  \item Geben Sie einen Algorithmus in Pseudocode an, der miiels dynamischer Programmierung besXmmt, in welcher Reihenfolge der Osterhase auf welche Pfähle springen muss, um die Elbe mit einem möglichst geringen Verlust an Ostereiern zu überqueren.
+\end{eexercises}
+
+\begin{eexercises}{MERGE Algorithmus}{
+    Gegeben seien $n$ jeweils aufsteigend sortierte Arrays $A_1, \ldots, A_n$. Unser Ziel ist es, alle $n$ Arrays durch wiederholte Anwendung des aus der Vorlesung bekannten Merge-Algorithmus zu einem einzigen aufsteigend sortierten Array zusammenzufügen. Im Folgenden gehen wir davon aus, dass Merge zwei aufsteigend sortierte Arrays $L$ und $R$ als Eingabe erhält und ein neues aufsteigend sortiertes Array $A$ mit allen Elementen aus $L$ und $R$ zurück gibt. Abgesehen davon funktioniert Merge wie in der Vorlesung beschrieben.
+  }
+  \item Zur Erzeugung des Arrays $A$ muss Merge jeweils Elemente aus den Eingabearrays $L$ und $R$ miteinander vergleichen. Wie viele solcher Vergleiche führt Merge bei Eingabe zweier Arrays der Längen $l$ und $l'$ durch? Begründen Sie Ihre Antwort.
+  \item Beschreiben Sie einen gierigen Algorithmus, der die $n$ aufsteigend sortierten Eingabearrays $A_1, \ldots, A_n$ zu einem einzigen, aufsteigend sortierten Array zusammen fügt. Ihr Algorithmus darf die gegebenen/erzeugten Arrays nicht direkt verändern sondern muss dazu ausschließlich Merge-Aufrufe verwenden. Dabei soll ihr Algorithmus die Gesamtzahl der Vergleiche in allen Merge-Aufrufen minimieren. Sie dürfen Pseudocode verwenden, müssen es allerdings nicht.
+  \hint{Es dürfen auch nicht benachbarte Arrays zusammengefügt werden.}
+  \item Beweisen Sie, dass Ihr Algorithmus aus Punkt (b) die Gesamtzahl der Vergleiche in allen Merge-Aufrufen minimiert.
+\end{eexercises}
+\end{document}

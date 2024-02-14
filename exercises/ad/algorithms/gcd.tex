@@ -1,0 +1,17 @@
+\documentclass{article}
+
+\usepackage{exercises}
+
+\begin{document}
+\begin{algorithm}[ht]
+  \caption{Alg}
+
+  \KwData{$a,b \in \mathbb{Z}_{>0}$}
+  \KwResult{$c \in \mathbb{Z}_{>0}$}
+  \BlankLine
+
+  \lIf{$a=b$}{\Return{$a$}}
+  \lIf{$a<b$}{\Return{$\text{Alg}(b-a,a)$}}
+  \lIf{$b<a$}{\Return{$\text{Alg}(a-b,b)$}}
+\end{algorithm}
+\end{document}

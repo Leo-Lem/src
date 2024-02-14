@@ -1,0 +1,47 @@
+\documentclass{article}
+
+\usepackage{exercises}
+\withsolutions
+
+\begin{document}
+\begin{eexercises}{Vollständige Induktion}{
+    Beweisen Sie die folgenden Aussagen mit vollständiger Induktion:
+  }
+  \item $\sum_{k=1}^{n}{k} = \frac{n(n+1)}{2}\forall n \in \mathbb{Z}_{\ge 0}$.
+  \item $\sum_{k=0}^{n-1} 2^k = 2^n-1\forall n \in \mathbb{Z}_{\ge 0}$.
+\end{eexercises}
+
+\begin{solutions}
+  \item \induction{
+    \sum_{k=1}^{0}{k} = 0 = \frac{0(0+1)}{2}
+  }{
+    \sum_{k=1}^{n}{k} = \frac{n(n+1)}{2}
+  }{
+    \sum_{k=1}^{n+1}{k} = \sum_{k=1}^{n}{k} + (n+1) = \frac{n(n+1)}{2} + (n+1) = \frac{n(n+1)+2(n+1)}{2} = \frac{(n+1)(n+2)}{2}
+  }
+  \item \induction{
+    \sum_{k=0}^{0-1} 2^k = 0 = 2^0-1
+  }{
+    \sum_{k=0}^{n-1} 2^k = 2^n-1
+  }{
+    \sum_{k=0}^{n} 2^k = 2^n-1 + 2^n = 2^{n+1}-1
+  }
+\end{solutions}
+
+\begin{exercise}{Algorithmenanalyse}
+  Was berechnet der Algorithmus Alg? Finden Sie einen Aufruf für den der Algorithmus besonders langsam ist. Wie verhält sich der Algorithmus bei Eingabe von rationalen oder reellen Zahlen?
+  \import{../algorithms}{gcd}
+
+  \begin{solution}
+    Der Algorithmus berechnet den größten gemeinsamen Teiler von $a$ und $b$. Der Algorithmus ist besonders langsam, wenn $a$ und $b$ sehr unterschiedlich groß sind. Da u. U. kein gemeinsamer Teiler existiert, kann es sein, dass der Algorithmus nicht terminiert.
+  \end{solution}
+\end{exercise}
+
+\begin{exercise}{Algorithmenentwurf}
+  Entwerfen Sie einen Algorithmus, der für gegebene ganze Zahlen $a_1, \ldots, a_n \in \mathbb{Z}$ das Minimum und das Maximum bestimmt. Versuchen Sie dabei möglichst wenige Vergleiche zu verwenden ($\leq 1,5n$ sind möglich).
+
+  \begin{solution}
+    \import{../algorithms}{minMaxPairwise}
+  \end{solution}
+\end{exercise}
+\end{document}

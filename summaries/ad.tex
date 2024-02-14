@@ -1,4 +1,6 @@
-\documentclass{summary}
+\documentclass{article}
+
+\usepackage{summary}
 
 \subject{Algorithms and Data Structures}
 \semester{Winter 2023/24}
@@ -347,7 +349,119 @@ where $a \geq 1$, $b > 1$, $f(n)$ is a given function, and $n_0$ is a given cons
   \Return $T$\;
 \end{algorithm}
 
-\subsection{Shortest Path: Dijkstra's Algorithm}
+\subsection{Bridges}
+The \texttt{findBridges} algorithm finds all bridges in a graph. A bridge is an edge whose removal increases the number of connected components in the graph. The algorithm has a time complexity of $\bigO(E(V+E))=\bigO(E\cdot V+E^2)$.\par
+\begin{algorithm}[H]
+  \caption{\texttt{findBridges(G)}}
 
+  \KwData{A graph $G$}
+  \KwResult{A list of bridges $B$}
+  \BlankLine
+
+  $B \gets \emptyset$\;
+  $s \gets G.V.first$\;
+  \ForEach{edge $e\in G.E$}{
+    $ICC \gets$ \texttt{findICC($G\setminus \{e\}, s$)}\explain*{an initial connected component describes the vertices reachable from $s$}
+    \lIf{$|ICC.V| < |G.V|$}{$B \gets B \cup \{e\}$}
+  }
+  \Return $B$\;
+\end{algorithm}
+
+The DFS algorithm \ref{alg:findicc} \texttt{findICC} finds an initial connected component (ICC) of a graph $G$ starting from a vertex $u$. The algorithm (like other DFSs) has a time complexity of $\bigO(V+E)$.\par
+\begin{algorithm}[H]
+  \caption{\texttt{findICC($G, u$)}}\label{alg:findicc}
+
+  \KwData{A graph $G$, a vertex $u$}
+  \KwResult{An initial connected component $ICC$}
+  \BlankLine
+
+  mark $u$ as visited\;
+  $ICC \gets \{u\}$\;
+  \ForEach{neighbor $v$ of $u$}{
+    \lIf{$v$ is not visited}{
+      $ICC \gets ICC \cup \texttt{findICC(G, v)}$
+    }
+  }
+  \Return $ICC$\;
+\end{algorithm}
+
+\subsection{Single Source Shortest Paths}
+\begin{algorithm}[H]
+  \caption{\texttt{initializeSingleSource($G, s$)}}
+
+  \KwData{A graph $G$ and a source vertex $s$}
+  \BlankLine
+
+  \ForEach{vertex $v\in G.V$}{
+    $v.distance \gets \infty$\;
+    $v.parent \gets nil$\;
+  }
+  $s.distance \gets 0$
+\end{algorithm}
+
+\begin{algorithm}[H]
+  \caption{\texttt{relax($u, v, w$)}}
+
+  \KwData{Two vertices $u$ and $v$, and a weight $w$}
+  \BlankLine
+
+  \If{$v.distance > u.distance + w(u, v)$}{
+    $v.distance \gets u.distance + w(u, v)$\;
+    $v.parent \gets u$
+  }
+\end{algorithm}
+
+The Bellman-Ford algorithm \ref{alg:bellmanford} finds the shortest path from a source vertex $s$ to all other vertices in a graph $G$. The algorithm has a time complexity of $\bigO(V\cdot E)$.\par
+\begin{algorithm}[H]
+  \caption{\texttt{bellmanFord($G, w, s$)}}\label{alg:bellmanford}
+
+  \KwData{A graph $G$ with weights $w$, and a source vertex $s$}
+  \KwResult{A shortest path by traversing the parent pointers from a vertex $u$}
+  \BlankLine
+
+  \texttt{initializeSingleSource($G, r$)}\;
+  \ForEach{vertex in $G$}{
+    \lForEach{edge $(u, v)\in G.E$}{\texttt{relax($u, v, w$)}}
+  }
+  \ForEach{edge $(u, v)\in G.E$}{
+    \lIf{$v.distance > u.distance + w(u, v)$}{\textbf{error} "negative cycle detected"}
+  }
+\end{algorithm}
+
+The Dijkstra algorithm \ref{alg:dijkstra} finds the shortest path from a source vertex $s$ to all other vertices in a graph $G$. The algorithm has a time complexity of $\bigO(E\log V)$ when the Queue is implemented with a Min-Heap. Using Fibonacci-Heaps the time complexity can be reduced to $\bigO(E+V\log V)$.\par
+\begin{algorithm}[H]
+  \caption{\texttt{dijkstra($G, w, s$)}}\label{alg:dijkstra}
+
+  \KwData{A graph $G$ with weights $w$, and a source vertex $s$}
+  \KwResult{A shortest path by traversing the parent pointers from a vertex $u$}
+  \BlankLine
+
+  \texttt{initializeSingleSource($G, s$)}\;
+  $S \gets \emptyset$\explain*{$S$ is a set of vertices with known shortest paths}
+  $Q \gets G.V$\explain*{$Q$ is a (min-)priority queue by vertex distance}
+
+  \While{$Q$ is not empty}{
+    $u \gets \texttt{extractMin(Q)}$\;
+    $S \gets S \cup \{u\}$\;
+    \lForEach(\explain*[f]{position in $Q$ is implicitly updated}){vertex $v$ of $u$'s neighbors}{\texttt{relax($u, v, w$)}}
+  }
+\end{algorithm}
+
+The Dijkstra algorithm \ref{alg:dijkstrasinglepair} finds the shortest path from a source vertex $s$ to a target vertex $t$ in a graph $G$. The algorithm has a time complexity of $\bigO(V\log V+E)+\bigO(V)=\bigO(V\log V+E)$ (based on the single source \texttt{dijsktra})\par
+\begin{algorithm}[H]
+  \caption{\texttt{dijkstraSinglePair($G, w, s, t$)}}\label{alg:dijkstrasinglepair}
+
+  \KwData{A graph $G$ with weights $w$, and source and target vertices $s$ and $t$}
+  \KwResult{A shortest $path$ from $s$ to $t$}
+  \BlankLine
+
+  \texttt{dijkstra($G, w, s$)}\;
+  $path \gets \{t\}$\;
+  \While{$t \neq s$}{
+    $path \gets \{t.parent\} \cup path$\;
+    $t \gets t.parent$
+  }
+  \Return $path$
+\end{algorithm}
 
 \end{document}

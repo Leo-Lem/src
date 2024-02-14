@@ -1,11 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{summary}
-
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
-\ProcessOptions\relax
-\LoadClass{article}
-
-
+\ProvidesPackage{summary}[2024/02/14]
 
 % ---------------------------------------------------------------------
 % Document setup
@@ -13,6 +7,7 @@
 
 \RequirePackage[margin=2cm]{geometry}
 \RequirePackage{hyperref,xcolor,graphicx}
+\RequirePackage{docmute,import} % for including other files
 
 \hypersetup{
   pdfpagemode=UseOutlines,

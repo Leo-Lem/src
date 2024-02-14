@@ -1,14 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{exercisesheet}
+\ProvidesPackage{exercises}[2024/02/14]
 
-% Updating the subtitle
-\providecommand\@subtitle{Übungsaufgaben \ifsolutions mit Lösungen\fi}
-
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{summary}}
-\ProcessOptions\relax
-\LoadClass{summary}
-
-
+\RequirePackage{summary}
 
 % ---------------------------------------------------------------------
 % Document setup

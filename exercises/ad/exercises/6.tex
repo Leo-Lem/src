@@ -1,0 +1,72 @@
+\documentclass{article}
+
+\usepackage{exercises}
+\withsolutions
+
+\begin{document}
+\begin{exercise}{Independent Set}
+  Ein Independent Set in einem Graphen $G = (V, E)$ ist eine Menge von Knoten $I$, so dass für je zwei Knoten $i, j \in I$ gilt, dass $\{i, j\} \notin E$. Für das Problem INDEPENDENT SET ist ein Graph $G = (V, E)$ sowie eine Zahl $k \in \mathbb{N}$ gegeben und es soll entschieden werden, ob es in $G$ ein Independent Set mit $k$ Knoten gibt.\par
+  Zeigen Sie, dass das Problem INDEPENDENT SET NP-vollständig ist, indem Sie eine Reduktion von CLIQUE auf INDEPENDENT SET angeben.
+\end{exercise}
+
+\begin{exercise}{Textumbruch}
+  Gegeben seien Wörter $w_1, \ldots, w_n$. Diese Wörter sollen auf Textzeilen aufgeteilt werden. Dazu seien $c(i, j)$ die Kosten, um Wörter die $w_i, \ldots, w_j$ in eine Textzeile zu schreiben für alle $1 \leq i \leq j \leq n$.\par
+  Geben Sie mithilfe dynamischer Programmierung einen Algorithmus an, der Linebreaks $l_1, \ldots, l_m$ so setzt, sodass $c(1,l_1)+c(l_1 +1,l_2)+\ldots+c(l_m +1,n)$ minimiert wird.
+\end{exercise}
+
+\begin{eexercises}{Kursauswahl}{
+    Stellen Sie sich vor Sie arbeiten in einer Behörde und haben ein bestimmtes Budget $B \in \mathbb{N}$, welches Sie ausgeben müssen. Dabei ist ein Kursangebot $K_1, \ldots, K_n$ gegeben wobei jeder Kurs $K_i$ gewisse Kosten $C_i \in \mathbb{N}$ hat und einen gewissen Organisationsaufwand $A_i \in \mathbb{N}$ benötigt. Gesucht ist eine Auswahl von Kursen, so dass mindestens das Budget $B$ ausgegeben wird und der gesamte Organisationsaufwand minimal ist.
+  }
+  \item Überlegen Sie sich einen einfachen Algorithmus, der eine Auswahl findet, die das Budget erfüllt (wenn eine existiert) und erläutern Sie kurz die Idee des Algorithmus. Der Algorithmus muss keine optimale Lösung finden und es muss kein Pseudocode angegeben werden.
+  \item Geben Sie sich die Rekursionsvorschrift für ein dynamisches Programm für das Problem an und eine kurze Begründung für die Korrektheit der Formel. Verwende Sie dafür eine Tabelle $D$, wobei $D[i, b]$ den minimalen Organisationsaufwand beinhalten soll um mit den Kursen $K_1, \ldots, K_i+1$ genau das Budget $b$ auszugeben.
+  \item Geben Sie einen Algorithmus in Pseudocode basierend auf der Rekursionsvorschrift an, der eine optimale Auswahl findet.
+\end{eexercises}
+
+\begin{eexercises}{Grundstückproblem}{
+    Ein Grundstück soll mit möglichst großen Einnahmen verkauft werden. Das Grundstück ist rechteckig und liegt an einer Straße, welche durch ein Intervall $(0, S)$ repräsentiert wird. Es liegen $n$ Angebote mit Profiten $a_i$ für alle $i \in \{1, \ldots, n\}$ für Teile des Grundstücks vor. Diese Teile sind jeweils rechteckige Teilabschnitte mit Straßenzugang, die jeweils durch Teilintervalle $(l_i, r_i) \subseteq [0, S]$ repräsentiert sind. Das Ziel ist es nun eine Auswahl von Angeboten $A \subseteq \{1, \ldots, n\}$ zu finden, sodass die Angebote sich nicht überlappen – also $(l_i, r_i) \cap (l_j, r_j)$ für alle $i,j \in A$ mit $i \neq j$ – und der Profit $\sum_{i \in A} a_i$ möglichst groß ist.
+    \hint{Es sei $z_1, \ldots, z_k$ eine aufsteigende Sortierung der Zahlen $\{0, S\} \cup \bigcup_{i=1}^n \{l_i, r_i\}$. Ein Ansatz für die Rekursionsformel wäre es nun für alle $j \in \{1, \ldots, k\}$, den maximalen Profit zu bestimmen, der mit Angeboten $i$ erzielt werden kann, für die $(l_i, r_i) \subseteq (0, z_j)$ gilt.}
+  }
+  \item Finden Sie im gegebenen Beispiel (siehe Abbildung 1) eine optimale Auswahl.
+  \item Geben Sie die Rekursionsvorschrift für ein dynamisches Programm für das Problem an und eine kurze Begründung für die Korrektheit der Formel.
+  \item Beschreiben Sie kurz wie basierend auf der Formel ein Algorithmus für das Problem entworfen werden kann und schätzen Sie die entsprechende Laufzeit ab.
+  \item Wieviel Zeit benötigt ein Brute-Force-Algorithmus, der alle Teilmengen $A \subseteq [n]$ überprüft?
+\end{eexercises}
+
+\begin{eexercises}{Entscheidungsproblem des Knapsack Problems}{
+    Bei der Entscheidungsversion des Knapsack Problems sind Gewichte $w_1, \ldots, w_n \in \mathbb{N}$, Profite $p_1, \ldots, p_n \in \mathbb{N}$, ein Maximalgewicht $W \in \mathbb{N}$ und ein Mindestprofit $P \in \mathbb{N}$ gegeben. Es soll entschieden werden, ob eine Auswahl $M \subseteq \{1, \ldots, n\}$ existiert bei der beide Schranken eingehalten werden, also $\sum_{i \in M} p_i \geq P$ und $\sum_{i \in M} w_i \leq W$.
+  }
+  \item Zeigen Sie $\text{KNAPSACK} \in \text{NP}$.
+  \item Zeigen Sie $\text{SUBSETSUM} \leq_p \text{KNAPSACK}$.
+  \hint{Bei SUBSETSUM sind Zahlen $z_1, \ldots, z_n \in \mathbb{N}$ und ein Zielwert $T$ gegeben und es soll entschieden werden, ob eine Auswahl $S \subseteq \{1, \ldots, n\}$ existiert mit $\sum_{i \in S} z_i = T$.}
+\end{eexercises}
+
+\begin{eexercises}{NAE-k-SAT}{
+    Eine NAE-k-SAT (Not-All-Equal) Formel hat folgende Form $\bigvee_{m=1}^k (z_{1m} \land \ldots \land z_{km})$, wobei eine Klausel $(z_{1m}, \ldots, z_{km})$ mit Literalen $z_{1m}, \ldots, z_{km}$ genau dann erfüllt ist, wenn nicht alle Literale gleichzeitig wahr sind.
+  }
+  \item Zeigen Sie, dass NAE-k-SAT NP-vollständig ist.
+  \item Zeigen Sie, dass NAE-3-SAT NP-vollständig ist.
+  \item Zeigen Sie, dass NAE-3-SAT NP-vollständig ist.
+\end{eexercises}
+
+\begin{exercise}{Floyd-Warshall Algorithmus}
+  \begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[->, auto, on grid, bend left=.5cm, node distance=4cm, main node/.style={circle, draw, minimum size=.5em}]
+      \node[main node] (A) {A};
+      \node[main node] (B) [left=of A] {B};
+      \node[main node] (C) [below right=2cm and 2cm of B] {C};
+      \node[main node] (D) [below of=B] {D};
+
+      \path[every node]
+      (A) edge node {6} (B) edge node {3} (C) edge [bend left=2cm] node {10} (D)
+      (B) edge node {13} (A) edge node {-2} (C) edge node {7} (D)
+      (C) edge node {5} (A) edge node {5} (B) edge node {10} (D)
+      (D) edge [bend right=1.5cm] node {-7} (A) edge node {7} (B) edge node {5} (C)
+      ;
+    \end{tikzpicture}
+
+    \caption{Graph zum Floyd-Warshall Algorithmus.}\label{fig:floydwarshall}
+  \end{figure}
+  Wenden Sie auf den Graphen aus \ref{fig:floydwarshall} den Algorithmus von Floyd-Warshall an und geben Sie nach jeder Iteration der ersten Schleife die zugehörige Distanzmatrix an. Nehmen Sie an, dass Knoten zu sich selbst einen Abstand von 0 haben. Betrachten Sie die Knoten in der Reihenfolge A, B, C, D. Welches Knotenpaar besitzt den größten/kürzesten Abstand?
+\end{exercise}
+\end{document}

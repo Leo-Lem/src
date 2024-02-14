@@ -1,0 +1,36 @@
+\documentclass{article}
+
+\usepackage{exercises}
+
+\begin{document}
+\begin{algorithm}[ht]
+  \caption{MinMax mit Pairwise Comparison}\label{alg:minMaxPairwise}
+
+  \KwData{$a_1, \ldots, a_n \in \mathbb{Z}$}
+  \KwResult{$\min, \max \in \mathbb{Z}$}
+  \BlankLine
+
+  $\min \gets a_1$
+  $\max \gets a_1$
+
+  \For{$i \gets 2$ to $n$ in Schritten von 2}{
+    \If{$i = n$}{
+      \If{$a_i < \min$}{$\min \gets a_i$}
+      \If{$a_i > \max$}{$\max \gets a_i$}
+    }
+    \Else{
+      \If{$a_i < a_{i+1}$}{
+        $\min' \gets a_i$;
+        $\max' \gets a_{i+1}$
+      }
+      \Else{
+        $\min' \gets a_{i+1}$;
+        $\max' \gets a_i$
+      }
+
+      \If{$\min' < \min$}{$\min \gets \min'$}
+      \If{$\max' > \max$}{$\max \gets \max'$}
+    }
+  }
+\end{algorithm}
+\end{document}
