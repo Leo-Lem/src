@@ -5,29 +5,17 @@
 \subject{Algorithmen \& Datenstrukturen}
 \semester{Wintersemester 2023}
 \author{Leopold Lemmermann}
+
 % \withsolutions
 
 \begin{document}
-
-% title page
 \createtitle
 
-% exercises
-\includefrom{exercises/0}{main}
-\includefrom{exercises/1}{main}
-\includefrom{exercises/2}{main}
-\includefrom{exercises/3}{main}
-\includefrom{exercises/4}{main}
-\includefrom{exercises/5}{main}
-\includefrom{exercises/6}{main}
+\foreach \indexi in {0,...,6}{
+    \includefrom{exercises/\indexi}{main}
+  }
 
-% exams
-\includefrom{exams/2019}{main}
-\includefrom{exams/20201}{main}
-\includefrom{exams/20202}{main}
-\includefrom{exams/20211}{main}
-\includefrom{exams/20212}{main}
-\includefrom{exams/2022}{main}
-\includefrom{exams/2023}{main}
-
+\foreach \indexi in {2019,20201,20202,20211,20212,2022,2023}{
+    \includefrom{exams/\indexi}{main}
+  }
 \end{document}
