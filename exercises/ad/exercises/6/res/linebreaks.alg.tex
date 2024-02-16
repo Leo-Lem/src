@@ -1,0 +1,33 @@
+\begin{algorithm}[H]
+  \caption{\texttt{linebreaks($n, c$)}}\label{alg:linebreaks}
+
+  \KwData{Anzahl der Wörter $n$ und Kostenfunktion $c$}
+  \KwResult{Eine optimale Auswahl von Zeilenumbrüchen $breaks$ und die Kosten dieser Auswahl $costs[n]$}
+  \BlankLine
+
+  $costs \gets \emptyset$\;
+  $breaks \gets \emptyset$\explain*{Speichert den letzten Zeilenumbruch vor Wort $i$}
+
+  $costs[1] \gets c(1, 1)$\;
+  \For{$j \gets 2$ \KwTo $n$}{
+    $costs[j] \gets \infty$\;
+    $breaks[j] \gets 0$\;
+    \For{$k \gets 1$ \KwTo $j$}{
+      $t \gets costs[k - 1] +  c(k, j)$\;
+      \If{$t < costs[j]$}{
+        $costs[j] \gets t$\;
+        $breaks[j] \gets k$\;
+      }
+    }
+  }
+
+  \comment{Rekonstruktion der optimalen Lösung}
+  $l \gets \emptyset$\explain*{Optimale Auswahl von Zeilenumbrüchen}
+  $j \gets n$\;
+  \While{$breaks[j] > 0$}{
+    $l \gets \{breaks[j]\} \cup l$\;
+    $j \gets breaks[j] - 1$\;
+  }
+
+  \Return $l, costs[n]$
+\end{algorithm}

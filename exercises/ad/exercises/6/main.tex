@@ -6,32 +6,99 @@
 \begin{document}
 \sheet{NP-Vollständigkeit \& dynamische Programmierung}
 \begin{exercise}{Independent Set}
-  Ein Independent Set in einem Graphen $G = (V, E)$ ist eine Menge von Knoten $I$, so dass für je zwei Knoten $i, j \in I$ gilt, dass $\{i, j\} \notin E$. Für das Problem INDEPENDENT SET ist ein Graph $G = (V, E)$ sowie eine Zahl $k \in \mathbb{N}$ gegeben und es soll entschieden werden, ob es in $G$ ein Independent Set mit $k$ Knoten gibt.\par
+  Ein Independent Set in einem Graphen $G = (V, E)$ ist eine Menge von Knoten $I$, so dass für je zwei Knoten $i, j \in I$ gilt, dass $(i, j) \notin E$. Für das Problem INDEPENDENT SET ist ein Graph $G = (V, E)$ sowie eine Zahl $k \in \mathbb{N}$ gegeben und es soll entschieden werden, ob es in $G$ ein Independent Set mit $k$ Knoten gibt.\par
   Zeigen Sie, dass das Problem INDEPENDENT SET NP-vollständig ist, indem Sie eine Reduktion von CLIQUE auf INDEPENDENT SET angeben.
+
+  \begin{solution}
+    \begin{itemize}
+      \item Zunächst wollen wir zeigen, dass INDEPENDENT SET in NP liegt. Hierzu finden wir einen Algorithmus, welcher eine gegebene Lösung (Zertifikat) $I$ in polynomieller Zeit verifiziert:
+            \begin{enumerate}
+              \item Überprüfe, ob $I$ eine Menge von $k$ Knoten ist.
+              \item Überprüfe, ob für je zwei Knoten $i, j \in I$ gilt, dass $(i, j) \notin E$.
+            \end{enumerate}
+      \item Nun wollen wir zeigen, dass CLIQUE $\leq_p$ INDEPENDENT SET. Eine Reduktionsfunktion könnte folgendermaßen aussehen:
+            \begin{enumerate}
+              \item Sei $G = (V, E)$ ein Graph und $k \in \mathbb{N}$.
+              \item Erzeuge einen neuen Graphen $G' = (V, E')$ mit $E' = \{(i, j) \mid i, j \in V \land (i, j) \notin E\}$.
+              \item Gebe die Eingabe $(G', k)$ zurück.
+            \end{enumerate}
+            Da ein Independent Set in $G'$ genau dann eine Clique in $G$ ist, ist die Reduktion korrekt. CLIQUE lässt sich somit auf INDEPENDENT SET reduzieren mit der Eingabe $(G, k) \mapsto (G', k)$.\par Somit ist INDEPENDENT SET NP-vollständig.
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{Textumbruch}
   Gegeben seien Wörter $w_1, \ldots, w_n$. Diese Wörter sollen auf Textzeilen aufgeteilt werden. Dazu seien $c(i, j)$ die Kosten, um Wörter die $w_i, \ldots, w_j$ in eine Textzeile zu schreiben für alle $1 \leq i \leq j \leq n$.\par
   Geben Sie mithilfe dynamischer Programmierung einen Algorithmus an, der Linebreaks $l_1, \ldots, l_m$ so setzt, sodass $c(1,l_1)+c(l_1 +1,l_2)+\ldots+c(l_m +1,n)$ minimiert wird.
+
+  \begin{solution}
+    \begin{itemize}
+      \item \textbf{optimale Teilstruktur}: Wenn wir annehmen, dass die Gesamtkosten minimal sind, dann sind die Kosten für die Wörter $w_i, \ldots, w_j$ in einer Zeile minimal. Ansonsten könnten wir die Wörter in zwei Zeilen aufteilen und die Kosten wären kleiner. Außerdem ist die Aufteilung der Wörter in Zeilen unabhängig von der Aufteilung in anderen Zeilen. Somit ist die optimale Teilstruktur gegeben.
+      \item \textbf{Rekursionsvorschrift}: Sei $D[i]$ die minimalen Kosten, um die Wörter $w_1, \ldots, w_i$ in Zeilen zu schreiben. Dann gilt \[
+              D[j] = \begin{cases}
+                c(1,j)                                & \text{falls } j=1 \\
+                \min_{1\leq k\leq j}\{D[k-1]+c(k,j)\} & \text{falls } j>1
+              \end{cases}
+            \]
+      \item \textbf{Algorithmus}: Ein Algorithmus in Pseudocode könnte wie folgt aussehen:\par\input{res/linebreaks.alg}
+    \end{itemize}
+  \end{solution}
 \end{exercise}
 
 \begin{eexercises}{Kursauswahl}{
     Stellen Sie sich vor Sie arbeiten in einer Behörde und haben ein bestimmtes Budget $B \in \mathbb{N}$, welches Sie ausgeben müssen. Dabei ist ein Kursangebot $K_1, \ldots, K_n$ gegeben wobei jeder Kurs $K_i$ gewisse Kosten $C_i \in \mathbb{N}$ hat und einen gewissen Organisationsaufwand $A_i \in \mathbb{N}$ benötigt. Gesucht ist eine Auswahl von Kursen, so dass mindestens das Budget $B$ ausgegeben wird und der gesamte Organisationsaufwand minimal ist.
   }
   \item Überlegen Sie sich einen einfachen Algorithmus, der eine Auswahl findet, die das Budget erfüllt (wenn eine existiert) und erläutern Sie kurz die Idee des Algorithmus. Der Algorithmus muss keine optimale Lösung finden und es muss kein Pseudocode angegeben werden.
-  \item Geben Sie sich die Rekursionsvorschrift für ein dynamisches Programm für das Problem an und eine kurze Begründung für die Korrektheit der Formel. Verwende Sie dafür eine Tabelle $D$, wobei $D[i, b]$ den minimalen Organisationsaufwand beinhalten soll um mit den Kursen $K_1, \ldots, K_i+1$ genau das Budget $b$ auszugeben.
+  \item Geben Sie sich die Rekursionsvorschrift für ein dynamisches Programm für das Problem an und eine kurze Begründung für die Korrektheit der Formel. Verwenden Sie dafür eine Tabelle $D$, wobei $D[i, b]$ den minimalen Organisationsaufwand beinhalten soll um mit den Kursen $K_1, \ldots, K_i+1$ genau das Budget $b$ auszugeben.
   \item Geben Sie einen Algorithmus in Pseudocode basierend auf der Rekursionsvorschrift an, der eine optimale Auswahl findet.
 \end{eexercises}
 
+\begin{solutions}
+  \item Ein einfacher Algorithmus könnte wie folgt aussehen:
+  \begin{enumerate}
+    \item Sortiere die Kurse aufsteigend nach dem Aufwand.
+    \item Füge solange einen weiteren Kurs hinzu, bis das Budget erfüllt ist.
+  \end{enumerate}
+  \item Die Rekursionsvorschrift für das dynamische Programm ist\[
+    D[i, b] = \begin{cases}
+      0                                  & \text{falls } i=0 \land b=0 \\
+      \infty                             & \text{falls } i=0 \land b>0 \\
+      \min(D[i-1, b], D[i-1, b-C_i]+A_i) & \text{sonst}
+    \end{cases}
+  \] Der minimale Organisationaufwand entspricht entweder dem vorigen minimalen Aufwand oder dem minimalen Aufwand, der mit dem aktuellen Kurs erzielt werden kann. Falls das Budget nicht erfüllt wird, wird der Aufwand mit $\infty$ bestraft.
+  \item Ein Algorithmus in Pseudocode könnte wie folgt aussehen:\par\input{res/pickCourses.alg}
+
+\end{solutions}
+
 \begin{eexercises}{Grundstückproblem}{
-    Ein Grundstück soll mit möglichst großen Einnahmen verkauft werden. Das Grundstück ist rechteckig und liegt an einer Straße, welche durch ein Intervall $(0, S)$ repräsentiert wird. Es liegen $n$ Angebote mit Profiten $a_i$ für alle $i \in \{1, \ldots, n\}$ für Teile des Grundstücks vor. Diese Teile sind jeweils rechteckige Teilabschnitte mit Straßenzugang, die jeweils durch Teilintervalle $(l_i, r_i) \subseteq [0, S]$ repräsentiert sind. Das Ziel ist es nun eine Auswahl von Angeboten $A \subseteq \{1, \ldots, n\}$ zu finden, sodass die Angebote sich nicht überlappen – also $(l_i, r_i) \cap (l_j, r_j)$ für alle $i,j \in A$ mit $i \neq j$ – und der Profit $\sum_{i \in A} a_i$ möglichst groß ist.
+    Ein Grundstück soll mit möglichst großen Einnahmen verkauft werden. Das Grundstück ist rechteckig und liegt an einer Straße, welche durch ein Intervall $(0, S)$ repräsentiert wird. Es liegen $n$ Angebote mit Profiten $a_i$ für alle $i \in \{1, \ldots, n\}$ für Teile des Grundstücks vor. Diese Teile sind jeweils rechteckige Teilabschnitte mit Straßenzugang, die jeweils durch Teilintervalle $(l_i, r_i) \subseteq [0, S]$ repräsentiert sind. Das Ziel ist es nun eine Auswahl von Angeboten $A \subseteq \{1, \ldots, n\}$ zu finden, sodass die Angebote sich nicht überlappen – also $(l_i, r_i) \cap (l_j, r_j)=\emptyset$ für alle $i,j \in A$ mit $i \neq j$ – und der Profit $\sum_{i \in A} a_i$ möglichst groß ist.
     \hint{Es sei $z_1, \ldots, z_k$ eine aufsteigende Sortierung der Zahlen $\{0, S\} \cup \bigcup_{i=1}^n \{l_i, r_i\}$. Ein Ansatz für die Rekursionsformel wäre es nun für alle $j \in \{1, \ldots, k\}$, den maximalen Profit zu bestimmen, der mit Angeboten $i$ erzielt werden kann, für die $(l_i, r_i) \subseteq (0, z_j)$ gilt.}
+    \input{res/property.fig}
   }
-  \item Finden Sie im gegebenen Beispiel (siehe Abbildung 1) eine optimale Auswahl.
+  \item Finden Sie im gegebenen Beispiel (siehe \ref{fig:grundstueck}) eine optimale Auswahl.
   \item Geben Sie die Rekursionsvorschrift für ein dynamisches Programm für das Problem an und eine kurze Begründung für die Korrektheit der Formel.
   \item Beschreiben Sie kurz wie basierend auf der Formel ein Algorithmus für das Problem entworfen werden kann und schätzen Sie die entsprechende Laufzeit ab.
   \item Wieviel Zeit benötigt ein Brute-Force-Algorithmus, der alle Teilmengen $A \subseteq [n]$ überprüft?
 \end{eexercises}
+
+\begin{solutions}
+  \item Im gegebenen Beispiel ist eine optimale Auswahl $\{4, 2, 4, 4\}$ mit einem Profit von $14$.
+  \item Die Rekursionsvorschrift für das dynamische Programm ist \[
+    P[j] = \begin{cases}
+      0                                                                                          & \text{falls } j = 0                     \\
+      \max(P[j-1], \max_{1\leq i\leq n\text{ und } (l_i,r_i) \subseteq (0,z_j)}\{P[l_i-1]+a_i\}) & \text{für alle } j \in \{1, \ldots, k\}
+    \end{cases}
+  \] Der maximale Profit entspricht entweder dem vorigen maximalen Profit oder dem maximalen Profit, der mit einem Angebot erzielt werden kann, dessen Teilintervall in $(0, z_j)$ liegt.
+  \item Ein Algorithmus kann basierend auf der Rekursionsvorschrift wie folgt aussehen:
+  \begin{enumerate}
+    \item Sortiere die Zahlen $\{0, S\} \cup \bigcup_{i=1}^n \{l_i, r_i\}$ aufsteigend und entferne Duplikate.
+    \item Initialisiere ein Array $P$ der Länge $k$ mit $0$.
+    \item Iteriere über alle $j \in \{1, \ldots, k\}$ und setze $P[j]$ gemäß der Rekursionsvorschrift.
+    \item Gehe rückwärts durch $P$ und bestimme die Auswahl von Angeboten, die den maximalen Profit erzielt.
+  \end{enumerate}
+  Die Laufzeit des Algorithmus beträgt $\mathcal{O}(n^2)$.
+  \item Ein Brute-Force-Algorithmus benötigt $\mathcal{O}(2^n)$ Zeit. Denn es gibt $2^n$ Teilmengen von $[n]$, da es für jedes Element in $[n]$ zwei Möglichkeiten gibt: Es ist in der Auswahl oder nicht.
+\end{solutions}
 
 \begin{eexercises}{Entscheidungsproblem des Knapsack Problems}{
     Bei der Entscheidungsversion des Knapsack Problems sind Gewichte $w_1, \ldots, w_n \in \mathbb{N}$, Profite $p_1, \ldots, p_n \in \mathbb{N}$, ein Maximalgewicht $W \in \mathbb{N}$ und ein Mindestprofit $P \in \mathbb{N}$ gegeben. Es soll entschieden werden, ob eine Auswahl $M \subseteq \{1, \ldots, n\}$ existiert bei der beide Schranken eingehalten werden, also $\sum_{i \in M} p_i \geq P$ und $\sum_{i \in M} w_i \leq W$.
@@ -41,16 +108,86 @@
   \hint{Bei SUBSETSUM sind Zahlen $z_1, \ldots, z_n \in \mathbb{N}$ und ein Zielwert $T$ gegeben und es soll entschieden werden, ob eine Auswahl $S \subseteq \{1, \ldots, n\}$ existiert mit $\sum_{i \in S} z_i = T$.}
 \end{eexercises}
 
+\begin{solutions}
+  \item Ein Algorithmus, der eine gegebene Lösung (Zertifikat) $M$ in polynomieller Zeit verifiziert, könnte wie folgt aussehen:
+  \begin{enumerate}
+    \item Überprüfe, ob $\sum_{i \in M} p_i \geq P$.
+    \item Überprüfe, ob $\sum_{i \in M} w_i \leq W$.
+  \end{enumerate}
+  \item Eine Reduktion von SUBSETSUM auf KNAPSACK könnte wie folgt aussehen:
+  \begin{enumerate}
+    \item Seien Zahlen $z_1, \ldots, z_n \in \mathbb{N}$ und ein Zielwert $T$ gegeben.
+    \item Setze $w_i = z_i$ und $p_i = z_i$ für alle $i \in \{1, \ldots, n\}$.
+    \item Setze $W = T$ und $P = T$.
+    \item Gebe die Eingabe $(w_1, \ldots, w_n, p_1, \ldots, p_n, W, P)$ zurück.
+  \end{enumerate}
+  Da eine Auswahl $S \subseteq \{1, \ldots, n\}$ existiert mit $\sum_{i \in S} z_i = T$ genau dann, wenn eine Auswahl $M \subseteq \{1, \ldots, n\}$ existiert bei der beide Schranken eingehalten werden, ist die Reduktion korrekt. SUBSETSUM lässt sich somit auf KNAPSACK reduzieren mit der Eingabe $(z_1, \ldots, z_n, T) \mapsto (w_1, \ldots, w_n, p_1, \ldots, p_n, W, P)$.
+\end{solutions}
+
 \begin{eexercises}{NAE-k-SAT}{
-    Eine NAE-k-SAT (Not-All-Equal) Formel hat folgende Form $\bigvee_{m=1}^k (z_{1m} \land \ldots \land z_{km})$, wobei eine Klausel $(z_{1m}, \ldots, z_{km})$ mit Literalen $z_{1m}, \ldots, z_{km}$ genau dann erfüllt ist, wenn nicht alle Literale gleichzeitig wahr sind.
+    Eine NAE-k-SAT (Not-All-Equal) Formel hat folgende Form $\bigwedge_{i=1}^m (z_1^i, \dots, z_k^i)$, wobei eine Klausel $(z_1^i, \dots, z_k^i)$ mit Literalen $z_1^i, \dots, z_k^i$ genau dann erfüllt ist, wenn mindestens ein Literal zu wahr und mindestens ein Literal zu falsch ausgewertet wird.
+    \hint{ (Beispiel) Für die NAE-3-SAT Formel $(x, y, z) \land (\neg x, y, z)$ ist durch $x = y = z = \text{true}$ keine erfüllende Belegung gegeben, da in diesem Fall die erste Klausel nicht erfüllt ist. Bei der Belegung $x = y = \text{true}$ und $z = \text{false}$ hingegen ist die Formel erfüllt.}
   }
-  \item Zeigen Sie, dass NAE-k-SAT NP-vollständig ist.
-  \item Zeigen Sie, dass NAE-3-SAT NP-vollständig ist.
-  \item Zeigen Sie, dass NAE-3-SAT NP-vollständig ist.
+  \item Zeigen Sie, dass für jede erfüllende Belegung einer NAE-k-SAT, die invertierte Belegung (jede mit true belegte Variable wird mit false belegt und andersrum) ebenfalls eine erfüllende Belegung ist.
+  \item Zeigen Sie NAE-k-SAT $\in \text{NP}$.
+  \item Zeigen Sie $3\text{-SAT} \leq_p \text{NAE-4-SAT}$.
 \end{eexercises}
+
+\begin{solutions}
+  \item Sei $z_1, \ldots, z_k$ eine erfüllende Belegung einer NAE-k-SAT. Dann gibt es mindestens ein Literal $z_i$ mit $z_i = \text{true}$ und mindestens ein Literal $z_j$ mit $z_j = \text{false}$. Die invertierte Belegung hat dann $z_i = \text{false}$ und $z_j = \text{true}$, also ebenfalls mindestens ein Literal $z_i$ mit $z_i = \text{true}$ und mindestens ein Literal $z_j$ mit $z_j = \text{false}$.
+  \item Ein Algorithmus, der eine gegebene Lösung (Zertifikat) $z_1, \ldots, z_k$ in polynomieller Zeit verifiziert, könnte wie folgt aussehen:
+  \begin{enumerate}
+    \item Überprüfe, ob für jede Klausel $(z_1^i, \dots, z_k^i)$ mindestens ein Literal zu wahr und mindestens ein Literal zu falsch ausgewertet wird.
+  \end{enumerate}
+  \item Eine Reduktion von $3\text{-SAT}$ auf $\text{NAE-4-SAT}$ könnte wie folgt aussehen:
+  \begin{enumerate}
+    \item Sei eine $3\text{-SAT}$ Formel $\varphi = \bigwedge_{i=1}^m (z_1^i, z_2^i, z_3^i)$ gegeben.
+    \item Erzeuge eine $\text{NAE-4-SAT}$ Formel $\varphi' = \bigwedge_{i=1}^m (z_1^i, z_2^i, z_3^i, z_4^i)$.
+    \item Gebe die Eingabe $\varphi'$ zurück.
+  \end{enumerate}
+  Da eine $3\text{-SAT}$ Formel $\varphi$ genau dann erfüllt ist, wenn die entsprechende $\text{NAE-4-SAT}$ Formel $\varphi'$ erfüllt ist, ist die Reduktion korrekt. $3\text{-SAT}$ lässt sich somit auf $\text{NAE-4-SAT}$ reduzieren.
+\end{solutions}
 
 \begin{exercise}{Floyd-Warshall Algorithmus}
   \input{res/floydwarshall.fig}
   Wenden Sie auf den Graphen aus \ref{fig:floydwarshall} den Algorithmus von Floyd-Warshall an und geben Sie nach jeder Iteration der ersten Schleife die zugehörige Distanzmatrix an. Nehmen Sie an, dass Knoten zu sich selbst einen Abstand von 0 haben. Betrachten Sie die Knoten in der Reihenfolge A, B, C, D. Welches Knotenpaar besitzt den größten/kürzesten Abstand?
+  \begin{solution}
+    \begin{table}
+      \centering
+      \begin{tabular}{cccc}
+        Iteration 0 & Iteration 1 & Iteration 2 & Iteration 3 \\
+        $
+          \begin{pmatrix}
+            0 & 2 & 4 & 5 \\
+            2 & 0 & 3 & 4 \\
+            4 & 3 & 0 & 1 \\
+            5 & 4 & 1 & 0
+          \end{pmatrix}
+        $           & $
+          \begin{pmatrix}
+            0 & 2 & 4 & 5 \\
+            2 & 0 & 3 & 4 \\
+            4 & 3 & 0 & 1 \\
+            5 & 4 & 1 & 0
+          \end{pmatrix}
+        $           & $
+          \begin{pmatrix}
+            0 & 2 & 4 & 5 \\
+            2 & 0 & 3 & 4 \\
+            4 & 3 & 0 & 1 \\
+            5 & 4 & 1 & 0
+          \end{pmatrix}
+        $           & $
+          \begin{pmatrix}
+            0 & 2 & 4 & 5 \\
+            2 & 0 & 3 & 4 \\
+            4 & 3 & 0 & 1 \\
+            5 & 4 & 1 & 0
+          \end{pmatrix}
+        $
+      \end{tabular}
+    \end{table}
+    Das Knotenpaar mit dem größten Abstand ist $(A, D)$ mit einem Abstand von 4. Das Knotenpaar mit dem kürzesten Abstand ist $(A, B)$ mit einem Abstand von 2.
+  \end{solution}
 \end{exercise}
 \end{document}

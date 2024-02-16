@@ -1,0 +1,36 @@
+\begin{algorithm}[H]
+  \caption{\texttt{pickCourses($n, B, C, A$)}}\label{alg:pickCourses}
+
+  \KwData{Anzahl der Kurse $n$, Budget $B$, Kosten $C$, Organisationsaufwand $A$}
+  \KwResult{Budgeterfüllende Kursauswahl $courses$ und minimaler Organisationsaufwand $D[n, B]$}
+  \BlankLine
+
+  $D \gets \text{Array of size } n \times B$\;
+  \lFor{$i \gets 0$ \KwTo $n$}{$D[i, 0] \gets 0$}
+  \lFor{$b \gets 0$ \KwTo $B$}{$D[0, b] \gets \infty$}
+
+  \For{$i \gets 1$ \KwTo $n$}{
+  \For{$b \gets 1$ \KwTo $B$}{
+  $withoutCourse \gets D[i-1, b]$\;
+  $withCourse \gets D[i-1, b-C[i]]+A[i]$\;
+
+  \leIf{$withCourse < withoutCourse$}{
+    $D[i, b] \gets withCourse$\;
+  }{
+    $D[i, b] \gets withoutCourse$
+  }
+  }
+  }
+
+  \comment{Rekonstruktion der optimalen Lösung}
+  $courses \gets \emptyset$\;
+  $b \gets B$\;
+  \For{$i \gets n$ \KwTo $1$}{
+  \If{$D[i, b] \neq D[i-1, b]$}{
+  $courses \gets \{i\} \cup courses$\;
+  $b \gets b-C[i]$\;
+  }
+  }
+
+  \Return{$courses$, $D[n, B]$}
+\end{algorithm}
