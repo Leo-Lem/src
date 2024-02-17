@@ -1,0 +1,17 @@
+\begin{algorithm}[H]
+  \caption{\textalgo{insertionSort($A$)}}\label{alg:insertionsort}
+
+  \KwData{An array $A$ of $n$ elements}
+  \KwResult{The array $A$ sorted in non-decreasing order}
+  \BlankLine
+
+  \For{$i \gets 2$ \KwTo $n$}{
+    $key \gets A[i]$\;
+    $j \gets i-1$\;
+    \While{$j > 0$ \textbf{and} $A[j] > key$}{
+      $A[j+1] \gets A[j]$\;
+      $j \gets j-1$\;
+    }
+    $A[j+1] \gets key$\;
+  }
+\end{algorithm}

@@ -8,13 +8,13 @@
 
 \begin{document}\createtitle
 
-\section{Asymptotic View}
+\section{The Asymptotic View}
 \subsection{Bachmann-Landau Notation}
 \begin{itemize}
-  \item[$\bigO$] (big O: upper bound) $f\in \bigO(g) \Leftrightarrow ^{\exists c > 0}_{\exists n_0 > 0}: f \leq c \cdot g \forall n > n_0$
-  \item[$\Omega$] (big Omega: lower bound) $f\in \Omega(g) \Leftrightarrow ^{\exists c > 0}_{\exists n_0 > 0}: f \geq c \cdot g \forall n > n_0$
-  \item[$\littleO$] (little o: strict upper bound) $f\in \littleO(g) \Leftrightarrow ^{\forall c > 0}_{\exists n_0 > 0}: f < c \cdot g \forall n > n_0$
-  \item[$\omega$] (little omega: strict lower bound) $f\in \omega(g) \Leftrightarrow ^{\forall c > 0}_{\exists n_0 > 0}: f > c \cdot g \forall n > n_0$
+  \item[$\bigO$] (big O: upper bound) $f\in \bigO(g) \Leftrightarrow ^{\exists c > 0}_{\exists n_0 > 0}: f \leq c \cdot g \forall n > n_0$ \textbf{or} $\limsup_{n\to\infty} \frac{f}{g} < \infty$
+  \item[$\Omega$] (big Omega: lower bound) $f\in \Omega(g) \Leftrightarrow ^{\exists c > 0}_{\exists n_0 > 0}: f \geq c \cdot g \forall n > n_0$ \textbf{or} $\liminf_{n\to\infty} \frac{f}{g} > 0$
+  \item[$\littleO$] (little o: strict upper bound) $f\in \littleO(g) \Leftrightarrow ^{\forall c > 0}_{\exists n_0 > 0}: f < c \cdot g \forall n > n_0$ \textbf{or} $\lim_{n\to\infty} \frac{f}{g} = 0$
+  \item[$\omega$] (little omega: strict lower bound) $f\in \omega(g) \Leftrightarrow ^{\forall c > 0}_{\exists n_0 > 0}: f > c \cdot g \forall n > n_0$ \textbf{or} $\lim_{n\to\infty} \frac{f}{g} = \infty$
   \item[$\Theta$] (big Theta: tight bound) $f\in \Theta(g) \Leftrightarrow f\in \bigO(g) \land f\in \Omega(g)$
 \end{itemize}
 
@@ -30,12 +30,70 @@ where $a \geq 1$, $b > 1$, $f(n)$ is a given function, and $n_0$ is a given cons
 \end{itemize}
 
 
-\section{Selection}
-\input{res/select.alg}
 
-\section{Red-Black Trees}
+\section{Sorting}
+\subsection{Elementary sorting algorithms}
+The elementary sorting algorithms (\ref{alg:selectionsort}, \ref{alg:insertionsort}, and \ref{alg:bubblesort}) have a time complexity of $\bigO(n^2)$. They sort stable and in-place.
+\subsubsection{Selection Sort}
+Continue selecting the smallest element and swapping it with the first unsorted element.\par
+\input{res/sorting/selectionsort.alg}
 
-\subsection{Properties}
+\subsubsection{Insertion Sort}
+Continue inserting the first unsorted element into the sorted part of the array.\par
+\input{res/sorting/insertionsort.alg}
+
+\subsubsection{Bubble Sort}
+Continue swapping adjacent elements if they are in the wrong order.\par
+\input{res/sorting/bubblesort.alg}
+
+\subsection{Divide \& Conquer}
+The divide and conquer sorting algorithms (\ref{alg:mergesort}, \ref{alg:quicksort}) have a time complexity of $\bigO(n\log n)$.
+\subsubsection{Merge Sort}
+\textbf{Idea}: Divide the array into two halves, sort the halves, and then merge them.\par
+\textbf{Properties}: Sorts stable and not in-place.\par
+\input{res/sorting/mergesort.alg}
+
+\subsubsection{Quick Sort}
+\textbf{Idea}: Choose a pivot element and partition the array into elements smaller and larger than the pivot. Then sort the partitions.\par
+\textbf{Properties}: Sorts in-place, but not stable.\par
+\input{res/sorting/quicksort.alg}
+
+\subsection{Heap Sort}
+\textbf{Idea}: Use heap structure to sort the array.\par
+\textbf{Properties}: Sorts in-place, but not stable.\par
+\textbf{Complexity}: The time complexity is $\bigO(n\log n)$.\par
+\input{res/sorting/heapsort.alg}
+
+\subsection{Non-comparing Sorting}
+\subsubsection{Trivial Sort}
+\textbf{Assumption}: Small range of input, pairwise different, integers.\par
+\textbf{Idea}: Use a lookup table to sort the input.\par
+\textbf{Complexity}: Timewise $\bigO(n)$, but requires $\bigO(k)$ space, where $k$ is the range of the input.\par
+\input{res/sorting/trivialsort.alg}
+
+\subsubsection{Counting Sort}
+\textbf{Assumption}: Integers up to $k\in\bigO(n)$.\par
+\textbf{Idea}: Count the number of occurrences of each element and then reconstruct the sorted array.\par
+\textbf{Complexity}: Timewise $\bigO(n+k)$, where $k$ is the range of the input.\par
+\input{res/sorting/countingsort.alg}
+
+\subsubsection{Radix Sort}
+\textbf{Assumption}: Integers of base $m$ with $d$ digits lesser than $m-1$.\par
+\textbf{Idea}: Sort the elements by their digits from the least significant to the most significant.\par
+\textbf{Complexity}: Timewise $\bigO(d(n+m))$, where $d$ is the number of digits and $m$ is the base of the integers.\par
+\input{res/sorting/radixsort.alg}
+
+\subsubsection{Bucket Sort}
+\textbf{Assumption}: Uniformly distributed numbers in $[0,1)$.\par
+\textbf{Idea}: Distribute the elements into $n$ buckets and then sort each bucket.\par
+\textbf{Complexity}: Timewise $\bigO(n^2)$, but $\bigO(n)$ with a good choice of $n$.\par
+\input{res/sorting/bucketsort.alg}
+
+
+
+\section{Searching}
+\subsection{Red-Black Trees}
+\subsubsection{Properties}
 \begin{itemize}
   \item[I.]\label{properties:1} [Colored] Every node is either red or black.
   \item[II.]\label{properties:2} [Black Root] The root is black.
@@ -44,11 +102,29 @@ where $a \geq 1$, $b > 1$, $f(n)$ is a given function, and $n_0$ is a given cons
   \item[V.]\label{properties:5} [Black Height] For each node, all simple paths from the node to descendant leaves contain the same number of black nodes.
 \end{itemize}
 
-\subsection{Insertion}
+\subsubsection{Insertion}
 \input{res/rb/insert.alg}
 
-\subsection{Deletion}
+\subsubsection{Deletion}
 \input{res/rb/delete.alg}
+
+\subsection{AVL Trees}
+\subsubsection{Property}
+For every node, the heights of the left and right subtrees differ by at most 1.
+
+\subsubsection{Insertion}
+Insert the new node as in a normal binary search tree and then rebalance the tree by performing rotations from the inserted node to the root.
+
+\subsubsection{Deletion}
+Delete the node as in a normal binary search tree and then rebalance the tree by performing rotations from the deleted node to the root.
+
+\subsection{Hashing}
+\subsubsection{Chaining}
+Chained hashing uses a linked list to store all elements that hash to the same value. The time complexity of chained hashing is $\bigO(1+\alpha)$, where $\alpha$ is the load factor.
+
+\subsubsection{Open Addressing}
+Open addressing uses the next free slot in the hash table to store elements that hash to the same value. The time complexity of open addressing is $\bigO(1+\alpha)$, where $\alpha$ is the load factor.
+
 
 \section{Graphs}
 \subsection{Topological Sort}
@@ -82,5 +158,39 @@ The Dijkstra algorithm \ref{alg:dijkstra} finds the shortest path from a source 
 
 The Dijkstra algorithm \ref{alg:dijkstrasinglepair} finds the shortest path from a source vertex $s$ to a target vertex $t$ in a graph $G$. The algorithm has a time complexity of $\bigO(V\log V+E)+\bigO(V)=\bigO(V\log V+E)$ (based on the single source \texttt{dijsktra}).\par
 \input{res/shortestpaths/dijkstrasp.alg}
+
+\subsubsection{Floyd-Warshall}
+The Floyd-Warshall algorithm \ref{alg:floydwarshall} finds the shortest path between all pairs of vertices in a graph $G$. The algorithm has a time complexity of $\bigO(V^3)$.\par
+\input{res/shortestpaths/floydwarshall.alg}
+
+
+
+\section{Hard problems with Smart Solutions}
+\subsection{Dynamic Programming}
+Dynamic programming is a method for solving complex problems by breaking them down into simpler subproblems. It is applicable to problems exhibiting the property of overlapping subproblems and optimal substructure.
+
+The four steps to solve a problem using dynamic programming are:
+\begin{enumerate}
+  \item[1.] Characterize the structure of an optimal solution.
+  \item[2.] Recursively define the value of an optimal solution.
+  \item[3.] Compute the value of an optimal solution in a bottom-up fashion.
+  \item[4.] Construct an optimal solution from computed information.
+\end{enumerate}
+
+\subsection{NP-Completeness}
+A decision problem is NP-complete if it is in NP and every problem in NP can be reduced to it in polynomial time. The most famous NP-complete problem is the Boolean satisfiability problem (SAT).
+
+To prove NP-completeness, one can use the following steps:
+\begin{enumerate}
+  \item Prove that the problem is in NP.
+  \item Choose a known NP-complete problem and reduce it to the problem at hand.
+\end{enumerate}
+
+\subsection{Solving NP-Complete Problems}
+\begin{enumerate}
+  \item[1.] \textbf{Approximation Algorithms:} Solution close to optimal by a ratio $\rho(n) = \frac{\text{approximate solution}}{\text{optimal solution}}$. Greedy algorithms, etc.
+  \item[2.] \textbf{Heuristic Algorithms:} No guarantee, but resonably good solutions usually. Local search, genetic algorithms, etc.
+  \item[3.] \textbf{Exact Algorithms:} Find the optimal solution. Backtracking, branch and bound, etc.
+\end{enumerate}
 
 \end{document}

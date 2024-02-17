@@ -1,0 +1,11 @@
+\begin{algorithm}[H]
+  \caption{\textalgo{radixSort($A$, $d$)}}\label{alg:radixsort}
+
+  \KwData{An array $A$ of $n$ elements, each with $d$ digits}
+  \KwResult{The array $A$ sorted in non-decreasing order}
+  \BlankLine
+
+  \For{$i \gets 1$ \KwTo $d$}{
+    use a stable sort to sort array $A$ on digit $i$\;
+  }
+\end{algorithm}

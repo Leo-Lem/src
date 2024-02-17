@@ -1,0 +1,20 @@
+\begin{algorithm}[H]
+  \caption{\texttt{floydWarshall($W$)}}\label{alg:floydwarshall}
+
+  \KwData{Weighted adjacency matrix $W$ of a graph $G$}
+  \KwResult{Matrix of shortest distances $D$}
+  \BlankLine
+
+  $n \gets \text{number of vertices in } G$\;
+  $D \gets W$\;
+
+  \For{$k \gets 1$ \KwTo $n$}{
+    \For{$i \gets 1$ \KwTo $n$}{
+      \For{$j \gets 1$ \KwTo $n$}{
+        $D[i,j] \gets \min(D[i,j], D[i,k] + D[k,j])$
+      }
+    }
+  }
+
+  \Return $D$\;
+\end{algorithm}

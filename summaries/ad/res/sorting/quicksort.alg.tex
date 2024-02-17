@@ -1,0 +1,13 @@
+\begin{algorithm}[H]
+  \caption{\textalgo{quickSort($A$, $p$, $r$)}}\label{alg:quicksort}
+
+  \KwData{An array $A$ of $n$ elements, with indices $p$ and $r$}
+  \KwResult{The array $A$ sorted in non-decreasing order}
+  \BlankLine
+
+  \If{$p < r$}{
+    $q \gets$ \textalgo{partition($A$, $p$, $r$)}\;
+    \textalgo{quickSort($A$, $p$, $q-1$)}\;
+    \textalgo{quickSort($A$, $q+1$, $r$)}\;
+  }
+\end{algorithm}

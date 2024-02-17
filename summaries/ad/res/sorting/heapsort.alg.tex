@@ -1,0 +1,15 @@
+\begin{algorithm}[H]
+  \caption{\textalgo{heapSort($A$)}}\label{alg:heapsort}
+
+  \KwData{An array $A$ of $n$ elements}
+  \KwResult{The array $A$ sorted in non-decreasing order}
+  \BlankLine
+
+  \For{$i \gets \lfloor\frac{n}{2}\rfloor$ \KwTo $1$}{
+    \textalgo{heapify($A$, $i$, $n$)}\;
+  }
+  \For{$i \gets n$ \KwTo $2$}{
+    swap $A[1]$ and $A[i]$\;
+    \textalgo{heapify($A$, $1$, $i-1$)}\;
+  }
+\end{algorithm}

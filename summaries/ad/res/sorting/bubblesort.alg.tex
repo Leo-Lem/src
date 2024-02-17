@@ -1,0 +1,15 @@
+\begin{algorithm}[H]
+  \caption{\textalgo{bubbleSort($A$)}}\label{alg:bubblesort}
+
+  \KwData{An array $A$ of $n$ elements}
+  \KwResult{The array $A$ sorted in non-decreasing order}
+  \BlankLine
+
+  \For{$i \gets 1$ \KwTo $n-1$}{
+    \For{$j \gets 1$ \KwTo $n-i$}{
+      \If{$A[j] > A[j+1]$}{
+        swap $A[j]$ and $A[j+1]$
+      }
+    }
+  }
+\end{algorithm}
