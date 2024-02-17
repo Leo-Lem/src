@@ -1,26 +1,27 @@
 \documentclass{article}
 
-\usepackage{exercises}
-\withsolutions
+\usepackage[solutions]{xrcs}
 
 \begin{document}
 \sheet[2022]{Ersttermin}
-\begin{exercises}{Algorithmen}
-\item Betrachten Sie folgenden Algorithmus in ihrer aus der Vorlesung bekannten Implementierung. Wählen Sie geeignete Parameter zur Beschreibung der Eingabegröße und nutzen Sie diese, um eine möglichst gute obere Schranke an die asymptotische Laufzeitkomplexität (worst-case) anzugeben.
-\hint{Beispiel PRIM: $n$ Anzahl Knoten, $m$ Anzahl Kanten $\to$ Laufzeit $\mathcal{O}(n \cdot \log^2(n) + m \cdot \log(n))$}
-\begin{itemize}
-  \item QUICKSORT
-  \item COUNTINGSORT
-  \item DIJKSTRA (single-source shortest path)
-  \item FLOYD-WARSHALL (all-pairs shortest path)
-\end{itemize}
-\item Wann ist ein Sortieralgorithmus stabil? Nennen Sie einen stabilen Sortieralgorithmus aus der Vorlesung.
-\item Wie wurden die folgenden Begriffe in der Vorlesung definiert?
-\begin{itemize}
-  \item polynomialzeit-berechenbar
-  \item polynomialzeit-verifizierbar
-\end{itemize}
-\end{exercises}
+\begin{exercise}{Algorithmen}
+  \begin{enumerate}
+    \item Betrachten Sie folgenden Algorithmus in ihrer aus der Vorlesung bekannten Implementierung. Wählen Sie geeignete Parameter zur Beschreibung der Eingabegröße und nutzen Sie diese, um eine möglichst gute obere Schranke an die asymptotische Laufzeitkomplexität (worst-case) anzugeben.
+          \hint{Beispiel PRIM: $n$ Anzahl Knoten, $m$ Anzahl Kanten $\to$ Laufzeit $\mathcal{O}(n \cdot \log^2(n) + m \cdot \log(n))$}
+          \begin{itemize}
+            \item QUICKSORT
+            \item COUNTINGSORT
+            \item DIJKSTRA (single-source shortest path)
+            \item FLOYD-WARSHALL (all-pairs shortest path)
+          \end{itemize}
+    \item Wann ist ein Sortieralgorithmus stabil? Nennen Sie einen stabilen Sortieralgorithmus aus der Vorlesung.
+    \item Wie wurden die folgenden Begriffe in der Vorlesung definiert?
+          \begin{itemize}
+            \item polynomialzeit-berechenbar
+            \item polynomialzeit-verifizierbar
+          \end{itemize}
+  \end{enumerate}
+\end{exercise}
 
 \begin{exercise}{Heapsort}
   Das Array $A = [2,3,4,9,6,5]$ soll mit Hilfe des in der Vorlesung vorgestellten HEAPSORT Algorithmus aufsteigend sortiert werden. Zur Erinnerung finden Sie Teile des Pseudocodes in Algorithmen 1 \& 2. Geb
@@ -35,78 +36,84 @@
   \end{algorithm}
 \end{exercise}
 
-\begin{exercises}{O-Notation}
-\item Ordnen Sie die folgenden Funktionen aufsteigend gemäß ihres asymptotischen Wachstums (ohne Begründung):
-\begin{equation*}
-  n^5,\sqrt{n},n^{1/3},n!,1/100,\sqrt{2^n},n,\log_3(n),n/\log_2{n},16^{\log_2{n}}
-\end{equation*}
-\item Berechnen Sie für die folgenden Funktionen scharfe Schranken in möglichst einfacher Darstellung der $\bigO$- \& $\Omega$-Notation. Ihr Rechenweg muss nachvollziehbar sein. Sie dürfen auf die aus der Vorlesung bekannten Eigenschaften der $\bigO$- \& $\Omega$-Notation zurückgreifen.
-\begin{align*}
-  f(n) = 42\log_2(n) + 23\sqrt{n} + n^{1/16} \\
-  g(n) = n^{3+\cos{\frac{n\pi}{2}}}
-\end{align*}
-\item Beweisen oder widerlegen Sie:\par Für zwei nicht-negative Funktionen $f_1, f_2: \mathbb{N} \to \mathbb{R}$ gilt immer $f_1(n) = \bigO(f_2(n))$ oder $f_1(n) = \Omega(f_2(n))$.
-\end{exercises}
+\begin{exercise}{O-Notation}
+  \begin{enumerate}
+    \item Ordnen Sie die folgenden Funktionen aufsteigend gemäß ihres asymptotischen Wachstums (ohne Begründung):
+          \begin{equation*}
+            n^5,\sqrt{n},n^{1/3},n!,1/100,\sqrt{2^n},n,\log_3(n),n/\log_2{n},16^{\log_2{n}}
+          \end{equation*}
+    \item Berechnen Sie für die folgenden Funktionen scharfe Schranken in möglichst einfacher Darstellung der $\bigO$- \& $\Omega$-Notation. Ihr Rechenweg muss nachvollziehbar sein. Sie dürfen auf die aus der Vorlesung bekannten Eigenschaften der $\bigO$- \& $\Omega$-Notation zurückgreifen.
+          \begin{align*}
+            f(n) = 42\log_2(n) + 23\sqrt{n} + n^{1/16} \\
+            g(n) = n^{3+\cos{\frac{n\pi}{2}}}
+          \end{align*}
+    \item Beweisen oder widerlegen Sie:\par Für zwei nicht-negative Funktionen $f_1, f_2: \mathbb{N} \to \mathbb{R}$ gilt immer $f_1(n) = \bigO(f_2(n))$ oder $f_1(n) = \Omega(f_2(n))$.
+  \end{enumerate}
+\end{exercise}
 
-\begin{exercises}{Master-Theorem}
-\item Geben Sie eine Funktion $f$ an, so dass auf die Rekursion
-\begin{equation*}
-  T(n) = \begin{cases}
-    4\cdot T(n/2) + f(n) & \text{für } n > 1 \\
-    1                    & \text{sonst}
-  \end{cases}
-\end{equation*}
-keiner der drei Fälle des Master-Theorems angewendet werden kann. Begründen Sie Ihre Antwort!
-\item Lösen Sie die folgende Rekursion mit Hilfe des Mastertheorems:
-\begin{equation*}
-  T(n) = \begin{cases}
-    3\cdot T(n/9) + n & \text{für } n > 1 \\
-    1                 & \text{sonst}
-  \end{cases}
-\end{equation*}
-\end{exercises}
+\begin{exercise}{Master-Theorem}
+  \begin{enumerate}
+    \item Geben Sie eine Funktion $f$ an, so dass auf die Rekursion
+          \begin{equation*}
+            T(n) = \begin{cases}
+              4\cdot T(n/2) + f(n) & \text{für } n > 1 \\
+              1                    & \text{sonst}
+            \end{cases}
+          \end{equation*}
+          keiner der drei Fälle des Master-Theorems angewendet werden kann. Begründen Sie Ihre Antwort!
+    \item Lösen Sie die folgende Rekursion mit Hilfe des Mastertheorems:
+          \begin{equation*}
+            T(n) = \begin{cases}
+              3\cdot T(n/9) + n & \text{für } n > 1 \\
+              1                 & \text{sonst}
+            \end{cases}
+          \end{equation*}
+  \end{enumerate}
+\end{exercise}
 
-\begin{eexercises}{Algorithmenanalyse}{
-    Betrachten Sie Algorithmus 3:
-    \begin{algorithm}[ht]
-      \caption{WHOAMI($a, b$)}
-      $n \gets 0$ \\
-      \For{$i \gets a$ \textbf{to} $b$}{
-        $n \gets n + i$ \\
-        \If{$a \mod 2 = 1$}{
-          $a \gets a + 1$
-        }
-        \If{$b \mod 2 = 1$}{
-          $b \gets b - 1$
-        }
-        $m \gets 0$ \\
-        $i \gets a$ \\
-        \While{$i \leq b$}{
-          $m \gets m + i$ \\
-          $i \gets i + 2$
-        }
+\begin{exercise}{Algorithmenanalyse}
+  Betrachten Sie Algorithmus 3:
+  \begin{algorithm}[ht]
+    \caption{WHOAMI($a, b$)}
+    $n \gets 0$ \\
+    \For{$i \gets a$ \textbf{to} $b$}{
+      $n \gets n + i$ \\
+      \If{$a \mod 2 = 1$}{
+        $a \gets a + 1$
       }
-      \Return $n + m$
-    \end{algorithm}
-  }
-  \item Geben Sie den Rückgabewert des Aufrufs WHOAMI(1,6) sowie den Inhalt der Variablen $a, b, n$ \& $m$ am Ende des Algorithmus an.
-  \item Was berechnet Algorithmus 3 für die Eingabe $a, b \in \mathbb{N}$ mit $a < b$? Begründen Sie Ihre Antwort.
-  \item Analysieren Sie die Laufzeit des Algorithmus in Abhängigkeit der Eingaben $a, b \in \mathbb{N}$ mit $a < b$ und begründen Sie ihre Antwort.
-  \item Formulieren Sie eine sinvolle Invariante für den Wert der Variable $m$ zu Beginn eines Durchlaufs der While-Schleife mit dem Zählerwert $i$.
-  \hint{Die Invariante muss geeignet sein, die Korrektheit von Algorithmus zu zeigen. Sie müssen die Korrektheit der Invariante/des Algorithmus nicht beweisen.}
-\end{eexercises}
+      \If{$b \mod 2 = 1$}{
+        $b \gets b - 1$
+      }
+      $m \gets 0$ \\
+      $i \gets a$ \\
+      \While{$i \leq b$}{
+        $m \gets m + i$ \\
+        $i \gets i + 2$
+      }
+    }
+    \Return $n + m$
+  \end{algorithm}
+  \begin{enumerate}
+    \item Geben Sie den Rückgabewert des Aufrufs WHOAMI(1,6) sowie den Inhalt der Variablen $a, b, n$ \& $m$ am Ende des Algorithmus an.
+    \item Was berechnet Algorithmus 3 für die Eingabe $a, b \in \mathbb{N}$ mit $a < b$? Begründen Sie Ihre Antwort.
+    \item Analysieren Sie die Laufzeit des Algorithmus in Abhängigkeit der Eingaben $a, b \in \mathbb{N}$ mit $a < b$ und begründen Sie ihre Antwort.
+    \item Formulieren Sie eine sinvolle Invariante für den Wert der Variable $m$ zu Beginn eines Durchlaufs der While-Schleife mit dem Zählerwert $i$.
+          \hint{Die Invariante muss geeignet sein, die Korrektheit von Algorithmus zu zeigen. Sie müssen die Korrektheit der Invariante/des Algorithmus nicht beweisen.}
+  \end{enumerate}
+\end{exercise}
 
 \begin{exercise}{Graphen}
   Sei $G = (V, E)$ ein kantengewichteter, ungerichteter Graph und $A \subseteq E$ eine Teilmenge der Kanten eines minimalen Spannbaums (MST) von $G$. Weiter sei $(C, V \setminus C)$ ein mit $A$ verträglicher Schnitt und $e = \{u, v\} \in E$ eine leichte Kante, die $(C, V \setminus C)$ kreuzt.\par
   Beweisen Sie: $A \cup \{e\}$ ist auch Teilmenge der Kanten eines MST von $G$.
 \end{exercise}
 
-\begin{eexercises}{Dynamische Programmierung}{
-    Sie haben ein sehr langes, sehr schmales Rasenstück der Länge $l \in \mathbb{N}$ zu bewässern. Entlang des Rasenstücks sind $n \in \mathbb{N}$ Rasensprenger an den Positionen $0 \leq p_1 < \ldots < p_n \leq l$ platziert. Der Rasensprenger an Position $p_i$ hat Reichweite $r_i \geq 0$ in beide Richtungen entlang der langen Kante, so dass er den Rasen von Position $p_i - r_i$ bis Position $p_i + r_i$ (auf der gesamten Breite) bewässert. Wenn alle Rasensprenger eingeschaltet sind, wird der gesamte Rasen (von Position 0 bis Position $l$) bewässert. Ihre Aufgabe ist es, so wenig Rasensprenger wie möglich einzuschalten, damit der gesamte Rasen bewässert wird. Die Positionen \& Reichweiten der $n$ Rasensprenger sind als ganzzahlige Arrays $P = \langle p_1, \ldots, p_n \rangle$ und $R = \langle r_1, \ldots, r_n \rangle$ gegeben.
-  }
-  \item Betrachten Sie die Eingabe für ein Rasenstück der Länge $l = 7$ mit $n = 3$ Rasensprengern an den Positionen $P = \langle 1,3,6 \rangle$ und den zugehörigen Reichweiten $R = \langle 4,2,2 \rangle$. Welche Rasensprenger müssen Sie anschalten um den gesamten Rasen mit möglichst wenigen Rasensprengern zu bewässern?
-  \item Betrachten Sie die folgende gierige algorithmische Idee: Schalte zunächst alle Rasensprenger aus. Schalte dann der Reihe nach die Rasensprenger ein, die die insgesamt bewässerte Fläche am meisten vergrößern, bis die gesamte Rasenfläche bewässert ist. Zeigen Sie, dass diese Strategie nicht optimal ist.
-  \item Entwerfen Sie einen Algorithmus mittels dynamischer Programmierung für die Eingaben $l, P \& R$ die minimale Anzahl an notwendigen Rasensprengern in Zeit $\mathcal{O}(n \cdot l)$ zurückgibt ($n = \lvert P \rvert$). Geben Sie dazu zunächst eine geeignete mathematische Rekursionsgleichung an \& entwickeln Sie darauf aufbauend einen iterativen Algorithmus in Pseudocode.
-  \hint{Bemerkung zu möglichem Ansatz für die Rekursion: Unterscheiden Sie die beiden Fälle, ob die optimale Lösung den letzten Rasensprenger einschaltet oder nicht.}
-\end{eexercises}
+\begin{exercise}{Dynamische Programmierung}
+  Sie haben ein sehr langes, sehr schmales Rasenstück der Länge $l \in \mathbb{N}$ zu bewässern. Entlang des Rasenstücks sind $n \in \mathbb{N}$ Rasensprenger an den Positionen $0 \leq p_1 < \ldots < p_n \leq l$ platziert. Der Rasensprenger an Position $p_i$ hat Reichweite $r_i \geq 0$ in beide Richtungen entlang der langen Kante, so dass er den Rasen von Position $p_i - r_i$ bis Position $p_i + r_i$ (auf der gesamten Breite) bewässert. Wenn alle Rasensprenger eingeschaltet sind, wird der gesamte Rasen (von Position 0 bis Position $l$) bewässert. Ihre Aufgabe ist es, so wenig Rasensprenger wie möglich einzuschalten, damit der gesamte Rasen bewässert wird. Die Positionen \& Reichweiten der $n$ Rasensprenger sind als ganzzahlige Arrays $P = \langle p_1, \ldots, p_n \rangle$ und $R = \langle r_1, \ldots, r_n \rangle$ gegeben.
+  \begin{enumerate}
+    \item Betrachten Sie die Eingabe für ein Rasenstück der Länge $l = 7$ mit $n = 3$ Rasensprengern an den Positionen $P = \langle 1,3,6 \rangle$ und den zugehörigen Reichweiten $R = \langle 4,2,2 \rangle$. Welche Rasensprenger müssen Sie anschalten um den gesamten Rasen mit möglichst wenigen Rasensprengern zu bewässern?
+    \item Betrachten Sie die folgende gierige algorithmische Idee: Schalte zunächst alle Rasensprenger aus. Schalte dann der Reihe nach die Rasensprenger ein, die die insgesamt bewässerte Fläche am meisten vergrößern, bis die gesamte Rasenfläche bewässert ist. Zeigen Sie, dass diese Strategie nicht optimal ist.
+    \item Entwerfen Sie einen Algorithmus mittels dynamischer Programmierung für die Eingaben $l, P \& R$ die minimale Anzahl an notwendigen Rasensprengern in Zeit $\mathcal{O}(n \cdot l)$ zurückgibt ($n = \lvert P \rvert$). Geben Sie dazu zunächst eine geeignete mathematische Rekursionsgleichung an \& entwickeln Sie darauf aufbauend einen iterativen Algorithmus in Pseudocode.
+          \hint{Bemerkung zu möglichem Ansatz für die Rekursion: Unterscheiden Sie die beiden Fälle, ob die optimale Lösung den letzten Rasensprenger einschaltet oder nicht.}
+  \end{enumerate}
+\end{exercise}
 \end{document}

@@ -1,0 +1,25 @@
+\begin{algorithm}[H]
+  \caption{\texttt{WhoAmI(A)}}\label{alg:whoami}
+  \KwData{Array $A$ von $n \geq 1$ natürlichen Zahlen}
+  \BlankLine
+
+  $x \gets 1$\;
+  $m \gets 1$\;
+  \For{$i \gets 2$ \KwTo $n$} {
+    \If{$A[i - 1] \leq A[i]$} {
+      $m \gets 0$\;
+    }
+    $m \gets m + 1$\;
+    $x \gets \max(x, m)$\;
+  }
+  \Return{$x$}\;
+\end{algorithm}
+
+%Algorithmus 2 WhoAmI(A), A Array von n ≥ 1 natürlichen Zahlen
+% 8:
+% x=1
+% m=1 fori=2tondo
+% if A[i − 1] ≤ A[i] then m=0
+% m=m+1
+% x = max(x, m)
+% return x

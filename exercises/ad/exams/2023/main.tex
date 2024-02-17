@@ -1,9 +1,107 @@
 \documentclass{article}
 
-\usepackage{exercises}
-\withsolutions
+\usepackage[solutions]{xrcs}
 
 \begin{document}
-\sheet[2023]{Probeklausur}
-% TODO: add
+\sheet[2023]{Probeklausur (100P)}
+\begin{exercise}{Cross section (40P)}
+  \begin{enumerate}
+    \item Sortieren Sie die folgenden Funktionen in aufsteigender Reihenfolge asymptotischen Wachstums:\hfill 4P\[
+            25n^2,\quad 10^{12},\quad {1.01}^n,\quad \frac{\sqrt{n}^{2.024}}{\log n},\quad n + \sqrt{n},\quad 2^n,\quad n^{\sqrt{n}}
+          \]
+    \item Bestimmen Sie eine möglichst scharfe obere Laufzeitschranke für die folgende Rekursion in O-Notation mit Hilfe des Mastertheorems:\hfill{4P}\[
+            T(n) =\begin{cases}
+              1                                 & \text{falls } n \leq 1, \\
+              8T\left(\frac{n}{2}\right) + n +6 & \text{sonst}
+            \end{cases}
+          \]
+    \item Beschreiben Sie kurz in eigenen Worten: Was unterscheidet Hashing mit Verkettung von offener Adressierung?\hfill 4P
+    \item Im Problem 5-Clique ist ein ungerichteter Graph G gegeben. Es soll entschieden werden, ob G eine Clique mit 5 Knoten enthält. Gibt es einen Algorithmus, der 5-Clique in polynomieller Zeit löst? Begründen Sie kurz.\hfill 4P
+    \item Wenden Sie den Bellman-Ford-Algorithmus auf den folgenden Graphen startend von Knoten 1 an und geben Sie für jeden Durchlauf der äußeren Schleife die Vorgängerknoten und Distanzen an.\hfill 4P
+          \input{res/bellmanford.fig}
+    \item Wenden Sie den MergeSort-Algorithmus auf das folgende Array an. Geben Sie das Array nach jeder Merge-Operation an.\hfill 4P\[
+            [15,6,11,31]
+          \]
+    \item Zeigen oder widerlegen Sie kurz: Jeder AVL-Baum mit $n$ Knoten hat mindestens Höhe $n/3$.\hfill 4P
+    \item Geben Sie für den folgenden Algorithmus an, wie viele Iterationen die innere Schleife in der $k$-ten Iteration der äußeren Schleife durchläuft ($k \in \mathbb{N}$). Geben Sie möglichst scharfe obere Laufzeitschranke für \texttt{Alg} in O-Notation an.\hfill 4P\par
+          \input{res/alg1.alg}
+    \item Beim VertexCover-Problem ist ein ungerichteter Graph $G = (V,E)$ gegeben und es soll eine Knotenauswahl $C \subseteq V$ gefunden werden mit $e \cap C \neq \emptyset$ für alle $e \in E$. Dabei soll $|C|$ minimiert werden. Welche der folgenden Aussagen sind korrekt?\hfill 4P
+          \hint{Es können 0-4 Antworten richtig sein und es müssen 4 Kreuze gesetzt werden.}
+          \begin{itemize}
+            \item[$\square$] Eine 2-Approximation für VertexCover findet garantiert eine Lösung, die um maximal 2 Knoten größer als eine optimale Lösung ist
+            \item[$\square$] Es gibt eine 2-Approximation für VertexCover
+            \item[$\square$] Es gibt ein exaktes Verfahren für VertexCover mit exponentieller Laufzeit
+            \item[$\square$] Wenn der Eingabegraph keine Kanten enthält oder ein Pfad ist, kann eine optimale Lösung in polynomieller Zeit gefunden werden
+          \end{itemize}
+    \item Welche der folgenden Aussagen sind korrekt?\hfill 4P
+          \hint{Es können 0-3 Antworten richtig sein und es müssen 3 Kreuze gesetzt werden.}
+          \begin{itemize}
+            \item[$\square$] Bubblesort hat eine Laufzeit von $O(n^3)$
+            \item[$\square$] In einem ungerichteten kantengewichteten Graphen ist der minimale Spannbaum eindeutig
+            \item[$\square$] In einem Rot-Schwarz-Baum mit mindestens 10 Knoten gibt es immer mindestens 2 rote Knoten
+            \item[$\square$] Man kann die Union-Find-Datenstruktur so implementieren, dass die drei Operationen \texttt{Make-Set}, \texttt{Union} und \texttt{Find-Set} alle Laufzeit $O(1)$ haben.
+          \end{itemize}
+  \end{enumerate}
+  \begin{solution}
+    % TODO
+  \end{solution}
+\end{exercise}
+
+\begin{exercise}{Who Am I? (15P)}
+  \input{res/whoami.alg}
+  \begin{enumerate}
+    \item Betrachten Sie eine Ausführung von \texttt{WhoAmI} für das Eingabearray $A = [7,3,5,3,1,6]$. Welche Werte nimmt $x$ nach jedem Schleifendurchlauf an?\hfill 2P
+    \item Welche Ausgabe liefert \texttt{WhoAmI} für ein gegebenes Array $A$ von $n \geq 1$ natürlichen Zahlen?\hfill 4P
+    \item Geben Sie eine geeignete Schleifeninvariante für die Schleife in \texttt{WhoAmI} an.\hfill 7P
+    \item Geben Sie eine möglichst scharfe Schranke für die Laufzeit von \texttt{WhoAmI} an.\hfill 2P
+  \end{enumerate}
+  \begin{solution}
+    % TODO
+  \end{solution}
+\end{exercise}
+
+\begin{exercise}{Algorithmenentwurf (15P)}
+  Wir betrachten Mengen $M \subset \mathbb{N}$ und Lösungen $l_M$ für ein Problem über solchen Mengen. Sei weiter \texttt{Alg} ein Algorithmus, der als Eingabe Folgendes erhält:
+  \begin{itemize}
+    \item eine Menge $M \subset \mathbb{N}$
+    \item eine Teilmenge $S \subseteq M$
+    \item Lösungen $l_S, l_{M \setminus S}$ für Teilmengen $S$ und $M \setminus S$
+  \end{itemize}
+  Der Algorithmus produziert in Zeit $O(|M|^2)$ die Lösung für $M$. Seien dazu Lösungen $l_m$ für alle $m \in M$ gegeben.
+  \begin{enumerate}
+    \item Gegeben sei die Menge $M = \{1, 2, 3, 4\}$. Geben Sie eine Sequenz an Aufrufen von \texttt{Alg} mit entsprechenden Eingaben an, um die Lösung für $M$ zu konstruieren.\hfill 2P
+    \item Konstruieren Sie einen Algorithmus, der \texttt{Alg} nutzt, um eine Lösung für eine beliebige Menge $M \subset \mathbb{N}$ zu produzieren. Für die volle Punktzahl sollte Ihr Algorithmus die Laufzeitschranke von $O(|M|^2)$ einhalten.\hfill 8P
+    \item Zeigen Sie die Laufzeit Ihres Algorithmus.\hfill 5P
+  \end{enumerate}
+  \begin{solution}
+    % TODO
+  \end{solution}
+\end{exercise}
+
+\begin{exercise}{Algorithmenentwurf II (15P)}
+  Gegeben seien zwei Arrays $A$ und $B$ mit $|A| \leq |B|$ und $|A|^3 \geq |B|$, die jeweils paarweise verschiedene ganze Zahlen enthalten. Gesucht ist eine Liste $L$, welche alle Zahlen enthält die in $A$ oder $B$ enthalten sind, bis auf die, die in $A$ und $B$ enthalten sind.\par
+  Für gegebene Arrays $A = [3,1,46]$ und $B = [46,1,22,15]$ wären also $[3,22,15]$ oder $[22, 15, 3]$ korrekte Ausgaben (die Sortierung ist nicht vorgegeben), nicht aber $[3, 1, 22, 15]$.
+  \begin{enumerate}
+    \item Beschreiben Sie kurz einen einfachen Algorithmus mit Laufzeit $O(|A| \cdot |B|)$ für das Problem und begründen Sie kurz die Korrektheit und Laufzeit von Ihrem Ansatz.\hfill 3P
+    \item Konstruieren Sie einen Algorithmus mit besserer asymptotischer Laufzeit. Die erreichbare Punktzahl hängt von der Laufzeit des Algorithmus ab (Laufzeiten von $O(|B| \log(|B|))$ oder sogar $O(|B| \log(|A|))$ sind z.B. erreichbar).\hfill 8P
+    \item Zeigen Sie die Korrektheit und Laufzeit Ihres Algorithmus aus 2.\hfill 4P
+  \end{enumerate}
+  \begin{solution}
+    % TODO
+  \end{solution}
+\end{exercise}
+
+\begin{exercise}{NP-Vollständigkeit (15P)}
+  Das Entscheidungsproblem \texttt{INDEPENDENT SET} entscheidet für einen ungerichteten Graphen $G = (V,E)$ und eine Zahl $k \in \{1,...,|V|\}$ ob ein \texttt{INDEPENDENT SET} der Größe $k$ in $G$ enthalten ist. Ein \texttt{INDEPENDENT SET} der Größe $k$ ist eine Menge $V' \subseteq V$ von Knoten mit $|V'| = k$ und der Eigenschaft, dass kein Knotenpaar in $V'$ mit Kanten verbunden ist (also $\{u, v\} \not\in E$ für alle $u, v \in V'$).\par
+  Das Entscheidungsproblem \texttt{NO CUTS} entscheidet für eine Menge von Intervallen $S = \{I_1,I_2,I_3,...\}$ und eine Zahl $k \in \{1,...,|S|\}$ ob es eine Teilmenge $T \subseteq S$ mit $|T| \geq k$ gibt, so dass alle Intervalle in $T$ paarweise disjunkt sind.
+  \hint{Sie dürfen zur Lösung der folgenden Aufgaben benutzen, dass \texttt{INDEPENDENT SET} NP-schwer ist.}
+  \begin{enumerate}
+    \item Zeigen Sie das \texttt{INDEPENDENT SET} NP-vollständig ist.\hfill 4P
+    \item Zeigen Sie \texttt{NO CUTS} $\leq_p$ \texttt{INDEPENDENT SET}.\hfill 8P
+    \item Was folgt daraus für die Komplexität von \texttt{NO CUTS}?\hfill 3P
+  \end{enumerate}
+  \begin{solution}
+    % TODO
+  \end{solution}
+\end{exercise}
 \end{document}

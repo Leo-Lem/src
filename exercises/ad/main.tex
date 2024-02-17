@@ -1,21 +1,20 @@
 \documentclass{article}
 
-\usepackage{exercises}
+\usepackage[solutions]{xrcs}
 
 \subject{Algorithmen \& Datenstrukturen}
 \semester{Wintersemester 2023}
 \author{Leopold Lemmermann}
 
-% \withsolutions
-
 \begin{document}
 \createtitle
 
-\foreach \indexi in {0,...,6}{
-    \includefrom{exercises/\indexi}{main}
-  }
+% \foreach \indexi in {0,...,6}{
+%     \includefrom{exercises/\indexi}{main}
+%   }
 
-\foreach \indexi in {2019,20201,20202,20211,20212,2022,2023}{
-    \includefrom{exams/\indexi}{main}
+\foreach \indexi in {2020,2021,2022,2023}{
+    \import{exams/\indexi}{main}
+    \clearpage
   }
 \end{document}

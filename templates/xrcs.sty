@@ -1,0 +1,84 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{xrcs}[2024/02/17]
+\RequirePackage{summary}
+
+% ---------------------------------------------------------------------
+% Package options
+% ---------------------------------------------------------------------
+\newif\ifsolutions
+\DeclareOption{solutions}{\global\solutionstrue}
+\ProcessOptions\relax
+
+
+
+% ---------------------------------------------------------------------
+% Document setup
+% ---------------------------------------------------------------------
+\RequirePackage{multicol, environ, graphicx, subfig}
+
+
+
+% ---------------------------------------------------------------------
+% Exercises
+% ---------------------------------------------------------------------
+\newcommand\sheet[2][\relax]{
+  \ifx#1\empty
+    \section*{#2}\addcontentsline{toc}{section}{#2}
+  \else
+    \ifx#1\relax
+    \else
+      \setcounter{section}{#1}
+      \addtocounter{section}{-1}
+    \fi
+    \section{#2}
+  \fi
+}
+
+\NewEnviron{solution}{
+  \ifsolutions
+    \subsubsection*{Lösung:}
+    \BODY
+  \fi
+}
+
+% #1: optional exercise number
+% #2: exercise title
+\newenvironment{exercise}[2][\relax]{
+  \ifx#1\relax\else
+    \setcounter{subsection}{#1}
+    \addtocounter{subsection}{-1}
+  \fi
+  \subsection{#2}
+}{
+}
+
+% ---------------------------------------------------------------------
+% Custom commands
+% ---------------------------------------------------------------------
+
+\newcommand{\hint}[1]{
+  \vspace{.5em}\par
+  \textbf{Hinweis}: \textit{#1}
+}
+
+\newcommand{\points}[1][\relax]{
+  \ifx#1\relax
+    \hfill(\textit{$1$~Punkt})
+  \else
+    \hfill(\textit{$#1$~Punkte})
+  \fi
+}
+
+\newcommand{\induction}[3]{
+  \textbf{IA} ($n\leftarrow 0$):\quad$#1$\\
+  \textbf{IV} ($n\leftarrow n$):\quad$#2$\\
+  \textbf{IS} ($n\leftarrow n+1$): \begin{align*}#3\end{align*}
+}
+
+\newcommand{\invariant}[3]{
+  \textbf{Initialisierung}: #1\\
+  \textbf{Erhaltung}: #2\\
+  \textbf{Termination}: #3
+}
+
+\newcommand\xmark{$\times$}

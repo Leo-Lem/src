@@ -1,0 +1,15 @@
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[->, node distance=2cm, on grid, auto, main node/.style={circle, draw,}]
+    \node [main node] (a) {a};
+    \node [main node] (b) [above right=of a] {b};
+    \node [main node] (c) [below right=of a] {c};
+
+    \draw (a) -- node {1} (b);
+    \draw (a) -- node {3} (c);
+    \draw (b) -- node {-2} (c);
+  \end{tikzpicture}
+
+  \caption{Graph für Bellman-Ford-Algorithmus.}
+  \label{fig:bellmanford}
+\end{figure}
