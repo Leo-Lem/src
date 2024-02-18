@@ -1,111 +1,130 @@
 \documentclass{article}
 
-\usepackage{exercises}
-\withsolutions
+\usepackage[solutions]{xrcise}
 
 \begin{document}
 \sheet{Erweitertes Big O, Mastertheorem, Rekursion \& Queues}
-\begin{eexercises}{Erweiterte Big-O Notation}{
-    Beweisen oder widerlegen Sie die folgenden Aussagen:
-  }
-  \item $2n = \Omega(n)$
-  \item $\log_a(n+1) = \Theta(\log_b(n+1))$ für $a,b \in \mathbb{R}_{>1}$.
-  \item $n = o(2n)$
-\end{eexercises}
+\begin{exercise}{Erweiterte Big-O Notation}
+  Beweisen oder widerlegen Sie die folgenden Aussagen:
+  \begin{enumerate}
+    \item $2n = \Omega(n)$
+    \item $\log_a(n+1) = \Theta(\log_b(n+1))$ für $a,b \in \mathbb{R}_{>1}$.
+    \item $n = o(2n)$
+  \end{enumerate}
 
-\begin{solutions}
-  \item Gilt für $c = 2$ und $n_0 = 1$.
-  \item Gilt für $c_1=1/\log_b(a), c_2=1$ und $n_0 = 1$.
-  \item Gilt nicht, da $\lim_{n\to\infty} \frac{n}{2n} = \frac{1}{2} \Rightarrow $ für Werte $c\geq\frac{1}{2}$ nicht erfüllt.
-\end{solutions}
+  \begin{solution}
+    \begin{enumerate}
+      \item Gilt für $c = 2$ und $n_0 = 1$.
+      \item Gilt für $c_1=1/\log_b(a), c_2=1$ und $n_0 = 1$.
+      \item Gilt nicht, da $\lim_{n\to\infty} \frac{n}{2n} = \frac{1}{2} \Rightarrow $ für Werte $c\geq\frac{1}{2}$ nicht erfüllt.
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
 
-\begin{eexercises}{Mastertheorem}{
-    Bestimmen Sie die Größenordnung der Funktionen, wenn möglich mittels Mastertheorem. Falls das Mastertheorem nicht anwendbar sein sollte, begründen Sie dies und verwenden stattdessen die Substitutionsmethode.
-    \hint{Es ist hier kein Induktionsbeweis erforderlich bei Anwendung der Substitutionsmethode.}
-  }
-  \item $T_1(n) = \begin{cases}
-      1                               & \text{falls } n = 1 \\
-      16 \cdot T_1(\frac{n}{2}) + n^2 & \text{sonst}
-    \end{cases}$
-  \item $T_2(n) = \begin{cases}
-      1                              & \text{falls } n = 1 \\
-      8 \cdot T_2(\frac{n}{2}) + n^4 & \text{sonst}
-    \end{cases}$
-  \item $T_3(n) = \begin{cases}
-      0                    & \text{falls } n = 0 \\
-      3 \cdot T_3(n-1) + 2 & \text{sonst}
-    \end{cases}$
-\end{eexercises}
+\begin{exercise}{Mastertheorem}
+  Bestimmen Sie die Größenordnung der Funktionen, wenn möglich mittels Mastertheorem. Falls das Mastertheorem nicht anwendbar sein sollte, begründen Sie dies und verwenden stattdessen die Substitutionsmethode.
+  \hint{Es ist hier kein Induktionsbeweis erforderlich bei Anwendung der Substitutionsmethode.}
+  \begin{enumerate}
+    \item $T_1(n) = \begin{cases}
+              1                               & \text{falls } n = 1 \\
+              16 \cdot T_1(\frac{n}{2}) + n^2 & \text{sonst}
+            \end{cases}$
+    \item $T_2(n) = \begin{cases}
+              1                              & \text{falls } n = 1 \\
+              8 \cdot T_2(\frac{n}{2}) + n^4 & \text{sonst}
+            \end{cases}$
+    \item $T_3(n) = \begin{cases}
+              0                    & \text{falls } n = 0 \\
+              3 \cdot T_3(n-1) + 2 & \text{sonst}
+            \end{cases}$
+  \end{enumerate}
 
-\begin{solutions}
-  \item $T_1(n) = \bigO(n^4)$ nach 1. Fall des Mastertheorems mit $\epsilon=1$.
-  \item $T_2(n) = \bigO(n^4)$ nach 3. Fall des Mastertheorems mit $\epsilon=1 \& k=.5$.
-  \item $T_3(n) = \bigO(2n)$ nach Substitutionsmethode.
-\end{solutions}
+  \begin{solution}
+    \begin{enumerate}
+      \item $T_1(n) = \bigO(n^4)$ nach 1. Fall des Mastertheorems mit $\epsilon=1$.
+      \item $T_2(n) = \bigO(n^4)$ nach 3. Fall des Mastertheorems mit $\epsilon=1 \& k=.5$.
+      \item $T_3(n) = \bigO(2n)$ nach Substitutionsmethode.
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
 
-\begin{eexercises}{Erweiterte Big-O Notation}{
-    Sei F die Menge der Funktionen $\mathbb{N} \rightarrow \mathbb{R}_{>0}$ und seien $f, g \in F$.
-  }
-  \item $f(n)=n^2-2n \Rightarrow f(n)=\Theta(n^2)$.
-  \item $f(n)=\bigO(g(n)) \Rightarrow g(n)=\Omega(f(n))$.
-\end{eexercises}
+\begin{exercise}{Erweiterte Big-O Notation}
+  Sei F die Menge der Funktionen $\mathbb{N} \rightarrow \mathbb{R}_{>0}$ und seien $f, g \in F$.
+  \begin{enumerate}
+    \item $f(n)=n^2-2n \Rightarrow f(n)=\Theta(n^2)$.
+    \item $f(n)=\bigO(g(n)) \Rightarrow g(n)=\Omega(f(n))$.
+  \end{enumerate}
 
-\begin{solutions}
-  \item Gilt z.B. für $c_1=.5, c_2=2$ und $n_0=4$.
-  \item Gilt für $c_2=1/c_1$ und $n_{02}=n_{01}$.
-\end{solutions}
+  \begin{solution}
+    \begin{enumerate}
+      \item Gilt z.B. für $c_1=.5, c_2=2$ und $n_0=4$.
+      \item Gilt für $c_2=1/c_1$ und $n_{02}=n_{01}$.
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
 
-\begin{eexercises}{Mastertheorem}{
-    Bestimmen Sie die Größenordnung der Funktionen, wenn möglich mittels Mastertheorem. Falls das Mastertheorem nicht anwendbar sein sollte, begründen Sie dies und verwenden stattdessen die Substitutionsmethode.
-    \hint{Es ist hier kein Induktionsbeweis erforderlich bei Anwendung der Substitutionsmethode.}
-  }
-  \item $T_1(n) = \begin{cases}
-      1                                      & \text{falls } n = 1 \\
-      4 \cdot T_1(\lfloor n/2 \rfloor) + n^2 & \text{sonst}
-    \end{cases}$
-  \item $T_2(n) = \begin{cases}
-      1                    & \text{falls } n = 1 \\
-      2 \cdot T_2(n-1) + 4 & \text{sonst}
-    \end{cases}$
-  \item $T_3(n) = \begin{cases}
-      1                                                                                & \text{falls } n = 1 \\
-      42 \cdot T_3(\lfloor n/3 \rfloor) + 39 \cdot T_3(\lceil n/3 \rceil) + 5n^3 + 69n & \text{sonst}
-    \end{cases}$
-\end{eexercises}
+\begin{exercise}{Mastertheorem}
+  Bestimmen Sie die Größenordnung der Funktionen, wenn möglich mittels Mastertheorem. Falls das Mastertheorem nicht anwendbar sein sollte, begründen Sie dies und verwenden stattdessen die Substitutionsmethode.
+  \hint{Es ist hier kein Induktionsbeweis erforderlich bei Anwendung der Substitutionsmethode.}
+  \begin{enumerate}
+    \item $T_1(n) = \begin{cases}
+              1                                      & \text{falls } n = 1 \\
+              4 \cdot T_1(\lfloor n/2 \rfloor) + n^2 & \text{sonst}
+            \end{cases}$
+    \item $T_2(n) = \begin{cases}
+              1                    & \text{falls } n = 1 \\
+              2 \cdot T_2(n-1) + 4 & \text{sonst}
+            \end{cases}$
+    \item $T_3(n) = \begin{cases}
+              1                                                                                & \text{falls } n = 1 \\
+              42 \cdot T_3(\lfloor n/3 \rfloor) + 39 \cdot T_3(\lceil n/3 \rceil) + 5n^3 + 69n & \text{sonst}
+            \end{cases}$
+  \end{enumerate}
 
-\begin{solutions}
-  \item $T_1(n) = \bigO(n^2\cdot \log{n})$ nach 2. Fall des Mastertheorems mit $k=0$.
-  \item $T_2(n) = \bigO(2^n+2n)$ nach Substitutionsmethode.
-  \item $T_3(n) = \bigO(n^3)$ nach 1. Fall des Mastertheorems mit $\epsilon=1$.
-\end{solutions}
+  \begin{solution}
+    \begin{enumerate}
+      \item $T_1(n) = \bigO(n^2\cdot \log{n})$ nach 2. Fall des Mastertheorems mit $k=0$.
+      \item $T_2(n) = \bigO(2^n+2n)$ nach Substitutionsmethode.
+      \item $T_3(n) = \bigO(n^3)$ nach 1. Fall des Mastertheorems mit $\epsilon=1$.
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
 
-\begin{eexercises}{Rekursiver Algorithmus}{
-    Gegeben sei der Algorithmus \ref{alg:maxsub}:
-    \input{res/maxsub.alg}
-  }
-  \item Geben Sie an, was der Algorithmus berechnet.
-  \item Bestimmen Sie eine Rekurrenzgleichung, welche die Laufzeit im worst-case beschreibt. Begründen Sie die Terme in der Gleichung.
-  \item Die Laufzeit von Alg liegt in $\bigO(n \log n)$. Zeigen Sie, dass Ihre Rekurrenzgleichung diese Laufzeitschranke erfüllt.
-\end{eexercises}
+\begin{exercise}{Rekursiver Algorithmus}
+  Gegeben sei der Algorithmus \ref{alg:maxsub}:
+  \input{res/maxsub.alg}
+  \begin{enumerate}
+    \item Geben Sie an, was der Algorithmus berechnet.
+    \item Bestimmen Sie eine Rekurrenzgleichung, welche die Laufzeit im worst-case beschreibt. Begründen Sie die Terme in der Gleichung.
+    \item Die Laufzeit von Alg liegt in $\bigO(n \log n)$. Zeigen Sie, dass Ihre Rekurrenzgleichung diese Laufzeitschranke erfüllt.
+  \end{enumerate}
 
-\begin{solutions}
-  \item Der Algorithmus berechnet die Länge des längsten zusammenhängenden Abschnitts im Array $A$, in dem die Elemente monoton steigen oder fallen.
-  \item Rekurrenzgleichung: $T(n) = \frac{3}{2}T(n/\frac{3}{2}) + n$, da die Schleifen in $\bigO(n)$ liegen und die 'leichtere' Rekursion $T(\frac{n}{3})$ sich nach oben abschätzen lässt durch $\frac{1}{2}T(n/\frac{3}{2})$.
-  \item Die Rekurrenzgleichung erfüllt die Laufzeitschranke. Gegeben sind $a=3/2, b=3/2, f(n)=n$ und $\log_{3/2}{3/2} = 1$. Der 2. Fall des Mastertheorems ist mit $k=0$ anwendbar und liefert $T(n) = \Theta(n \log n)$.
-\end{solutions}
+  \begin{solution}
+    \begin{enumerate}
+      \item Der Algorithmus berechnet die Länge des längsten zusammenhängenden Abschnitts im Array $A$, in dem die Elemente monoton steigen oder fallen.
+      \item Rekurrenzgleichung: $T(n) = \frac{3}{2}T(n/\frac{3}{2}) + n$, da die Schleifen in $\bigO(n)$ liegen und die 'leichtere' Rekursion $T(\frac{n}{3})$ sich nach oben abschätzen lässt durch $\frac{1}{2}T(n/\frac{3}{2})$.
+      \item Die Rekurrenzgleichung erfüllt die Laufzeitschranke. Gegeben sind $a=3/2, b=3/2, f(n)=n$ und $\log_{3/2}{3/2} = 1$. Der 2. Fall des Mastertheorems ist mit $k=0$ anwendbar und liefert $T(n) = \Theta(n \log n)$.
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
 
-\begin{exercises}{Queues}
-\item\label{queues:1} Erklären Sie, wie eine Queue durch zwei Stacks implementiert werden kann.
-\hint{Dazu darf Pseudocode benutzt werden, ist aber nicht zwingend erforderlich.}
-\item Analysieren Sie die Laufzeit der Queueoperationen aus \ref{queues:1} unter der Annahme, dass die Stackoperationen Zeit $\bigO(1)$ benötigen.
-\end{exercises}
+\begin{exercise}{Queues}
+  \begin{enumerate}
+    \item\label{queues:1} Erklären Sie, wie eine Queue durch zwei Stacks implementiert werden kann.
+          \hint{Dazu darf Pseudocode benutzt werden, ist aber nicht zwingend erforderlich.}
+    \item Analysieren Sie die Laufzeit der Queueoperationen aus \ref{queues:1} unter der Annahme, dass die Stackoperationen Zeit $\bigO(1)$ benötigen.
+  \end{enumerate}
 
-\begin{solutions}
-  \item Eine Queue kann durch zwei Stacks implementiert werden, indem ein Stack für das Einfügen und ein Stack für das Entnehmen von Elementen verwendet wird. Beim Einfügen wird das Element auf den ersten Stack gelegt, beim Entnehmen wird das Element vom zweiten Stack entnommen. Sollte der zweite Stack leer sein, werden alle Elemente des ersten Stacks auf den zweiten Stack umgelegt.
-  \item Die Operationen haben die folgende Laufzeit:
-  \begin{itemize}
-    \item Einfügen hat $\bigO(1)$, da das Element nur auf den ersten Stack gelegt wird.
-    \item Entnehmen hat $\bigO(n)$, da im worst-case alle Elemente des ersten Stacks auf den zweiten Stack umgelegt werden müssen.
-  \end{itemize}
-\end{solutions}
+  \begin{solution}
+    \begin{enumerate}
+      \item Eine Queue kann durch zwei Stacks implementiert werden, indem ein Stack für das Einfügen und ein Stack für das Entnehmen von Elementen verwendet wird. Beim Einfügen wird das Element auf den ersten Stack gelegt, beim Entnehmen wird das Element vom zweiten Stack entnommen. Sollte der zweite Stack leer sein, werden alle Elemente des ersten Stacks auf den zweiten Stack umgelegt.
+      \item Die Operationen haben die folgende Laufzeit:
+            \begin{itemize}
+              \item Einfügen hat $\bigO(1)$, da das Element nur auf den ersten Stack gelegt wird.
+              \item Entnehmen hat $\bigO(n)$, da im worst-case alle Elemente des ersten Stacks auf den zweiten Stack umgelegt werden müssen.
+            \end{itemize}
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
+
 \end{document}

@@ -1,7 +1,6 @@
 \documentclass{article}
 
-\usepackage{exercises}
-\withsolutions
+\usepackage[solutions]{xrcise}
 
 \begin{document}
 \sheet{Graphen, Topologische Sortierung \& MSTs}
@@ -21,78 +20,94 @@
   \begin{solution}\input{res/kruskalmst.fig}\end{solution}
 \end{exercise}
 
-\begin{eexercises}{Graphen}{
-    Betrachten Sie Graphen $G$ aus \ref{fig:simplegraph}. Wenden Sie jeweils das verlangte Verfahren an bzw. beantworten Sie die Frage oder begründen Sie, warum dies nicht geht.
-    \input{res/simplegraph.fig}
-  }
-  \item Ermitteln Sie mit der Breitensuche einen Breitensuchbaum (BFS-Baum). Starten Sie den Algorithmus bei $s$.
-  \item Ist das Ergebnis der Breitensuche eindeutig?
-  \item Ermitteln Sie mit der Tiefensuche einen Tiefensuchwald und insb. die Zeiten $u.d$ und $u.f$ für jeden Knoten. Starten Sie den Algorithmus wieder bei $s$.
-  \item Geben Sie eine topologische Sortierung des Graphen $G$ an.
-  \item Bestimmen Sie mit dem Algorithmus aus der Vorlesung die starken Zusammenhangskomponenten von $G$. Geben Sie dazu den transponierten Graph und den Komponentengraph an.
-\end{eexercises}
-
-\begin{solutions}
-  \item Ein möglicher Breitensuchbaum ist: \input{res/bfstree.fig.tex}
-  \item Das Ergebnis der Breitensuche ist eindeutig.
-  \item Ein möglicher Tiefensuchwald ist: \input{res/dfstree.fig.tex}
-  \item Der Graph ist kein DAG und somit gibt es keine topologische Sortierung.
-  \item Die starken Zusammenhangskomponenten sind: $\{S\}, \{A, B, C, D, E, F, G\}$. \input{res/sccs.fig}
-\end{solutions}
-
-\begin{eexercises}{Minimale Spannbäume}{\input{res/prim.fig}}
-  \item Bestimmen Sie mit Hilfe des Algorithmus von Prim einen minimalen Spannbaum des Graphen aus \ref{fig:mstgraph} und skizzieren diesen. Der Startknoten ist grau gefärbt. Geben Sie zusätzlich die Reihenfolge an, in der die Kanten des Spannbaums gemäß Algorithmus hinzugefügt werden.
-  \item Sei $G = (V, E)$ ein zusammenhängender gewichteter Graph mit Gewichtsfunktion $w : E \rightarrow \mathbb{R}$ und $T = (V, E_0)$ ein minimaler Spannbaum von $G$.
+\begin{exercise}{Graphen}
+  Betrachten Sie Graphen $G$ aus \ref{fig:simplegraph}. Wenden Sie jeweils das verlangte Verfahren an bzw. beantworten Sie die Frage oder begründen Sie, warum dies nicht geht.
+  \input{res/simplegraph.fig}
   \begin{enumerate}
-    \item Für eine beliebige Kante $e \in E \setminus E_0$ wird deren Gewicht $w(e)$ erhöht. Wir bezeichnen diesen modifizierten Graphen als $G'$. Zeigen Sie, dass $T$ ebenfalls ein minimaler Spannbaum von $G'$ ist.
-    \item Für eine beliebige Kante $e \in E$ wird deren Gewicht $w(e)$ verringert. Wir bezeichnen diesen modifizierten Graphen als $G'$. Konstruieren Sie einen Algorithmus, welcher einen minimalen Spannbaum von $G'$ mit Hilfe von $T$ in Zeit $\bigO(|V| + |E|)$ berechnet.
-          \hint{Hier ist kein Pseudocode gefordert.}
+    \item Ermitteln Sie mit der Breitensuche einen Breitensuchbaum (BFS-Baum). Starten Sie den Algorithmus bei $s$.
+    \item Ist das Ergebnis der Breitensuche eindeutig?
+    \item Ermitteln Sie mit der Tiefensuche einen Tiefensuchwald und insb. die Zeiten $u.d$ und $u.f$ für jeden Knoten. Starten Sie den Algorithmus wieder bei $s$.
+    \item Geben Sie eine topologische Sortierung des Graphen $G$ an.
+    \item Bestimmen Sie mit dem Algorithmus aus der Vorlesung die starken Zusammenhangskomponenten von $G$. Geben Sie dazu den transponierten Graph und den Komponentengraph an.
   \end{enumerate}
-\end{eexercises}
 
-\begin{solutions}
-  \item Ein möglicher minimaler Spannbaum ist: \input{res/primmst.fig}
-  \item \begin{enumerate}
-    \item Sei $T = (V, E_0)$ ein minimaler Spannbaum von $G = (V, E)$ und $G' = (V, E')$ ein modifizierter Graph. Sei $T' = (V, E_0')$ ein minimaler Spannbaum von $G'$. Es gilt $E_0 \subseteq E'$. Da $T$ ein minimaler Spannbaum von $G$ ist, gilt $w(E_0) \leq w(E')$. Da $T'$ ein minimaler Spannbaum von $G'$ ist, gilt $w(E_0') \leq w(E')$. Da $E_0 \subseteq E_0'$, gilt $w(E_0) \leq w(E_0')$. Insgesamt folgt $w(E_0) \leq w(E_0') \leq w(E')$, also ist $T$ auch ein minimaler Spannbaum von $G'$.
-    \item Der Algorithmus arbeitet wie folgt: \begin{itemize}
-            \item[$\bigO(E)$] Finde die veränderte Kante.
-            \item Falls in $T$ enthalten, passe das Gewicht an.
-            \item[$\bigO(V+E)$] Sonst suche den Pfad (zB. BFS) von $e.u$ zu $e.v$ in $T$. Wenn $w(e) < w(f)$ für eine Kante $f$ auf dem Pfad, ersetze $f$ durch $e$.
-          \end{itemize}
-          Dadurch wird ein minimaler Spannbaum von $G'$ in Zeit $\bigO(V+2E)=\bigO(V+E)$ berechnet.
+  \begin{solution}
+    \begin{enumerate}
+      \item Ein möglicher Breitensuchbaum ist: \input{res/bfstree.fig.tex}
+      \item Das Ergebnis der Breitensuche ist eindeutig.
+      \item Ein möglicher Tiefensuchwald ist: \input{res/dfstree.fig.tex}
+      \item Der Graph ist kein DAG und somit gibt es keine topologische Sortierung.
+      \item Die starken Zusammenhangskomponenten sind: $\{S\}, \{A, B, C, D, E, F, G\}$. \input{res/sccs.fig}
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
+
+
+\begin{exercise}{Minimale Spannbäume}{\input{res/prim.fig}}
+  \begin{enumerate}
+    \item Bestimmen Sie mit Hilfe des Algorithmus von Prim einen minimalen Spannbaum des Graphen aus \ref{fig:mstgraph} und skizzieren diesen. Der Startknoten ist grau gefärbt. Geben Sie zusätzlich die Reihenfolge an, in der die Kanten des Spannbaums gemäß Algorithmus hinzugefügt werden.
+    \item Sei $G = (V, E)$ ein zusammenhängender gewichteter Graph mit Gewichtsfunktion $w : E \rightarrow \mathbb{R}$ und $T = (V, E_0)$ ein minimaler Spannbaum von $G$.
+          \begin{enumerate}
+            \item Für eine beliebige Kante $e \in E \setminus E_0$ wird deren Gewicht $w(e)$ erhöht. Wir bezeichnen diesen modifizierten Graphen als $G'$. Zeigen Sie, dass $T$ ebenfalls ein minimaler Spannbaum von $G'$ ist.
+            \item Für eine beliebige Kante $e \in E$ wird deren Gewicht $w(e)$ verringert. Wir bezeichnen diesen modifizierten Graphen als $G'$. Konstruieren Sie einen Algorithmus, welcher einen minimalen Spannbaum von $G'$ mit Hilfe von $T$ in Zeit $\bigO(|V| + |E|)$ berechnet.
+                  \hint{Hier ist kein Pseudocode gefordert.}
+          \end{enumerate}
   \end{enumerate}
-\end{solutions}
 
-\begin{eexercises}{Brückenkanten}{
-    Eine Kante $e \in E$ eines zusammenhängenden, ungerichteten Graphen $G = (V, E)$ heißt Brückenkante, falls der Graph $G_0 = (V, E \setminus \{e\})$, der durch das Entfernen der Kante $e$ aus $G$ entsteht, nicht mehr zusammenhängend ist.
-    \input{res/bridges.fig}
-  }
-  \item Bestimmen Sie alle Brückenkanten im abgebildeten Graphen aus \ref{fig:bridgegraph}.
-  \item Geben Sie einen Algorithmus in Pseudocode an, der in Laufzeit $\bigO(|V| \cdot |E| + |E|^2)$ entscheidet, ob ein zusammenhängender, ungerichteter Graph $G$ eine Brückenkante besitzt oder nicht.
-  \item Zeigen Sie, dass Ihr Algorithmus korrekt arbeitet.
-  \item Zeigen Sie, dass Ihr Algorithmus die Laufzeitschranke einhält.
-\end{eexercises}
+  \begin{solution}
+    \begin{enumerate}
+      \item Ein möglicher minimaler Spannbaum ist: \input{res/primmst.fig}
+      \item \begin{enumerate}
+              \item Sei $T = (V, E_0)$ ein minimaler Spannbaum von $G = (V, E)$ und $G' = (V, E')$ ein modifizierter Graph. Sei $T' = (V, E_0')$ ein minimaler Spannbaum von $G'$. Es gilt $E_0 \subseteq E'$. Da $T$ ein minimaler Spannbaum von $G$ ist, gilt $w(E_0) \leq w(E')$. Da $T'$ ein minimaler Spannbaum von $G'$ ist, gilt $w(E_0') \leq w(E')$. Da $E_0 \subseteq E_0'$, gilt $w(E_0) \leq w(E_0')$. Insgesamt folgt $w(E_0) \leq w(E_0') \leq w(E')$, also ist $T$ auch ein minimaler Spannbaum von $G'$.
+              \item Der Algorithmus arbeitet wie folgt: \begin{itemize}
+                      \item[$\bigO(E)$] Finde die veränderte Kante.
+                      \item Falls in $T$ enthalten, passe das Gewicht an.
+                      \item[$\bigO(V+E)$] Sonst suche den Pfad (zB. BFS) von $e.u$ zu $e.v$ in $T$. Wenn $w(e) < w(f)$ für eine Kante $f$ auf dem Pfad, ersetze $f$ durch $e$.
+                    \end{itemize}
+                    Dadurch wird ein minimaler Spannbaum von $G'$ in Zeit $\bigO(V+2E)=\bigO(V+E)$ berechnet.
+            \end{enumerate}
+    \end{enumerate}
+  \end{solution}
 
-\begin{solutions}
-  \item Die Brückenkanten sind: $(11-13) (8-9) (8-10)$.
-  \item Der Algorithmus findBridges kann genutzt werden indem $false$ zurückgegeben wird, wenn die Menge der Brückenkanten $B$ leer ist. Andernfalls wird $true$ zurückgegeben.\par
-  \input{../../../../summaries/ad/res/graphs/bridges.alg}
-  \item Der Algorithmus arbeitet korrekt, da er für jede Kante $e$ prüft, ob der Graph $G_0$ nach Entfernen von $e$ noch zusammenhängend ist.
-  \item Die Laufzeit des Algorithmus ist $\bigO(|V| \cdot |E| + |E|^2)$, da die DFS in $\bigO(|V| + |E|)$ arbeitet und die diese für jede Kante $e$ in $\bigO(|E|)$ aufgerufen wird.
-\end{solutions}
+\end{exercise}
 
-\begin{eexercises}{Dijkstras Algorithmus}{\input{res/dijsktra.fig}}
-  \item Wenden Sie Dijkstras Algorithmus auf den Graphen aus \ref{fig:dijkstra} an. Beginnen Sie bei Knoten $s$. Geben Sie tabellarisch die am Ende jeder Iteration der While-Schleife in der Queue enthaltenen Keys an.
-  \item Modifizieren Sie den Pseudocode von Dijkstras Algorithmus so, dass er als Input einen Graphen, einen Startknoten $s$ und einen Zielknoten $v$ als Input nimmt und als Output die explizite Darstellung des kürzesten Pfades von $s$ nach $v$ als Sequenz von Knoten ausgibt. Begründen Sie kurz die Korrektheit Ihrer Lösung. Die Laufzeit des modifizierten Algorithmus darf dabei nicht die asymptotische Laufzeitschranke $\bigO(V \log V + E)$ des Dijkstra Algorithmus überschreiten.
-\end{eexercises}
+\begin{exercise}{Brückenkanten}
+  Eine Kante $e \in E$ eines zusammenhängenden, ungerichteten Graphen $G = (V, E)$ heißt Brückenkante, falls der Graph $G_0 = (V, E \setminus \{e\})$, der durch das Entfernen der Kante $e$ aus $G$ entsteht, nicht mehr zusammenhängend ist.
+  \input{res/bridges.fig}
+  \begin{enumerate}
+    \item Bestimmen Sie alle Brückenkanten im abgebildeten Graphen aus \ref{fig:bridgegraph}.
+    \item Geben Sie einen Algorithmus in Pseudocode an, der in Laufzeit $\bigO(|V| \cdot |E| + |E|^2)$ entscheidet, ob ein zusammenhängender, ungerichteter Graph $G$ eine Brückenkante besitzt oder nicht.
+    \item Zeigen Sie, dass Ihr Algorithmus korrekt arbeitet.
+    \item Zeigen Sie, dass Ihr Algorithmus die Laufzeitschranke einhält.
+  \end{enumerate}
 
-\begin{solutions}
-  \item Die Queue enthält am Ende jeder Iteration die Keys: \input{res/dijkstra.tbl}
-  \item Der modifizierte Algorithmus arbeitet wie folgt: \begin{itemize}
-    \item Führe Dijkstras Algorithmus aus.
-    \item Wenn $v$ erreicht wurde, konstruiere den Pfad von $s$ nach $v$ durch Rückverfolgung der Vorgänger.
-  \end{itemize}
-  Die Laufzeit des modifizierten Algorithmus ist $\bigO(V \log V + E)$, da die Rückverfolgung der Vorgänger in $\bigO(V)$ arbeitet.
-\end{solutions}
+  \begin{solution}
+    \begin{enumerate}
+      \item Die Brückenkanten sind: $(11-13) (8-9) (8-10)$.
+      \item Der Algorithmus findBridges kann genutzt werden indem $false$ zurückgegeben wird, wenn die Menge der Brückenkanten $B$ leer ist. Andernfalls wird $true$ zurückgegeben.\par
+            \input{../../../../summaries/ad/res/graphs/bridges.alg}
+      \item Der Algorithmus arbeitet korrekt, da er für jede Kante $e$ prüft, ob der Graph $G_0$ nach Entfernen von $e$ noch zusammenhängend ist.
+      \item Die Laufzeit des Algorithmus ist $\bigO(|V| \cdot |E| + |E|^2)$, da die DFS in $\bigO(|V| + |E|)$ arbeitet und die diese für jede Kante $e$ in $\bigO(|E|)$ aufgerufen wird.
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
+
+\begin{exercise}{Dijkstras Algorithmus}{\input{res/dijsktra.fig}}
+  \begin{enumerate}
+    \item Wenden Sie Dijkstras Algorithmus auf den Graphen aus \ref{fig:dijkstra} an. Beginnen Sie bei Knoten $s$. Geben Sie tabellarisch die am Ende jeder Iteration der While-Schleife in der Queue enthaltenen Keys an.
+    \item Modifizieren Sie den Pseudocode von Dijkstras Algorithmus so, dass er als Input einen Graphen, einen Startknoten $s$ und einen Zielknoten $v$ als Input nimmt und als Output die explizite Darstellung des kürzesten Pfades von $s$ nach $v$ als Sequenz von Knoten ausgibt. Begründen Sie kurz die Korrektheit Ihrer Lösung. Die Laufzeit des modifizierten Algorithmus darf dabei nicht die asymptotische Laufzeitschranke $\bigO(V \log V + E)$ des Dijkstra Algorithmus überschreiten.
+  \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item Die Queue enthält am Ende jeder Iteration die Keys: \input{res/dijkstra.tbl}
+      \item Der modifizierte Algorithmus arbeitet wie folgt: \begin{itemize}
+              \item Führe Dijkstras Algorithmus aus.
+              \item Wenn $v$ erreicht wurde, konstruiere den Pfad von $s$ nach $v$ durch Rückverfolgung der Vorgänger.
+            \end{itemize}
+            Die Laufzeit des modifizierten Algorithmus ist $\bigO(V \log V + E)$, da die Rückverfolgung der Vorgänger in $\bigO(V)$ arbeitet.
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
 
 \end{document}

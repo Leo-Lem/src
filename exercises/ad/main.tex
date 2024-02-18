@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\usepackage[solutions]{xrcs}
+\usepackage[solutions]{xrcise}
 
 \subject{Algorithmen \& Datenstrukturen}
 \semester{Wintersemester 2023}
@@ -9,9 +9,10 @@
 \begin{document}
 \createtitle
 
-% \foreach \indexi in {0,...,6}{
-%     \includefrom{exercises/\indexi}{main}
-%   }
+\foreach \indexi in {0,...,6}{
+    \import{exercises/\indexi}{main}
+    \clearpage
+  }
 
 \foreach \indexi in {2020,2021,2022,2023}{
     \import{exams/\indexi}{main}
