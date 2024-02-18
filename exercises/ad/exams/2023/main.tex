@@ -34,7 +34,7 @@
             \item[$\square$] Wenn der Eingabegraph keine Kanten enthält oder ein Pfad ist, kann eine optimale Lösung in polynomieller Zeit gefunden werden
           \end{itemize}
     \item Welche der folgenden Aussagen sind korrekt?\hfill 4P
-          \hint{Es können 0-3 Antworten richtig sein und es müssen 3 Kreuze gesetzt werden.}
+          \hint{Es können 0-4 Antworten richtig sein und es müssen 4 Kreuze gesetzt werden.}
           \begin{itemize}
             \item[$\square$] Bubblesort hat eine Laufzeit von $O(n^3)$
             \item[$\square$] In einem ungerichteten kantengewichteten Graphen ist der minimale Spannbaum eindeutig
@@ -43,20 +43,63 @@
           \end{itemize}
   \end{enumerate}
   \begin{solution}
-    % TODO
+    \begin{enumerate}
+      \item $10^{12} < n + \sqrt{n} < \frac{\sqrt{n}^{2.024}}{\log n} < 25n^2 < n^{\sqrt{n}} < {1.01}^n < 2^n$
+      \item $T(n) = 8T\left(\frac{n}{2}\right) + n +6$ ist Fall I des Mastertheorems mit $a = 8$, $b = 2$ und $f(n) = n + 6$.\par
+            Da $f(n) \in \bigO(n^{\log_2 8 + \varepsilon})$ für $\varepsilon = 1$ ist, gilt $T(n) = \Theta(n^{\log_2 8}) = \Theta(n^3)$.
+      \item Bei Hashing mit Verkettung wird in jedem Eintrag in der Hashtable eine Liste von Elementen gespeichert, während bei offener Adressierung bei Kollision sondiert wird (z.B. linear oder quadratisch).
+      \item Nein, k-Clique ist NP-vollständig, also gibt es auch keinen polynomiellen Algorithmus für 5-Clique, der das Problem löst.
+      \item \begin{itemize}
+              \item \texttt{a: (0, nil), b: ($\infty$, nil), c: ($\infty$, nil)}\par
+              \item \texttt{a: (0, nil), b: (1, a), c: (3,a)}\par
+              \item \texttt{a: (0, nil), b: (1, a), c: (-1,b)}
+            \end{itemize}
+      \item \begin{itemize}
+              \item \texttt{merge([6], [15]): [6,15,11,31]}
+              \item \texttt{merge([11], [31]): [6,15,11,31]}
+              \item \texttt{merge([6,15], [11,31]): [6,11,15,31]}
+            \end{itemize}
+      \item Nein, ein AVL-Baum mit $n$ Knoten kann Höhe $\log_2 n$ haben, was bereits bei $n = 8$ kleiner als $n/3$ ist.
+      \item \begin{itemize}
+              \item $k$-te Iteration: $n, n-1, n-2, ..., n-k+1$
+              \item Laufzeit: $\sum_{i=1}^{n} i = \frac{n(n+1)}{2} \in \bigO(n^2)$
+            \end{itemize}
+      \item \begin{itemize}
+              \item[\xmark] Eine 2-Approximation garantiert ein Ergebnis, sodass $|C|/|C^*| \leq 2$.
+              \item[\checkmark] In der Vorlesung vorgestellt.
+              \item[\checkmark] Um \textproblem{vertexcover} in exponentieller Laufzeit zu lösen, kann jede zB. jede Teilmenge von $V$ durchprobiert werden.
+              \item[\checkmark] Wenn der Eingabegraph keine Kanten enthält, ist die Lösung trivial. Wenn der Eingabegraph ein Pfad ist, kann das maximale VertexCover 3 Knoten umfassen (da sonst nicht alle verbunden sind). Das lässt sich ebenfalls in polynomieller Zeit überprüfen (Pfad ablaufen).
+            \end{itemize}
+      \item \begin{itemize}
+              \item[\xmark] Bubblesort hat eine Laufzeit von $O(n^2)$.
+              \item[\xmark] Da gleiche Kantengewichte erlaubt sind, ist der minimale Spannbaum nicht eindeutig.
+              \item[\xmark] Es können zB. nur ein roter Knoten im linken Teilbaum sein, wenn beide Teilbäume Pfade sind.
+              \item[\xmark] Die Operationen \texttt{Make-Set}, \texttt{Union} und \texttt{Find-Set} können höchstens amortisiert in konstanter Zeit ausgeführt werden.
+            \end{itemize}
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
 \begin{exercise}{Who Am I? (15P)}
   \input{res/whoami.alg}
   \begin{enumerate}
-    \item Betrachten Sie eine Ausführung von \texttt{WhoAmI} für das Eingabearray $A = [7,3,5,3,1,6]$. Welche Werte nimmt $x$ nach jedem Schleifendurchlauf an?\hfill 2P
-    \item Welche Ausgabe liefert \texttt{WhoAmI} für ein gegebenes Array $A$ von $n \geq 1$ natürlichen Zahlen?\hfill 4P
-    \item Geben Sie eine geeignete Schleifeninvariante für die Schleife in \texttt{WhoAmI} an.\hfill 7P
-    \item Geben Sie eine möglichst scharfe Schranke für die Laufzeit von \texttt{WhoAmI} an.\hfill 2P
+    \item Betrachten Sie eine Ausführung von \textalgo{WhoAmI} für das Eingabearray $A = [7,3,5,3,1,6]$. Welche Werte nimmt $x$ nach jedem Schleifendurchlauf an?\hfill 2P
+    \item Welche Ausgabe liefert \textalgo{WhoAmI} für ein gegebenes Array $A$ von $n \geq 1$ natürlichen Zahlen?\hfill 4P
+    \item Geben Sie eine geeignete Schleifeninvariante für die Schleife in \textalgo{WhoAmI} an.\hfill 7P
+    \item Geben Sie eine möglichst scharfe Schranke für die Laufzeit von \textalgo{WhoAmI} an.\hfill 2P
   \end{enumerate}
   \begin{solution}
-    % TODO
+    \begin{enumerate}
+      \item \begin{tabular}{c|cccccc}
+              Durchlauf & 0 & 1 & 2 & 3 & 4 & 5 \\
+              \hline
+              $m$       & 1 & 2 & 1 & 2 & 3 & 1 \\
+              $x$       & 1 & 2 & 2 & 2 & 3 & 3
+            \end{tabular}
+      \item Die Länge der längsten (streng) absteigenden Teilfolge von $A$.
+      \item $x$ ist die Länge der längsten (streng) absteigenden Teilfolge von $A[0..i]$.
+      \item Die Laufzeit von \textalgo{WhoAmI} ist in $\bigO(n)$, da die Schleife $n-1$-mal durchlaufen wird.
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
@@ -74,7 +117,16 @@
     \item Zeigen Sie die Laufzeit Ihres Algorithmus.\hfill 5P
   \end{enumerate}
   \begin{solution}
-    % TODO
+    \begin{enumerate}
+      \item \begin{itemize}
+              \item $l_{\{1,2\}}\gets$\textalgo{Alg($\{1,2\},\{l_1,l_2\}$)}
+              \item $l_{\{3,4\}}\gets$\textalgo{Alg($\{3,4\},\{l_3,l_4\}$)}
+              \item $l_{\{1,2,3,4\}}\gets$\textalgo{Alg($\{1,2,3,4\},\{l_{\{1,2\}},l_{\{3,4\}}\}$)}
+            \end{itemize}
+      \item Der Algorithmus \textalgo{solvesets} ist ein rekursiver Ansatz, welcher die Menge $M$ hälftig auswertet und die Lösungen dann mittels \texttt{Alg} zusammenführt.\par
+            \input{res/solvesets.alg}
+      \item Die Laufzeit von \textalgo{solvesets} ist $T(M)=2T(M/2)+O(M^2)$, also $T(n) \in \Theta(M^2)$ gem. Mastertheorem Fall III.
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
@@ -87,21 +139,35 @@
     \item Zeigen Sie die Korrektheit und Laufzeit Ihres Algorithmus aus 2.\hfill 4P
   \end{enumerate}
   \begin{solution}
-    % TODO
+    \begin{enumerate}
+      \item Der Algorithmus iteriert über alle Elemente in $A$ und prüft, ob sie in $B$ enthalten sind. Die Laufzeit ist $O(|A| \cdot |B|)$.
+      \item Eine optimale Laufzeit von $\bigO(|A| \log |B|)$ kann erreicht werden, indem $A$ sortiert wird (zB. \textalgo{mergesort} in $\bigO(|A|\log|A|)$) und dann jedes Element aus $B$ in $A$ gesucht wird (zB. mittels \textalgo{binarysearch} in $\bigO(\log n)$). Die Laufzeit ist dann $\bigO(|B| \log |A| + |A| \log |A|)=\bigO(|B| \log |A|)$.
+      \item Wenn sortieren und suchen als korrekt angenommen wird, ist die Korrektheit des Algorithmus offensichtlich. Falls ein Duplikat in $A$ und $B$ gefunden wird, wird es nicht in $L$ aufgenommen. Die Laufzeit des Algorithmus ist $\bigO(|B| \log |A|)$.
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
 \begin{exercise}{NP-Vollständigkeit (15P)}
-  Das Entscheidungsproblem \texttt{INDEPENDENT SET} entscheidet für einen ungerichteten Graphen $G = (V,E)$ und eine Zahl $k \in \{1,...,|V|\}$ ob ein \texttt{INDEPENDENT SET} der Größe $k$ in $G$ enthalten ist. Ein \texttt{INDEPENDENT SET} der Größe $k$ ist eine Menge $V' \subseteq V$ von Knoten mit $|V'| = k$ und der Eigenschaft, dass kein Knotenpaar in $V'$ mit Kanten verbunden ist (also $\{u, v\} \not\in E$ für alle $u, v \in V'$).\par
-  Das Entscheidungsproblem \texttt{NO CUTS} entscheidet für eine Menge von Intervallen $S = \{I_1,I_2,I_3,...\}$ und eine Zahl $k \in \{1,...,|S|\}$ ob es eine Teilmenge $T \subseteq S$ mit $|T| \geq k$ gibt, so dass alle Intervalle in $T$ paarweise disjunkt sind.
-  \hint{Sie dürfen zur Lösung der folgenden Aufgaben benutzen, dass \texttt{INDEPENDENT SET} NP-schwer ist.}
+  Das Entscheidungsproblem \textproblem{independent set} entscheidet für einen ungerichteten Graphen $G = (V,E)$ und eine Zahl $k \in \{1,...,|V|\}$ ob ein \texttt{INDEPENDENT SET} der Größe $k$ in $G$ enthalten ist. Ein \textproblem{independent set} der Größe $k$ ist eine Menge $V' \subseteq V$ von Knoten mit $|V'| = k$ und der Eigenschaft, dass kein Knotenpaar in $V'$ mit Kanten verbunden ist (also $\{u, v\} \not\in E$ für alle $u, v \in V'$).\par
+  Das Entscheidungsproblem \textproblem{no cuts} entscheidet für eine Menge von Intervallen $S = \{I_1,I_2,I_3,...\}$ und eine Zahl $k \in \{1,...,|S|\}$ ob es eine Teilmenge $T \subseteq S$ mit $|T| \geq k$ gibt, so dass alle Intervalle in $T$ paarweise disjunkt sind.
+  \hint{Sie dürfen zur Lösung der folgenden Aufgaben benutzen, dass \textproblem{independent set} NP-schwer ist.}
   \begin{enumerate}
-    \item Zeigen Sie das \texttt{INDEPENDENT SET} NP-vollständig ist.\hfill 4P
-    \item Zeigen Sie \texttt{NO CUTS} $\leq_p$ \texttt{INDEPENDENT SET}.\hfill 8P
-    \item Was folgt daraus für die Komplexität von \texttt{NO CUTS}?\hfill 3P
+    \item Zeigen Sie das \textproblem{independent set} NP-vollständig ist.\hfill 4P
+    \item Zeigen Sie \textproblem{no cuts} $\leq_p$ \textproblem{independent set}.\hfill 8P
+    \item Was folgt daraus für die Komplexität von \textproblem{no cuts}?\hfill 3P
   \end{enumerate}
   \begin{solution}
-    % TODO
+    \begin{enumerate}
+      \item Da \textproblem{independent set} NP-schwer ist, wissen wir, dass \textproblem{independent set} in NP ist. Nun können wir zeigen, dass sich \textproblem{independent set} zB. auf \textproblem{Clique} reduzieren lässt. Das lässt sich über einen invertierten Graphen (Kanten werden zu Nicht-Kanten und umgekehrt) erreichen. Somit ist \textproblem{independent set} NP-vollständig.
+      \item Gegeben sei eine Instanz von \textproblem{no cuts} mit Intervallen $S = \{I_1,I_2,I_3,...\}$ und $k \in \{1,...,|S|\}$. Wir konstruieren eine Instanz von \textproblem{independent set} mit einem Graphen $G = (V,E)$ und einer Zahl $k' \in \{1,...,|V|\}$ wie folgt:
+            \begin{itemize}
+              \item $V = S$
+              \item $E = \{\{I_i,I_j\} \mid I_i \cap I_j \neq \emptyset\}$
+              \item $k' = k$
+            \end{itemize}
+            Dann ist die Instanz von \textproblem{no cuts} genau dann lösbar, wenn die Instanz von \textproblem{independent set} lösbar ist.
+      \item Da \textproblem{independent set} NP-vollständig ist, folgt aus 2. dass \textproblem{no cuts} NP-vollständig ist.
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 \end{document}
