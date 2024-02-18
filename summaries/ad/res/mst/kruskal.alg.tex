@@ -1,12 +1,10 @@
-\begin{algorithm}[H]
-  \caption{\texttt{kruskal(G)}}
-
-  \KwData{A graph $G$}
-  \KwResult{A minimal spanning tree $T$}
+\begin{alg}
+  \signed{kruskal}{G}{T}
+  \params{A graph $G$}{A minimal spanning tree $T$}
   \BlankLine
 
   $T \gets \emptyset$\;
-  \lForEach(\explain*[f]{interpret $V$ as forest of trees, each connected by $E$}){vertex $v$ of $G$}{
+  \lForEach{vertex $v$ of $G$}{
     \texttt{makeSet($v$)}
   }
   sort edges of $G$ by weight\;
@@ -17,4 +15,4 @@
     }
   }
   \Return $T$\;
-\end{algorithm}
+\end{alg}

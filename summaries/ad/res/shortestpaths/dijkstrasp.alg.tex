@@ -1,8 +1,6 @@
-\begin{algorithm}[H]
-  \caption{\texttt{dijkstraSinglePair($G, w, s, t$)}}\label{alg:dijkstrasinglepair}
-
-  \KwData{A graph $G$ with weights $w$, and source and target vertices $s$ and $t$}
-  \KwResult{A shortest $path$ from $s$ to $t$}
+\begin{alg}
+  \signed{dijkstraSinglePair}{G, w, s}{path}
+  \params{A graph $G$ with weights $w$, and source and target vertices $s$ and $t$}{A shortest $path$ from $s$ to $t$}
   \BlankLine
 
   \texttt{dijkstra($G, w, s$)}\;
@@ -12,4 +10,4 @@
     $t \gets t.parent$
   }
   \Return $path$
-\end{algorithm}
+\end{alg}

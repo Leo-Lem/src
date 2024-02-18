@@ -52,6 +52,25 @@
 \newcommand\textalgo[1]{\texttt{#1}}
 \newcommand\textproblem[1]{\texttt{\uppercase{#1}}}
 
+\newenvironment{alg}{
+  \par
+  \begin{algorithm}[H]
+    \newcommand\signed[3]{
+      \caption{\textalgo{##1}(\ifx##2\empty\else$##2$\fi)\ifx##3\empty\else $\to$ $##3$\fi}\label{alg:##1}
+    }
+    \newcommand\params[2]{
+      \ifx##1\empty\else\KwData{##1}\fi
+      \ifx##2\empty\else\KwResult{##2}\fi
+      \BlankLine
+    }
+    }{
+  \end{algorithm}
+}
+
+\newcommand\algref[1]{\textalgo{#1} algorithm, \ref{alg:#1},}
+\newcommand\algrefp[1]{\textalgo{#1} algorithm (\ref{alg:#1})}
+\newcommand\callalg[2]{\textalgo{#1}($#2$)\explain*{\ref{alg:#1}}}
+
 
 
 % ---------------------------------------------------------------------

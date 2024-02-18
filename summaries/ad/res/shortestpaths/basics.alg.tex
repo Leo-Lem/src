@@ -1,7 +1,6 @@
-\begin{algorithm}[H]
-  \caption{\texttt{initializeSingleSource($G, s$)}}
-
-  \KwData{A graph $G$ and a source vertex $s$}
+\begin{alg}
+  \signed{initializeSingleSource}{G, s}{\empty}
+  \params{A graph $G$ and a source vertex $s$}{\empty}
   \BlankLine
 
   \ForEach{vertex $v\in G.V$}{
@@ -9,16 +8,15 @@
     $v.parent \gets nil$\;
   }
   $s.distance \gets 0$
-\end{algorithm}
+\end{alg}
 
-\begin{algorithm}[H]
-  \caption{\texttt{relax($u, v, w$)}}
-
-  \KwData{Two vertices $u$ and $v$, and a weight $w$}
+\begin{alg}
+  \signed{relax}{u, v, w}{\empty}
+  \params{Two vertices $u$ and $v$, and a weight $w$}{\empty}
   \BlankLine
 
   \If{$v.distance > u.distance + w(u, v)$}{
     $v.distance \gets u.distance + w(u, v)$\;
     $v.parent \gets u$
   }
-\end{algorithm}
+\end{alg}

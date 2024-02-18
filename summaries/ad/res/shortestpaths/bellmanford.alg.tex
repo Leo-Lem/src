@@ -1,8 +1,6 @@
-\begin{algorithm}[H]
-  \caption{\texttt{bellmanFord($G, w, s$)}}\label{alg:bellmanford}
-
-  \KwData{A graph $G$ with weights $w$, and a source vertex $s$}
-  \KwResult{A shortest path by traversing the parent pointers from a vertex $u$}
+\begin{alg}
+  \signed{bellmanFord}{G, w, s}{\empty}
+  \params{A graph $G$ with weights $w$, and a source vertex $s$}{A shortest path by traversing the parent pointers from a vertex $u$}
   \BlankLine
 
   \texttt{initializeSingleSource($G, r$)}\;
@@ -12,4 +10,4 @@
   \ForEach{edge $(u, v)\in G.E$}{
     \lIf{$v.distance > u.distance + w(u, v)$}{\textbf{error} "negative cycle detected"}
   }
-\end{algorithm}
+\end{alg}

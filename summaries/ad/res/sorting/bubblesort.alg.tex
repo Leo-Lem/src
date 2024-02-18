@@ -1,9 +1,6 @@
-\begin{algorithm}[H]
-  \caption{\textalgo{bubbleSort($A$)}}\label{alg:bubblesort}
-
-  \KwData{An array $A$ of $n$ elements}
-  \KwResult{The array $A$ sorted in non-decreasing order}
-  \BlankLine
+\begin{alg}
+  \signed{bubbleSort}{A}{A_{\leq}}
+  \params{An array $A$ of $n$ elements}{The array $A$ sorted in non-decreasing order}
 
   \For{$i \gets 1$ \KwTo $n-1$}{
     \For{$j \gets 1$ \KwTo $n-i$}{
@@ -12,4 +9,4 @@
       }
     }
   }
-\end{algorithm}
+\end{alg}

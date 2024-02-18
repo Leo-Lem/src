@@ -1,9 +1,6 @@
-\begin{algorithm}[H]
-  \caption{\textalgo{bucketSort($A$)}}\label{alg:bucketsort}
-
-  \KwData{An array $A$ of $n$ elements}
-  \KwResult{The array $A$ sorted in non-decreasing order}
-  \BlankLine
+\begin{alg}
+  \signed{bucketSort}{A}{A_{\leq}}
+  \params{An array $A$ of $n$ elements}{The array $A$ sorted in non-decreasing order}
 
   $n \gets \text{length}(A)$\;
   \For{$i \gets 1$ \KwTo $n$}{
@@ -16,4 +13,4 @@
     sort list $B[i]$\;
   }
   concatenate the lists $B[1], B[2], \ldots, B[n]$ together in order\;
-\end{algorithm}
+\end{alg}

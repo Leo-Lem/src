@@ -1,14 +1,11 @@
-\begin{algorithm}[H]
-  \caption{\textalgo{mergeSort($A$, $p$, $r$)}}\label{alg:mergesort}
-
-  \KwData{An array $A$ of $n$ elements, and indices $p$ and $r$}
-  \KwResult{The subarray $A[p \dots r]$ sorted in non-decreasing order}
-  \BlankLine
+\begin{alg}
+  \signed{mergeSort}{A, p, r}{A_\leq}
+  \params{An array $A$ of $n$ elements, and indices $p$ and $r$}{The subarray $A[p \dots r]$ sorted in non-decreasing order}
 
   \If{$p < r$}{
     $q \gets \lfloor\frac{p+r}{2}\rfloor$\;
-    \textalgo{mergeSort($A$, $p$, $q$)}\;
-    \textalgo{mergeSort($A$, $q+1$, $r$)}\;
+    \callalg{mergeSort}{A,p,q}
+    \callalg{mergeSort}{A,q+1,r}
     \textalgo{merge($A$, $p$, $q$, $r$)}\;
   }
-\end{algorithm}
+\end{alg}

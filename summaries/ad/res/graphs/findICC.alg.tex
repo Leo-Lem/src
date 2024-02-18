@@ -1,0 +1,13 @@
+\begin{alg}
+  \signed{findICC}{G, u}{ICC}
+  \params{A graph $G$, a vertex $u$}{An initial connected component $ICC$}
+
+  mark $u$ as visited\;
+  $ICC \gets \{u\}$\;
+  \ForEach{neighbor $v$ of $u$}{
+    \lIf{$v$ is not visited}{
+      $ICC \gets ICC \cup \texttt{findICC(G, v)}$
+    }
+  }
+  \Return $ICC$\;
+\end{alg}

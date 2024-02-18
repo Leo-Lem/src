@@ -1,11 +1,8 @@
-\begin{algorithm}[H]
-  \caption{\textalgo{trivialSort($A$)}}\label{alg:trivialsort}
-
-  \KwData{An array $A$ of $n$ elements}
-  \KwResult{The array $A$ sorted in non-decreasing order}
-  \BlankLine
+\begin{alg}
+  \signed{trivialSort}{A}{A_\leq}
+  \params{An array $A$ of $n$ elements}{The array $A$ sorted in non-decreasing order}
 
   \lFor{$i \gets 1$ \KwTo $n$}{
-    $B[A_i] \gets A_i$\;
+    $B[A_i] \gets A_i$
   }
-\end{algorithm}
+\end{alg}

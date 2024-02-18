@@ -1,9 +1,6 @@
-\begin{algorithm}[H]
-  \caption{\texttt{topologicalSort(G)}}
-
-  \KwData{A graph $G$}
-  \KwResult{A topological sorted list of vertices $L$}
-  \BlankLine
+\begin{alg}
+  \signed{topologicalSort}{G}{L}
+  \params{A graph $G$}{A topological sorted list of vertices $L$}
 
   $L \gets \emptyset$\;
   \ForEach{vertex $u$ of $G$}{
@@ -12,13 +9,11 @@
     }
   }
   \Return $L$\;
-\end{algorithm}
+\end{alg}
 
-\begin{algorithm}[H]
-  \caption{\texttt{dfs(u, L)}}
-
-  \KwData{A vertex $u$ and a list $L$}
-  \BlankLine
+\begin{alg}
+  \signed{topoDFS}{u, L}{\empty}
+  \params{A vertex $u$ and a list $L$}{\empty}
 
   mark $u$ as found\;
   \ForEach{vertex $v$ of $u$'s neighbors}{
@@ -31,4 +26,4 @@
   }
   mark $u$ as visited\;
   $L \gets \{u\} \cup L$
-\end{algorithm}
+\end{alg}

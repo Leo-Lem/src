@@ -1,11 +1,9 @@
-\begin{algorithm}[H]
-  \caption{\texttt{findSCCs(G)}}
-
-  \KwData{A graph $G$}
-  \KwResult{A list of strongly connected components $SCCs$}
+\begin{alg}
+  \signed{findSCCs}{G}{SCCs}
+  \params{A graph $G$}{A list of strongly connected components $SCCs$}
   \BlankLine
 
-  $L \gets \emptyset$\explain*{$L$ is a list to allow backtracking}
+  $L \gets \emptyset$\;
   \ForEach{vertex $u$ of $G$}{
     \lIf{$u$ is not visited}{\texttt{dfs($G, u, L$)}}
   }
@@ -18,17 +16,16 @@
   \ForEach{vertex $u\in L$ in reverse order}{
     \lIf{$u$ is not visited}{
       $scc \gets \emptyset$\;
-      \texttt{dfs($G, u, scc$)}\explain*{$scc$ is used in place of $L$ to collect the vertices of the SCC}
+      \texttt{dfs($G, u, scc$)}
       $SCCs \gets SCCs \cup \{scc\}$
     }
   }
   \Return $SCCs$\;
-\end{algorithm}
+\end{alg}
 
-\begin{algorithm}[H]
-  \caption{\texttt{dfs($G, u, L$)}}
-
-  \KwData{A graph $G$, a vertex $u$, and a list $L$}
+\begin{alg}
+  \signed{dfs}{G, u, L}{\empty}
+  \params{A graph $G$, a vertex $u$, and a list $L$}{\empty}
   \BlankLine
 
   mark $u$ as found\;
@@ -37,4 +34,4 @@
   }
   mark $u$ as visited\;
   $L \gets L \cup \{u\}$
-\end{algorithm}
+\end{alg}

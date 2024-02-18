@@ -1,9 +1,6 @@
-\begin{algorithm}[H]
-  \caption{\textalgo{insertionSort($A$)}}\label{alg:insertionsort}
-
-  \KwData{An array $A$ of $n$ elements}
-  \KwResult{The array $A$ sorted in non-decreasing order}
-  \BlankLine
+\begin{alg}
+  \signed{insertionSort}{A}{A_{\leq}}
+  \params{An array $A$ of $n$ elements}{The array $A$ sorted in non-decreasing order}
 
   \For{$i \gets 2$ \KwTo $n$}{
     $key \gets A[i]$\;
@@ -14,4 +11,4 @@
     }
     $A[j+1] \gets key$\;
   }
-\end{algorithm}
+\end{alg}

@@ -1,9 +1,6 @@
-\begin{algorithm}[H]
-  \caption{\texttt{delete(T, x)}}
-
-  \KwData{A red-black tree $T$ and a node $x$}
-  \KwResult{A red-black tree $T$ without node $x$}
-  \BlankLine
+\begin{alg}
+  \signed{delete}{T, x}{T}
+  \params{A red-black tree $T$, a node $x$}{A red-black tree $T$ without node $x$}
 
   \comment{swap x with minimum}
   \If{$x$ has two children}{
@@ -15,14 +12,11 @@
   connect $x.child$ with $x.parent$ ?? $T.root$\explain*{use $T.root$ if $x.parent$ is $nil$}
   \lIf(\explain*[f]{$x$ is red $\to$ no violations}){$x$ is black}{\texttt{fixupAfterDelete($T, x.child$)}}
   \textbf{delete} $x$\;
-\end{algorithm}
+\end{alg}
 
-\begin{algorithm}[H]
-  \caption{\texttt{fixupAfterDelete(T, x)}}
-
-  \KwData{A red-black tree $T$ and a node $x$}
-  \KwResult{A fixed red-black tree $T$}
-  \BlankLine
+\begin{alg}
+  \signed{fixupAfterDelete}{T, x}{T}
+  \params{A red-black tree $T$, a node $x$}{A fixed red-black tree $T$}
 
   \comment*[h]{fix V}\explain*{$x.parent$ is left child in cases 1-4, right child in cases 5-8}
   \While{$x \neq T.root$ \textbf{and} $x$ is black}{
@@ -56,4 +50,4 @@
 
   \comment{fix II and IV}
   color $x$ black
-\end{algorithm}
+\end{alg}

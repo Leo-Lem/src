@@ -1,9 +1,6 @@
-\begin{algorithm}[H]
-  \caption{\textalgo{countingSort($A$, $B$, $k$)}}\label{alg:countingsort}
-
-  \KwData{An array $A$ of $n$ elements, with indices $1$ to $n$, and an array $B$ to hold the sorted output, with indices $1$ to $n$, and an integer $k$ such that $0 \leq A[i] \leq k$ for all $i$}
-  \KwResult{The array $A$ sorted in non-decreasing order}
-  \BlankLine
+\begin{alg}
+  \signed{countingSort}{A, B, k}{A_{\leq}}
+  \params{An array $A$ of $n$ elements, with indices $1$ to $n$, and an array $B$ to hold the sorted output, with indices $1$ to $n$, and an integer $k$ such that $0 \leq A[i] \leq k$ for all $i$}{The array $A$ sorted in non-decreasing order}
 
   \For{$i \gets 0$ \KwTo $k$}{
     $C[i] \gets 0$\;
@@ -18,4 +15,4 @@
     $B[C[A[j]]] \gets A[j]$\;
     $C[A[j]] \gets C[A[j]] - 1$\;
   }
-\end{algorithm}
+\end{alg}

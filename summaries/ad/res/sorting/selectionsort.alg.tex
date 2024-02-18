@@ -1,9 +1,6 @@
-\begin{algorithm}[H]
-  \caption{\textalgo{selectionSort($A$)}}\label{alg:selectionsort}
-
-  \KwData{An array $A$ of $n$ elements}
-  \KwResult{The array $A$ sorted in non-decreasing order}
-  \BlankLine
+\begin{alg}
+  \signed{selectionSort}{A}{A_\leq}
+  \params{An array $A$ of $n$ elements}{The array $A$ sorted in non-decreasing order}
 
   \For{$i \gets 1$ \KwTo $n-1$}{
     $min \gets i$\;
@@ -14,4 +11,4 @@
     }
     swap $A[i]$ and $A[min]$\;
   }
-\end{algorithm}
+\end{alg}

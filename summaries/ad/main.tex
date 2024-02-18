@@ -33,7 +33,7 @@ where $a \geq 1$, $b > 1$, $f(n)$ is a given function, and $n_0$ is a given cons
 
 \section{Sorting}
 \subsection{Elementary sorting algorithms}
-The elementary sorting algorithms (\ref{alg:selectionsort}, \ref{alg:insertionsort}, and \ref{alg:bubblesort}) have a time complexity of $\bigO(n^2)$. They sort stable and in-place.
+The elementary sorting algorithms \algref{selectionSort} \algref{insertionSort} and \algref{bubbleSort} have a time complexity of $\bigO(n^2)$. They sort stable and in-place.
 \subsubsection{Selection Sort}
 Continue selecting the smallest element and swapping it with the first unsorted element.\par
 \input{res/sorting/selectionsort.alg}
@@ -47,7 +47,7 @@ Continue swapping adjacent elements if they are in the wrong order.\par
 \input{res/sorting/bubblesort.alg}
 
 \subsection{Divide \& Conquer}
-The divide and conquer sorting algorithms (\ref{alg:mergesort}, \ref{alg:quicksort}) have a time complexity of $\bigO(n\log n)$.
+The divide and conquer sorting algorithms \algref{mergeSort} and \algref{quickSort} have a time complexity of $\bigO(n\log n)$.
 \subsubsection{Merge Sort}
 \textbf{Idea}: Divide the array into two halves, sort the halves, and then merge them.\par
 \textbf{Properties}: Sorts stable and not in-place.\par
@@ -140,27 +140,28 @@ Open addressing uses the next free slot in the hash table to store elements that
 \subsubsection{Prim}
 \input{res/mst/prim.alg.tex}
 
-\subsection{Bridges}
-The \texttt{findBridges} algorithm finds all bridges in a graph. A bridge is an edge whose removal increases the number of connected components in the graph. The algorithm has a time complexity of $\bigO(E(V+E))=\bigO(E\cdot V+E^2)$.\par
-\input{res/graphs/bridges.alg}
-The DFS algorithm \ref{alg:findicc} \texttt{findICC} finds an initial connected component (ICC) of a graph $G$ starting from a vertex $u$. The algorithm (like other DFSs) has a time complexity of $\bigO(V+E)$.\par
+\subsection{Find Bridges}
+The \algrefp{findBridges} algorithm finds all bridges in a graph. A bridge is an edge whose removal increases the number of connected components in the graph. The algorithm has a time complexity of $\bigO(E(V+E))=\bigO(E\cdot V+E^2)$.\par
+\input{res/graphs/findBridges.alg}
+The DFS algorithm \algrefp{findICC} finds an initial connected component (ICC) of a graph $G$ starting from a vertex $u$. The algorithm (like other DFSs) has a time complexity of $\bigO(V+E)$.\par
+\input{res/graphs/findICC.alg}
 
 \subsection{Shortest Paths}
 \input{res/shortestpaths/basics.alg}
 
 \subsubsection{Bellman-Ford}
-The Bellman-Ford algorithm \ref{alg:bellmanford} finds the shortest path from a source vertex $s$ to all other vertices in a graph $G$. The algorithm has a time complexity of $\bigO(V\cdot E)$.\par
+The \algrefp{bellmanFord} finds the shortest path from a source vertex $s$ to all other vertices in a graph $G$. The algorithm has a time complexity of $\bigO(V\cdot E)$.\par
 \input{res/shortestpaths/bellmanford.alg}
 
 \subsubsection{Dijkstra}
-The Dijkstra algorithm \ref{alg:dijkstra} finds the shortest path from a source vertex $s$ to all other vertices in a graph $G$. The algorithm has a time complexity of $\bigO(E\log V)$ when the Queue is implemented with a Min-Heap. Using Fibonacci-Heaps the time complexity can be reduced to $\bigO(E+V\log V)$.\par
+The \algrefp{dijkstra} algorithm finds the shortest path from a source vertex $s$ to all other vertices in a graph $G$. The algorithm has a time complexity of $\bigO(E\log V)$ when the Queue is implemented with a Min-Heap. Using Fibonacci-Heaps the time complexity can be reduced to $\bigO(E+V\log V)$.\par
 \input{res/shortestpaths/dijkstra.alg}
 
-The Dijkstra algorithm \ref{alg:dijkstrasinglepair} finds the shortest path from a source vertex $s$ to a target vertex $t$ in a graph $G$. The algorithm has a time complexity of $\bigO(V\log V+E)+\bigO(V)=\bigO(V\log V+E)$ (based on the single source \texttt{dijsktra}).\par
+The \algref{dijkstraSinglePair} finds the shortest path from a source vertex $s$ to a target vertex $t$ in a graph $G$. The algorithm has a time complexity of $\bigO(V\log V+E)+\bigO(V)=\bigO(V\log V+E)$ (based on the single source \texttt{dijsktra}).\par
 \input{res/shortestpaths/dijkstrasp.alg}
 
 \subsubsection{Floyd-Warshall}
-The Floyd-Warshall algorithm \ref{alg:floydwarshall} finds the shortest path between all pairs of vertices in a graph $G$. The algorithm has a time complexity of $\bigO(V^3)$.\par
+The \algref{floydWarshall} algorithm finds the shortest path between all pairs of vertices in a graph $G$. The algorithm has a time complexity of $\bigO(V^3)$.\par
 \input{res/shortestpaths/floydwarshall.alg}
 
 

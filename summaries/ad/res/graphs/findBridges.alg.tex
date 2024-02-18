@@ -1,0 +1,12 @@
+\begin{alg}
+  \signed{findBridges}{G}{B}
+  \params{A graph $G$}{A list of bridges $B$}
+
+  $B \gets \emptyset$\;
+  $s \gets G.V.first$\;
+  \ForEach{edge $e\in G.E$}{
+    $ICC \gets$ \texttt{findICC($G\setminus \{e\}, s$)}\explain*{an initial connected component describes the vertices reachable from $s$}
+    \lIf{$|ICC.V| < |G.V|$}{$B \gets B \cup \{e\}$}
+  }
+  \Return $B$\;
+\end{alg}

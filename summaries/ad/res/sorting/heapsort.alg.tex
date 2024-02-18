@@ -1,9 +1,6 @@
-\begin{algorithm}[H]
-  \caption{\textalgo{heapSort($A$)}}\label{alg:heapsort}
-
-  \KwData{An array $A$ of $n$ elements}
-  \KwResult{The array $A$ sorted in non-decreasing order}
-  \BlankLine
+\begin{alg}
+  \signed{heapSort}{A}{A_{\leq}}
+  \params{An array $A$ of $n$ elements}{The array $A$ sorted in non-decreasing order}
 
   \For{$i \gets \lfloor\frac{n}{2}\rfloor$ \KwTo $1$}{
     \textalgo{heapify($A$, $i$, $n$)}\;
@@ -12,4 +9,4 @@
     swap $A[1]$ and $A[i]$\;
     \textalgo{heapify($A$, $1$, $i-1$)}\;
   }
-\end{algorithm}
+\end{alg}

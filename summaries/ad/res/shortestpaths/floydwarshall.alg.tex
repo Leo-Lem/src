@@ -1,9 +1,6 @@
-\begin{algorithm}[H]
-  \caption{\texttt{floydWarshall($W$)}}\label{alg:floydwarshall}
-
-  \KwData{Weighted adjacency matrix $W$ of a graph $G$}
-  \KwResult{Matrix of shortest distances $D$}
-  \BlankLine
+\begin{alg}
+  \signed{floydWarshall}{W}{D}
+  \params{Weighted adjacency matrix $W$ of a graph $G$}{Matrix of shortest distances $D$}
 
   $n \gets \text{number of vertices in } G$\;
   $D \gets W$\;
@@ -17,4 +14,4 @@
   }
 
   \Return $D$\;
-\end{algorithm}
+\end{alg}

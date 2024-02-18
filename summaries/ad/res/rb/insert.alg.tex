@@ -1,10 +1,6 @@
-
-\begin{algorithm}[H]
-  \caption{\texttt{insert(T, x)}}
-
-  \KwData{A red-black tree $T$ and a node $x$}
-  \KwResult{A red-black tree $T$ with node $x$}
-  \BlankLine
+\begin{alg}
+  \signed{insert}{T, x}{T}
+  \params{A red-black tree $T$ and a node $x$}{A red-black tree $T$ with node $x$}
 
   \comment{find insertion point (and stop at guard/after leaf)}
   $next = T.root$\;
@@ -21,14 +17,12 @@
 
   \comment{fix the properties}
   color $x$ red\;
-  \texttt{fixupAfterInsert($T, x$)}\;
-\end{algorithm}
+  \textalgo{fixupAfterInsert($T, x$)}\;
+\end{alg}
 
-\begin{algorithm}[H]
-  \caption{\texttt{fixupAfterInsert(T, x)}}
-
-  \KwData{A red-black tree $T$ and a newly inserted node $x$}
-  \KwResult{A fixed red-black tree $T$}
+\begin{alg}
+  \signed{fixupAfterInsert}{T, x}{T}
+  \params{A red-black tree $T$ and a newly inserted node $x$}{A fixed red-black tree $T$}
   \BlankLine
 
   \comment*[h]{fix I}\explain*{$x.parent$ is left child in cases 1-3, right child in cases 4-6}
@@ -54,4 +48,4 @@
 
   \comment{fix II}
   color $T.root$ black
-\end{algorithm}
+\end{alg}
