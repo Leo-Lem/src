@@ -1,0 +1,29 @@
+\begin{figure}
+  \begin{tikzpicture}[auto, on grid, node distance=2cm, main node/.style={circle, draw}]
+    \centering
+    \node[main node] (a) {a};
+    \node[main node] (b) [right=of a] {b};
+    \node[main node] (c) [below right=of a] {c};
+    \node[main node] (d) [left=of c] {d};
+    \node[main node] (e) [right=of b] {e};
+    \node[main node] (f) [right=of c] {f};
+    \node[main node] (g) [below right=of d] {g};
+    \node[main node] (h) [below right=of f] {h};
+
+    \path[draw,thick]
+    (a) edge node {2} (b)
+    (a) edge node {1} (c)
+    (a) edge node {6} (d)
+    (b) edge node {6} (c)
+    (b) edge node {4} (e)
+    (b) edge node {6} (f)
+    (c) edge node {5} (d)
+    (c) edge node {3} (f)
+    (c) edge node {7} (g)
+    (d) edge node[below left] {4} (g)
+    (e) edge node {5} (h)
+    (f) edge node[below left] {3} (h)
+    (g) edge node {4} (h)
+    ;
+  \end{tikzpicture}
+\end{figure}

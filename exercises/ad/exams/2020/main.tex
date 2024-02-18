@@ -12,64 +12,128 @@
     \item Ein Element in einem unsortierten Array finden, das nicht das kleinste ist.
     \item Das kleinste Element in einem sortierten Array finden.
     \item Aus einem sortierten Array einen balancierten binären Suchbaum konstruieren.
-    \item Nennen Sie mindestens 3 Gründe, warum ein Algorithmus $f$ einer niedrigeren Komplexitätsklasse (zum Beispiel $\bigO(n \log n)$) weniger geeignet sein kann als ein Algorithmus $f$ einer höheren Komplexitätsklasse (zum Beispiel $\bigO(n^2)$).
+    \item Nennen Sie mindestens 3 Gründe, warum ein Algorithmus $f_1$ einer niedrigeren Komplexitätsklasse (zum Beispiel $\bigO(n \log n)$) weniger geeignet sein kann als ein Algorithmus $f_2$ einer höheren Komplexitätsklasse (zum Beispiel $\bigO(n^2)$).
           \hint{Maximal 2 Bonuspunkte für mehr als 3 gute Gründe.}
   \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item $\bigO(n)$, da im schlimmsten Fall alle Elemente des Arrays durchlaufen werden müssen.
+      \item $\bigO(n)$, da im schlimmsten Fall alle Elemente des Arrays durchlaufen werden müssen.
+      \item $\bigO(1)$, da das kleinste Element immer an der ersten Stelle steht.
+      \item $\bigO(n)$, da im schlimmsten Fall alle Elemente des Arrays durchlaufen werden müssen.
+      \item Mögliche Gründe:
+            \begin{itemize}
+              \item kleine Eingabegrößen $\to$ Konstanten in der Laufzeitkomplexität sind wichtiger
+              \item bessere Parallelisierbarkeit
+              \item bessere Speicherkomplexität
+              \item einfacher zu implementieren
+              \item begehrenswerte Eigenschaften (z.B. Stabilität)
+            \end{itemize}
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{O-Notation}
   \begin{enumerate}
     \item Geben Sie für folgenden Funktionen möglichst einfache und scharfe O-, $\Omega$- und ggf. $\Theta$-Klassen an.
           \begin{align*}
-            f(n) & = 1.5n + n^2                                     \\
-            g(n) & = (-1)^3 \log n - \sqrt{n^5} + \log n + \sqrt{n}
+            f(n) & = 1.5^n + n^3                                    \\
+            g(n) & = (-1)^n (\log n - \sqrt{n}) + \log n + \sqrt{n}
           \end{align*}
-    \item Ordnen Sie $5n^2, 28, \sqrt{n}, \log n, n^2, (n \log n)^2, 2\sqrt{n}, n!, n^3$ gemäß asymptotischem Wachstum. Begründen Sie Ihre Antwort.
-    \item Ist $(\log n)n^2 \in \bigO(n^2)$? Begründen Sie Ihre Antwort.
-    \item Berechnen Sie eine scharfe asymptotische Schranke für die Rekurrenzgleichung $T(n) = 4T(n/2) + n$ mit $T(1) = 1$. Geben Sie den Lösungsweg an.
+    \item Ordnen Sie\par
+          \begin{table*}[ht]
+            \centering
+            \begin{tabular}{ccccc cccc}
+              $5n^{\frac{3}{7}}$, & $28$, & $\sqrt{n}$, & $\log n^{2020}$, & $(\log n)^{\frac{n}{2}}$, & $2^{\sqrt{n}}$, & $n!$, & $n^n$
+            \end{tabular}
+          \end{table*}\par
+          gemäß asymptotischem Wachstum. Begründen Sie Ihre Antwort.
+    \item Ist $(\log n)n^3 \in \bigO(n^{3+\epsilon})$? Begründen Sie Ihre Antwort.
+    \item Berechnen Sie eine scharfe asymptotische Schranke für die Rekurrenzgleichung $T(n) = 4T(n/2) + n^2$ mit $T(1) = 1$. Geben Sie den Lösungsweg an.
   \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item $f(n) \in \bigO(1.5^n), f(n) \in \Omega(n^3), f(n) \in \Theta(1.5^n)$\par
+            $g(n) \in \begin{cases}
+                \bigO(\sqrt{n}) & \text{falls } n \text{ ungerade} \\
+                \bigO(\log n)   & \text{falls } n \text{ gerade}   \\
+              \end{cases}$\par
+            $\hookrightarrow g(n) \in \bigO(\sqrt{n}) \text{ und } g(n) \in \Omega(\log n) \text{ und } g(n) \notin \Theta \text{, da unterschiedliche } \bigO \text{ und } \Omega$
+      \item $28 < \log n^{2020} < 5n^{\frac{3}{7}} < \sqrt{n} < 2^{\sqrt{n}} < (\log n)^{\frac{n}{2}} < n! < n^n$
+      \item Ja, da $\lim_{n \to \infty} \frac{(\log n)n^3}{n^{3+\epsilon}} = 0\forall\epsilon > 0$
+      \item Mastertheorem, Fall II: $T(n) \in \Theta(n^2 \log n)$
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{Algorithmenanalyse}
-  Analysieren Sie den angegebenen Pseudocode zur Sortierung der Liste $A$ durch den Aufruf SOMESORT($A, 0, A.\text{length}$):
-  \begin{algorithm}[ht]
-    \caption{SOMESORT($A, i, j$)}
-    \KwData{$A[i], i = 1, 2, \ldots, n, A[i] \in \mathbb{N}$}
-    \KwResult{$\text{result} \in \mathbb{N}_{>0}$}
-    \If{$i \geq j$}{
-      \Return
-    }
-    $m \gets \lfloor (i+j)/2 \rfloor$ \\
-    SOMESORT($A, i, m$) \\
-    SOMESORT($A, m+1, j$) \\
-    \If{$A[j] \leq A[m]$}{
-      \text{swap} $A[j]$ and $A[m]$
-    }
-    SOMESORT($A, i, j-1$)
-  \end{algorithm}
+  Analysieren Sie den angegebenen Pseudocode (\ref{alg:somesort}) zur Sortierung der Liste $A$ durch den Aufruf \textalgo{somesort($A, 0, A.\text{length}$)}:
+  \input{res/somesort.alg}
   \begin{enumerate}
     \item Beschreiben Sie, wie der Algorithmus sortiert.
     \item Beweisen Sie die Korrektheit des Algorithmus (z.B. mittels Induktion).
     \item Stellen Sie die Rekurrenzgleichung auf und erläutern Sie, warum sich das Master-Theorem nicht anwenden lässt.
     \item Die ersten fünf Zeilen des Algorithmus entsprechen einem aus der Vorlesung bekannten Sortieralgorithmus. Welchem? Warum ist der hier gezeigte Algorithmus viel weniger effizient als der aus der Vorlesung bekannte?
-    \item Was bedeutet 'Stabilität' eines Sortierverfahrens? Ist SOMESORT stabil und begründen Sie Ihre Antwort.
+    \item Was bedeutet 'Stabilität' eines Sortierverfahrens? Ist \textalgo{somesort} stabil und begründen Sie Ihre Antwort.
   \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item Der Algorithmus geht rekursiv, über einen Divide and Conquer Ansatz, vor, indem er die Liste halbiert bis wir bei trivial sortierten Arrays ankommen (einelementig). Falls das rechte Element kleiner ist als das mittlere, werden diese getauscht. Anschließend wird die restliche Liste erneut sortiert.
+      \item \begin{induction}[|L|]
+              \base[1] trivial sortiert
+              \cond Algorithmus ist korrekt für Listen mit $n-1$ Elementen und $n/2$ Elementen.
+              \step Der Algorithmus sortiert 2 Teillisten in Zeile 4 und 5. Nach Induktionsannahme sind diese Listen korrekt sortiert. Das jeweils größte Element in den Teillisten steht am Ende der Liste. In Zeile 6 und 7 wird das größte Element aus beiden Listen gewählt und an das Ende der Liste gesetzt. Anschließend wird der Algorithmus ohne das letzte Element erneut ausgeführt. Nach Induktionsannahme ist dieser Schritt ebenfalls korrekt.
+            \end{induction}
+      \item $T(n) = 2T(n/2) + n \to$ Mastertheorem nicht anwendbar, da $f(n) = n \notin \bigO(n^{2-\varepsilon})$
+      \item Der Beginn des Algorithmus entspricht Mergesort. SomeSort ist sehr viel weniger effizient als Mergesort, da SomeSort pro rekursivem Aufruf immer nur ein Element vertauscht, und sich am Ende nochmal selbst mit $n-1$ Eingabelänge aufrufen muss
+      \item Ein Sortierverfahren ist stabil, wenn die Reihenfolge von Elementen mit gleichem Schlüsselwert erhalten bleibt. \textalgo{somesort} ist nicht stabil, da in Zeile 6 und 7 das größere Element an das Ende der Liste gesetzt wird, ohne zu prüfen, ob es gleich groß ist wie das andere Element.
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{Graphen}
   Gegeben ist folgender ungerichteter, kantengewichteter Graph:
   \begin{align*}
-    G & = (V, E)                                                                                                           \\
-    V & = \{a, b, c, d, e, f, g, h\}                                                                                       \\
-    E & = \{(a, b, 2), (a, c, 1), (a, d, 6), (b, c, 6), (b, e, 4), (b, e, 6), (b, f, 6), (c, d, 5), (c, f, 3), (c, g, 7)\}
+    G & = (V, E)                                                                         \\
+    V & = \{a, b, c, d, e, f, g, h\}                                                     \\
+    E & = \{(a, b, 2), (a, c, 1), (a, d, 6), (b, c, 6), (b, e, 4), (b, e, 6), (b, f, 6), \\
+      & \quad\quad(c, d, 5), (c, f, 3), (c, g, 7), (d,g,4), (e,h,5), (f,h,3), (g,h,4)\}
   \end{align*}
   \begin{enumerate}
     \item Zeichnen Sie den Graphen (leserlich!).
     \item Nennen Sie die Definitionen für den minimalen Spannbaum (MST).
     \item Erklären Sie die Vorgehensweise des PRIMschen Algorithmus und bestimmen Sie damit den oben gegebenen Graphen.
-    \item Gegeben sei ein Graph $G$, ein zugehöriger Spannbaum $S$ und eine Kante $e$ im Spannbaum. Sei $G' = (V, E')$ mit $E' = E \setminus \{e\}$. Geben Sie einen effizienten Algorithmus an, welcher einen MST für $G'$ auf Basis von $S$ bestimmt.
+    \item Gegeben sei ein Graph $G$, ein zugehöriger (minimaler) Spannbaum $S$ und eine Kante $e$ im Spannbaum. Sei $G' = (V, E')$ mit $E' = E \setminus \{e\}$. Geben Sie einen effizienten Algorithmus an, welcher einen MST für $G'$ auf Basis von $S$ bestimmt.
     \item Beweisen Sie: Eine Kante $e$ in einem zusammenhängenden Graphen $G$ ist genau dann eine Brückenkante, wenn $e$ in jedem $ST$ von $G$ enthalten ist.
   \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item Mögliche Zeichnung des Graphen:\input{res/graph.fig.tex}
+      \item Ein minimaler Spannbaum (MST) eines gewichteten Graphen $G = (V, E)$ ist ein Spannbaum, dessen Gesamtgewicht minimal ist.
+      \item PRIMscher Algorithmus:
+            \begin{enumerate}
+              \item Wähle einen Startknoten $v_0$ und initialisiere $T = (V, \emptyset)$.
+              \item Solange $T$ nicht alle Knoten enthält:
+                    \begin{enumerate}
+                      \item Wähle eine Kante $(u, v)$ mit minimalem Gewicht, sodass $u \in T$ und $v \notin T$.
+                      \item Füge $(u, v)$ zu $T$ hinzu.
+                    \end{enumerate}
+            \end{enumerate}
+            MST: $\{(a, c, 1), (c, f, 3), (f, h, 3), (h, g, 4), (g, d, 4), (d, a, 6), (a, b, 2), (b, e, 4)\}$
+      \item Der Algorithmus arbeitet wie folgt:
+            \begin{enumerate}
+              \item Entferne $e$ aus $S$.
+              \item Bestimme die Zusammenhangskomponenten von $S$.
+              \item Wähle die leichteste Kante, die die Zusammenhangskomponenten verbindet.
+            \end{enumerate}
+      \item Angenommen es gibt eine Brückenkante $e$, die nicht in einem Spannbaum $S$ vom Graphen $G$ enthalten ist. Dann gibt es eine andere Kante, die die von $e$ getrennten Zusammenhangskomponenten verbindet und in dem Spannbaum $S$ liegt. Also ist $e$ keine Brückenkante.\par
+            Angenommen es gibt einen Spannbaum, der die Brückenkante $e$ nicht enthält. Dann gibt es 2, durch $e$ getrennte ZHKs. Der Spannbaum kann nur die Knoten einer der beiden ZHKs umspannen und ist somit kein Spannbaum.
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{Datenstrukturen}
@@ -89,34 +153,62 @@
           \end{align*}
     \item Führen Sie nacheinander aus und stellen Sie jeweils den Inhalt von $T$ dar:
           \begin{itemize}
-            \item $\text{insert}(21)$
-            \item $\text{insert}(95)$
-            \item $\text{delete}(12)$
-            \item $\text{delete}(21)$
-            \item $\text{delete}(95)$
+            \item insert($21$)
+            \item insert($95$)
+            \item delete($12$)
+            \item delete($21$)
+            \item delete($95$)
           \end{itemize}
     \item Definieren Sie den Begriff (Min-)Heap.
     \item Geben Sie einen Algorithmus an, der in $\bigO(n)$ Zeit einen binären Suchbaum in einen MinHeap umwandelt. Begründen Sie seine Korrektheit.
   \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item Mögliche Strategien:
+            \begin{itemize}
+              \item Verkettung: Kollisionen werden in einer Liste gespeichert
+              \item Offene Adressierung: Kollisionen werden durch Sondierung (Suche eines freien Platzes). Sondierung kann linear, quadratisch oder durch doppeltes Hashing erfolgen.
+            \end{itemize}
+      \item $h_2$ ist am geeignetsten, da $17$ und $1000$ teilerfremd sind. Häufungen sind deutlich unwahrscheinlicher als bei $h_1$ und $h_3$. $17$ ist außerdem als Primzahl gut für Hashing geeignet.
+      \item \begin{itemize}
+              \item insert($21$): 1-fach Sondieren \begin{tabular}{c|c|c|c|c|c|c|c|c}
+                      0 & 1 & 2 & 3  & 4  & 5  & 6  & 7  & 8 \\
+                      \hline
+                      0 &   & 7 & 12 & 13 & 21 & 24 & 16 &   \\
+                    \end{tabular}
+              \item insert($95$): 6-fach Sondieren \begin{tabular}{c|c|c|c|c|c|c|c|c}
+                      0 & 1 & 2 & 3  & 4  & 5  & 6  & 7  & 8  \\
+                      \hline
+                      0 &   & 7 & 12 & 13 & 21 & 24 & 16 & 95 \\
+                    \end{tabular}
+              \item delete($12$): kein Sondieren \begin{tabular}{c|c|c|c|c|c|c|c|c}
+                      0 & 1 & 2 & 3            & 4  & 5  & 6  & 7  & 8  \\
+                      \hline
+                      0 &   & 7 & \texttt{del} & 13 & 21 & 24 & 16 & 95 \\
+                    \end{tabular}
+              \item delete($21$): 1-fach Sondieren \begin{tabular}{c|c|c|c|c|c|c|c|c}
+                      0 & 1 & 2 & 3            & 4  & 5            & 6  & 7  & 8  \\
+                      \hline
+                      0 &   & 7 & \texttt{del} & 13 & \texttt{del} & 24 & 16 & 95 \\
+                    \end{tabular}
+              \item delete($95$): 6-fach Sondieren \begin{tabular}{c|c|c|c|c|c|c|c|c}
+                      0 & 1 & 2 & 3            & 4  & 5            & 6  & 7  & 8            \\
+                      \hline
+                      0 &   & 7 & \texttt{del} & 13 & \texttt{del} & 24 & 16 & \texttt{del} \\
+                    \end{tabular}
+            \end{itemize}
+      \item Ein (Min-)Heap ist ein binärer Baum, bei dem für jeden Knoten $v$ gilt, dass der Wert von $v$ kleiner ist als die Werte seiner Kinder.
+      \item Algorithmus:\par
+            \input{res/bst2minheap.alg}
+            Der Algorithmus ist korrekt, da ein binärer Suchbaum in-order durchlaufen wird und die Knoten in der Reihenfolge in den MinHeap eingefügt werden.
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{Dynamische Programmierung}
-  Die PERRIN-Folge kann wie dargestellt rekursiv berechnet werden:
-  \begin{algorithm}[ht]
-    \caption{PERRIN($n$)}
-    \KwData{$n \in \mathbb{N}$}
-    \KwResult{$\text{result} \in \mathbb{N}$}
-    \If{$n = 0$}{
-      \Return{3}
-    }
-    \If{$n = 1$}{
-      \Return{0}
-    }
-    \If{$n = 2$}{
-      \Return{2}
-    }
-    \Return{PERRIN($n-2$) + PERRIN($n-3$)}
-  \end{algorithm}
+  Die PERRIN-Folge kann wie dargestellt rekursiv berechnet werden:\par
+  \input{res/perrin.alg}
   \begin{enumerate}
     \item Stellen Sie für die angegebene Funktion die Rekurrenzformel auf. Vereinfachen Sie, sodass Sie zeigen können, dass die obere und untere Schranke exponentiell wachsen.
     \item Erklären Sie, warum die angegebene Funktion nicht effizient ist und erläutern Sie die Entwicklungsschritte bei der Anwendung dynamischer Programmierung.
@@ -124,6 +216,26 @@
     \item Spezifizieren Sie einen effizienteren Algorithmus zur Berechnung der PERRIN-Funktion unter Verwendung dynamischer Programmierung und nennen Sie seine Zeitkomplexität.
           \hint{2 Zusatzpunkte für einen Algorithmus mit $\bigO(1)$ Platzkomplexität}
   \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item $T(n) = T(n-2) + T(n-3)$\par
+            $T(n) = T(n-2) + T(n-3) = T(n-4) + T(n-5) + T(n-5) +
+              T(n-6) + T(n-7) = \dots = 2T(n-5) + 2T(n-6) + 2T(n-7) + \dots$\par
+            $\hookrightarrow T(n) \in \Omega(2^{\frac{n}{5}}) \text{ und } T(n) \in \bigO(2^{\frac{n}{3}})$
+      \item Die Funktion ist nicht effizient, da sie viele redundante Berechnungen durchführt. Die Entwicklungsschritte bei der Anwendung dynamischer Programmierung sind:
+            \begin{enumerate}
+              \item Charakterisierung der Struktur einer optimalen Lösung
+              \item rekursive Definition einer optimalen Lösung
+              \item Berechnung der Werte einer optimalen Lösung (meistens von unten nach oben)
+              \item Konstruktion einer optimalen Lösung
+            \end{enumerate}
+      \item Die Funktion ist anwendbar, da sie überlappende Teilprobleme besitzt.
+      \item Algorithmus:\par
+            \input{res/perrin_dp.alg}
+            Der Algorithmus hat eine Zeitkomplexität von $\bigO(n)$.
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 
 \begin{exercise}{NP-Vollständigkeit}
@@ -131,5 +243,16 @@
     \item Geben Sie die formalen Definitionen für P, NP an und erklären Sie die Begriffe NP-vollständig und NP-schwer.
     \item Erklären Sie kurz die Begriffe Zertifikatsfunktion \& Reduktion im Kontext der Prüfung auf NP-Vollständigkeit.
   \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item P: Entscheidungsproblem, das in polynomieller Zeit lösbar ist.\par
+            NP: Entscheidungsproblem, für das eine Lösung in polynomieller Zeit verifizierbar ist.\par
+            NP-vollständig: Problem, das in NP liegt und für das jedes andere Problem in NP auf das gegebene Problem in polynomieller Zeit reduzierbar ist.\par
+            NP-schwer: Problem, für das jedes Problem in NP auf das gegebene Problem in polynomieller Zeit reduzierbar ist.
+      \item Zertifikatsfunktion: Funktion, die ein Zertifikat für ein Problem in NP verifiziert.\par
+            Reduktion: Transformation eines Problems in ein anderes Problem, sodass eine Lösung des ersten Problems eine Lösung des zweiten Problems impliziert.
+    \end{enumerate}
+  \end{solution}
 \end{exercise}
 \end{document}

@@ -1,0 +1,12 @@
+\begin{algorithm}[H]
+  \caption{\textalgo{perrin($n$)}}\label{alg:perrin}
+
+  \KwData{$n \in \mathbb{N}$}
+  \KwResult{$\text{result} \in \mathbb{N}$}
+  \BlankLine
+
+  \lIf{$n = 0$}{\Return{3}}
+  \lIf{$n = 1$}{\Return{0}}
+  \lIf{$n = 2$}{\Return{2}}
+  \Return{\textalgo{perrin($n-2$)} + \textalgo{perrin($n-3$)}}
+\end{algorithm}

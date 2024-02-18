@@ -69,16 +69,24 @@
   \fi
 }
 
-\newcommand{\induction}[3]{
-  \textbf{IA} ($n\leftarrow 0$):\quad$#1$\\
-  \textbf{IV} ($n\leftarrow n$):\quad$#2$\\
-  \textbf{IS} ($n\leftarrow n+1$): \begin{align*}#3\end{align*}
-}
-
-\newcommand{\invariant}[3]{
-  \textbf{Initialisierung}: #1\\
-  \textbf{Erhaltung}: #2\\
-  \textbf{Termination}: #3
-}
-
 \newcommand\xmark{$\times$}
+
+\newenvironment{induction}[1][n]{
+  \newcommand\@inductionitem[2]{\item[\textbf{##1}]{\footnotesize($#1\gets##2$)}: }
+  \newcommand\base[1][0]{\@inductionitem{IA}{##1}}
+  \newcommand\cond[1][#1]{\@inductionitem{IV}{##1}}
+  \newcommand\step[1][#1+1]{\@inductionitem{IS}{##1}}
+  \begin{itemize}
+    }{
+  \end{itemize}
+}
+
+\newenvironment{invariant}{
+  \newcommand\@invariantitem[1]{\item[\textbf{##1}:]}
+  \newcommand\init[1]{\@invariantitem{Initialisierung}##1}
+  \newcommand\pres[1]{\@invariantitem{Erhaltung}##1}
+  \newcommand\term[1]{\@invariantitem{Termination}##1}
+  \begin{itemize}
+    }{
+  \end{itemize}
+}
