@@ -69,7 +69,7 @@
 \end{exercise}
 
 \begin{exercise}{Algorithmenanalyse}
-  Analysieren Sie den angegebenen Pseudocode (\ref{alg:somesort}) zur Sortierung der Liste $A$ durch den Aufruf \textalgo{somesort($A, 0, A.\text{length}$)}:
+  Analysieren Sie den angegebenen Pseudocode \algrefp{somesort} zur Sortierung der Liste $A$ durch den Aufruf \textalgo{somesort($A, 0, A.\text{length}$)}:
   \input{res/somesort.alg}
   \begin{enumerate}
     \item Beschreiben Sie, wie der Algorithmus sortiert.
@@ -81,15 +81,15 @@
 
   \begin{solution}
     \begin{enumerate}
-      \item Der Algorithmus geht rekursiv, über einen Divide and Conquer Ansatz, vor, indem er die Liste halbiert bis wir bei trivial sortierten Arrays ankommen (einelementig). Falls das rechte Element kleiner ist als das mittlere, werden diese getauscht. Anschließend wird die restliche Liste erneut sortiert.
+      \item Der Algorithmus geht rekursiv, über einen Divide and Conquer Ansatz, vor, indem er die Liste halbiert bis wir bei trivial sortierten Arrays ankommen (einelementig). Falls das rechteste Element kleiner ist als das mittlere, werden diese getauscht. Anschließend wird die restliche Liste erneut sortiert.
       \item \begin{induction}[|L|]
               \base[1] trivial sortiert
               \cond Algorithmus ist korrekt für Listen mit $n-1$ Elementen und $n/2$ Elementen.
-              \step Der Algorithmus sortiert 2 Teillisten in Zeile 4 und 5. Nach Induktionsannahme sind diese Listen korrekt sortiert. Das jeweils größte Element in den Teillisten steht am Ende der Liste. In Zeile 6 und 7 wird das größte Element aus beiden Listen gewählt und an das Ende der Liste gesetzt. Anschließend wird der Algorithmus ohne das letzte Element erneut ausgeführt. Nach Induktionsannahme ist dieser Schritt ebenfalls korrekt.
+              \step Der Algorithmus sortiert 2 Teillisten in Zeile 3 und 4. Nach Induktionsannahme sind diese Listen korrekt sortiert. Das jeweils größte Element in den Teillisten steht am Ende der Liste. In Zeile 4 wird das größte Element aus beiden Listen gewählt und an das Ende der Liste gesetzt. Anschließend wird der Algorithmus ohne das letzte Element erneut ausgeführt. Nach Induktionsannahme ist dieser Schritt ebenfalls korrekt.
             \end{induction}
-      \item $T(n) = 2T(n/2) + n \to$ Mastertheorem nicht anwendbar, da $f(n) = n \notin \bigO(n^{2-\varepsilon})$
-      \item Der Beginn des Algorithmus entspricht Mergesort. SomeSort ist sehr viel weniger effizient als Mergesort, da SomeSort pro rekursivem Aufruf immer nur ein Element vertauscht, und sich am Ende nochmal selbst mit $n-1$ Eingabelänge aufrufen muss
-      \item Ein Sortierverfahren ist stabil, wenn die Reihenfolge von Elementen mit gleichem Schlüsselwert erhalten bleibt. \textalgo{somesort} ist nicht stabil, da in Zeile 6 und 7 das größere Element an das Ende der Liste gesetzt wird, ohne zu prüfen, ob es gleich groß ist wie das andere Element.
+      \item $T(n) = 2T(n/2) + T(n-1) + n \to$ Mastertheorem nicht anwendbar wegen $T(n-1)$
+      \item Der Beginn des Algorithmus entspricht Mergesort. SomeSort ist sehr viel weniger effizient als Mergesort, da SomeSort pro rekursivem Aufruf immer nur ein Element vertauscht, und sich am Ende nochmal selbst mit $n-1$ Eingabelänge aufrufen muss.
+      \item Ein Sortierverfahren ist stabil, wenn die Reihenfolge von Elementen mit gleichem Schlüsselwert erhalten bleibt. \textalgo{somesort} ist nicht stabil, da in Zeile 4 das größere Element an das Ende der Liste gesetzt wird, ohne zu prüfen, ob es gleich groß ist wie das andere Element.
     \end{enumerate}
   \end{solution}
 \end{exercise}
@@ -105,7 +105,7 @@
   \begin{enumerate}
     \item Zeichnen Sie den Graphen (leserlich!).
     \item Nennen Sie die Definitionen für den minimalen Spannbaum (MST).
-    \item Erklären Sie die Vorgehensweise des PRIMschen Algorithmus und bestimmen Sie damit den oben gegebenen Graphen.
+    \item Erklären Sie die Vorgehensweise des PRIMschen Algorithmus und bestimmen Sie damit den MST für den gegebenen Graphen.
     \item Gegeben sei ein Graph $G$, ein zugehöriger (minimaler) Spannbaum $S$ und eine Kante $e$ im Spannbaum. Sei $G' = (V, E')$ mit $E' = E \setminus \{e\}$. Geben Sie einen effizienten Algorithmus an, welcher einen MST für $G'$ auf Basis von $S$ bestimmt.
     \item Beweisen Sie: Eine Kante $e$ in einem zusammenhängenden Graphen $G$ ist genau dann eine Brückenkante, wenn $e$ in jedem $ST$ von $G$ enthalten ist.
   \end{enumerate}
@@ -123,8 +123,8 @@
                       \item Füge $(u, v)$ zu $T$ hinzu.
                     \end{enumerate}
             \end{enumerate}
-            MST: $\{(a, c, 1), (c, f, 3), (f, h, 3), (h, g, 4), (g, d, 4), (d, a, 6), (a, b, 2), (b, e, 4)\}$
-      \item Der Algorithmus arbeitet wie folgt:
+            MST: $\{(a,c,1),(a,b,2),(b,e,4),(c,f,3),(d,g,4),(f,h,3),(g,h,4)\}$
+      \item Der Algorithmus arbeitet wie folgt (basiert auf Kruskal's Ansatz):
             \begin{enumerate}
               \item Entferne $e$ aus $S$.
               \item Bestimme die Zusammenhangskomponenten von $S$.
@@ -199,9 +199,7 @@
                     \end{tabular}
             \end{itemize}
       \item Ein (Min-)Heap ist ein binärer Baum, bei dem für jeden Knoten $v$ gilt, dass der Wert von $v$ kleiner ist als die Werte seiner Kinder.
-      \item Algorithmus:\par
-            \input{res/bst2minheap.alg}
-            Der Algorithmus ist korrekt, da ein binärer Suchbaum in-order durchlaufen wird und die Knoten in der Reihenfolge in den MinHeap eingefügt werden.
+      \item Ein Algorithmus könnte den Baum In-Order durchlaufen und die Knoten in der Reihenfolge in einen MinHeap einfügen. Die Knoten werden aufsteigend sortiert ausgegeben, und somit ist die MinHeap Eigenschaft erfüllt.
     \end{enumerate}
   \end{solution}
 \end{exercise}
@@ -219,10 +217,15 @@
 
   \begin{solution}
     \begin{enumerate}
-      \item $T(n) = T(n-2) + T(n-3)$\par
-            $T(n) = T(n-2) + T(n-3) = T(n-4) + T(n-5) + T(n-5) +
-              T(n-6) + T(n-7) = \dots = 2T(n-5) + 2T(n-6) + 2T(n-7) + \dots$\par
-            $\hookrightarrow T(n) \in \Omega(2^{\frac{n}{5}}) \text{ und } T(n) \in \bigO(2^{\frac{n}{3}})$
+      \item \[
+              T(n) = \begin{cases}
+                1               & \text{falls } n \leq 2 \\
+                T(n-2) + T(n-3) & \text{sonst}
+              \end{cases}
+            \]
+            Wir können $T(n-3)$ nach oben abschätzen durch $T(n-2)$ und erhalten somit $T(n) \leq 2T(n-2)$. Mittels Substitution erhalten wir $T(n) \leq 2^{\frac{n}{2}} \in \bigO(2^{\frac{n}{2}})$.\par
+            Wir können $T(n-2)$ nach unten abschätzen durch $T(n-3)$ und erhalten somit $T(n) \geq 2T(n-3)$. Mittels Substitution erhalten wir $T(n) \geq 2^{\frac{n}{3}} \in \Omega(2^{\frac{n}{3}})$.\par
+            Somit wächst die Funktion exponentiell.
       \item Die Funktion ist nicht effizient, da sie viele redundante Berechnungen durchführt. Die Entwicklungsschritte bei der Anwendung dynamischer Programmierung sind:
             \begin{enumerate}
               \item Charakterisierung der Struktur einer optimalen Lösung
@@ -230,10 +233,10 @@
               \item Berechnung der Werte einer optimalen Lösung (meistens von unten nach oben)
               \item Konstruktion einer optimalen Lösung
             \end{enumerate}
-      \item Die Funktion ist anwendbar, da sie überlappende Teilprobleme besitzt.
+      \item Dynamische Programmierung kann eingesetzt werden, da das Problem eine optimale Teilstruktur besitzt (Perrin-Folge ohne letztes Element ist ebenfalls korrekt) und viele Teilprobleme sich überschneiden.
       \item Algorithmus:\par
             \input{res/perrin_dp.alg}
-            Der Algorithmus hat eine Zeitkomplexität von $\bigO(n)$.
+            Der Algorithmus hat eine Zeitkomplexität von $\bigO(n)$ und eine Platzkomplexität von $4 \in \bigO(1)$.
     \end{enumerate}
   \end{solution}
 \end{exercise}
@@ -246,11 +249,11 @@
 
   \begin{solution}
     \begin{enumerate}
-      \item P: Entscheidungsproblem, das in polynomieller Zeit lösbar ist.\par
-            NP: Entscheidungsproblem, für das eine Lösung in polynomieller Zeit verifizierbar ist.\par
-            NP-vollständig: Problem, das in NP liegt und für das jedes andere Problem in NP auf das gegebene Problem in polynomieller Zeit reduzierbar ist.\par
-            NP-schwer: Problem, für das jedes Problem in NP auf das gegebene Problem in polynomieller Zeit reduzierbar ist.
-      \item Zertifikatsfunktion: Funktion, die ein Zertifikat für ein Problem in NP verifiziert.\par
+      \item P: In polynomieller Zeit lösbare Entscheidungsprobleme (Algorithmus mit Laufzeit $\exists k: \bigO(n^k)$)\par
+            NP: In polynomieller Zeit verifizierbare Entscheidungsprobleme (Zertifikatsfunktion mit Laufzeit $\exists k: \bigO(n^k)$)\par
+            NP-schwer: Probleme, auf die jedes Problem in NP in polynomieller Zeit reduzierbar ist.\par
+            NP-vollständig: Probleme, die in NP liegen und NP-schwer sind.
+      \item Zertifikatsfunktion: Funktion, die ein Zertifikat (Lösungseingabe) für ein Problem in polynomieller Zeit in NP verifiziert.\par
             Reduktion: Transformation eines Problems in ein anderes Problem, sodass eine Lösung des ersten Problems eine Lösung des zweiten Problems impliziert.
     \end{enumerate}
   \end{solution}

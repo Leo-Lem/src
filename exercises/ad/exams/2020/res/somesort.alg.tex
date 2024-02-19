@@ -1,9 +1,5 @@
-\begin{algorithm}[H]
-  \caption{\textalgo{somesort($A, i, j$)}}\label{alg:somesort}
-
-  \KwData{$A[i], i = 1, 2, \ldots, n, A[i] \in \mathbb{N}$}
-  \KwResult{result $\in \mathbb{N}_{>0}$}
-  \BlankLine
+\begin{alg}
+  \signed{somesort}{A, i, j}{\empty}
 
   \lIf{$i \geq j$}{\Return}
   $m \gets \lfloor (i+j)/2 \rfloor$ \\
@@ -11,4 +7,4 @@
   \textalgo{somesort($A, m+1, j$)} \\
   \lIf{$A[j] \leq A[m]$}{swap $A[j]$ and $A[m]$}
   \textalgo{somesort($A, i, j-1$)}
-\end{algorithm}
+\end{alg}

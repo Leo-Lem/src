@@ -1,12 +1,11 @@
-\begin{algorithm}[H]
-  \caption{\textalgo{perrin($n$)}}\label{alg:perrin}
+\begin{alg}
+  \signed{perrin}{n}{result}
+  \params{$n \in \mathbb{N}$}{$\text{result} \in \mathbb{N}$}
 
-  \KwData{$n \in \mathbb{N}$}
-  \KwResult{$\text{result} \in \mathbb{N}$}
-  \BlankLine
-
-  \lIf{$n = 0$}{\Return{3}}
-  \lIf{$n = 1$}{\Return{0}}
-  \lIf{$n = 2$}{\Return{2}}
-  \Return{\textalgo{perrin($n-2$)} + \textalgo{perrin($n-3$)}}
-\end{algorithm}
+  \Switch{n}{
+    \lCase{$0$}{\Return{3}}
+    \lCase{$1$}{\Return{0}}
+    \lCase{$2$}{\Return{2}}
+    \lOther{\Return{\textalgo{perrin($n-2$)} + \textalgo{perrin($n-3$)}}}
+  }
+\end{alg}

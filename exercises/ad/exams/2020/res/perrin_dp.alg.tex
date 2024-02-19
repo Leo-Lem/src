@@ -1,9 +1,15 @@
-\begin{algorithm}[H]
-  \caption{\textalgo{dynamicperrin($n$)}}\label{alg:dynamicperrin}
+\begin{alg}
+  \signed{dynamicperrin}{n}{result}
+  \params{$n \in \mathbb{N}$}{$\text{result} \in \mathbb{N}$}
 
-  \KwData{$n \in \mathbb{N}$}
-  \KwResult{$\text{result} \in \mathbb{N}$}
-  \BlankLine
+  $n \gets [3,0,2]$\;
 
+  \For{$i \gets 0$ \KwTo $n$}{
+    $n[3] \gets n[0] + n[1]$\;
+    $n[0] \gets n[1]$\;
+    $n[1] \gets n[2]$\;
+    $n[2] \gets n[3]$\;
+  }
 
-\end{algorithm}
+  \Return{$n_{-1}$}
+\end{alg}
