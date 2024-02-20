@@ -63,13 +63,14 @@
       \ifx##2\empty\else\KwResult{##2}\fi
       \BlankLine
     }
+    \newcommand\call[2]{\textalgo{##1}($##2$)}
+    \newcommand\callref[2]{\textalgo{##1}($##2$)\explain*{\algrefp{##1}}}
     }{
   \end{algorithm}
 }
 
 \newcommand\algref[1]{\textalgo{#1} algorithm, \ref{alg:#1},}
 \newcommand\algrefp[1]{\textalgo{#1} algorithm (\ref{alg:#1})}
-\newcommand\callalg[2]{\textalgo{#1}($#2$)\explain*{\ref{alg:#1}}}
 
 
 

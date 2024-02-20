@@ -1,0 +1,21 @@
+\begin{alg}
+  \signed{whoAmI}{a, b}{\empty}
+
+  $n \gets 0$\;
+  \For{$i \gets a$ \textbf{to} $b$}{
+    $n \gets n + i$\;
+    \If{$a \mod 2 = 1$}{
+      $a \gets a + 1$
+    }
+    \If{$b \mod 2 = 1$}{
+      $b \gets b - 1$
+    }
+    $m \gets 0$\;
+    $i \gets a$\;
+    \While{$i \leq b$}{
+      $m \gets m + i$\;
+      $i \gets i + 2$
+    }
+  }
+  \Return $n + m$
+\end{alg}

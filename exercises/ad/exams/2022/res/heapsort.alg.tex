@@ -1,0 +1,17 @@
+\begin{alg}
+  \signed{heapsort}{A}{\empty}
+
+  \callref{buildheap}{A}
+  \For{$i \gets length(A)$ \textbf{downto} 2}{
+    \call{deletemax}{A}
+  }
+\end{alg}
+
+\begin{alg}
+  \signed{buildheap}{A}{\empty}
+
+  $n \gets length(A)$\;
+  \For{$i \gets \lfloor n/2\rfloor$ \textbf{downto} 1}{
+    \call{heapifyDown}{A, i}
+  }
+\end{alg}

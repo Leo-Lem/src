@@ -7,12 +7,12 @@
 \begin{exercise}{Algorithmen}
   \begin{enumerate}
     \item Betrachten Sie folgenden Algorithmus in ihrer aus der Vorlesung bekannten Implementierung. Wählen Sie geeignete Parameter zur Beschreibung der Eingabegröße und nutzen Sie diese, um eine möglichst gute obere Schranke an die asymptotische Laufzeitkomplexität (worst-case) anzugeben.
-          \hint{Beispiel PRIM: $n$ Anzahl Knoten, $m$ Anzahl Kanten $\to$ Laufzeit $\mathcal{O}(n \cdot \log^2(n) + m \cdot \log(n))$}
+          \hint{Beispiel \textalgo{prim}: $n$ Anzahl Knoten, $m$ Anzahl Kanten $\to$ Laufzeit $\mathcal{O}(n \cdot \log^2(n) + m \cdot \log(n))$}
           \begin{itemize}
-            \item QUICKSORT
-            \item COUNTINGSORT
-            \item DIJKSTRA (single-source shortest path)
-            \item FLOYD-WARSHALL (all-pairs shortest path)
+            \item \textalgo{quicksort}
+            \item \textalgo{countingsort}
+            \item \textalgo{dijkstra} (single-source shortest path)
+            \item \textalgo{floydWarshall} (all-pairs shortest path)
           \end{itemize}
     \item Wann ist ein Sortieralgorithmus stabil? Nennen Sie einen stabilen Sortieralgorithmus aus der Vorlesung.
     \item Wie wurden die folgenden Begriffe in der Vorlesung definiert?
@@ -24,28 +24,20 @@
 \end{exercise}
 
 \begin{exercise}{Heapsort}
-  Das Array $A = [2,3,4,9,6,5]$ soll mit Hilfe des in der Vorlesung vorgestellten HEAPSORT Algorithmus aufsteigend sortiert werden. Zur Erinnerung finden Sie Teile des Pseudocodes in Algorithmen 1 \& 2. Geb
-  \begin{algorithm}[ht]
-    \caption{HEAPSORT($A$)}
-    \KwData{$A = [A[1], \ldots, A[n]]$}
-    \KwResult{$A$ sortiert}
-    BUILDHEAP($A$) \\
-    \For{$i \gets n$ \textbf{downto} 2}{
-      DELETEMAX($A$)
-    }
-  \end{algorithm}
+  Das Array $A = [2,3,4,9,6,5]$ soll mit Hilfe des in der Vorlesung vorgestellten \algref{heapsort} Algorithmus aufsteigend sortiert werden. Geben Sie den Inhalt des Arrays $A$ nach jedem Schritt des Algorithmus an.
+  \input{res/heapsort.alg}
 \end{exercise}
 
 \begin{exercise}{O-Notation}
   \begin{enumerate}
     \item Ordnen Sie die folgenden Funktionen aufsteigend gemäß ihres asymptotischen Wachstums (ohne Begründung):
           \begin{equation*}
-            n^5,\sqrt{n},n^{1/3},n!,1/100,\sqrt{2^n},n,\log_3(n),n/\log_2{n},16^{\log_2{n}}
+            n^5,\quad \sqrt{n},\quad n^{1/3},\quad n!,\quad 1/100,\quad \sqrt{2^n},\quad n,\quad \log_3(n),\quad n/\log_2{n},\quad 16^{\log_2{n}}
           \end{equation*}
     \item Berechnen Sie für die folgenden Funktionen scharfe Schranken in möglichst einfacher Darstellung der $\bigO$- \& $\Omega$-Notation. Ihr Rechenweg muss nachvollziehbar sein. Sie dürfen auf die aus der Vorlesung bekannten Eigenschaften der $\bigO$- \& $\Omega$-Notation zurückgreifen.
           \begin{align*}
-            f(n) = 42\log_2(n) + 23\sqrt{n} + n^{1/16} \\
-            g(n) = n^{3+\cos{\frac{n\pi}{2}}}
+            f(n) & = 42\log_2(n) + 23\sqrt{n} + n^{1/16} \\
+            g(n) & = n^{3+\cos{\frac{n\pi}{2}}}
           \end{align*}
     \item Beweisen oder widerlegen Sie:\par Für zwei nicht-negative Funktionen $f_1, f_2: \mathbb{N} \to \mathbb{R}$ gilt immer $f_1(n) = \bigO(f_2(n))$ oder $f_1(n) = \Omega(f_2(n))$.
   \end{enumerate}
@@ -71,30 +63,11 @@
   \end{enumerate}
 \end{exercise}
 
-\begin{exercise}{Algorithmenanalyse}
-  Betrachten Sie Algorithmus 3:
-  \begin{algorithm}[ht]
-    \caption{WHOAMI($a, b$)}
-    $n \gets 0$ \\
-    \For{$i \gets a$ \textbf{to} $b$}{
-      $n \gets n + i$ \\
-      \If{$a \mod 2 = 1$}{
-        $a \gets a + 1$
-      }
-      \If{$b \mod 2 = 1$}{
-        $b \gets b - 1$
-      }
-      $m \gets 0$ \\
-      $i \gets a$ \\
-      \While{$i \leq b$}{
-        $m \gets m + i$ \\
-        $i \gets i + 2$
-      }
-    }
-    \Return $n + m$
-  \end{algorithm}
+\begin{exercise}{Who Am I?}
+  Betrachten Sie den \algrefp{whoAmI}.
+  \input{res/whoami.alg}
   \begin{enumerate}
-    \item Geben Sie den Rückgabewert des Aufrufs WHOAMI(1,6) sowie den Inhalt der Variablen $a, b, n$ \& $m$ am Ende des Algorithmus an.
+    \item Geben Sie den Rückgabewert des Aufrufs \textalgo{whoAmI}(1,6) sowie den Inhalt der Variablen $a, b, n$ \& $m$ am Ende des Algorithmus an.
     \item Was berechnet Algorithmus 3 für die Eingabe $a, b \in \mathbb{N}$ mit $a < b$? Begründen Sie Ihre Antwort.
     \item Analysieren Sie die Laufzeit des Algorithmus in Abhängigkeit der Eingaben $a, b \in \mathbb{N}$ mit $a < b$ und begründen Sie ihre Antwort.
     \item Formulieren Sie eine sinvolle Invariante für den Wert der Variable $m$ zu Beginn eines Durchlaufs der While-Schleife mit dem Zählerwert $i$.
