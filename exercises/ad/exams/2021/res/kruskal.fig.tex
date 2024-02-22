@@ -1,6 +1,22 @@
 \begin{figure}
   \centering
-  \begin{tikzpicture}
+  \begin{tikzpicture}[auto,on grid, node distance=2cm, vertex/.style={circle, draw, minimum size=0.75cm}]
+    \node[vertex] (a) {a};
+    \node[vertex, right=of a] (b) {b};
+    \node[vertex, right=of b] (c) {c};
+    \node[vertex, right=of c] (d) {d};
+    \node[vertex, right=of d] (e) {e};
+    \node[vertex, below right=2cm and 1cm of a] (f) {f};
+    \node[vertex, right=of f] (g) {g};
+    \node[vertex, right=of g] (h) {h};
+    \node[vertex, right=of h] (i) {i};
 
+    \draw (a) -- node {17} (b) -- node {31} (c) -- node {5} (d) -- node {23} (e) -- node {13} (i) -- node {19} (h) -- node {7} (g) -- node {11} (f) -- node {29} (a);
+    \draw (b) -- node {3} (f);
+    \draw (c) -- node {11} (g);
+    \draw (c) -- node {13} (h);
+    \draw (d) -- node {2} (h);
   \end{tikzpicture}
+
+  \caption{Ein Beispielgraph für die Anwendung des Algorithmus von Kruskal.}\label{fig:kruskal}
 \end{figure}

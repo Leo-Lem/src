@@ -5,7 +5,7 @@
 \begin{document}
 \sheet[2021]{Ersttermin}
 \begin{exercise}{Kruskal-Algorithmus}
-  Betrachten Sie den Graphen in Abbildung 1. Bestimmen Sie mit Hilfe des Algorithmus von Kruskal einen minimalen Spannbaum des Graphen und skizzieren diesen. Geben Sie zusätzlich die Reihenfolge an, in der die Kanten des Spannbaums gemäß Algorithmus hinzugefügt werden.
+  Betrachten Sie den Graphen in \ref{fig:kruskal}. Bestimmen Sie mit Hilfe des Algorithmus von Kruskal einen minimalen Spannbaum des Graphen und skizzieren diesen. Geben Sie zusätzlich die Reihenfolge an, in der die Kanten des Spannbaums gemäß Algorithmus hinzugefügt werden.
   \input{res/kruskal.fig}
 
   \begin{solution}
@@ -14,7 +14,7 @@
 \end{exercise}
 
 \begin{exercise}{AVL-Bäume}
-  Gegeben sei ein AVL-Baum für die Schlüssel {2,3,5,7,11,13,17,19}. Der Zustand der Datenstruktur ist in Abbildung 2 dargestellt. Skizzieren Sie die Datenstruktur nach dem Einfügen eines Elements mit Schlüssel 6 gemäß der Einfügeoperation aus der Vorlesung. Machen Sie dabei den jeweiligen Zustand vor und nach eventuell notwendigen Balancierungsschritten deutlich.
+  Gegeben sei ein AVL-Baum für die Schlüssel {2,3,5,7,11,13,17,19}. Der Zustand der Datenstruktur ist in \ref{fig:avl} dargestellt. Skizzieren Sie die Datenstruktur nach dem Einfügen eines Elements mit Schlüssel 6 gemäß der Einfügeoperation aus der Vorlesung. Machen Sie dabei den jeweiligen Zustand vor und nach eventuell notwendigen Balancierungsschritten deutlich.
   \input{res/avl.fig}
 
   \begin{solution}
@@ -53,7 +53,7 @@
 \end{exercise}
 
 \begin{exercise}{Divide \& Conquer}
-  Betrachten Sie den Divide \& Conquer Algorithmus, dessen Pseudocode in Algorithmus 1 gegeben ist und lösen Sie folgende Aufgaben:
+  Betrachten Sie den Divide \& Conquer Algorithmus, dessen Pseudocode in \ref{alg:Algo} gegeben ist und lösen Sie folgende Aufgaben:
   \begin{enumerate}
     \item Geben Sie eine Rekursionsgleichung für die Laufzeit $T(n)$ des Algorithmus bei Eingabe $(A, 1, n)$ für ein Array $A$ der Länge $n \in \mathbb{N}$ an.
     \item Analysieren Sie die Laufzeit von Algorithmus 1 möglichst genau in der $O$-Notation mit Hilfe der Substitutionsmethode. Sie können dabei annehmen, dass $n$ eine Zweierpotenz ist.
@@ -98,7 +98,7 @@
   Im Folgenden definieren wir zwei Entscheidungsprobleme:
   \begin{itemize}
     \item \textproblem{Unabhängige Menge}: Eine unabhängige Menge eines ungerichteten Graphen $G = (V,E)$ ist eine Teilmenge von Knoten $U \subseteq V$, so dass keine zwei Knoten aus $U$ adjazent sind. Es gilt also $\{u,v\} \in E$ für alle $u,v \in U$ mit $u \neq v$. Im Entscheidungsproblem \textproblem{Unabhängige Menge} ist ein kodiertes Paar $\langle G, k \rangle$ gegeben, wobei $G = (V,E)$ ein ungerichteter Graph ist und $k \in \mathbb{N}$. Es muss entschieden werden, ob $G$ eine unabhängige Menge $U \subseteq V$ der Größe $|U| \geq k$ enthält. Abbildung 4a zeigt ein Beispiel für eine Instanz des Problems.
-    \item \textproblem{Keine Schnitte}: Gegeben ist ein kodiertes Paar $\langle S, l \rangle$, wobei $S = \{I_1, I_2, \dots\}$ eine endliche Menge von Intervallen $I_i \subseteq \mathbb{R}$ ist und $l \in \mathbb{N}$. Es muss entschieden werden, ob es eine Teilmenge $T \subseteq S$ von $S$ der Größe $|T| \geq l$ gibt, so dass alle Intervalle in $T$ paarweise disjunkt sind. Abbildung 4b zeigt ein Beispiel für eine Instanz des Problems.
+    \item \textproblem{Keine Schnitte}: Gegeben ist ein kodiertes Paar $\langle S, l \rangle$, wobei $S = \{I_1, I_2, \dots\}$ eine endliche Menge von Intervallen $I_i \subseteq \mathbb{R}$ ist und $l \in \mathbb{N}$. Es muss entschieden werden, ob es eine Teilmenge $T \subseteq S$ von $S$ der Größe $|T| \geq l$ gibt, so dass alle Intervalle in $T$ paarweise disjunkt sind.
   \end{itemize}
   \hint{Sie dürfen zur Lösung der folgenden Aufgaben benutzen, dass \textproblem{Unabhängige Menge} NP-schwer ist.}
   \begin{enumerate}
@@ -106,7 +106,6 @@
     \item Beweisen Sie \textproblem{Keine Schnitte} $\leq_P$ \textproblem{Unabhängige Menge}.
     \item Was folgt daraus für die Komplexität von \textproblem{Keine Schnitte}?
   \end{enumerate}
-  \input{res/graph+intervals.fig}
 
   \begin{solution}
 

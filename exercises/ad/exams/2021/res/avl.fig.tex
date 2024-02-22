@@ -1,6 +1,20 @@
 \begin{figure}
   \centering
-  \begin{tikzpicture}
+  \begin{tikzpicture}[auto,on grid,node distance=2cm,main node/.style={circle,draw,minimum size=0.75cm}]
+    \node[main node] (5) {5};
+    \node[main node, below left=of 5] (3) {3};
+    \node[main node, below left=of 3] (2) {2};
+    \node[main node, below right=of 5] (17) {17};
+    \node[main node, below left=of 17] (11) {11};
+    \node[main node, below right=of 17] (19) {19};
+    \node[main node, below left=of 11] (7) {7};
+    \node[main node, below right=of 11] (13) {13};
 
+    \draw (5) -- (3) -- (2);
+    \draw (5) -- (17) -- (11) -- (7);
+    \draw (17) -- (19);
+    \draw (11) -- (13);
   \end{tikzpicture}
+
+  \caption{AVL-Baum für die Schlüssel $2, 3, 5, 7, 11, 13, 17, 19$.}\label{fig:avl}
 \end{figure}

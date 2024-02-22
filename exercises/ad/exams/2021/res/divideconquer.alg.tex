@@ -1,21 +1,25 @@
 \begin{alg}
-  % Algo(A, l, r)
-  % n←r−l+1 ifn≤2
-  % ifn=2
-  % return |A[r] − A[l]|
-  % else return 0 else
-  % p←⌊(l+r)/2⌋
-  % a ← Algo(A, l, p) b←Algo(A,p+1,r) ifa>b
-  % c←a else c←b
-  % fori←ltop
-  % for j ← p + 1 to r
-  % Lösung
-  % (a)
-  % Algorithmus 1
-  % (Θ(1)
-  % 2T (n/2) + Θ(n2)
-  % return c
-  % x ← |A[i] − A[j]| if x > c
-  % c←x
+  \signed{Algo}{A, l, r}{\empty}
+  \params{An array $A$ of $n$ elements, indices $l$ and $r$ such that $1 \leq l \leq r \leq n$.}{\empty}
 
+  $n \gets r-l+1$
+  \If{$n \leq 2$}{
+  \lIf{$n = 2$}{\Return{$|A[r] - A[l]|$}}
+  \lElse{\Return{0}}
+  }
+  \Else{
+  $p \gets \left\lfloor \frac{l+r}{2} \right\rfloor$\;
+  $a \gets \call{Algo}{A, l, p}$\;
+  $b \gets \call{Algo}{A, p+1, r}$\;
+  \lIf{$a > b$}{$c \gets a$}
+  \lElse{$c \gets b$}
+
+  \For{$i \gets l$ \KwTo $p$}{
+  \For{$j \gets p+1$ \KwTo $r$}{
+  $x \gets |A[i] - A[j]|$\;
+  \lIf{$x > c$}{$c \gets x$}
+  }
+  }
+  }
+  \Return{$c$}
 \end{alg}
