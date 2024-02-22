@@ -1,0 +1,9 @@
+\begin{alg}
+  \signed{exponentialSearch}{A, n, x}{i}
+  \params{An array $A$ of $n$ elements and a value $x$ to search for.}{An index $i$ such that $A[i] = x$ or $-1$ if $x$ is not in $A$.}
+
+  \lIf{$A[0] = x$}{\Return{$0$}}
+  $i \gets 1$
+  \While{$i < n$ and $A[i] \leq x$}{$i \gets i \cdot 2$}
+  \Return{\call{binarySearch}{A, i/2, \min(i, n-1), x}}
+\end{alg}

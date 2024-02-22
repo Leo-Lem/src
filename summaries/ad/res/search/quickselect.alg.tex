@@ -1,0 +1,11 @@
+\begin{alg}
+  \signed{quickSelect}{A, l, r, i}{x}
+  \params{An array $A$ of $n$ elements, indices $l$ and $r$ such that $1 \leq l \leq r \leq n$ and an integer $i$ such that $1 \leq i \leq r-l+1$.}{The $i$-th order statistic of the subarray $A[l..r]$.}
+
+  \lIf{$l = r$}{\Return{$A[l]$}}
+  $q \gets \call{partition}{A, l, r}$
+  $k \gets q-l+1$
+  \lIf{$i = k$}{\Return{$A[q]$}}
+  \lElseIf{$i < k$}{\Return{\call{quickSelect}{A, l, q-1, i}}}
+  \lElse{\Return{\call{quickSelect}{A, q+1, r, i-k}}}
+\end{alg}

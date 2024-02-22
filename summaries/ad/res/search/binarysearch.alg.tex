@@ -1,0 +1,12 @@
+\begin{alg}
+  \signed{binarySearch}{A, l, r, x}{i}
+  \params{An array $A$ of $n$ elements and a value $x$ to search for.}{An index $i$ such that $A[i] = x$ or $-1$ if $x$ is not in $A$.}
+
+  \lIf{$l > r$}{\Return{$-1$}}
+
+  $m \gets \lfloor\frac{l+r}{2}\rfloor$
+
+  \lIf{$A[m] > x$}{\Return{\call{binarySearch}{A, l, m-1, x}}}
+  \lElseIf{$A[m] < x$}{\Return{\call{binarySearch}{A, m+1, r, x}}}
+  \lElse{\Return{$m$}}
+\end{alg}

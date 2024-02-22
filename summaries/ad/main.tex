@@ -36,62 +36,92 @@ where $a \geq 1$, $b > 1$, $f(n)$ is a given function, and $n_0$ is a given cons
 The elementary sorting algorithms \algref{selectionSort} \algref{insertionSort} and \algref{bubbleSort} have a time complexity of $\bigO(n^2)$. They sort stable and in-place.
 \subsubsection{Selection Sort}
 Continue selecting the smallest element and swapping it with the first unsorted element.\par
-\input{res/sorting/selectionsort.alg}
+\input{res/sort/selectionsort.alg}
 
 \subsubsection{Insertion Sort}
 Continue inserting the first unsorted element into the sorted part of the array.\par
-\input{res/sorting/insertionsort.alg}
+\input{res/sort/insertionsort.alg}
 
 \subsubsection{Bubble Sort}
 Continue swapping adjacent elements if they are in the wrong order.\par
-\input{res/sorting/bubblesort.alg}
+\input{res/sort/bubblesort.alg}
 
 \subsection{Divide \& Conquer}
 The divide and conquer sorting algorithms \algref{mergeSort} and \algref{quickSort} have a time complexity of $\bigO(n\log n)$.
 \subsubsection{Merge Sort}
 \textbf{Idea}: Divide the array into two halves, sort the halves, and then merge them.\par
 \textbf{Properties}: Sorts stable and not in-place.\par
-\input{res/sorting/mergesort.alg}
+\input{res/sort/mergesort.alg}
 
 \subsubsection{Quick Sort}
 \textbf{Idea}: Choose a pivot element and partition the array into elements smaller and larger than the pivot. Then sort the partitions.\par
 \textbf{Properties}: Sorts in-place, but not stable.\par
-\input{res/sorting/quicksort.alg}
+\input{res/sort/quicksort.alg}
 
 \subsection{Heap Sort}
 \textbf{Idea}: Use heap structure to sort the array.\par
 \textbf{Properties}: Sorts in-place, but not stable.\par
 \textbf{Complexity}: The time complexity is $\bigO(n\log n)$.\par
-\input{res/sorting/heapsort.alg}
+\input{res/sort/heapsort.alg}
 
 \subsection{Non-comparing Sorting}
 \subsubsection{Trivial Sort}
 \textbf{Assumption}: Small range of input, pairwise different, integers.\par
 \textbf{Idea}: Use a lookup table to sort the input.\par
 \textbf{Complexity}: Timewise $\bigO(n)$, but requires $\bigO(k)$ space, where $k$ is the range of the input.\par
-\input{res/sorting/trivialsort.alg}
+\input{res/sort/trivialsort.alg}
 
 \subsubsection{Counting Sort}
 \textbf{Assumption}: Integers up to $k\in\bigO(n)$.\par
 \textbf{Idea}: Count the number of occurrences of each element and then reconstruct the sorted array.\par
 \textbf{Complexity}: Timewise $\bigO(n+k)$, where $k$ is the range of the input.\par
-\input{res/sorting/countingsort.alg}
+\input{res/sort/countingsort.alg}
 
 \subsubsection{Radix Sort}
 \textbf{Assumption}: Integers of base $m$ with $d$ digits lesser than $m-1$.\par
 \textbf{Idea}: Sort the elements by their digits from the least significant to the most significant.\par
 \textbf{Complexity}: Timewise $\bigO(d(n+m))$, where $d$ is the number of digits and $m$ is the base of the integers.\par
-\input{res/sorting/radixsort.alg}
+\input{res/sort/radixsort.alg}
 
 \subsubsection{Bucket Sort}
 \textbf{Assumption}: Uniformly distributed numbers in $[0,1)$.\par
 \textbf{Idea}: Distribute the elements into $n$ buckets and then sort each bucket.\par
 \textbf{Complexity}: Timewise $\bigO(n^2)$, but $\bigO(n)$ with a good choice of $n$.\par
-\input{res/sorting/bucketsort.alg}
+\input{res/sort/bucketsort.alg}
 
 
 
 \section{Searching}
+\subsection{Algorithms}
+\subsubsection{Linear Search}
+\textbf{Idea}: Iterate through the array and compare each element with the search key.\par
+\textbf{Complexity}: Timewise $\bigO(n)$.\par
+\input{res/search/linearsearch.alg}
+
+\subsubsection{Binary Search}
+\textbf{Idea}: Divide the array into two halves and continue searching in the half that contains the search key.\par
+\textbf{Complexity}: Timewise $\bigO(\log n)$.\par
+\input{res/search/binarysearch.alg}
+
+\subsubsection{Exponential Search}
+\textbf{Idea}: Double the search range until the search key is found or the range is larger than the array.\par
+\textbf{Complexity}: Timewise $\bigO(\log n)$.\par
+\input{res/search/exponentialsearch.alg}
+
+\subsection{Selection}
+\subsubsection{Quick Select}
+\textbf{Idea}: Based on \algref{quickSort}, but only recursively sort the partition that contains the $i$-th order statistic.\par
+\textbf{Complexity}: Timewise $\bigO(n)$ on average, $\bigO(n^2)$ in the worst case.\par
+\input{res/search/quickselect.alg}
+
+\subsubsection{Randomized Selection}
+\textbf{Idea}: \algrefp{quickSelect} with randomized partition.\par
+\textbf{Complexity}: Timewise $\bigO(n)$ on average, $\bigO(n^2)$ in the worst case.\par
+
+\subsubsection{Median of Medians}
+\textbf{Idea}: Divide the array into groups of 5 elements, find the median of each group, and then recursively find the median of the medians.\par
+\textbf{Complexity}: Timewise $\bigO(n)$.\par
+
 \subsection{Red-Black Trees}
 \subsubsection{Properties}
 \begin{itemize}
@@ -119,11 +149,24 @@ Insert the new node as in a normal binary search tree and then rebalance the tre
 Delete the node as in a normal binary search tree and then rebalance the tree by performing rotations from the deleted node to the root.
 
 \subsection{Hashing}
-\subsubsection{Chaining}
+\subsubsection{Hash Functions}
+\begin{enumerate}
+  \item Division Method: $h(k) = k \mod m$
+  \item Multiplication Method: $h(k) = \lfloor m \cdot (kA \mod 1) \rfloor$
+  \item Universal Hashing (Extended Division method): $h(k) = ((ak+b) \mod p) \mod m$
+\end{enumerate}
+
+\subsubsection{Chaining}\label{sec:chaining}
 Chained hashing uses a linked list to store all elements that hash to the same value. The time complexity of chained hashing is $\bigO(1+\alpha)$, where $\alpha$ is the load factor.
 
-\subsubsection{Open Addressing}
+\subsubsection{Open Addressing}\label{sec:openAddressing}
 Open addressing uses the next free slot in the hash table to store elements that hash to the same value. The time complexity of open addressing is $\bigO(1+\alpha)$, where $\alpha$ is the load factor.
+\begin{enumerate}
+  \item Linear Probing: $h(k,i) = (h'(k) + i) \mod m$
+  \item Quadratic Probing: $h(k,i) = (h'(k) + c_1\cdot i + c_2\cdot i^2) \mod m$
+  \item Double Hashing: $h(k,i) = (h_1(k) + i\cdot h_2(k)) \mod m$
+\end{enumerate}
+
 
 
 \section{Graphs}
@@ -135,9 +178,12 @@ Open addressing uses the next free slot in the hash table to store elements that
 
 \subsection{Minimal Spanning Trees}
 \subsubsection{Kruskal}
+The \algrefp{kruskal} uses the 'lightest' edge between trees to find the MST. The algorithm has a time complexity of $\bigO(E\log V)$.\par
+
 \input{res/mst/kruskal.alg.tex}
 
 \subsubsection{Prim}
+The \algrefp{prim} algorithm starts with an arbitrary vertex and adds the 'lightest' edge to the MST. The algorithm has a time complexity of $\bigO(E\log V)$ when using an adjacency list.\par
 \input{res/mst/prim.alg.tex}
 
 \subsection{Find Bridges}
@@ -193,5 +239,72 @@ To prove NP-completeness, one can use the following steps:
   \item[2.] \textbf{Heuristic Algorithms:} No guarantee, but resonably good solutions usually. Local search, genetic algorithms, etc.
   \item[3.] \textbf{Exact Algorithms:} Find the optimal solution. Backtracking, branch and bound, etc.
 \end{enumerate}
+\subsubsection{Known NP-Complete Problems}
+\begin{itemize}
+  \item \textproblem{SAT (Boolean Satisfiability Problem)}: Given a Boolean formula, is there an assignment of truth values to the variables that makes the formula true?
+  \item \textproblem{3-SAT}: Given a Boolean formula in conjunctive normal form, is there a satisfying assignment in which each clause contains at most 3 literals?
+  \item \textproblem{k-Clique}: Given a graph $G = (V,E)$ and an integer $k$, is there a clique of size $k$ in $G$?
+  \item \textproblem{Subset Sum}: Given a set of integers, is there a subset that sums to a given integer?
+\end{itemize}
+
+
+
+\section{Runtime Complexity}
+\subsection{Sorting}
+\begin{itemize}
+  \item \algrefp{selectionSort}: $\bigO(n^2)$
+  \item \algrefp{insertionSort}: $\bigO(n^2)$
+  \item \algrefp{bubbleSort}: $\bigO(n^2)$
+  \item \algrefp{mergeSort}: $\bigO(n\log n)$
+  \item \algrefp{quickSort}: $\bigO_\text{\O}(n\log n)$, $\bigO(n^2)$
+  \item \algrefp{heapSort}: $\bigO(n\log n)$
+  \item \algrefp{countingSort}: $\bigO(n+k)$ ($k$: range of input)
+  \item \algrefp{radixSort}: $\bigO(d(n+m))$ ($d$: number of digits, $m$: base of integers)
+  \item \algrefp{bucketSort}: $\bigO(n^2)$ ($\bigO(n)$ with good choice of $n$)
+\end{itemize}
+
+\subsection{Searching}
+\begin{itemize}
+  \item \algrefp{linearSearch}: $\bigO(n)$
+  \item \algrefp{binarySearch}: $\bigO(\log n)$
+  \item \algrefp{exponentialSearch}: $\bigO(\log k)$ ($k$: index of the search key)
+\end{itemize}
+\subsubsection{Trees}
+\begin{itemize}
+  \item Binary Search Tree: $\bigO(h)$ ($h$: height of the tree)
+  \item Red-Black \& AVL Tree: $\bigO(\log n)$
+  \item Red-Black \& AVL Tree: Insert, Delete, Min, Max, …: $\bigO(\log n)$
+\end{itemize}
+\subsubsection{Hashing}
+\begin{itemize}
+  \item Chaining: $\bigO(1+\alpha)$ ($\alpha$: load factor)
+  \item Open Addressing: $\bigO(1+\alpha)$ ($\alpha$: load factor)
+\end{itemize}
+
+\subsection{Selection}
+\begin{itemize}
+  \item \algrefp{quickSelect}: $\bigO(n\log n)$
+  \item \textalgo{randSelect}: $\bigO_\text{\O}(n)$, $\bigO(n^2)$
+  \item \textalgo{medianOfMedians}: $\bigO(n)$
+\end{itemize}
+
+\subsection{Graphs}
+\begin{itemize}
+  \item \algrefp{topologicalSort}: $\bigO(V+E)$
+  \item \textalgo{kosarajuSharir} (SCCs): $\bigO(V+E)$
+  \item \algrefp{findBridges}: $\bigO(E(V+E))=\bigO(E\cdot V+E^2)$
+\end{itemize}
+\subsubsection{MST}
+\begin{itemize}
+  \item \algrefp{kruskal}: $\bigO(E\log V)$
+  \item \algrefp{prim}: $\bigO(E\log V)$
+\end{itemize}
+\subsubsection{Shortest Paths}
+\begin{itemize}
+  \item \algrefp{bellmanFord} (single source): $\bigO(V\cdot E)$
+  \item \algrefp{dijkstra} (single source): $\bigO(E\log V)$
+  \item \algrefp{dijkstraSinglePair} (single-pair): $\bigO(V\log V+E)$
+  \item \algrefp{floydWarshall} (all-pairs): $\bigO(V^3)$
+\end{itemize}
 
 \end{document}

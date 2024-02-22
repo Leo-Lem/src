@@ -1,0 +1,10 @@
+\begin{alg}
+  \signed{linearSearch}{A, x}{i}
+  \params{An array $A$ of $n$ elements and a value $x$ to search for.}{An index $i$ such that $A[i] = x$ or $-1$ if $x$ is not in $A$.}
+
+  \For{$i = 1$ to $A.\text{size}$}{
+    \lIf{$A[i] = x$}{\Return{$i$}}
+  }
+
+  \Return{$-1$}
+\end{alg}
