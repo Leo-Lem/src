@@ -46,9 +46,9 @@
     \begin{enumerate}
       \item $10^{12} < n + \sqrt{n} < \frac{\sqrt{n}^{2.024}}{\log n} < 25n^2 < n^{\sqrt{n}} < {1.01}^n < 2^n$
       \item $T(n) = 8T\left(\frac{n}{2}\right) + n +6$ ist Fall I des Mastertheorems mit $a = 8$, $b = 2$ und $f(n) = n + 6$.\par
-            Da $f(n) \in \bigO(n^{\log_2 8 + \varepsilon})$ für $\varepsilon = 1$ ist, gilt $T(n) = \Theta(n^{\log_2 8}) = \Theta(n^3)$.
+            Da $f(n) \in \bigO(n^{\log_2 8 - \varepsilon})$ für $\varepsilon = 1$ ist, gilt $T(n) = \Theta(n^{\log_2 8}) = \Theta(n^3)$.
       \item Bei Hashing mit Verkettung wird in jedem Eintrag in der Hashtable eine Liste von Elementen gespeichert, während bei offener Adressierung bei Kollision sondiert wird (z.B. linear oder quadratisch).
-      \item Nein, k-Clique ist NP-vollständig, also gibt es auch keinen polynomiellen Algorithmus für 5-Clique, der das Problem löst.
+      \item 5-Clique ist in polynomieller Zeit lösbar, da jede von 5 Knoten in $n(n-1)(n-2)(n-3)(n-4)\in \bigO(n^5)$ Zeit überprüft werden kann. k-Clique ist lediglich NP-vollständig, wenn $k$ Teil des Inputs ist.
       \item \begin{itemize}
               \item \texttt{a: (0, nil), b: ($\infty$, nil), c: ($\infty$, nil)}\par
               \item \texttt{a: (0, nil), b: (1, a), c: (3,a)}\par
@@ -61,8 +61,8 @@
             \end{itemize}
       \item Nein, ein AVL-Baum mit $n$ Knoten kann Höhe $\log_2 n$ haben, was bereits bei $n = 8$ kleiner als $n/3$ ist.
       \item \begin{itemize}
-              \item $k$-te Iteration: $n, n-1, n-2, ..., n-k+1$
-              \item Laufzeit: $\sum_{i=1}^{n} i = \frac{n(n+1)}{2} \in \bigO(n^2)$
+              \item $k$-te Iteration: $2^k$
+              \item Laufzeit: $\bigO(n)$, exponentiell in Eingabe $k$
             \end{itemize}
       \item \begin{itemize}
               \item[\xmark] Eine 2-Approximation garantiert ein Ergebnis, sodass $|C|/|C^*| \leq 2$.
@@ -71,9 +71,9 @@
               \item[\checkmark] Wenn der Eingabegraph keine Kanten enthält, ist die Lösung trivial. Wenn der Eingabegraph ein Pfad ist, kann das maximale VertexCover 3 Knoten umfassen (da sonst nicht alle verbunden sind). Das lässt sich ebenfalls in polynomieller Zeit überprüfen (Pfad ablaufen).
             \end{itemize}
       \item \begin{itemize}
-              \item[\xmark] Bubblesort hat eine Laufzeit von $O(n^2)$.
+              \item[\checkmark] Bubblesort hat eine scharfe Laufzeit von $\bigO(n^2)$. $\bigO(n^3)$ ist natürlich trotzdem richtig.
               \item[\xmark] Da gleiche Kantengewichte erlaubt sind, ist der minimale Spannbaum nicht eindeutig.
-              \item[\xmark] Es können zB. nur ein roter Knoten im linken Teilbaum sein, wenn beide Teilbäume Pfade sind.
+              \item[\xmark] Ein RB-Baum mit 15 Knoten kann zB. null rote Knoten haben.
               \item[\xmark] Die Operationen \texttt{Make-Set}, \texttt{Union} und \texttt{Find-Set} können höchstens amortisiert in konstanter Zeit ausgeführt werden.
             \end{itemize}
     \end{enumerate}
@@ -91,10 +91,10 @@
   \begin{solution}
     \begin{enumerate}
       \item \begin{tabular}{c|cccccc}
-              Durchlauf & 0 & 1 & 2 & 3 & 4 & 5 \\
+              $i$ & \xmark & 2 & 3 & 4 & 5 & 6 \\
               \hline
-              $m$       & 1 & 2 & 1 & 2 & 3 & 1 \\
-              $x$       & 1 & 2 & 2 & 2 & 3 & 3
+              $m$ & 1      & 2 & 1 & 2 & 3 & 1 \\
+              $x$ & 1      & 2 & 2 & 2 & 3 & 3
             \end{tabular}
       \item Die Länge der längsten (streng) absteigenden Teilfolge von $A$.
       \item $x$ ist die Länge der längsten (streng) absteigenden Teilfolge von $A[0..i]$.
@@ -119,9 +119,9 @@
   \begin{solution}
     \begin{enumerate}
       \item \begin{itemize}
-              \item $l_{\{1,2\}}\gets$\textalgo{Alg($\{1,2\},\{l_1,l_2\}$)}
-              \item $l_{\{3,4\}}\gets$\textalgo{Alg($\{3,4\},\{l_3,l_4\}$)}
-              \item $l_{\{1,2,3,4\}}\gets$\textalgo{Alg($\{1,2,3,4\},\{l_{\{1,2\}},l_{\{3,4\}}\}$)}
+              \item $l_{\{1,2\}}\gets$\textalgo{Alg($\{1,2\},\{1\},l_1,l_2$)}
+              \item $l_{\{3,4\}}\gets$\textalgo{Alg($\{3,4\},\{3\},l_3,l_4$)}
+              \item $l_{M}\gets$\textalgo{Alg($M,\{1,2\},l_{\{1,2\}},l_{\{3,4\}}$)}
             \end{itemize}
       \item Der Algorithmus \textalgo{solvesets} ist ein rekursiver Ansatz, welcher die Menge $M$ hälftig auswertet und die Lösungen dann mittels \texttt{Alg} zusammenführt.\par
             \input{res/solvesets.alg}
@@ -141,7 +141,11 @@
   \begin{solution}
     \begin{enumerate}
       \item Der Algorithmus iteriert über alle Elemente in $A$ und prüft, ob sie in $B$ enthalten sind. Die Laufzeit ist $O(|A| \cdot |B|)$.
-      \item Eine optimale Laufzeit von $\bigO(|A| \log |B|)$ kann erreicht werden, indem $A$ sortiert wird (zB. \textalgo{mergesort} in $\bigO(|A|\log|A|)$) und dann jedes Element aus $B$ in $A$ gesucht wird (zB. mittels \textalgo{binarysearch} in $\bigO(\log n)$). Die Laufzeit ist dann $\bigO(|B| \log |A| + |A| \log |A|)=\bigO(|B| \log |A|)$.
+      \item Eine optimale Laufzeit von $\bigO(|A| \log |B|)$ kann folgendermaßen erreicht werden:
+            \begin{itemize}
+              \item Sortiere $A$ in $\bigO(|A| \log |A|)$ (zB. \textalgo{mergesort})
+              \item Iteriere über $B$ und suche jedes Element in $A$ in $\bigO(|B| \log |A|)$: Falls nicht enthalten, füge zu L hinzu. Sonst entferne Element aus $A$.
+            \end{itemize}
       \item Wenn sortieren und suchen als korrekt angenommen wird, ist die Korrektheit des Algorithmus offensichtlich. Falls ein Duplikat in $A$ und $B$ gefunden wird, wird es nicht in $L$ aufgenommen. Die Laufzeit des Algorithmus ist $\bigO(|B| \log |A|)$.
     \end{enumerate}
   \end{solution}
@@ -158,15 +162,12 @@
   \end{enumerate}
   \begin{solution}
     \begin{enumerate}
-      \item Da \textproblem{independent set} NP-schwer ist, wissen wir, dass \textproblem{independent set} in NP ist. Nun können wir zeigen, dass sich \textproblem{independent set} zB. auf \textproblem{Clique} reduzieren lässt. Das lässt sich über einen invertierten Graphen (Kanten werden zu Nicht-Kanten und umgekehrt) erreichen. Somit ist \textproblem{independent set} NP-vollständig.
-      \item Gegeben sei eine Instanz von \textproblem{no cuts} mit Intervallen $S = \{I_1,I_2,I_3,...\}$ und $k \in \{1,...,|S|\}$. Wir konstruieren eine Instanz von \textproblem{independent set} mit einem Graphen $G = (V,E)$ und einer Zahl $k' \in \{1,...,|V|\}$ wie folgt:
-            \begin{itemize}
-              \item $V = S$
-              \item $E = \{\{I_i,I_j\} \mid I_i \cap I_j \neq \emptyset\}$
-              \item $k' = k$
-            \end{itemize}
-            Dann ist die Instanz von \textproblem{no cuts} genau dann lösbar, wenn die Instanz von \textproblem{independent set} lösbar ist.
-      \item Da \textproblem{independent set} NP-vollständig ist, folgt aus 2. dass \textproblem{no cuts} NP-vollständig ist.
+      \item Es ist zu zeigen, dass \textproblem{independent set} in NP ist. Eine Lösung lässt sich in polynomieller Zeit verifizieren, indem für jeden Knoten in der Lösung geprüft wird, ob er mit keinem anderen Knoten in der Lösung verbunden ist (Laufzeit $\bigO(|V|^2)$). Somit ist \textproblem{independent set} NP-vollständig (da NP-schwer und in NP).
+      \item Für eine Reduktion könnten Intervalle als Knoten abgebildet werden und sich überschneidende Intervalle mit Kanten verbunden werden. Die Zahl $k$ bleibt gleich. Die Reduktion ist in polynomieller Zeit möglich (Laufzeit beschränkt durch $\bigO(S^2)$). Somit ist \textproblem{no cuts} $\leq_p$ \textproblem{independent set}.\par
+            In einer Lösung für \textproblem{independent set} sind die Knoten nicht mit Kanten verbunden. Daher sind die Intervalle in einer Lösung für \textproblem{no cuts} paarweise disjunkt (da die Kanten als Überschneidungen interpretiert werden).\par
+            In einer Lösung für \textproblem{no cuts} sind die Intervalle paarweise disjunkt. Annahmegemäß wären die repräsentativen Knoten also nicht verbunden.\par
+            Somit ist die Reduktion korrekt.
+      \item Wir haben lediglich \textproblem{no cuts} auf \textproblem{independent set} reduziert, was keine Aussage über die Komplexität von \textproblem{no cuts} macht. Um eine Aussage über die Komplexität von \textproblem{no cuts} zu machen, müsste \textproblem{independent set} auf \textproblem{no cuts} reduziert werden.
     \end{enumerate}
   \end{solution}
 \end{exercise}

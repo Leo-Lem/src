@@ -1,0 +1,13 @@
+\begin{algorithm}[H]
+  \caption{\textalgo{solvesets($M$, $L$)}}\label{alg:solvesets}
+
+  \KwData{A list $M$ of $n$ integers and an integer $L$}
+  \KwResult{An integer $l$}
+
+  \lIf{$n = 1$}{\Return{$L[M.first]$}}
+  \Else{
+    $l_1 \gets$ \textalgo{solvesets($M[:\frac{n}{2}-1]$, $L$)}\;
+    $l_2 \gets$ \textalgo{solvesets($M[\frac{n}{2}:]$, $L$)}\;
+    \Return{\textalgo{Alg($M, M[:\frac{n}{2}-1], l_1, l_2$)}}\;
+  }
+\end{algorithm}
