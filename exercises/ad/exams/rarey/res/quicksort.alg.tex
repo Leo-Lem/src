@@ -1,0 +1,12 @@
+\begin{alg}
+  \signed{Partition}{A, l, r}{\empty}
+  $i \gets l - 1$\;
+  \For{$j \gets l$ \KwTo $r - 1$}{
+    \If{$A[j] \leq A[r]$}{
+      $i \gets i + 1$\;
+      $\text{SWAP}(A[i], A[j])$\;
+    }
+  }
+  $\text{SWAP}(A[i + 1], A[r])$\;
+  \KwRet{$(i + 1)$}\;
+\end{alg}
