@@ -13,20 +13,16 @@
 
   \begin{solution}
     \begin{enumerate}
-      \item \induction{
-              \sum_{k=1}^{0}{k} = 0 = \frac{0(0+1)}{2}
-            }{
-              \sum_{k=1}^{n}{k} = \frac{n(n+1)}{2}
-            }{
-              \sum_{k=1}^{n+1}{k} = \sum_{k=1}^{n}{k} + (n+1) = \frac{n(n+1)}{2} + (n+1) = \frac{n(n+1)+2(n+1)}{2} = \frac{(n+1)(n+2)}{2}
-            }
-      \item \induction{
-              \sum_{k=0}^{0-1} 2^k = 0 = 2^0-1
-            }{
-              \sum_{k=0}^{n-1} 2^k = 2^n-1
-            }{
-              \sum_{k=0}^{n} 2^k = 2^n-1 + 2^n = 2^{n+1}-1
-            }
+      \item \begin{induction}
+              \base{$\sum_{k=1}^{0}{k} = 0 = \frac{0(0+1)}{2}$}
+              \cond{$\sum_{k=1}^{n}{k} = \frac{n(n+1)}{2}$}
+              \step{$\sum_{k=1}^{n+1}{k} = \sum_{k=1}^{n}{k} + (n+1) = \frac{n(n+1)}{2} + (n+1) = \frac{n(n+1)+2(n+1)}{2} = \frac{(n+1)(n+2)}{2}$}
+            \end{induction}
+      \item \begin{induction}
+              \base{$\sum_{k=0}^{0-1} 2^k = 0 = 2^0-1$}
+              \cond{$\sum_{k=0}^{n-1} 2^k = 2^n-1$}
+              \step{$\sum_{k=0}^{n} 2^k = 2^n-1 + 2^n = 2^{n+1}-1$}
+            \end{induction}
     \end{enumerate}
   \end{solution}
 \end{exercise}

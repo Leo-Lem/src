@@ -135,30 +135,34 @@
             \end{align*}
       \item Der Algorithmus berechnet den Durchschnitt der Elemente im Array.
       \item Schleifeninvariante: $\text{result} = \sum_{k=1}^{i} A[k]/i$.
-            \invariant{
-              In erster Iteration ist die Invariante trivialerweise korrekt, da Durchschnitt von einem Element gleich dem Element ist.
-              \begin{align*}
-                \text{result} & = ((1-1)\cdot 0 + A[1])/1 \\
-                              & = A[1]                    \\
-                              & = \sum_{k=1}^{1} A[k]/1
-              \end{align*}
-            }{
-              Wird eine korrekte Schleifeninvariante vor Iteration $i$ angenommen, ist die Invariante danach ebenfalls korrekt.
-              \begin{align*}
-                \text{result} & = ((i-1)\cdot \text{result} + A[i-1])/(i-1)        \\
-                              & = ((i-1)\cdot\sum_{k=1}^{i-1} A[k]/(i-1) + A[i])/i \\
-                              & = (\sum_{k=1}^{i-1} A[k] + A[i])/i                 \\
-                              & = \sum_{k=1}^{i} A[k]/i
-              \end{align*}
-            }{
-              Die Korrektheit bei Termination leitet sich aus der Korrektheit in der Erhaltung ab.
-              \begin{align*}
-                \text{result} & = ((n-1)\cdot \text{result} + A[n-1])/(n-1)        \\
-                              & = ((n-1)\cdot\sum_{k=1}^{n-1} A[k]/(n-1) + A[n])/n \\
-                              & = (\sum_{k=1}^{n-1} A[k] + A[n])/n                 \\
-                              & = \sum_{k=1}^{n} A[k]/n
-              \end{align*}
-            }
+            \begin{invariant}
+              \init{
+                In erster Iteration ist die Invariante trivialerweise korrekt, da Durchschnitt von einem Element gleich dem Element ist.
+                \begin{align*}
+                  \text{result} & = ((1-1)\cdot 0 + A[1])/1 \\
+                                & = A[1]                    \\
+                                & = \sum_{k=1}^{1} A[k]/1
+                \end{align*}
+              }
+              \pres{
+                Wird eine korrekte Schleifeninvariante vor Iteration $i$ angenommen, ist die Invariante danach ebenfalls korrekt.
+                \begin{align*}
+                  \text{result} & = ((i-1)\cdot \text{result} + A[i-1])/(i-1)        \\
+                                & = ((i-1)\cdot\sum_{k=1}^{i-1} A[k]/(i-1) + A[i])/i \\
+                                & = (\sum_{k=1}^{i-1} A[k] + A[i])/i                 \\
+                                & = \sum_{k=1}^{i} A[k]/i
+                \end{align*}
+              }
+              \term{
+                Die Korrektheit bei Termination leitet sich aus der Korrektheit in der Erhaltung ab.
+                \begin{align*}
+                  \text{result} & = ((n-1)\cdot \text{result} + A[n-1])/(n-1)        \\
+                                & = ((n-1)\cdot\sum_{k=1}^{n-1} A[k]/(n-1) + A[n])/n \\
+                                & = (\sum_{k=1}^{n-1} A[k] + A[n])/n                 \\
+                                & = \sum_{k=1}^{n} A[k]/n
+                \end{align*}
+              }
+            \end{invariant}
     \end{enumerate}
   \end{solution}
 \end{exercise}
