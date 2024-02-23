@@ -5,7 +5,7 @@
 \begin{document}
 \sheet[2021]{Ersttermin}
 \begin{exercise}{Kruskal-Algorithmus}
-  Betrachten Sie den Graphen in \ref{fig:kruskal}. Bestimmen Sie mit Hilfe des Algorithmus von Kruskal einen minimalen Spannbaum des Graphen und skizzieren diesen. Geben Sie zusätzlich die Reihenfolge an, in der die Kanten des Spannbaums gemäß Algorithmus hinzugefügt werden.
+  Betrachten Sie den Graphen in \ref{fig:kruskal2021}. Bestimmen Sie mit Hilfe des Algorithmus von Kruskal einen minimalen Spannbaum des Graphen und skizzieren diesen. Geben Sie zusätzlich die Reihenfolge an, in der die Kanten des Spannbaums gemäß Algorithmus hinzugefügt werden.
   \input{res/kruskal.fig}
 
   \begin{solution}
@@ -14,7 +14,7 @@
 \end{exercise}
 
 \begin{exercise}{AVL-Bäume}
-  Gegeben sei ein AVL-Baum für die Schlüssel {2,3,5,7,11,13,17,19}. Der Zustand der Datenstruktur ist in \ref{fig:avl} dargestellt. Skizzieren Sie die Datenstruktur nach dem Einfügen eines Elements mit Schlüssel 6 gemäß der Einfügeoperation aus der Vorlesung. Machen Sie dabei den jeweiligen Zustand vor und nach eventuell notwendigen Balancierungsschritten deutlich.
+  Gegeben sei ein AVL-Baum für die Schlüssel $\{2,3,5,7,11,13,17,19\}$. Der Zustand der Datenstruktur ist in \ref{fig:avl} dargestellt. Skizzieren Sie die Datenstruktur nach dem Einfügen eines Elements mit Schlüssel 6 gemäß der Einfügeoperation aus der Vorlesung. Machen Sie dabei den jeweiligen Zustand vor und nach eventuell notwendigen Balancierungsschritten deutlich.
   \input{res/avl.fig}
 
   \begin{solution}
@@ -41,11 +41,11 @@
   Wir betrachten die Datenstruktur für disjunkte dynamische Mengen wie in der Vorlesung definiert. Die Grundmenge (das Universum) sei $U = \{a, b, . . . , z\}$, also die Menge der 26 Kleinbuchstaben $a$ bis $z$.
   \begin{enumerate}
     \item Geben Sie eine Folge von Aufrufen der Operationen MakeSet und Union an, welche die disjunkten Mengen $S_1 = \{a\}$, $S_2 = \{b, c, d\}$ sowie $S_3 = \{e, f\}$ erzeugt.
-    \item Skizzieren Sie die Mengenobjekte der Datenstruktur, nachdem die disjunkten Mengen gemäß Ihrer Lösung zu Punkt (a) erzeugt wurden. Eine mögliche Darstellung ist in Abbildung 3 zu sehen.
+    \item Skizzieren Sie die Mengenobjekte der Datenstruktur, nachdem die disjunkten Mengen gemäß Ihrer Lösung zu Punkt (a) erzeugt wurden. Eine mögliche Darstellung ist in \ref{fig:unionFind} zu sehen.
     \item Geben Sie jeweils den Rückgabewert des Aufrufes FindSet(a) und des Aufrufes FindSet(d) an, nachdem die disjunkten Mengen gemäß Ihrer Lösung zu Punkt (a) erzeugt wurden.
-    \item Skizzieren Sie das Mengenobjekt, welches entsteht, wenn nach Ihrer Lösung zu Punkt (a) die Operation Union(c,f) ausgeführt wird. Nutzen Sie wieder eine Darstellung ähnlich zu Abbildung 3.
+    \item Skizzieren Sie das Mengenobjekt, welches entsteht, wenn nach Ihrer Lösung zu Punkt (a) die Operation Union(c,f) ausgeführt wird. Nutzen Sie wieder eine Darstellung ähnlich zu \ref{fig:unionFind}.
   \end{enumerate}
-  \input{res/disjoint.fig}
+  \input{res/unionFind.fig}
 
   \begin{solution}
 
