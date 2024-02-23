@@ -1,0 +1,50 @@
+\begin{figure}
+  \begin{tabular}{ccc}
+    \begin{tikzpicture}[->, auto, on grid, node distance=2cm, every node/.style={rectangle, draw}]
+      \node (head) {head};
+      \node[below=1cm of head] (tail) {tail};
+      \node[right=of head] (a) {a};
+
+      \node[style={draw=none}, below left=.5cm and 1cm of head] (s) {$S_1$};
+
+      \draw (head) -- (a);
+      \draw (tail) -| (a);
+      \draw (a) -- +(0,1) -| (head);
+    \end{tikzpicture} &
+
+    \begin{tikzpicture}[->, auto, on grid, node distance=2cm, every node/.style={rectangle, draw}]
+      \node (head) {head};
+      \node[below=1cm of head] (tail) {tail};
+      \node[right=of head] (b) {b};
+      \node[right=of b] (c) {c};
+      \node[right=of c] (d) {d};
+
+      \node[style={draw=none}, below left=.5cm and 1cm of head] (s) {$S_2$};
+
+      \draw (head) -- (b);
+      \draw (b) -- (c);
+      \draw (c) -- (d);
+      \draw (tail) -| (d);
+      \draw (b) -- +(0,.5) -| (head);
+      \draw (c) -- +(0,.75) -| (head);
+      \draw (d) -- +(0,1) -| (head);
+    \end{tikzpicture} &
+
+    \begin{tikzpicture}[->, auto, on grid, node distance=2cm, every node/.style={rectangle, draw}]
+      \node (head) {head};
+      \node[below=1cm of head] (tail) {tail};
+      \node[right=of head] (e) {e};
+      \node[right=of e] (f) {f};
+
+      \node[style={draw=none}, below left=.5cm and 1cm of head] (s) {$S_3$};
+
+      \draw (head) -- (e);
+      \draw (e) -- (f);
+      \draw (tail) -| (f);
+      \draw (e) -- +(0,.75) -| (head);
+      \draw (f) -- +(0,1) -| (head);
+    \end{tikzpicture}
+  \end{tabular}
+
+  \caption{Das Mengenobjekt der Datenstruktur nach Ausführung der Operationen}\label{fig:unionFindSolution}
+\end{figure}

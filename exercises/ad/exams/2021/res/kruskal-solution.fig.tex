@@ -1,0 +1,25 @@
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[auto,on grid, node distance=2cm, vertex/.style={circle, draw, minimum size=0.75cm}]
+    \node[vertex] (a) {a};
+    \node[vertex, right=of a] (b) {b};
+    \node[vertex, right=of b] (c) {c};
+    \node[vertex, right=of c] (d) {d};
+    \node[vertex, right=of d] (e) {e};
+    \node[vertex, below right=2cm and 1cm of a] (f) {f};
+    \node[vertex, right=of f] (g) {g};
+    \node[vertex, right=of g] (h) {h};
+    \node[vertex, right=of h] (i) {i};
+
+    \draw (a) -- node {17{\tiny(6)}} (b);
+    \draw (c) -- node {5{\tiny(3)}} (d);
+    \draw (e) -- node {13{\tiny(5)}} (i);
+    \draw (i) -- node {19{\tiny(7)}} (h);
+    \draw (h) -- node {7{\tiny(4)}} (g);
+    \draw (g) -- node {23{\tiny(8)}} (f);
+    \draw (b) -- node {3{\tiny(2)}} (f);
+    \draw (d) -- node {2{\tiny(1)}} (h);
+  \end{tikzpicture}
+
+  \caption{Ein minimaler Spannbaum zu \ref{fig:kruskal2021}.}\label{fig:kruskal2021solution}
+\end{figure}

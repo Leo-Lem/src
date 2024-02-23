@@ -11,8 +11,7 @@
   $p \gets \left\lfloor \frac{l+r}{2} \right\rfloor$\;
   $a \gets \call{Algo}{A, l, p}$\;
   $b \gets \call{Algo}{A, p+1, r}$\;
-  \lIf{$a > b$}{$c \gets a$}
-  \lElse{$c \gets b$}
+  \leIf{$a > b$}{$c \gets a$}{$c \gets b$}
 
   \For{$i \gets l$ \KwTo $p$}{
   \For{$j \gets p+1$ \KwTo $r$}{

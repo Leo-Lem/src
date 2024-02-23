@@ -1,0 +1,44 @@
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[auto,on grid,node distance=2cm,main node/.style={circle,draw,minimum size=0.75cm}]
+    \node[main node] (5) {5};
+    \node[main node, below left=of 5] (3) {3};
+    \node[main node, below left=of 3] (2) {2};
+    \node[main node, below right=of 5] (17) {17};
+    \node[main node, below left=of 17] (11) {11};
+    \node[main node, below right=of 17] (19) {19};
+    \node[main node, below left=of 11] (7) {7};
+    \node[main node, below right=of 11] (13) {13};
+    \node[main node, below left=of 7] (6) {6};
+
+    \draw (5) -- (3) -- (2);
+    \draw (5) -- (17) -- (11) -- (7);
+    \draw (17) -- (19);
+    \draw (11) -- (13);
+    \draw (7) -- (6);
+  \end{tikzpicture}
+
+  \caption{AVL-Baum nach dem Einfügen von $6$}\label{fig:avlsolution1}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[auto,on grid,node distance=2cm,main node/.style={circle,draw,minimum size=0.75cm}]
+    \node[main node] (5) {5};
+    \node[main node, below left=of 5] (3) {3};
+    \node[main node, below left=of 3] (2) {2};
+    \node[main node, below right=of 5] (11) {11};
+    \node[main node, below left=of 11] (7) {7};
+    \node[main node, below right=of 11] (17) {17};
+    \node[main node, below right=of 17] (19) {19};
+    \node[main node, below right=of 7] (13) {13};
+    \node[main node, below left=of 7] (6) {6};
+
+    \draw (5) -- (3) -- (2);
+    \draw (5) -- (11) -- (17) -- (19);
+    \draw (11) -- (7) -- (6);
+    \draw (17) -- (13);
+  \end{tikzpicture}
+
+  \caption{Balancierter AVL-Baum nach Rotation}\label{fig:avlsolution}
+\end{figure}

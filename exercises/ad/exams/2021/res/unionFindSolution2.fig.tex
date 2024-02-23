@@ -1,0 +1,26 @@
+\begin{figure}
+  \centering
+  \begin{tikzpicture}[->, auto, on grid, node distance=2cm, every node/.style={rectangle, draw}]
+    \node (head) {head};
+    \node[below=1cm of head] (tail) {tail};
+    \node[right=of head] (b) {b};
+    \node[right=of b] (c) {c};
+    \node[right=of c] (d) {d};
+    \node[right=of d] (e) {e};
+    \node[right=of e] (f) {f};
+
+    \draw (head) -- (b);
+    \draw (b) -- (c);
+    \draw (c) -- (d);
+    \draw (d) -- (e);
+    \draw (e) -- (f);
+    \draw (tail) -| (f);
+    \draw (b) -- +(0,.25) -| (head);
+    \draw (c) -- +(0,.5) -| (head);
+    \draw (d) -- +(0,.75) -| (head);
+    \draw (e) -- +(0,1) -| (head);
+    \draw (f) -- +(0,1.25) -| (head);
+  \end{tikzpicture}
+
+  \caption{Das Mengenobjekt der Datenstruktur nach Operation \textalgo{Union(c,f)}}\label{fig:unionFindSolution2}
+\end{figure}

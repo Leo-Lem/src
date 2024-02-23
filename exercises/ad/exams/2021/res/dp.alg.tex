@@ -1,0 +1,11 @@
+\begin{alg}
+  \signed{MaxGewinn}{W, n}{x}
+  \params{Ein Array $W$ der Länge $n + 1$ und eine natürliche Zahl $n$.}{Der maximale Gesamtgewinn, den das Unternehmen erzielen kann.}
+
+  $M[0] \gets 0$ \\
+  $M[1] \gets W[1]$ \\
+  \For{$k \gets 2$ \KwTo $n$}{
+    $M[k] \gets \max\{W[k] + M[k-2], M[k-1]\}$
+  }
+  \Return{$M[n]$}
+\end{alg}

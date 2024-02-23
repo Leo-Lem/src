@@ -9,7 +9,7 @@
   \input{res/kruskal.fig}
 
   \begin{solution}
-
+    \input{res/kruskal-solution.fig}
   \end{solution}
 \end{exercise}
 
@@ -18,7 +18,7 @@
   \input{res/avl.fig}
 
   \begin{solution}
-
+    \input{res/avl-solution.fig}
   \end{solution}
 \end{exercise}
 
@@ -28,27 +28,51 @@
     \item $f(n) = n \cdot (\log n)^{42}$ und $g(n) = n^{1.23}$
     \item $f(n) = n \cdot |\sin n|$ und $g(n) = \sqrt{n}$
     \item $f(n) = n^2 + n^{3/2} + n \cdot \log n$ und $g(n) = \binom{n}{2}$
-    \item $f(n) = 8 \log n$ und $g(n) = n^3 \cdot \log n$
+    \item $f(n) = 8^{\log n}$ und $g(n) = n^3 \cdot \log n$
   \end{enumerate}
   \hint{Der Ausdruck $\binom{n}{k}$ bezeichnet den Binomialkoeffizienten $n$ über $k$. Die Basis des Logarithmus in Ausdrücken der Form $\log n$ ist 2.}
 
   \begin{solution}
-
+    \begin{enumerate}
+      \item Da Logarithmen generell langsamer wachsen als polynomielle Funktionen, ergibt sich für die Grenzwerte: \[
+              \lim_{n \to \infty} \frac{n \cdot (\log n)^{42}}{n^{1.23}} = \lim_{n \to \infty} \frac{(\log n)^{42}}{n^{0.23}} = 0
+            \]
+            Also gilt $f(n) = o(g(n))$ und $f(n) = O(g(n))$. $f(n) = \Omega(g(n))$ und $f(n) = \omega(g(n))$ gelten nicht.
+      \item Da $|\sin n| \in [0\dots1]$ für alle $n \in \mathbb{N}$, ergibt sich für die Grenzwerte: \[
+              \lim_{n \to \infty} \frac{n \cdot |\sin n|}{\sqrt{n}} = \lim_{n \to \infty} \sqrt{n} \cdot |\sin n| = [0\dots\infty]
+            \]
+            Es gilt keine der Relationen, da der Grenzwert weder größer null noch kleiner unendlich ist (Je nach Ausprägung von $|\sin n|$).
+      \item Da $\binom{n}{2} = \frac{n \cdot (n-1)}{2}$, ergibt sich für die Grenzwerte: \[
+              \lim_{n \to \infty} \frac{n^2 + n^{3/2} + n \cdot \log n}{\frac{n \cdot (n-1)}{2}} = \lim_{n \to \infty} \frac{\Theta(n^2)}{\Theta(n^2)} = \Theta(1)
+            \]
+            Es gelten $f(n) = \Omega(g(n))$ und $f(n) = \bigO(g(n))$, da der Grenzwert größer null und kleiner unendlich ist. $f(n) = o(g(n))$ und $f(n) = \omega(g(n))$ gelten nicht.
+      \item Da $f(n) = 8^{\log n} = (2^3)^{\log n} = 2^{3 \cdot \log n} = n^3$, ergibt sich für die Grenzwerte: \[
+              \lim_{n \to \infty} \frac{8^{\log n}}{n^3 \cdot \log n} = \lim_{n \to \infty} \frac{n^3}{n^3 \cdot \log n} = \lim_{n \to \infty} \frac{1}{\log n} = 0
+            \]
+            Also gilt $f(n) = o(g(n))$ und $f(n) = O(g(n))$. $f(n) = \Omega(g(n))$ und $f(n) = \omega(g(n))$ gelten nicht.
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
 \begin{exercise}{Union-Find Datenstruktur}
   Wir betrachten die Datenstruktur für disjunkte dynamische Mengen wie in der Vorlesung definiert. Die Grundmenge (das Universum) sei $U = \{a, b, . . . , z\}$, also die Menge der 26 Kleinbuchstaben $a$ bis $z$.
   \begin{enumerate}
-    \item Geben Sie eine Folge von Aufrufen der Operationen MakeSet und Union an, welche die disjunkten Mengen $S_1 = \{a\}$, $S_2 = \{b, c, d\}$ sowie $S_3 = \{e, f\}$ erzeugt.
+    \item\label{ex:unionFind:1} Geben Sie eine Folge von Aufrufen der Operationen \textalgo{MakeSet} und \textalgo{Union} an, welche die disjunkten Mengen $S_1 = \{a\}$, $S_2 = \{b, c, d\}$ sowie $S_3 = \{e, f\}$ erzeugt.
     \item Skizzieren Sie die Mengenobjekte der Datenstruktur, nachdem die disjunkten Mengen gemäß Ihrer Lösung zu Punkt (a) erzeugt wurden. Eine mögliche Darstellung ist in \ref{fig:unionFind} zu sehen.
-    \item Geben Sie jeweils den Rückgabewert des Aufrufes FindSet(a) und des Aufrufes FindSet(d) an, nachdem die disjunkten Mengen gemäß Ihrer Lösung zu Punkt (a) erzeugt wurden.
-    \item Skizzieren Sie das Mengenobjekt, welches entsteht, wenn nach Ihrer Lösung zu Punkt (a) die Operation Union(c,f) ausgeführt wird. Nutzen Sie wieder eine Darstellung ähnlich zu \ref{fig:unionFind}.
+    \item Geben Sie jeweils den Rückgabewert des Aufrufes \textalgo{FindSet(a)} und des Aufrufes \textalgo{FindSet(d)} an, nachdem die disjunkten Mengen gemäß Ihrer Lösung zu Punkt (a) erzeugt wurden.
+    \item Skizzieren Sie das Mengenobjekt, welches entsteht, wenn nach Ihrer Lösung aus \ref{ex:unionFind:1} die Operation \textalgo{Union(c,f)} ausgeführt wird. Nutzen Sie wieder eine Darstellung ähnlich zu \ref{fig:unionFind}.
   \end{enumerate}
   \input{res/unionFind.fig}
 
   \begin{solution}
-
+    \begin{enumerate}
+      \item Die Folge von Aufrufen ist:\par
+            \textalgo{MakeSet(a)}, \textalgo{MakeSet(b)}, \textalgo{MakeSet(c)}, \textalgo{MakeSet(d)}, \textalgo{MakeSet(e)}, \textalgo{MakeSet(f)},\par
+            \textalgo{Union(b, c)}, \textalgo{Union(b, d)}, \textalgo{Union(e, f)}.
+      \item Skizze: \input{res/unionFindSolution.fig}
+      \item \textalgo{FindSet(a)} gibt $a$ zurück und \textalgo{FindSet(d)} gibt $b$ zurück.
+      \item Skizze: \input{res/unionFindSolution2.fig}
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
@@ -62,22 +86,56 @@
   \input{res/divideconquer.alg}
 
   \begin{solution}
-
+    \begin{enumerate}
+      \item Die Rekursionsgleichung ist: \[
+              T(n) = \begin{cases}
+                \Theta(1),                    & \text{falls } n \leq 2, \\
+                2 \cdot T(n/2) + \Theta(n^2), & \text{sonst}.
+              \end{cases}
+            \]
+      \item Die Lösung der Rekursionsgleichung ist: \[
+              T(n) = \Theta(n^2).
+            \]
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
 \begin{exercise}{Datenstrukturen}
   Gesucht ist eine Datenstruktur, welche die drei folgenden Operationen unterstützt:
   \begin{itemize}
-    \item \texttt{Einfügen}(x): Fügt die Zahl x in die Datenstruktur ein. Sie können zur Vereinfachung davon ausgehen, dass kein Element jemals doppelt in die Datenstruktur eingefügt wird.
-    \item \texttt{Löschen}(x): Entfernt x, falls sich x in der Datenstruktur befindet. Andernfalls bleibt die Datenstruktur unverändert.
-    \item \texttt{Rang}(x): Gibt die Anzahl der Elemente der Datenstruktur zurück, welche kleiner oder gleich x sind. Befinden sich z. B. die Zahlen $\{2,3,5,7,11,13\}$ in der Datenstruktur, so soll $Rang(5) = 3$ und $Rang(17) = 6$ gelten.
+    \item \textalgo{Einfügen}(x): Fügt die Zahl x in die Datenstruktur ein. Sie können zur Vereinfachung davon ausgehen, dass kein Element jemals doppelt in die Datenstruktur eingefügt wird.
+    \item \textalgo{Löschen}(x): Entfernt x, falls sich x in der Datenstruktur befindet. Andernfalls bleibt die Datenstruktur unverändert.
+    \item \textalgo{Rang}(x): Gibt die Anzahl der Elemente der Datenstruktur zurück, welche kleiner oder gleich x sind. Befinden sich z. B. die Zahlen $\{2,3,5,7,11,13\}$ in der Datenstruktur, so soll $Rang(5) = 3$ und $Rang(17) = 6$ gelten.
   \end{itemize}
   Die Datenstruktur soll alle drei Operationen in Laufzeit $O(\log n)$ unterstützen. Dabei bezeichnet $n$ die Anzahl der Elemente, die sich aktuell in der Datenstruktur befinden.\par
   Beschreiben Sie in wenigen kurzen Sätzen, wie Ihre Datenstruktur aufgebaut ist und wie die angegebenen Operationen realisiert werden. Hierbei ist kein Pseudocode gefordert. Es soll jedoch klar werden, dass die Datenstruktur korrekt arbeitet und die geforderte Laufzeit eingehalten wird.
 
   \begin{solution}
+    Es bietet sich ein modifizierter AVL-Baum an. Jeder Knoten speichert zusätzlich die Anzahl der Elemente in seinem linken und rechten Teilbaum.\par
+    Die Operationen \textalgo{Einfügen} und \textalgo{Löschen} werden wie bei einem normalen AVL-Baum durchgeführt und die Größeninformationen werden entsprechend aktualisiert.\par
+    Die Operation \textalgo{Rang} wird durch eine Suche im Baum realisiert, wobei die Größeninformationen der Teilbäume genutzt werden, um die Anzahl der Elemente zu bestimmen, die kleiner oder gleich x sind.
+  \end{solution}
+\end{exercise}
 
+\begin{exercise}{Dynamische Programmierung}
+  Ein Unternehmen erhält die Genehmigung, eine Landstraße auf einer Straßenseite mit Werbetafeln zu versehen. Entlang der $n \in \mathbb{N}$ Kilometer langen Landstraße gibt es im Abstand von je genau einem Kilometer $n + 1$ geeignete Standorte. Für den Standort bei Kilometer $i \in \{0,1,...,n\}$ sind Werbekunden bereit, einen Betrag $w_i > 0$ an das Unternehmen zu zahlen. Allerdings besagt die Straßenverkehrsordnung, dass zwischen je zwei Werbetafeln mindestens zwei Kilometer Abstand bestehen müssen. Errichtet das Unternehmen also bei Kilometer $i$ eine Werbetafel, so darf bei Kilometer $i - 1$ und $i + 1$ keine Werbetafel errichtet werden. Helfen Sie dem Unternehmen anhand der folgenden Schritte eine Auswahl an Standorten zu bestimmen, die den Gesamtgewinn aus der Vermietung der Standorte maximiert.
+  \begin{enumerate}
+    \item Für $k \in \{0, 1, \dots, n\}$ bezeichne $\text{OPT}(k)$ den maximal erzielbaren Gesamtgewinn, wenn das Unternehmen nur die Standorte an den Kilometern $0,1,...,k$ für die Errichtung von Werbetafeln in Betracht zieht. Finden Sie eine rekursive Formulierung für $\text{OPT}(k)$ und begründen Sie kurz deren Korrektheit.
+    \item Bezeichne $W[0..n]$ ein Array der Länge $n + 1$, so dass $W[i] = w_i$ dem Eintrag des Standortes bei Kilometer $i$ entspricht. Beschreiben Sie in Pseudocode einen Algorithmus, der mittels dynamischer Programmierung bei Eingabe $(W, n)$ in Zeit $O(n)$ den maximalen Gesamtgewinn, den das Unternehmen erzielen kann, ermittelt. Die Liste der Standorte, die dieses Maximum erreicht, muss nicht bestimmt werden.
+  \end{enumerate}
+
+  \begin{solution}
+    \begin{enumerate}
+      \item Die rekursive Formulierung ist: \[
+              \text{OPT}(k) = \begin{cases}
+                0,                                              & \text{falls } k = 0, \\
+                w_k,                                            & \text{falls } k = 1, \\
+                \max\{w_k + \text{OPT}(k-2), \text{OPT}(k-1)\}, & \text{sonst}.
+              \end{cases}
+            \]
+            Die Korrektheit der Formulierung ergibt sich aus der Tatsache, dass der maximale Gewinn entweder durch die Errichtung einer Werbetafel bei Kilometer $k$ oder durch die Nicht-Errichtung einer Werbetafel bei Kilometer $k$ erreicht wird.
+      \item Ein Algorithmus könnte folgendermaßen funktionieren: \input{res/dp.alg}
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
@@ -90,7 +148,7 @@
   \hint{Die Lösung einer Strategie $A$, die $k$ Tankstopps benötigt, kann zum Beispiel als Folge von Indizes $a(1) < a(2) < \dots < a(k)$ mit $a(i) \in \{1,2,...,n\}$ beschrieben werden. Der $i$-te Tankstopp findet dabei an der Tankstelle $t_{a(i)}$ statt.}
 
   \begin{solution}
-
+    Wir beweisen die Aussage durch Widerspruch. Angenommen, es gibt eine optimale Lösung $A$, die mehr Tankstopps benötigt als die Greedy-Strategie. Sei $a(1) < a(2) < \dots < a(k)$ die Lösung $A$ und $b(1) < b(2) < \dots < b(l)$ die Lösung der Greedy-Strategie. Sei $i$ der kleinste Index, für den $a(i) \neq b(i)$ gilt. Dann gilt $a(i) > b(i)$, da die Greedy-Strategie immer so weit wie möglich fährt. Da $a(i) > b(i)$, gibt es eine Tankstelle $t_j$ mit $j < a(i)$, die in der Lösung $A$ nicht angesteuert wird. Da die Tankstelle $t_j$ in der Lösung $A$ nicht angesteuert wird, kann die Tankstelle $t_{a(i)}$ in der Lösung $A$ nicht erreicht werden, ohne dass ein Tankstopp eingelegt wird. Dies ist ein Widerspruch zur Annahme, dass $A$ eine optimale Lösung ist.
   \end{solution}
 \end{exercise}
 
@@ -108,7 +166,11 @@
   \end{enumerate}
 
   \begin{solution}
-
+    \begin{enumerate}
+      \item Eine Lösung von \textproblem{Unabhängige Menge} kann in P überprüft werden, indem für jedes Paar von Knoten in der unabhängigen Menge geprüft wird, ob es eine Kante zwischen den beiden Knoten gibt. Dieser Schritt benötigt Zeit $O(V^2)$, was in P liegt. Daher ist \textproblem{Unabhängige Menge} in NP. Da es annahmegemäß NP-schwer ist, folgt aus der Definition von NP-Vollständigkeit, dass \textproblem{Unabhängige Menge} NP-vollständig ist.
+      \item Wir reduzieren \textproblem{Keine Schnitte} auf \textproblem{Unabhängige Menge}, indem wir für jedes Intervall $I_i \in S$ einen Knoten $v_i$ in einem Graphen $G$ erzeugen. Dann fügen wir eine Kante zwischen $v_i$ und $v_j$ hinzu, wenn die Intervalle $I_i$ und $I_j$ nicht disjunkt sind. Das Ergebnis ist ein Graph $G = (V,E)$, wobei $V = \{v_1, v_2, \dots\}$ und $E \subseteq V \times V$. Dann ist $\langle S, l \rangle$ eine Instanz von \textproblem{Keine Schnitte} genau dann, wenn $\langle G, l \rangle$ eine Instanz von \textproblem{Unabhängige Menge} ist.
+      \item Da \textproblem{Unabhängige Menge} NP-vollständig ist, folgt aus der Reduktion \textproblem{Keine Schnitte} $\leq_P$ \textproblem{Unabhängige Menge}, dass \textproblem{Keine Schnitte} NP-vollständig ist.
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 \end{document}
