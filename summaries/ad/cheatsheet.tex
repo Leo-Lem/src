@@ -1,0 +1,102 @@
+\documentclass{article}
+
+\usepackage{summary}
+
+\begin{document}
+\section{Big O}
+\begin{itemize}
+  \item definition
+        \begin{itemize}
+          \item[$\bigO$] $^{\exists c > 0}_{\exists n_0 > 0}: f \leq c \cdot g \forall n > n_0$ \textbf{or} $\limsup_{n\to\infty} \frac{f}{g} < \infty$
+          \item[$\Omega$] $^{\exists c > 0}_{\exists n_0 > 0}: f \geq c \cdot g \forall n > n_0$ \textbf{or} $\liminf_{n\to\infty} \frac{f}{g} > 0$
+          \item[$\littleO$] $^{\forall c > 0}_{\exists n_0 > 0}: f < c \cdot g \forall n > n_0$ \textbf{or} $\lim_{n\to\infty} \frac{f}{g} = 0$
+          \item[$\omega$] $^{\forall c > 0}_{\exists n_0 > 0}: f > c \cdot g \forall n > n_0$ \textbf{or} $\lim_{n\to\infty} \frac{f}{g} = \infty$
+          \item[$\Theta$] $f\in \bigO(g) \land f\in \Omega(g)$
+        \end{itemize}
+  \item master
+        \begin{itemize}
+          \item $\exists \epsilon > 0: f(n) \in \bigO(n^{\log_b(a)-\epsilon}) \Rightarrow T(n) \in \Theta(n^{\log_b a})$
+          \item $\exists k \ge 0: f(n) \in \Theta(n^{\log_b a}\log^k n) \Rightarrow T(n) \in \Theta(n^{\log_b a} \log^{k+1} n)$
+          \item $\underbrace{^{\exists \epsilon > 0: f(n) \in \Omega(n^{\log_b(a)+\epsilon})}_{\exists c \in [0\dots1]: a f(\frac{n}{b}) \leq c f(n)}}_{\text{\tiny regularity condition}} \Rightarrow T(n) \in \Theta(f(n))$
+        \end{itemize}
+  \item common functions \begin{itemize}
+          \item $c<\log^k n<(\log n)^k<n^{1/k}<n<n(\log n)^k<n^k<2^n<n!<n^n$
+          \item $(\log n)^k < n^\epsilon \forall k,\epsilon > 0$
+          \item $x^n=2^{(\log_2 x)n}$
+        \end{itemize}
+\end{itemize}
+
+\section{Sort}
+\begin{itemize}
+  \item elementwise (in-place and stable, $\bigO(n^2)$)
+        \begin{itemize}
+          \item Selection: Find minimum and swap with first element
+          \item Insertion: Insert element at correct position in sorted array
+          \item Bubble: Swap adjacent elements if out of order
+        \end{itemize}
+  \item better ($\bigO(n\log n)$)
+        \begin{itemize}
+          \item Merge: Divide array in half, sort both halves, merge
+          \item Quick (worst-case $\bigO(n^2)$): Choose pivot, partition array, sort both partitions
+          \item Heap: Build heap, swap root with last element, heapify
+        \end{itemize}
+  \item non-comparing
+        \begin{itemize}
+          \item Counting ($\bigO(n+k)$ with $k$: range of input): Count occurrences of each element
+          \item Radix ($\bigO(d(n+m))$ with $d$: number of digits, $m$: base of integers): Sort by least significant digit, repeat
+          \item Bucket ($\bigO(n^2)$, $\bigO(n)$ with good choice of $n$): Distribute elements into buckets, sort each bucket
+        \end{itemize}
+\end{itemize}
+
+\section{Search}
+\begin{itemize}
+  \item select \begin{itemize}
+          \item Quick ($\bigO(n\log n)$): Choose pivot, partition array, repeat
+          \item Rand ($\bigO_\text{\O}(n)$, $\bigO(n^2)$): Choose random pivot, partition array, repeat
+          \item Median of Medians ($\bigO(n)$): Divide array in groups of 5, find median of medians, partition array
+        \end{itemize}
+  \item algorithms \begin{itemize}
+          \item Linear ($\bigO(n)$): Iterate through array
+          \item Binary ($\bigO(\log n)$): Compare with middle element, repeat
+          \item Exponential ($\bigO(\log k)$ with $k$: index of the search key): Double index until larger, binary search
+        \end{itemize}
+  \item trees \begin{itemize}
+          \item BST ($\bigO(h)$ with $h$: height of the tree): Compare with root, repeat
+          \item RB tree ($\bigO(\log n)$): all colored, black root, black leafs, black follows red, black height
+          \item AVL tree ($\bigO(\log n)$): balance factor $\in \{-1,0,1\}$, rotate if unbalanced
+        \end{itemize}
+  \item Hashing ($\bigO(1+\alpha)$ with $\alpha$: load factor) \begin{itemize}
+          \item Chaining: Array of lists
+          \item Open: Array of elements and probing function
+          \item Division: $h(k) = k \mod m$
+          \item Multiplication: $h(k) = \lfloor m \cdot (kA \mod 1) \rfloor$
+          \item Universal hashing: $h(k) = ((ak+b) \mod p) \mod m$
+          \item Double hashing: $h(k,i) = (h_1(k) + i \cdot h_2(k)) \mod m$
+        \end{itemize}
+\end{itemize}
+
+\section{Graphs}
+\begin{itemize}
+  \item Topological Sort ($\bigO(V+E)$): DFS, add to stack after recursion
+  \item SCCs ($\bigO(V+E)$): DFS, reverse graph, DFS
+  \item Bridges ($\bigO(E(V+E))=\bigO(E\cdot V+E^2)$): DFS, low-link values
+  \item MSTs ($\bigO(E\log V)$) \begin{itemize}
+          \item Kruskal: Weight-sort edges, add lightest if no cycle
+          \item Prim: Start at any vertex, add lightest edge
+        \end{itemize}
+  \item SPs \begin{itemize}
+          \item Bellman-Ford ($\bigO(V\cdot E)$): Relax all edges $|V|-1$ times
+          \item Dijkstra ($\bigO(E\log V)$): Relax all edges from vertex with smallest distance
+          \item Floyd-Warshall ($\bigO(V^3)$): $d_{ij} = \min(d_{ij},d_{ik}+d_{kj})$
+        \end{itemize}
+\end{itemize}
+
+\section{Dynamic Programming}
+\begin{enumerate}
+  \item Characterise: optimal substructure.
+  \item Top-Down: define optimal value recursively.
+  \item Bottom-up: compute optimal value.
+  \item Construct: optimal solution from computed values.
+\end{enumerate}
+
+\end{document}
