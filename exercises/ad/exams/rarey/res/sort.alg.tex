@@ -1,0 +1,13 @@
+\begin{alg}\signed{sort}{A}{\empty}
+  $c_0, c_1, c_2 \gets 0$\;
+  \For{$i \gets 0$ \KwTo $\text{length}[A]$}{
+    \Switch{$A[i]$}{
+      \lCase{0}{$c_0 \gets c_0 + 1$}
+      \lCase{1}{$c_1 \gets c_1 + 1$}
+      \lCase{2}{$c_2 \gets c_2 + 1$}
+    }
+  }
+  \lFor{$i \gets 0$ \KwTo $c_0 - 1$}{$A[i] \gets 0$}
+  \lFor{$i \gets c_0$ \KwTo $c_0 + c_1 - 1$}{$A[i] \gets 1$}
+  \lFor{$i \gets c_0 + c_1$ \KwTo $c_0 + c_1 + c_2 - 1$}{$A[i] \gets 2$}
+\end{alg}

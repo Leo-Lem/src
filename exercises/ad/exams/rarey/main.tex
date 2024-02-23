@@ -82,7 +82,19 @@
           \end{itemize}
   \end{enumerate}
   \begin{solution}
-
+    \begin{enumerate}
+      \item Falsch, Falsch, Falsch, Wahr
+      \item Wahr, Wahr, Falsch, Falsch
+      \item $8, 9, 10$
+      \item Falsch, Falsch, Wahr, Falsch
+      \item Wahr, Falsch, Falsch, Falsch
+      \item $12$ an Position $0$ nach $2$ Versuchen
+      \item \input{res/treerotate-solution.fig}
+      \item Falsch, Wahr, Falsch, Falsch
+      \item Wahr, Falsch, Wahr, Falsch
+      \item Falsch, Falsch, Falsch, Wahr
+      \item Falsch, Wahr, Falsch, Wahr
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
@@ -177,7 +189,18 @@
   \end{enumerate}
 
   \begin{solution}
-
+    \begin{enumerate}
+      \item \begin{enumerate}
+              \item $\bigO(N^2)$
+              \item $\bigO(N \log N)$
+              \item $\bigO(N \log N)$
+              \item $T(n)=\{2T(n/2) + 1\}$ and $\bigO(n)$
+              \item $T(n)=\{3T(n/3) + n\}$ and $\bigO(n \log n)$
+              \item $T(n)=\{T(n-2) + n\}$ and $\bigO(n^2)$
+              \item $T(n)=\{2T(n-2) + 1\}$ and $\bigO(2^n)$
+            \end{enumerate}
+      \item $T(n)=\{n \cdot T(n-1) + n\}$ and $\bigO(n!)$
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
@@ -198,7 +221,17 @@
   \end{enumerate}
 
   \begin{solution}
-
+    \begin{enumerate}
+      \item
+            \begin{itemize}
+              \item[Zeile 4] $A: 3, 8, 6, 4, 6, 4, 5$ \hfill $j = 3, i = 0$
+              \item[Zeile 4] $A: 3, 8, 6, 4, 6, 4, 5$ \hfill $j = 4, i = 0$
+              \item[Zeile 4] $A: 3, 8, 6, 4, 6, 4, 5$ \hfill $j = 5, i = 0$
+              \item[Zeile 8] $A: 3, 4, 6, 4, 6, 8, 5$ \hfill $j = 5, i = 0$
+            \end{itemize}
+      \item Nein, Quicksort ist nicht stabil. Partition ist nicht stabil, da sie die Reihenfolge von gleichen Elementen nicht erhält. Eine Möglichkeit Quicksort stabil zu machen, ist die Verwendung von Merge-Sort in der Rekursion, wenn die zu sortierende Menge klein genug ist.
+      \item Der Algorithmus zählt die Anzahl der Elemente $0,1,2$ und schreibt diese in das Array zurück. Der Algorithmus benötigt $\bigO(n)$ Zeit und $\bigO(1)$ zusätzlichen Speicher.\input{res/sort.alg}
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
@@ -211,7 +244,11 @@
   \end{enumerate}
 
   \begin{solution}
-
+    \begin{enumerate}
+      \item \input{res/mstgraph-solution.fig} Der minimale Spannbaum ist nicht eindeutig, da es mehrere Spannbäume mit dem gleichen Gewicht geben kann.
+      \item Der Algorithmus besucht alle von $u$ aus erreichbaren Knoten und markiert diese mit der Markierung ’label’. Der Algorithmus nutzt eine Tiefensuche, um alle von $u$ aus erreichbaren Knoten zu besuchen. Der Algorithmus hat die Laufzeit $\bigO(|V| + |E|)$.\input{res/label.alg}
+      \item Der Algorithmus besucht alle von $u$ aus erreichbaren Knoten und markiert diese mit der Markierung ’label’. Der Algorithmus nutzt eine Tiefensuche, um alle von $u$ aus erreichbaren Knoten zu besuchen. Der Algorithmus hat die Laufzeit $\bigO(|V| + |E|)$.\input{res/critical.alg}
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
@@ -230,7 +267,11 @@
   \end{enumerate}
 
   \begin{solution}
-
+    \begin{enumerate}
+      \item Der Pfad von $s$ nach $t$ über $p_0$ und $p_3$ hat eine Länge von 10 km und einen Energieverbrauch von 10 Energieeinheiten. Ein energetisch günstigerer Pfad ist der direkte Pfad von $s$ nach $t$ mit einer Länge von 8 km und einem Energieverbrauch von 8 Energieeinheiten.
+      \item Das Problem kann als kürzester Pfad in einem Graphen modelliert werden, wobei die Kantengewichte die Energieverbrauchsfunktion repräsentieren. Der Algorithmus von Dijkstra kann zur Lösung des Problems verwendet werden.
+      \item Der Pfad von $s$ nach $t$ mit den wenigsten Streckenkilometern entspricht dem Pfad mit dem minimalem Energieverbrauch, da der Energieverbrauch pro Streckenkilometer konstant ist und der Energieverbrauch pro Anstieg um einen Meter konstant ist.
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
@@ -244,7 +285,12 @@
   \end{enumerate}
 
   \begin{solution}
-
+    \begin{enumerate}
+      \item Pauls Problem kann auf das Problem des Rucksackproblems reduziert werden. Das Rucksackproblem ist NP-vollständig, daher ist Pauls Problem ebenfalls NP-vollständig.
+      \item Der Algorithmus versucht alle möglichen Kombinationen von Klötzen zu stapeln und prüft, ob die Höhe des Turms gleich der Schreibtischhöhe ist. Der Algorithmus hat eine Laufzeit von $\bigO(2^N)$.\input{res/tower.alg}
+      \item Der Algorithmus kann durch die Verwendung von Schranken in einen Branch\&Bound Algorithmus umgewandelt werden. Eine untere Schranke ist die Höhe des bisher gebauten Turms und eine obere Schranke ist die Schreibtischhöhe.
+      \item Pauls Problem ist unter dieser Randbedingung nicht mehr NP-vollständig, da die Anzahl der möglichen Klötze und die Anzahl der möglichen Höhen begrenzt ist. Das Problem kann in polynomieller Zeit gelöst werden.
+    \end{enumerate}
   \end{solution}
 \end{exercise}
 
