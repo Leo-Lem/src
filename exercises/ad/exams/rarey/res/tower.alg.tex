@@ -1,3 +1,11 @@
 \begin{alg}
+  \signed{tower}{K, H, T, h}{\empty}
+  \params{$K$ contains all Klotzes in triplicate ($k_ih$: height, $k_iw$: width, $k_id$: depth), $H$ contains the target height, $T$ contains the current tower, $h$ contains the current height}
 
+  \lIf{$h = H$}{\Return{$T$}}
+  \ForEach{$k \in K$}{
+    $T \gets T \cup \{k\}$\;
+    $h \gets h + k$\;
+    \lIf{$h \leq H$}{\Return{$\text{{tower}}(K\setminus \{k_h, k_w, k_d\}, H, T, h)$}}
+  }
 \end{alg}

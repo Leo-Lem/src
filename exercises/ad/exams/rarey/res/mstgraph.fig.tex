@@ -1,5 +1,33 @@
 \begin{figure}
   \centering
 
+  \begin{tikzpicture}[auto,on grid, node distance=2cm, main node/.style={circle,draw,fill=black}]
+    \node [main node] (a) {};
+    \node [main node,right=of a] (b) {};
+    \node [main node,right=of b] (c) {};
+    \node [main node,below=of c] (d) {};
+    \node [main node,below=of d] (e) {};
+    \node [main node,left=of e] (f) {};
+    \node [main node,left=of f] (g) {};
+    \node [main node,above=of g] (h) {};
+    \node [main node,above=of h] (i) {};
+
+    \path (a) edge node {5} (b);
+    \path (a) edge node {4} (h);
+    \path (b) edge node {7} (c);
+    \path (b) edge node {6} (d);
+    \path (b) edge node {3} (h);
+    \path (c) edge node {7} (d);
+    \path (c) edge[bend left] node {9} (e);
+    \path (d) edge node {1} (e);
+    \path (d) edge node {8} (f);
+    \path (d) edge node {1} (h);
+    \path (e) edge node {4} (f);
+    \path (f) edge node {2} (g);
+    \path (f) edge node {8} (h);
+    \path (g) edge node {2} (h);
+
+  \end{tikzpicture}
+
   \caption{A graph}\label{fig:mstgraphrarey}
 \end{figure}

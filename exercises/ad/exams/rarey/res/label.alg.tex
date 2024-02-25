@@ -1,3 +1,12 @@
 \begin{alg}
+  \signed{label}{G, u, 'label'}{label}
+  \params{$G$: graph, $u$: current vertex, $label$: the label}{All labeled vertices in the connected component of $u$}
 
+  $label \gets label \cup u$\;
+  \ForEach{neighbor $v$ of $u$ in $E$}{
+    \If{$v.label = nil$}{
+      \Return{$\text{{label}}(V, E, v, label)$}
+    }
+  }
+  \Return{label}
 \end{alg}

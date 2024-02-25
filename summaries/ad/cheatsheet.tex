@@ -23,6 +23,7 @@
           \item $c<\log^k n<(\log n)^k<n^{1/k}<n<n(\log n)^k<n^k<2^n<n!<n^n$
           \item $(\log n)^k < n^\epsilon \forall k,\epsilon > 0$
           \item $x^n=2^{(\log_2 x)n}$
+          \item $\sum_{i=0}^{k-1} x^i = \frac{x^k-1}{x-1}$
         \end{itemize}
 \end{itemize}
 
@@ -77,6 +78,8 @@
 
 \section{Graphs}
 \begin{itemize}
+  \item BFS ($\bigO(V+E)$): Queue, mark as visited, add to queue
+  \item DFS ($\bigO(V+E)$): Recursive, mark as visited, visit neighbours
   \item Topological Sort ($\bigO(V+E)$): DFS, add to stack after recursion
   \item SCCs ($\bigO(V+E)$): DFS, reverse graph, DFS
   \item Bridges ($\bigO(E(V+E))=\bigO(E\cdot V+E^2)$): DFS, low-link values
@@ -91,12 +94,17 @@
         \end{itemize}
 \end{itemize}
 
-\section{Dynamic Programming}
+\section{Hard problems}
 \begin{enumerate}
-  \item Characterise: optimal substructure.
-  \item Top-Down: define optimal value recursively.
-  \item Bottom-up: compute optimal value.
-  \item Construct: optimal solution from computed values.
+  \item dynamic programming \begin{enumerate}
+          \item Characterise: optimal substructure.
+          \item Top-Down: define optimal value recursively.
+          \item Bottom-up: compute optimal value.
+          \item Construct: optimal solution from computed values.
+        \end{enumerate}
+  \item backtrack: define partial solutions, prune, construct.
+  \item branch and bound: define partial solutions, prune, bound, construct.
+  \item greedy: define optimal substructure, greedy choice, prove correctness.
 \end{enumerate}
 
 \end{document}

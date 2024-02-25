@@ -1,5 +1,19 @@
 \begin{figure}
   \centering
+  \begin{tikzpicture}[auto, on grid, node distance=1.5cm, treenode/.style={circle, draw}]
+    \node [treenode] (e) {e};
+    \node [treenode, below left=1cm and 2cmof e] (a) {\textbf{a}};
+    \node [treenode, below right=1cm and 2cm of e] (g) {g};
+    \node [treenode, below right=of a] (c) {c};
+    \node [treenode, below left=of g] (f) {f};
+    \node [treenode, below right=of g] (h) {h};
+    \node [treenode, below right=of c] (d) {d};
+    \node [treenode, below left=of c] (b) {b};
 
+    \draw (e) -- (a) -- (c) -- (b);
+    \draw (c) -- (d);
+    \draw (e) -- (g) -- (f);
+    \draw (g) -- (h);
+  \end{tikzpicture}
   \caption{Tree before rotation}\label{fig:treerotate}
 \end{figure}

@@ -33,7 +33,7 @@
             \item[$\square$] $T$ hat immer mehr Blätter als innere Knoten
             \item[$\square$] $T$ hat mindestens $n - 3h$ innere Knoten.
           \end{itemize}
-    \item Sei $G = (V,E)$ ein zusammenhängender, ungerichteter Graph mit der Kanten- gewichtsfunktion $w$. Angenommen $w(e) = c, c$ konstant, für alle Kanten, welche Laufzeit lässt sich dann zur Berechnung des minimalen Spannbaumes in $G$ erreichen?
+    \item Sei $G = (V,E)$ ein zusammenhängender, ungerichteter Graph mit der Kantengewichtsfunktion $w$. Angenommen $w(e) = c, c$ konstant, für alle Kanten, welche Laufzeit lässt sich dann zur Berechnung des minimalen Spannbaumes in $G$ erreichen?
           \begin{itemize}
             \item[$\square$] $\bigO(|V| \log |E|)$
             \item[$\square$] $\bigO(|V| + |E|)$
@@ -83,17 +83,17 @@
   \end{enumerate}
   \begin{solution}
     \begin{enumerate}
-      \item Falsch, Falsch, Falsch, Wahr
-      \item Wahr, Wahr, Falsch, Falsch
-      \item $8, 9, 10$
-      \item Falsch, Falsch, Wahr, Falsch
-      \item Wahr, Falsch, Falsch, Falsch
-      \item $12$ an Position $0$ nach $2$ Versuchen
-      \item \input{res/treerotate-solution.fig}
-      \item Falsch, Wahr, Falsch, Falsch
-      \item Wahr, Falsch, Wahr, Falsch
-      \item Falsch, Falsch, Falsch, Wahr
-      \item Falsch, Wahr, Falsch, Wahr
+      \item \xmark, \xmark, \xmark, \checkmark
+      \item \xmark, \checkmark, \xmark, \xmark
+      \item $[8, 9, 10]$
+      \item \xmark, \xmark, \checkmark, \xmark
+      \item \xmark, \xmark, \checkmark, \xmark
+      \item $12$ an Position $0$ nach $3$ Versuchen
+      \item Folgender Baum ergibt sich nach Left-Rotation: \input{res/treerotate-solution.fig}
+      \item \xmark, \xmark, \xmark, \checkmark
+      \item \xmark, \xmark, \checkmark, \xmark
+      \item \checkmark, \xmark, \xmark, \xmark
+      \item \xmark, \xmark, \checkmark, \xmark
     \end{enumerate}
   \end{solution}
 \end{exercise}
@@ -114,7 +114,7 @@
                   \begin{alg}\signed{alg2}{}{\empty}
                     \For{$i \gets 1$ \KwTo N}{
                       \textbf{do} $j \gets N$\;
-                      \While{j > 1}{
+                      \While{$j > 1$}{
                         \textbf{do} $sum \gets sum + j$\;
                         \textbf{do} $j \gets j/2$\;
                       }
@@ -134,8 +134,8 @@
                     $middle \gets \text{length}[A]/2$\;
                     $sum \gets sum + A[1]$\;
                     \If{$\text{length}[A] > 2$}{
-                      \call{alg4}{A[1 \KwTo middle]}\;
-                      \call{alg4}{A[middle + 1 \KwTo \text{length}[A]]}\;
+                      \call{alg4}{A[1 \dots middle]}\;
+                      \call{alg4}{A[middle + 1 \dots \text{length}[A]]}\;
                     }
                   \end{alg}
             \item $T(n)=\{?$ and $\bigO(?)$
@@ -144,9 +144,9 @@
                       \textbf{do} $sum \gets sum + A[i]^2$\;
                     }
                     \If{$\text{length}[A] > 3$}{
-                      \call{alg5}{A[1 \KwTo \text{length}[A]/3]}\;
-                      \call{alg5}{A[\text{length}[A]/3 \KwTo 2 \cdot \text{length}[A]/3]}\;
-                      \call{alg5}{A[2 \cdot \text{length}[A]/3 \KwTo \text{length}[A]]}\;
+                      \call{alg5}{A[1 \dots \text{length}[A]/3]}\;
+                      \call{alg5}{A[\text{length}[A]/3 \dots 2 \cdot \text{length}[A]/3]}\;
+                      \call{alg5}{A[2 \cdot \text{length}[A]/3 \dots \text{length}[A]]}\;
                     }
                   \end{alg}
             \item $T(n)=\{?$ and $\bigO(?)$
@@ -155,15 +155,15 @@
                       \textbf{do} $sum \gets sum + A[i]$\;
                     }
                     \If{$\text{length}[A] > 1$}{
-                      \call{alg6}{A[1 \KwTo \text{length}[A] - 2]}\;
+                      \call{alg6}{A[1 \dots \text{length}[A] - 2]}\;
                     }
                   \end{alg}
             \item $T(n)=\{?$ and $\bigO(?)$
                   \begin{alg}\signed{alg7}{A}{\empty}
                     \textbf{do} $sum \gets sum + 1$\;
                     \If{$\text{length}[A] > 1$}{
-                      $\call{alg7}{A[1 \KwTo \text{length}[A] - 2]}$\;
-                      $\call{alg7}{A[2 \KwTo \text{length}[A] - 1]}$\;
+                      \call{alg7}{A[1 \dots \text{length}[A] - 2]}\;
+                      \call{alg7}{A[2 \dots \text{length}[A] - 1]}\;
                     }
                   \end{alg}
           \end{enumerate}
@@ -193,13 +193,28 @@
       \item \begin{enumerate}
               \item $\bigO(N^2)$
               \item $\bigO(N \log N)$
-              \item $\bigO(N \log N)$
-              \item $T(n)=\{2T(n/2) + 1\}$ and $\bigO(n)$
-              \item $T(n)=\{3T(n/3) + n\}$ and $\bigO(n \log n)$
-              \item $T(n)=\{T(n-2) + n\}$ and $\bigO(n^2)$
-              \item $T(n)=\{2T(n-2) + 1\}$ and $\bigO(2^n)$
+              \item $\bigO(N)$
+              \item $T(n)= \begin{cases}
+                        1                  & \text{if } n \leq 2 \\
+                        2 \cdot T(n/2) + 1 & \text{sonst}
+                      \end{cases}$ und $\bigO(N)$
+              \item $T(n)= \begin{cases}
+                        1                  & \text{if } n \leq 3 \\
+                        3 \cdot T(n/3) + n & \text{sonst}
+                      \end{cases}$ und $\bigO(N \log N)$
+              \item $T(n)= \begin{cases}
+                        1          & \text{if } n \leq 1 \\
+                        T(n-2) + n & \text{sonst}
+                      \end{cases}$ und $\bigO(N^2)$
+              \item $T(n)= \begin{cases}
+                        1                  & \text{if } n \leq 1 \\
+                        2 \cdot T(n-1) + 1 & \text{sonst}
+                      \end{cases}$ und $\bigO(N)$
             \end{enumerate}
-      \item $T(n)=\{n \cdot T(n-1) + n\}$ and $\bigO(n!)$
+      \item $T(n)=\begin{cases}
+                n              & \text{if } n < 2 \\
+                n \cdot T(n-1) & \text{sonst}
+              \end{cases}$ und $\bigO(n!)$
     \end{enumerate}
   \end{solution}
 \end{exercise}
@@ -209,12 +224,12 @@
     \item
           Gegeben sei die bekannte Partitionsfunktion aus dem Quicksort-Algorithmus
           \input{res/quicksort.alg}
-          Dabei gehen wir in dieser Aufgabe von Arrays mit 0-basiertem Index aus. Sie befinden sich in Zeile 4 der Partition-Funktion mit $l = 0, r = 6$ und $j = 3, i = 0$. Werten Sie alle Schritte bis zum Erreichen der Zeile 8 aus. Protokollieren Sie den Speicherzustand jeweils beim Erreichen der Zeile 4 und der Zeile 8.
+          Dabei gehen wir in dieser Aufgabe von Arrays mit 0-basiertem Index aus. Sie befinden sich in Zeile 4 der Partition-Funktion mit $l = 0, r = 6$ und $j = 3, i = 0$. Werten Sie alle Schritte bis zum Erreichen der Zeile 8 aus. Protokollieren Sie den Speicherzustand jeweils beim Erreichen der Zeile 3 und der Zeile 7.
           \begin{itemize}
             \item[Zeile 4] $A: 3, 8, 6, 4, 6, 4, 5$ \hfill $j = 3, i = 0$
-            \item[Zeile 4] $A: ?$ \hfill $j = 4, i = ?$
-            \item[Zeile 4] $A: ?$ \hfill $j = 5, i = ?$
-            \item[Zeile 8] $A: ?$ \hfill $j = 5, i = ?$
+            \item[Zeile 4] $A:\ ?$ \hfill $j = 4, i =\ ?$
+            \item[Zeile 4] $A:\ ?$ \hfill $j = 5, i =\ ?$
+            \item[Zeile 8] $A:\ ?$ \hfill $j = 5, i =\ ?$
           \end{itemize}
     \item Ist Quicksort mit der obigen Partition Funktion ein stabiles Sortierverfahren? Begründen Sie Ihre Antwort und zeigen Sie entweder, dass Partition stabil ist oder schlagen Sie eine Modifikation von Quicksort vor, welche diesen stabilisiert.
     \item Gegeben sei ein Array der Länge $N$, welches ausschließlich Elemente aus der Menge $0,1,2$ enthält. Entwerfen Sie einen Algorithmus, der die Elemente in $\bigO(n)$ Zeit sortiert. Der Algorithmus soll vergleichs-/austauschbasiert und in-place arbeiten, was bedeutet, dass er maximal $\bigO(1)$ zusätzlichen Speicher nutzen darf. Skizzieren Sie Ihre Idee mit Pseudo-Code und einem beschreibenden Text.
@@ -225,11 +240,11 @@
       \item
             \begin{itemize}
               \item[Zeile 4] $A: 3, 8, 6, 4, 6, 4, 5$ \hfill $j = 3, i = 0$
-              \item[Zeile 4] $A: 3, 8, 6, 4, 6, 4, 5$ \hfill $j = 4, i = 0$
-              \item[Zeile 4] $A: 3, 8, 6, 4, 6, 4, 5$ \hfill $j = 5, i = 0$
-              \item[Zeile 8] $A: 3, 4, 6, 4, 6, 8, 5$ \hfill $j = 5, i = 0$
+              \item[Zeile 4] $A: 3, 4, 6, 8, 6, 4, 5$ \hfill $j = 4, i = 1$
+              \item[Zeile 4] $A: 3, 4, 6, 8, 6, 4, 5$ \hfill $j = 5, i = 1$
+              \item[Zeile 8] $A: 3, 4, 4, 8, 6, 6, 5$ \hfill $j = 5, i = 2$
             \end{itemize}
-      \item Nein, Quicksort ist nicht stabil. Partition ist nicht stabil, da sie die Reihenfolge von gleichen Elementen nicht erhält. Eine Möglichkeit Quicksort stabil zu machen, ist die Verwendung von Merge-Sort in der Rekursion, wenn die zu sortierende Menge klein genug ist.
+      \item Quicksort mit der gegebenen Partition ist stabil. Wenn ein Element dem Pivot entspricht, wird es ebenfalls getauscht. Das Pivotelement wird zuletzt hinter diesen anderen platziert. Somit bleibt die Reihenfolge von gleichen Elementen erhalten und Quicksort sortiert stabil.
       \item Der Algorithmus zählt die Anzahl der Elemente $0,1,2$ und schreibt diese in das Array zurück. Der Algorithmus benötigt $\bigO(n)$ Zeit und $\bigO(1)$ zusätzlichen Speicher.\input{res/sort.alg}
     \end{enumerate}
   \end{solution}
@@ -245,9 +260,10 @@
 
   \begin{solution}
     \begin{enumerate}
-      \item \input{res/mstgraph-solution.fig} Der minimale Spannbaum ist nicht eindeutig, da es mehrere Spannbäume mit dem gleichen Gewicht geben kann.
-      \item Der Algorithmus besucht alle von $u$ aus erreichbaren Knoten und markiert diese mit der Markierung ’label’. Der Algorithmus nutzt eine Tiefensuche, um alle von $u$ aus erreichbaren Knoten zu besuchen. Der Algorithmus hat die Laufzeit $\bigO(|V| + |E|)$.\input{res/label.alg}
-      \item Der Algorithmus besucht alle von $u$ aus erreichbaren Knoten und markiert diese mit der Markierung ’label’. Der Algorithmus nutzt eine Tiefensuche, um alle von $u$ aus erreichbaren Knoten zu besuchen. Der Algorithmus hat die Laufzeit $\bigO(|V| + |E|)$.\input{res/critical.alg}
+      \item \input{res/mstgraph-solution.fig} Der MST ist nicht eindeutig, da gleiche Kantengewichte zugelassen sind.
+      \item Führe eine DFS aus und markiere alle besuchten Knoten mit ’label’. Der Algorithmus hat die Laufzeit $\bigO(|V| + |E|$).
+            \input{res/label.alg}
+      \item Ehrlich gesagt komme ich hier nicht voran. % TODO: Lösungsweg und Algorithmus
     \end{enumerate}
   \end{solution}
 \end{exercise}
@@ -268,9 +284,9 @@
 
   \begin{solution}
     \begin{enumerate}
-      \item Der Pfad von $s$ nach $t$ über $p_0$ und $p_3$ hat eine Länge von 10 km und einen Energieverbrauch von 10 Energieeinheiten. Ein energetisch günstigerer Pfad ist der direkte Pfad von $s$ nach $t$ mit einer Länge von 8 km und einem Energieverbrauch von 8 Energieeinheiten.
+      \item Der Pfad von $s$ nach $t$ über $p_0$ und $p_3$ hat eine Länge von 50 km und einen Energieverbrauch von $50+2\cdot 15-15=65$ bzw. 60 Energieeinheiten (je nachdem ob Energie für Gesamtstrecke oder für jede Teilstrecke berechnet wird). Ein energetisch günstigerer Pfad ist der Pfad von $s$ nach $t$ über $p_1$ mit einer Länge von 40km und einem Energieverbrauch von $40+2\cdot 40-20=60$ Energieeinheiten (nur falls für jede Teilstrecke der Energiebverbrauch einzeln berechnet wird).
       \item Das Problem kann als kürzester Pfad in einem Graphen modelliert werden, wobei die Kantengewichte die Energieverbrauchsfunktion repräsentieren. Der Algorithmus von Dijkstra kann zur Lösung des Problems verwendet werden.
-      \item Der Pfad von $s$ nach $t$ mit den wenigsten Streckenkilometern entspricht dem Pfad mit dem minimalem Energieverbrauch, da der Energieverbrauch pro Streckenkilometer konstant ist und der Energieverbrauch pro Anstieg um einen Meter konstant ist.
+      \item Der Pfad von $s$ nach $t$ mit den wenigsten Streckenkilometern entspricht dem Pfad mit dem minimalem Energieverbrauch, da sich der Aufstieg und Abstieg schlussendlich ausgleichen (da der letztendliche Höhenunterschied nicht durch den Pfad verändert wird).
     \end{enumerate}
   \end{solution}
 \end{exercise}
@@ -286,10 +302,18 @@
 
   \begin{solution}
     \begin{enumerate}
-      \item Pauls Problem kann auf das Problem des Rucksackproblems reduziert werden. Das Rucksackproblem ist NP-vollständig, daher ist Pauls Problem ebenfalls NP-vollständig.
-      \item Der Algorithmus versucht alle möglichen Kombinationen von Klötzen zu stapeln und prüft, ob die Höhe des Turms gleich der Schreibtischhöhe ist. Der Algorithmus hat eine Laufzeit von $\bigO(2^N)$.\input{res/tower.alg}
-      \item Der Algorithmus kann durch die Verwendung von Schranken in einen Branch\&Bound Algorithmus umgewandelt werden. Eine untere Schranke ist die Höhe des bisher gebauten Turms und eine obere Schranke ist die Schreibtischhöhe.
-      \item Pauls Problem ist unter dieser Randbedingung nicht mehr NP-vollständig, da die Anzahl der möglichen Klötze und die Anzahl der möglichen Höhen begrenzt ist. Das Problem kann in polynomieller Zeit gelöst werden.
+      \item 3-SAT lässt sich auf Pauls Problem reduzieren, indem jede Klausel einen Würfel darstellt und die Höhe des Schreibtisches die Anzahl der Klauseln repräsentiert. Pauls Problem ist somit NP-vollständig.
+      \item Für jeden Klotz überprüfen ob er auf den bisher gebauten Turm passt und rekursiv alle Möglichkeiten durchgehen.\par
+            Wenn die Höhe des Turms der des Schreibtisches entspricht, den Turm zurückgeben.
+            \input{res/tower.alg}
+      \item Der Algorithmus kann durch die Verwendung von Schranken in einen Branch\&Bound Algorithmus umgewandelt werden. Eine untere Schranke ist die Höhe des höchste bereits gebaute Turm, welcher nicht größer ist als die Höhe des Schreibtisches abzgl. dem höchsten noch nicht verwendeten Klotz. Eine obere Schranke ist (offensichtlich) die Höhe des Schreibtisches.
+      \item Pauls Problem ist unter dieser Randbedingung nicht mehr NP-vollständig, da die Anzahl der möglichen Klötze und die Anzahl der möglichen Höhen begrenzt ist. Das Problem kann in polynomieller Zeit gelöst werden: \begin{itemize}
+              \item lege Klötze seitlich auf den Turm (Höhe 1cm) bis alle verbraucht sind, gebe zurück falls Höhe des Schreibtisches erreicht
+              \item drehe 2er Klötze (Höhe 2cm) bis alle gedreht sind, falls Höhe des Schreibtisches erreicht, gebe zurück
+              \item drehe 3er Klötze (Höhe 3cm) bis alle gedreht sind, falls Höhe des Schreibtisches erreicht, gebe zurück
+              \item drehe 6er Klötze (Höhe 6cm) bis alle gedreht sind, falls Höhe des Schreibtisches erreicht, gebe zurück
+              \item falls Schreibtischehöhe nicht erreicht, gebe zurück, dass kein Turm gebaut werden kann
+            \end{itemize} Der Algorithmus hat die Laufzeit $\bigO(N)$.
     \end{enumerate}
   \end{solution}
 \end{exercise}
