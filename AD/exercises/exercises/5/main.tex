@@ -84,8 +84,7 @@
   \begin{solution}
     \begin{enumerate}
       \item Die Brückenkanten sind: $(11-13) (8-9) (8-10)$.
-      \item Der Algorithmus findBridges kann genutzt werden indem $false$ zurückgegeben wird, wenn die Menge der Brückenkanten $B$ leer ist. Andernfalls wird $true$ zurückgegeben.\par
-            \input{../../../../summaries/ad/res/graphs/findBridges.alg}
+      \item Der Algorithmus findBridges kann genutzt werden indem $false$ zurückgegeben wird, wenn die Menge der Brückenkanten $B$ leer ist. Andernfalls wird $true$ zurückgegeben.
       \item Der Algorithmus arbeitet korrekt, da er für jede Kante $e$ prüft, ob der Graph $G_0$ nach Entfernen von $e$ noch zusammenhängend ist.
       \item Die Laufzeit des Algorithmus ist $\bigO(|V| \cdot |E| + |E|^2)$, da die DFS in $\bigO(|V| + |E|)$ arbeitet und die diese für jede Kante $e$ in $\bigO(|E|)$ aufgerufen wird.
     \end{enumerate}

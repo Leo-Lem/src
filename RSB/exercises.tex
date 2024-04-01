@@ -1,231 +1,256 @@
 \documentclass{article}
 
-\usepackage{exercises}
-
-\resources{res}
+\usepackage[solutions]{xrcise}
 
 \subject{Rechnerstrukturen \& Betriebssysteme}
 \semester{Wintersemester 2023}
 \author{Leopold Lemmermann}
-% \withsolutions
 
-\begin{document}
-\createtitle
+\begin{document}\createtitle
 
 \sheet[2020]{Ersttermin}
-\begin{exercises}{Zahlensysteme}
-\item Wandeln Sie die Dezimalzahl $N = 1956$ in eine 16-stellige Binärzahl um.
-\item Wie lautet die Darstellung von $N$ im Oktalsystem.
-\item Wie lautet die Darstellung von $N$ im Hexadezimalsystem.
-\item Wie lautet jeweils die Darstellung der negativen Zahl $N$ im Hexadezimalsystem (4 Stellen), wenn mit einer Angabe negativer Zahlen
-\begin{itemize}
-  \item mit Vorzeichen/Betrag:
-  \item Einerkomplementdarstellung:
-  \item Zweierkomplementdarstellung:
-\end{itemize}
-gearbeitet wird.
-\end{exercises}
+\begin{exercise}{Zahlensysteme}
+  \begin{enumerate}
+    \item Wandeln Sie die Dezimalzahl $N = 1956$ in eine 16-stellige Binärzahl um.
+    \item Wie lautet die Darstellung von $N$ im Oktalsystem.
+    \item Wie lautet die Darstellung von $N$ im Hexadezimalsystem.
+    \item Wie lautet jeweils die Darstellung der negativen Zahl $N$ im Hexadezimalsystem (4 Stellen), wenn mit einer Angabe negativer Zahlen
+          \begin{itemize}
+            \item mit Vorzeichen/Betrag:
+            \item Einerkomplementdarstellung:
+            \item Zweierkomplementdarstellung:
+          \end{itemize}
+          gearbeitet wird.
+  \end{enumerate}
 
-\begin{solutions}
-  \item $N = 1956_{10} = {0000\ 0111\ 1010\ 0100}_2$
-  \item $N = 1956_{10} = {3644}_8$
-  \item $N = 1956_{10} = {\mathrm{07A4}}_{16}$
-  \item $-N = -1956_{10} = $
-  \begin{itemize}
-    \item ${\mathrm{F7A4}}_{16}$
-    \item ${\mathrm{F85B}}_{16}$
-    \item ${\mathrm{F85C}}_{16}$
-  \end{itemize}
-\end{solutions}
+  \begin{solution}
+    \begin{enumerate}
+      \item $N = 1956_{10} = {0000\ 0111\ 1010\ 0100}_2$
+      \item $N = 1956_{10} = {3644}_8$
+      \item $N = 1956_{10} = {\mathrm{07A4}}_{16}$
+      \item $-N = -1956_{10} = $
+            \begin{itemize}
+              \item ${\mathrm{F7A4}}_{16}$
+              \item ${\mathrm{F85B}}_{16}$
+              \item ${\mathrm{F85C}}_{16}$
+            \end{itemize}
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
 
-\begin{exercises}{Kommazahlen zwischen Basen}
-\item Wandeln Sie die Dezimalzahl $N = 0.85$ in eine (möglicherweise periodische) Binärzahl mit 4 Vorkomma- \& der Zahl Nachkommastellen um.
-\item Wie lautet die Darstellung von $N$ im Hexadezimalsystem?
-\item Wie wird $N$ im Zweierkomplement mit 4 Vorkomma- \& 8 Nachkommastellen codiert?
-\end{exercises}
+\begin{exercise}{Kommazahlen zwischen Basen}
+  \begin{enumerate}
+    \item Wandeln Sie die Dezimalzahl $N = 0.85$ in eine (möglicherweise periodische) Binärzahl mit 4 Vorkomma- \& der Zahl Nachkommastellen um.
+    \item Wie lautet die Darstellung von $N$ im Hexadezimalsystem?
+    \item Wie wird $N$ im Zweierkomplement mit 4 Vorkomma- \& 8 Nachkommastellen codiert?
+  \end{enumerate}
 
-\begin{solutions}
-  \item $N = 0.85_{10} = {0000.11\overline{01\ 10}}_2$
-  \item $N = 0.85_{10} = {\mathrm{.D\bar{9}}}_{16}$
-  \item ${N}_{2K} = (0.85_{10})_{2K} = {1111.0010\ 0111}_2$
-\end{solutions}
+  \begin{solution}
+    \begin{enumerate}
+      \item $N = 0.85_{10} = {0000.11\overline{01\ 10}}_2$
+      \item $N = 0.85_{10} = {\mathrm{.D\bar{9}}}_{16}$
+      \item ${N}_{2K} = (0.85_{10})_{2K} = {1111.0010\ 0111}_2$
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
 
-\begin{eexercises}{Rechnen im Hexadezimalsystem}
-  {Gegeben seien die Hexadezimalzahlen $A = \mathrm{4B2F}$ und $B = \mathrm{3B32}$.}
-  \item Addieren Sie $A+B$.
-  \item Subtrahieren Sie $A-B$.
-  \item Multiplizieren Sie $A\cdot (20)_{16}$.
-\end{eexercises}
+\begin{exercise}{Rechnen im Hexadezimalsystem}
+  Gegeben seien die Hexadezimalzahlen $A = \mathrm{4B2F}$ und $B = \mathrm{3B32}$.
+  \begin{enumerate}
+    \item Addieren Sie $A+B$.
+    \item Subtrahieren Sie $A-B$.
+    \item Multiplizieren Sie $A\cdot (20)_{16}$.
+  \end{enumerate}
 
-\begin{solutions}
-  \item $A + B = \mathrm{4B2F} + \mathrm{3B32} = \mathrm{8661}$
-  \item $A - B = \mathrm{4B2F} - \mathrm{3B32} = \mathrm{0FFD}$
-  \item $A \cdot B = \mathrm{4B2F} \cdot 20 = \mathrm{965E}$
-\end{solutions}
+  \begin{solution}
+    \begin{enumerate}
+      \item $A + B = \mathrm{4B2F} + \mathrm{3B32} = \mathrm{8661}$
+      \item $A - B = \mathrm{4B2F} - \mathrm{3B32} = \mathrm{0FFD}$
+      \item $A \cdot B = \mathrm{4B2F} \cdot 20 = \mathrm{965E}$
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
 
-\begin{eexercises}{Umwandlung von IEEE-754 Gleitkommazahlen}{
-    Wandeln Sie die folgenden normalisierten 32-bit Gleitkommazahlen im IEEE-754 float-Format (1-bit Vorzeichen, 8-bit Exponent in Exzess-127 Darstellung, 23-bit Mantisse) in Dezimalzahlen um. Dabei sind nur die oberen 7 Bit der Mantisse angegeben (alle anderen Bits sind 0).
-  }
-  \item $(0|0000 0000|0000 000)$:
-  \item $(1|1000 0010|1110 000)$:
-  \item $(0|0111 1111|0000 000)$:
-  \item $(0|0111 1110|1000 000)$:
-  \item $(1|0111 1111|0100 000)$:
-\end{eexercises}
+\begin{exercise}{Umwandlung von IEEE-754 Gleitkommazahlen}
+  Wandeln Sie die folgenden normalisierten 32-bit Gleitkommazahlen im IEEE-754 float-Format (1-bit Vorzeichen, 8-bit Exponent in Exzess-127 Darstellung, 23-bit Mantisse) in Dezimalzahlen um. Dabei sind nur die oberen 7 Bit der Mantisse angegeben (alle anderen Bits sind 0).
+  \begin{enumerate}
+    \item $(0|0000 0000|0000 000)$:
+    \item $(1|1000 0010|1110 000)$:
+    \item $(0|0111 1111|0000 000)$:
+    \item $(0|0111 1110|1000 000)$:
+    \item $(1|0111 1111|0100 000)$:
+  \end{enumerate}
 
-\begin{solutions}
-  \item $0.0$
-  \item $-15.0$
-  \item $1.0$
-  \item $0.75$
-  \item $-1.25$
-\end{solutions}
+  \begin{solution}
+    \begin{enumerate}
+      \item $0.0$
+      \item $-15.0$
+      \item $1.0$
+      \item $0.75$
+      \item $-1.25$
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
 
-\begin{eexercises}{Codierung}{
-    Nachfolgend sind alle 4 Codewörter eines Codes angegeben:
-    \centering $w_1 = 0000001$, $w_2 = 0001110$, $w_3 = 1110000$, $w_4 = 1111111$
-  }
-  \item Bestimmen Sie den minimalen Hamming-Abstand der Codewörter.
-  \item Welche Aussagen sind zutreffend?
-  \begin{itemize}
-    \item Es handelt sich um einen Binärcode. \psolution{\checkmark}
-    \item Es handelt sich um einen Blockcode. \psolution{\checkmark}
-    \item Es handelt sich um einen linearen Code. \psolution{\xmark}
-    \item Es handelt sich um einen zyklischen Code. \psolution{\checkmark}
-    \item Mit dem Code können 2-bit Fehler erkannt werden. \psolution{\checkmark}
-    \item Mit dem Code können 3-bit Fehler erkannt werden. \psolution{\checkmark}
-    \item Mit dem Code können 1-bit Fehler korrigiert werden. \psolution{\checkmark}
-    \item Mit dem Code können 2-bit Fehler korrigiert werden. \psolution{\xmark}
-    \item Mit dem Code können 1-bit Fehler korrigiert und 2-bit Fehler erkannt werden. \psolution{\checkmark}
-  \end{itemize}
-\end{eexercises}
+\begin{exercise}{Codierung}
+  Nachfolgend sind alle 4 Codewörter eines Codes angegeben:
+  \centering $w_1 = 0000001$, $w_2 = 0001110$, $w_3 = 1110000$, $w_4 = 1111111$
+  \begin{enumerate}
+    \item Bestimmen Sie den minimalen Hamming-Abstand der Codewörter.
+    \item Welche Aussagen sind zutreffend?
+          \begin{itemize}
+            \item Es handelt sich um einen Binärcode. \psolution{\checkmark}
+            \item Es handelt sich um einen Blockcode. \psolution{\checkmark}
+            \item Es handelt sich um einen linearen Code. \psolution{\xmark}
+            \item Es handelt sich um einen zyklischen Code. \psolution{\checkmark}
+            \item Mit dem Code können 2-bit Fehler erkannt werden. \psolution{\checkmark}
+            \item Mit dem Code können 3-bit Fehler erkannt werden. \psolution{\checkmark}
+            \item Mit dem Code können 1-bit Fehler korrigiert werden. \psolution{\checkmark}
+            \item Mit dem Code können 2-bit Fehler korrigiert werden. \psolution{\xmark}
+            \item Mit dem Code können 1-bit Fehler korrigiert und 2-bit Fehler erkannt werden. \psolution{\checkmark}
+          \end{itemize}
+  \end{enumerate}
 
-\begin{solutions}
-  \item $d_{min} = 4$
-  \item Zutreffende Aussagen: s.o.
-\end{solutions}
+  \begin{solution}
+    \begin{enumerate}
+      \item $d_{min} = 4$
+      \item Zutreffende Aussagen: s.o.
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
 
-\begin{eexercises}{Codierung nach Fano \& Huffman}{
-    Gegeben sei eine Menge $M = \{A, B, C, D, E\}$ von Symbolen, die mit folgenden Wahrscheinlichkeiten auftreten:
-    \begin{tabular}{c|ccccc}
-      $m_i$ & $A$ & $B$ & $C$ & $D$ & $E$ \\
-      \hline
-      $p_i$ & .35 & .15 & .2  & .18 & .12 \\
-    \end{tabular}
-  }
-  \item Geben Sie eine optimale Codierung der Elemente von $M$ nach Fano an.
-  \item Geben Sie eine optimale Codierung der Elemente von $M$ nach Huffman an.
-  \item Schreiben Sie die Formel auf, nach der die Entropie $H$ berechnet wird \& setzen Sie die Zahlen ein. Die Berechnung des Zahlenwertes entfällt.
-\end{eexercises}
-
-\begin{solutions}
-  \item
+\begin{exercise}{Codierung nach Fano \& Huffman}
+  Gegeben sei eine Menge $M = \{A, B, C, D, E\}$ von Symbolen, die mit folgenden Wahrscheinlichkeiten auftreten:
   \begin{tabular}{c|ccccc}
     $m_i$ & $A$ & $B$ & $C$ & $D$ & $E$ \\
     \hline
     $p_i$ & .35 & .15 & .2  & .18 & .12 \\
-    $c_i$ & 00  & 10  & 01  & 11  & 001 \\
   \end{tabular}
-  \item
-  \begin{tabular}{c|ccccc}
-    $m_i$ & $A$ & $B$ & $C$ & $D$ & $E$ \\
-    \hline
-    $p_i$ & .35 & .15 & .2  & .18 & .12 \\
-    $c_i$ & 0   & 110 & 10  & 111 & 111 \\
-  \end{tabular}
-  \item
-  \begin{equation*}
-    \begin{split}
-      H & = -\sum_{i=1}^{n} p_i \cdot \log_2(p_i)                                                                         \\
-        & = -(.35\cdot \log_2{.35}+ .15\cdot \log_2{.15}+ .2\cdot \log_2{.2}+ .18\cdot \log_2{.18}+ .12\cdot \log_2{.12}) \\
-      ( & =2.18)
-    \end{split}
-  \end{equation*}
-\end{solutions}
-
-\begin{eexercises}{Logische Funktionen}{
-    Gegeben sei die folgende logische Funktion $F$:
-    \centering\begin{tabular}{c|cccc cccc cccc cccc}
-      $b_0$ & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 \\
-      $b_1$ & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\
-      $a_0$ & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
-      $a_1$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
-      \hline
-      $F$   & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 1 \\
-    \end{tabular}
-  }
-  \item Übertragen Sie $F$ in ein 4x4 KV-Diagramm.
-  \item Finden Sie geeignete Schleifen \& geben Sie die minimale konjunktive Form von $F$ als logische Funktion $a_1, a_0, b_1, b_0$ an.
-  \item Wie lautet die minimale disjunktive Form von $F$?
-  \item Welche Vergleichsoperation der 2-bit Zahlen $(a_1a_0)$ \& $(b_1b_0)$ beschreibt $F$?
-\end{eexercises}
-
-\begin{solutions}
-  \item
-  \begin{tabular}{c|cccc}
-    $b_1b_0 \backslash a_1a_0$ & 00 & 01 & 11 & 10 \\
-    \hline
-    00                         & 1  & 1  & 1  & 1  \\
-    01                         & 0  & 1  & 1  & 1  \\
-    11                         & 0  & 0  & 1  & 1  \\
-    10                         & 0  & 0  & 0  & 1  \\
-  \end{tabular}
-  \item z.B. $F = (b_1 \lor \bar{a_1}) \land (b_0\lor \bar{a_1}\lor \bar{a_0}) \land (b_1\lor b_0\lor\bar{a_0})$
-  % TODO: verify
-  \item z.B. $F = (\bar{b_1}\land\bar{b_0}) \lor (a_1\land a_0) \lor (\bar{b_0}\land a_1) \lor (\bar{b_1}\land a_0)\lor(\bar{b_1}\land a_1)$
-  \item $(a_1a_0) \geq (b_1b_0)$
-\end{solutions}
-
-\begin{exercises}{Funktional vollständige Basismengen}
-\item Zeigen Sie, dass $\{NAND\}$ eine funktionale vollständige Basismenge ist. Drücken Sie dazu die folgenden Funktionen nur unter Verwendung von NANDs aus.
-\begin{enumerate}
-  \item $NOT\ \bar{a} = $
-  \item $AND\ a \land b = $
-  \item $OR\ a \lor b = $
-\end{enumerate}
-\item Zeigen Sie, dass $\{NOR\}$ eine funktionale vollständige Basismenge ist. Drücken Sie dazu die folgenden Funktionen nur unter Verwendung von NORs aus.
-\begin{enumerate}
-  \item $NOT\ \bar{a} = $
-  \item $AND\ a \land b = $
-  \item $OR\ a \lor b = $
-\end{enumerate}
-\end{exercises}
-
-\begin{solutions}
-  \item
   \begin{enumerate}
-    \item $NOT\ \bar{a} = a\ NAND\ a$
-    \item $AND\ a \land b = \overline{a\ NAND\ b}$
-    \item $OR\ a \lor b = \bar{a}\ NAND\ \bar{b}$
+    \item Geben Sie eine optimale Codierung der Elemente von $M$ nach Fano an.
+    \item Geben Sie eine optimale Codierung der Elemente von $M$ nach Huffman an.
+    \item Schreiben Sie die Formel auf, nach der die Entropie $H$ berechnet wird \& setzen Sie die Zahlen ein. Die Berechnung des Zahlenwertes entfällt.
   \end{enumerate}
-  \item
+
+  \begin{solution}
+    \begin{enumerate}
+      \item
+            \begin{tabular}{c|ccccc}
+              $m_i$ & $A$ & $B$ & $C$ & $D$ & $E$ \\
+              \hline
+              $p_i$ & .35 & .15 & .2  & .18 & .12 \\
+              $c_i$ & 00  & 10  & 01  & 11  & 001 \\
+            \end{tabular}
+      \item
+            \begin{tabular}{c|ccccc}
+              $m_i$ & $A$ & $B$ & $C$ & $D$ & $E$ \\
+              \hline
+              $p_i$ & .35 & .15 & .2  & .18 & .12 \\
+              $c_i$ & 0   & 110 & 10  & 111 & 111 \\
+            \end{tabular}
+      \item
+            \begin{equation*}
+              \begin{split}
+                H & = -\sum_{i=1}^{n} p_i \cdot \log_2(p_i)                                                                         \\
+                  & = -(.35\cdot \log_2{.35}+ .15\cdot \log_2{.15}+ .2\cdot \log_2{.2}+ .18\cdot \log_2{.18}+ .12\cdot \log_2{.12}) \\
+                ( & =2.18)
+              \end{split}
+            \end{equation*}
+    \end{enumerate}
+  \end{solution}
+\end{exercise}
+
+\begin{exercise}{Logische Funktionen}
+  Gegeben sei die folgende logische Funktion $F$:
+  \centering\begin{tabular}{c|cccc cccc cccc cccc}
+    $b_0$ & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 \\
+    $b_1$ & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+    $a_0$ & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+    $a_1$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+    \hline
+    $F$   & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 1 \\
+  \end{tabular}
   \begin{enumerate}
-    \item $NOT\ \bar{a} = a\ NOR\ a$
-    \item $AND\ a \land b = \bar{a}\ NOR\ \bar{b}$
-    \item $OR\ a \lor b = \overline{a\ NOR\ b}$
+    \item Übertragen Sie $F$ in ein 4x4 KV-Diagramm.
+    \item Finden Sie geeignete Schleifen \& geben Sie die minimale konjunktive Form von $F$ als logische Funktion $a_1, a_0, b_1, b_0$ an.
+    \item Wie lautet die minimale disjunktive Form von $F$?
+    \item Welche Vergleichsoperation der 2-bit Zahlen $(a_1a_0)$ \& $(b_1b_0)$ beschreibt $F$?
   \end{enumerate}
-\end{solutions}
+\end{exercise}
 
-\begin{eexercises}{Impulsdiagramme}{
-    Zeichnen Sie die Impulsdiagramme für die folgenden Schaltungen:\par
-    \vspace{1em}
-    \centering
-    \resizebox{0.9\linewidth}{!}{
-      \tikz{
-        \node at (-1,0.5) {\textbf{C}lock};
-        \draw[gray!25] (0,0) grid (25,1);
-        \draw{(0,0) -- (1,0) -- (1,1) -- (4,1) -- (4,0) -- (7,0) -- (7,1) -- (10,1) -- (10,0) -- (13,0) -- (13,1) -- (16,1) -- (16,0) -- (19,0) -- (19,1) -- (22,1) -- (22,0) -- (25,0)};
+\begin{solution}
+  \begin{enumerate}
+    \item
+          \begin{tabular}{c|cccc}
+            $b_1b_0 \backslash a_1a_0$ & 00 & 01 & 11 & 10 \\
+            \hline
+            00                         & 1  & 1  & 1  & 1  \\
+            01                         & 0  & 1  & 1  & 1  \\
+            11                         & 0  & 0  & 1  & 1  \\
+            10                         & 0  & 0  & 0  & 1  \\
+          \end{tabular}
+    \item z.B. $F = (b_1 \lor \bar{a_1}) \land (b_0\lor \bar{a_1}\lor \bar{a_0}) \land (b_1\lor b_0\lor\bar{a_0})$
+          % TODO: verify
+    \item z.B. $F = (\bar{b_1}\land\bar{b_0}) \lor (a_1\land a_0) \lor (\bar{b_0}\land a_1) \lor (\bar{b_1}\land a_0)\lor(\bar{b_1}\land a_1)$
+    \item $(a_1a_0) \geq (b_1b_0)$
+  \end{enumerate}
+\end{solution}
 
-        \node at (-1,-1.5) {\textbf{D}ata};
-        \draw[gray!25] (0,-1) grid (25,-2);
-        \draw{(0,-2) -- (2,-2) -- (2,-1) -- (3,-1) -- (3,-2) -- (6,-2) -- (6,-1) -- (11,-1) -- (11,-2) -- (14,-2) -- (14,-1) -- (20,-1) -- (20,-2) -- (23,-2) -- (25,-2)};
-      }
+\begin{exercise}{Funktional vollständige Basismengen}
+  \begin{enumerate}
+    \item Zeigen Sie, dass $\{NAND\}$ eine funktionale vollständige Basismenge ist. Drücken Sie dazu die folgenden Funktionen nur unter Verwendung von NANDs aus.
+          \begin{enumerate}
+            \item $NOT\ \bar{a} = $
+            \item $AND\ a \land b = $
+            \item $OR\ a \lor b = $
+          \end{enumerate}
+    \item Zeigen Sie, dass $\{NOR\}$ eine funktionale vollständige Basismenge ist. Drücken Sie dazu die folgenden Funktionen nur unter Verwendung von NORs aus.
+          \begin{enumerate}
+            \item $NOT\ \bar{a} = $
+            \item $AND\ a \land b = $
+            \item $OR\ a \lor b = $
+          \end{enumerate}
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  \begin{enumerate}
+    \item
+          \begin{enumerate}
+            \item $NOT\ \bar{a} = a\ NAND\ a$
+            \item $AND\ a \land b = \overline{a\ NAND\ b}$
+            \item $OR\ a \lor b = \bar{a}\ NAND\ \bar{b}$
+          \end{enumerate}
+    \item
+          \begin{enumerate}
+            \item $NOT\ \bar{a} = a\ NOR\ a$
+            \item $AND\ a \land b = \bar{a}\ NOR\ \bar{b}$
+            \item $OR\ a \lor b = \overline{a\ NOR\ b}$
+          \end{enumerate}
+  \end{enumerate}
+\end{solution}
+
+\begin{exercise}{Impulsdiagramme}
+  Zeichnen Sie die Impulsdiagramme für die folgenden Schaltungen:\par
+  \vspace{1em}
+  \centering
+  \resizebox{0.9\linewidth}{!}{
+    \tikz{
+      \node at (-1,0.5) {\textbf{C}lock};
+      \draw[gray!25] (0,0) grid (25,1);
+      \draw{(0,0) -- (1,0) -- (1,1) -- (4,1) -- (4,0) -- (7,0) -- (7,1) -- (10,1) -- (10,0) -- (13,0) -- (13,1) -- (16,1) -- (16,0) -- (19,0) -- (19,1) -- (22,1) -- (22,0) -- (25,0)};
+
+      \node at (-1,-1.5) {\textbf{D}ata};
+      \draw[gray!25] (0,-1) grid (25,-2);
+      \draw{(0,-2) -- (2,-2) -- (2,-1) -- (3,-1) -- (3,-2) -- (6,-2) -- (6,-1) -- (11,-1) -- (11,-2) -- (14,-2) -- (14,-1) -- (20,-1) -- (20,-2) -- (23,-2) -- (25,-2)};
     }
   }
-  \item\label{impulse:1st} Vorderflankengesteuertes D-Flipflop
-  \item\label{impulse:2nd} Rückflankengesteuertes D-Flipflop
-  \item\label{impulse:3rd} Pegelgesteuertes D-Flipflop / Latch (high-aktiv)
-\end{eexercises}
+  \begin{enumerate}
+    \item\label{impulse:1st} Vorderflankengesteuertes D-Flipflop
+    \item\label{impulse:2nd} Rückflankengesteuertes D-Flipflop
+    \item\label{impulse:3rd} Pegelgesteuertes D-Flipflop / Latch (high-aktiv)
+  \end{enumerate}
+\end{exercise}
 
 \begin{solution}
   \resizebox{\linewidth}{!}{
@@ -258,6 +283,7 @@ gearbeitet wird.
 
 \begin{exercise}{ROBDDs}
   Skizzieren Sie den ROBDD für die Boole'sche Funktion $f(a, b) = \overline{a \oplus b}$.
+
   \begin{solution}
     \tikz[auto] {
       \node (a) at (1,0) {$a$};
@@ -275,72 +301,75 @@ gearbeitet wird.
   \end{solution}
 \end{exercise}
 
-\begin{eexercises}{Schaltwerke}{
-    Gegeben sei ein Schaltwerk mit vier, in zwei Bit kodiernte, Zuständen ($z_1, z_2$), einem Eingang $x$ \& einem Ausgang $y$. Es gelte:
-    \centering$z_1^+ = z_2 \lor \bar{x}\qquad z_2^+ = \bar{z_2} \lor \overline{z_1\bar{x}}\qquad y = z_1 \lor x$
-  }
-  \item Ist das Schaltwerk vom Typ Moore oder Mealy? Begründen Sie Ihre Antwort.
-  \item Füllen Sie eine Funktions- \& KV-Tabelle für $z_1, z_2, y$ mit entsprechenden Werten.
-  \item Zeichnen Sie das Zustandsübergangsdiagramm des Schaltwerks.
-\end{eexercises}
+\begin{exercise}{Schaltwerke}
+  Gegeben sei ein Schaltwerk mit vier, in zwei Bit kodiernte, Zuständen ($z_1, z_2$), einem Eingang $x$ \& einem Ausgang $y$. Es gelte:
+  \centering$z_1^+ = z_2 \lor \bar{x}\qquad z_2^+ = \bar{z_2} \lor \overline{z_1\bar{x}}\qquad y = z_1 \lor x$
+  \begin{enumerate}
+    \item Ist das Schaltwerk vom Typ Moore oder Mealy? Begründen Sie Ihre Antwort.
+    \item Füllen Sie eine Funktions- \& KV-Tabelle für $z_1, z_2, y$ mit entsprechenden Werten.
+    \item Zeichnen Sie das Zustandsübergangsdiagramm des Schaltwerks.
+  \end{enumerate}
+\end{exercise}
 
-\begin{solutions}
-  \item Das Schaltwerk ist vom Typ Mealy, da der Ausgang $y$ von den Eingängen $x$ \& $z_1$ abhängt.
-  \item Funktionstabelle:
-  \begin{tabular}{ccc|cc|c}
-    $x$ & $z_2$ & $z_1$ & $z_2^+$ & $z_1^+$ & $y$ \\
-    \hline
-    0   & 0     & 0     & 1       & 1       & 0   \\
-    0   & 0     & 1     & 1       & 1       & 1   \\
-    0   & 1     & 0     & 1       & 1       & 0   \\
-    0   & 1     & 1     & 0       & 1       & 1   \\
-    1   & 0     & 0     & 1       & 0       & 1   \\
-    1   & 0     & 1     & 1       & 0       & 1   \\
-    1   & 1     & 0     & 1       & 1       & 1   \\
-    1   & 1     & 1     & 1       & 1       & 1   \\
-  \end{tabular}
+\begin{solution}
+  \begin{enumerate}
+    \item Das Schaltwerk ist vom Typ Mealy, da der Ausgang $y$ von den Eingängen $x$ \& $z_1$ abhängt.
+    \item Funktionstabelle:
+          \begin{tabular}{ccc|cc|c}
+            $x$ & $z_2$ & $z_1$ & $z_2^+$ & $z_1^+$ & $y$ \\
+            \hline
+            0   & 0     & 0     & 1       & 1       & 0   \\
+            0   & 0     & 1     & 1       & 1       & 1   \\
+            0   & 1     & 0     & 1       & 1       & 0   \\
+            0   & 1     & 1     & 0       & 1       & 1   \\
+            1   & 0     & 0     & 1       & 0       & 1   \\
+            1   & 0     & 1     & 1       & 0       & 1   \\
+            1   & 1     & 0     & 1       & 1       & 1   \\
+            1   & 1     & 1     & 1       & 1       & 1   \\
+          \end{tabular}
 
-  KV-Diagramm für $z_2^+$:
-  \begin{tabular}{c|cccc}
-    $x\backslash z_1z_2$ & 00 & 01 & 11 & 10 \\
-    \hline
-    1                    & 1  & 0  & 1  & 1  \\
-    1                    & 1  & 1  & 1  & 1  \\
-  \end{tabular}
+          KV-Diagramm für $z_2^+$:
+          \begin{tabular}{c|cccc}
+            $x\backslash z_1z_2$ & 00 & 01 & 11 & 10 \\
+            \hline
+            1                    & 1  & 0  & 1  & 1  \\
+            1                    & 1  & 1  & 1  & 1  \\
+          \end{tabular}
 
-  KV-Diagramm für $z_1^+$:
-  \begin{tabular}{c|cccc}
-    $x\backslash z_1z_2$ & 00 & 01 & 11 & 10 \\
-    \hline
-    0                    & 1  & 1  & 1  & 1  \\
-    1                    & 0  & 0  & 1  & 1  \\
-  \end{tabular}
+          KV-Diagramm für $z_1^+$:
+          \begin{tabular}{c|cccc}
+            $x\backslash z_1z_2$ & 00 & 01 & 11 & 10 \\
+            \hline
+            0                    & 1  & 1  & 1  & 1  \\
+            1                    & 0  & 0  & 1  & 1  \\
+          \end{tabular}
 
-  KV-Diagramm für $y$:
-  \begin{tabular}{c|cccc}
-    $x\backslash z_1z_2$ & 00 & 01 & 11 & 10 \\
-    \hline
-    0                    & 0  & 1  & 1  & 0  \\
-    1                    & 1  & 1  & 1  & 1  \\
-  \end{tabular}
-  \item Zustandsübergangsdiagramm:
-  \tikz[->,auto,node distance=3cm,main node/.style={circle,draw}]{
-    \node[main node] (0) {00};
-    \node[main node] (3) [right of=0] {11};
-    \node[main node] (2) [below of=0] {10};
-    \node[main node] (1) [right of=2] {01};
+          KV-Diagramm für $y$:
+          \begin{tabular}{c|cccc}
+            $x\backslash z_1z_2$ & 00 & 01 & 11 & 10 \\
+            \hline
+            0                    & 0  & 1  & 1  & 0  \\
+            1                    & 1  & 1  & 1  & 1  \\
+          \end{tabular}
+    \item Zustandsübergangsdiagramm:
+          \tikz[->,auto,node distance=3cm,main node/.style={circle,draw}]{
+            \node[main node] (0) {00};
+            \node[main node] (3) [right of=0] {11};
+            \node[main node] (2) [below of=0] {10};
+            \node[main node] (1) [right of=2] {01};
 
-    \path[every node]
-    (0) edge [bend left] node {$\bar x/\bar y$} (3)
-    (0) edge [bend right] node {$x/y$} (2)
-    (1) edge [bend left] node {$x/y$} (2)
-    (1) edge [bend left] node {$\bar x/y$} (3)
-    (2) edge [bend left] node {$x/\bar y$} (1)
-    (2) edge [bend left] node {$\bar x/y$} (3)
-    (3) edge [loop right] node {$x/y$} (3)
-    (3) edge [bend left] node {$\bar x/y$} (1);
-  }
-\end{solutions}
+            \path[every node]
+            (0) edge [bend left] node {$\bar x/\bar y$} (3)
+            (0) edge [bend right] node {$x/y$} (2)
+            (1) edge [bend left] node {$x/y$} (2)
+            (1) edge [bend left] node {$\bar x/y$} (3)
+            (2) edge [bend left] node {$x/\bar y$} (1)
+            (2) edge [bend left] node {$\bar x/y$} (3)
+            (3) edge [loop right] node {$x/y$} (3)
+            (3) edge [bend left] node {$\bar x/y$} (1);
+          }
+  \end{enumerate}
+\end{solution}
 
 \begin{exercise}{Assemblerprogrammierung}
   Schreiben Sie für eine 1-Address Maschine \& eine 2-Address Maschine jeweils ein Programm zur Berechnung des Ausdrucks:\par
@@ -387,56 +416,71 @@ gearbeitet wird.
 \end{exercise}
 
 \sheet[2022]{Ersttermin}
-\begin{eexercises}[4]{Rechnen mit IEEE-754 Gleitkommazahlen}{
-    Gegeben seien die folgenden zwei Zahlen im IEEE-754 Format mit einfacher Genauigkeit (1-bit für das Vorzeichen, 8-bit für den Exponenten und 7-bit für die Mantisse)\par
-    \centering $A = (0|00011010|1000000)$\par $B = (0|11100101|0100011)$
-  }
-  \item Berechnen Sie $C = A \cdot B$ im IEEE-754 Format.
-  \item Wie lauten die Zahlen $A, B$ und $C$ im Dezimalsystem? Sehr große und sehr kleine Werte dürfen auch wie folgt dargestellt werden: $<s>*<Wert> \hat{} <Exponenten>$
-\end{eexercises}
+\begin{exercise}[4]{Rechnen mit IEEE-754 Gleitkommazahlen}
+  Gegeben seien die folgenden zwei Zahlen im IEEE-754 Format mit einfacher Genauigkeit (1-bit für das Vorzeichen, 8-bit für den Exponenten und 7-bit für die Mantisse)\par
+  \centering $A = (0|00011010|1000000)$\par $B = (0|11100101|0100011)$
+  \begin{enumerate}
+    \item Berechnen Sie $C = A \cdot B$ im IEEE-754 Format.
+    \item Wie lauten die Zahlen $A, B$ und $C$ im Dezimalsystem? Sehr große und sehr kleine Werte dürfen auch wie folgt dargestellt werden: $<s>*<Wert> \hat{} <Exponenten>$
+  \end{enumerate}
+\end{exercise}
 
-\begin{solutions}
-  \item $C = (0|10000000|1110100)$
-  \item
-  $A = {-1}^0 \cdot 2^{26-127} \cdot (1+2^{-1}) = 2^{-101} + 2^{-102}$\par
-  $B = {-1}^0 \cdot 2^{229-127} \cdot (1+2^{-2}+2^{-6}+2^{-7}) = 2^{102} + 2^{100} + 2^{96} + 2^{95}$\par
-  $C = {-1}^0 \cdot 2^{128-127} \cdot (1+2^{-1}+2^{-2}+2^{-3}+2^{-5}) = 2 + 2^0 + 2^{-1} + 2^{-2} + 2^{-4} = 3.8125$
-\end{solutions}
+\begin{solution}
+  \begin{enumerate}
+    \item $C = (0|10000000|1110100)$
+    \item
+          $A = {-1}^0 \cdot 2^{26-127} \cdot (1+2^{-1}) = 2^{-101} + 2^{-102}$\par
+          $B = {-1}^0 \cdot 2^{229-127} \cdot (1+2^{-2}+2^{-6}+2^{-7}) = 2^{102} + 2^{100} + 2^{96} + 2^{95}$\par
+          $C = {-1}^0 \cdot 2^{128-127} \cdot (1+2^{-1}+2^{-2}+2^{-3}+2^{-5}) = 2 + 2^0 + 2^{-1} + 2^{-2} + 2^{-4} = 3.8125$
+  \end{enumerate}
+\end{solution}
 
-\begin{exercises}{Codierung}
-\item Geben Sie einen zyklisch einschrittigen Code mit 10 Codewörtern an, von denen eines $1110$ ist.
-\item Kann ein zyklisch einschrittiger Code eine ungerade Anzahl an Codewörtern enthalten? Begründen Sie.
-\end{exercises}
+\begin{exercise}{Codierung}
+  \begin{enumerate}
+    \item Geben Sie einen zyklisch einschrittigen Code mit 10 Codewörtern an, von denen eines $1110$ ist.
+    \item Kann ein zyklisch einschrittiger Code eine ungerade Anzahl an Codewörtern enthalten? Begründen Sie.
+  \end{enumerate}
+\end{exercise}
 
-\begin{solutions}
-  \item $1110, 1010, 1000, 0000, 0001, 1001, 1101, 0101, 0111, 0110$
-  \item Nein, da bereits die Parität, auf Grund der Einschrittigkeit, nach einem Zyklus (ungerader Länge) nicht gleich sein kann.
-\end{solutions}
+\begin{solution}
+  \begin{enumerate}
+    \item $1110, 1010, 1000, 0000, 0001, 1001, 1101, 0101, 0111, 0110$
+    \item Nein, da bereits die Parität, auf Grund der Einschrittigkeit, nach einem Zyklus (ungerader Länge) nicht gleich sein kann.
+  \end{enumerate}
+\end{solution}
 
 \sheet[2024]{Probeklausur}
-\begin{exercises}{Zahlensysteme}
-\item Wandeln Sie die Dezimalzahl $1850$ in eine 16-stellige Binärzahl um.\points[4]
-\item Wie lautet die Darstellung der Zahl im Oktalsystem.\points
-\item Wie lautet die Darstellung der Zahl im Hexadezimalsystem.\points
-\end{exercises}
+\begin{exercise}{Zahlensysteme}
+  \begin{enumerate}
+    \item Wandeln Sie die Dezimalzahl $1850$ in eine 16-stellige Binärzahl um.\points[4]
+    \item Wie lautet die Darstellung der Zahl im Oktalsystem.\points
+    \item Wie lautet die Darstellung der Zahl im Hexadezimalsystem.\points
+  \end{enumerate}
+\end{exercise}
 
-\begin{solutions}
-  \item $1850{10} = {0000\ 0111\ 0011\ 1010}_2$
-  \item $1850{10} = {3472}_8$
-  \item $1850{10} = {\mathrm{73A}}_{16}$
-\end{solutions}
+\begin{solution}
+  \begin{enumerate}
+    \item $1850{10} = {0000\ 0111\ 0011\ 1010}_2$
+    \item $1850{10} = {3472}_8$
+    \item $1850{10} = {\mathrm{73A}}_{16}$
+  \end{enumerate}
+\end{solution}
 
-\begin{exercises}{Kommazahlen zwischen Basen}
-\item Wandeln Sie die Dezimalzahl $0.8$ in eine Binärzahl mit 4 Vorkomma- \& der Zahl Nachkommastellen um.\points[4]
-\item Wie lautet die Darstellung von $-0.8$ im Zweierkomplement, mit 4 Vorkomma- \& 8 Nachkommastellen.\points[2]
-\item Bonus: Was ist dabei arithmetisch zu beachten? (mit kurzer Begründung)\points[3]
-\end{exercises}
+\begin{exercise}{Kommazahlen zwischen Basen}
+  \begin{enumerate}
+    \item Wandeln Sie die Dezimalzahl $0.8$ in eine Binärzahl mit 4 Vorkomma- \& der Zahl Nachkommastellen um.\points[4]
+    \item Wie lautet die Darstellung von $-0.8$ im Zweierkomplement, mit 4 Vorkomma- \& 8 Nachkommastellen.\points[2]
+    \item Bonus: Was ist dabei arithmetisch zu beachten? (mit kurzer Begründung)\points[3]
+  \end{enumerate}
+\end{exercise}
 
-\begin{solutions}
-  \item $0.85_{10} = {0000.\overline{1100}}_2$
-  \item $ (0.85_{10})_{2K} = {1111.0011\ 0100}_2$
-  \item Arithmetisch ist zu beachten, dass auf Grund der Rundung nur ein ungefähres 2-Komplement berechnet werden kann.
-\end{solutions}
+\begin{solution}
+  \begin{enumerate}
+    \item $0.85_{10} = {0000.\overline{1100}}_2$
+    \item $ (0.85_{10})_{2K} = {1111.0011\ 0100}_2$
+    \item Arithmetisch ist zu beachten, dass auf Grund der Rundung nur ein ungefähres 2-Komplement berechnet werden kann.
+  \end{enumerate}
+\end{solution}
 
 \begin{exercise}{Rechnen im Hexadezimalsystem}
   Addieren Sie die Hexadezimalzahlen $ABCD + 1634$.\points[4]
@@ -446,21 +490,24 @@ gearbeitet wird.
   \end{solution}
 \end{exercise}
 
-\begin{eexercises}{Umwandlung zu IEEE-754 Gleitkommazahlen}{
-    Wandeln Sie folgende Dezimalzahlen in normalisierte 32-bit Gleitkommazahlen im IEEE-754 float Format um (1-bit Vorzeichen, 8-bit Exponent in Exzess-127 Darstellung, 23-bit Mantisse). Es genügt, wenn Sie die ersten 8-bit der Mantisse angeben. (8~Punkte)
-  }
-  \item $-1$
-  \item $15$
-  \item $1.25$
-  \item $0$
-\end{eexercises}
+\begin{exercise}{Umwandlung zu IEEE-754 Gleitkommazahlen}
+  Wandeln Sie folgende Dezimalzahlen in normalisierte 32-bit Gleitkommazahlen im IEEE-754 float Format um (1-bit Vorzeichen, 8-bit Exponent in Exzess-127 Darstellung, 23-bit Mantisse). Es genügt, wenn Sie die ersten 8-bit der Mantisse angeben. (8~Punkte)
+  \begin{enumerate}
+    \item $-1$
+    \item $15$
+    \item $1.25$
+    \item $0$
+  \end{enumerate}
+\end{exercise}
 
-\begin{solutions}
-  \item $-1 = (1|0111\ 1111|0000\ 0000)$
-  \item $15 = (0|1000\ 0100|1110\ 0000)$
-  \item $1.25 = (0|0111\ 1111|0100\ 0000)$
-  \item $0 = (0|0000\ 0000|0000\ 0000)$
-\end{solutions}
+\begin{solution}
+  \begin{enumerate}
+    \item $-1 = (1|0111\ 1111|0000\ 0000)$
+    \item $15 = (0|1000\ 0100|1110\ 0000)$
+    \item $1.25 = (0|0111\ 1111|0100\ 0000)$
+    \item $0 = (0|0000\ 0000|0000\ 0000)$
+  \end{enumerate}
+\end{solution}
 
 \begin{exercise}{Codierung}
   Geben Sie einen zyklisch-einschrittigen Binärcode mit 12 Codewörtern an.\points[5]
@@ -470,79 +517,88 @@ gearbeitet wird.
   \end{solution}
 \end{exercise}
 
-\begin{eexercises}{Codierung nach Fano}{
-    Gegeben sei die Menge $M = \{A, B, C, D, E\}$ von Symbolen, die mit folgenden Wahrscheinlichkeiten auftreten:
-    \centering\begin{tabular}{c|ccccc}
-      $m_i$ & $A$  & $B$  & $C$ & $D$  & $E$  \\
-      \hline
-      $p_i$ & 0,35 & 0,15 & 0,2 & 0,18 & 0,12 \\
-    \end{tabular}
-  }
-  \item\label{fano:1} Geben Sie eine Codierung der Elemente von $M$ nach Fano an.\points[7]
-  \item Formulieren Sie die Fano-Bedingung.\points
-  \item Erfüllen die Code-Worte, die Sie unter \ref{fano:1} gefunden haben, die Fano-Bedingung?\points
-  \item Ist jeder Code, der der Fano-Bedingung genügt, eindeutig decodierbar? Ist jeder Blockcode eindeutig decodierbar? Geben Sie eine Codierung der Elemente von $M$ an, die nicht eindeutig decodierbar ist.\points[3]
-\end{eexercises}
-
-\begin{solutions}
-  \item
-  \begin{tabular}{c|ccccc}
-    $m_i$ & $A$ & $B$ & $C$ & $D$ & $E$ \\
+\begin{exercise}{Codierung nach Fano}
+  Gegeben sei die Menge $M = \{A, B, C, D, E\}$ von Symbolen, die mit folgenden Wahrscheinlichkeiten auftreten:
+  \centering\begin{tabular}{c|ccccc}
+    $m_i$ & $A$  & $B$  & $C$ & $D$  & $E$  \\
     \hline
-    $c_i$ & 00  & 110 & 01  & 10  & 111 \\
+    $p_i$ & 0,35 & 0,15 & 0,2 & 0,18 & 0,12 \\
   \end{tabular}
-  \item Die Fano-Bedingung lautet: Die Codewörter müssen präfixfrei sein (Kein Codewort bildet Anfang von anderem Codewort).
-  \item Ja, die Code-Worte erfüllen die Fano-Bedingung. Jede nach dem Shannon-Fano Verfahren gefundene Codierung erfüllt die Fano-Bedingung.
-  \item Ja, jeder Code der die Fano-Bedingung erfüllt, ist eindeutig decodierbar (abgesehen von Übertragungsfehlern). Ein Blockcode ist ebenfalls immer eindeutig decodierbar. Ein Beispiel für einen Code, der nicht eindeutig decodierbar ist, ist:\par
-  \begin{tabular}{c|ccccc}
-    $m_i$ & $A$ & $B$ & $C$ & $D$  & $E$   \\
-    \hline
-    $c_i$ & 1   & 10  & 100 & 1000 & 10000 \\
+  \begin{enumerate}
+    \item\label{fano:1} Geben Sie eine Codierung der Elemente von $M$ nach Fano an.\points[7]
+    \item Formulieren Sie die Fano-Bedingung.\points
+    \item Erfüllen die Code-Worte, die Sie unter \ref{fano:1} gefunden haben, die Fano-Bedingung?\points
+    \item Ist jeder Code, der der Fano-Bedingung genügt, eindeutig decodierbar? Ist jeder Blockcode eindeutig decodierbar? Geben Sie eine Codierung der Elemente von $M$ an, die nicht eindeutig decodierbar ist.\points[3]
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  \begin{enumerate}
+    \item
+          \begin{tabular}{c|ccccc}
+            $m_i$ & $A$ & $B$ & $C$ & $D$ & $E$ \\
+            \hline
+            $c_i$ & 00  & 110 & 01  & 10  & 111 \\
+          \end{tabular}
+    \item Die Fano-Bedingung lautet: Die Codewörter müssen präfixfrei sein (Kein Codewort bildet Anfang von anderem Codewort).
+    \item Ja, die Code-Worte erfüllen die Fano-Bedingung. Jede nach dem Shannon-Fano Verfahren gefundene Codierung erfüllt die Fano-Bedingung.
+    \item Ja, jeder Code der die Fano-Bedingung erfüllt, ist eindeutig decodierbar (abgesehen von Übertragungsfehlern). Ein Blockcode ist ebenfalls immer eindeutig decodierbar. Ein Beispiel für einen Code, der nicht eindeutig decodierbar ist, ist:\par
+          \begin{tabular}{c|ccccc}
+            $m_i$ & $A$ & $B$ & $C$ & $D$  & $E$   \\
+            \hline
+            $c_i$ & 1   & 10  & 100 & 1000 & 10000 \\
+          \end{tabular}
+  \end{enumerate}
+\end{solution}
+
+\begin{exercise}{Entropie}
+  Wir betrachten eine Münze mit den Seiten Kopf \& Zahl.
+  \begin{enumerate}
+    \item Geben Sie die Entropie an für einen Wurf mit der unpräparierten Münze, d.h. Kopf \& Zahl treten gleich oft auf. (Formel \& Zahlenwert)\points[3]
+    \item Die Münze sei jetzt so präpariert, dass Kopf dreimal öfter als Zahl auftritt ($p(Kopf) = 0,75$ \& $p(Zahl) = 0,25$). Berechnen Sie wieder die Entropie (Formel \& Zahlenwert).(3~Punkte)
+          \hint{Es gilt $\log_2(3) \approx 1.6$ und $\log(x \cdot y) = \log(x) + \log(y)$.}
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  \begin{enumerate}
+    \item $H = -(.5\cdot\log_2(.5) + .5\cdot\log_2(.5)) = 1$
+    \item $H = -(.75\cdot\log_2(.75) + .25\cdot\log_2(.25)) \approx .8$
+  \end{enumerate}
+\end{solution}
+
+\begin{exercise}{Gray-Code Prüfer}
+  Für die folgenden Gray-Codes ist ein Codeprüfer zu realisieren, d.h. eine Funktion $F$, die genau dann 1 liefert, wenn das als Argument angebotene Wort ein Codewort ist. Codewörter sind dabei:\par
+  \begin{tabular}{c|cccc cccc cc}
+    $x_4$ & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
+    $x_3$ & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+    $x_2$ & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
+    $x_1$ & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
   \end{tabular}
-\end{solutions}
+  \begin{enumerate}
+    \item Bestimmen Sie aus dem KV-Diagramm die disjunktive Minimalform des Gray-Codeprüfers.\points[5]
+    \item Geben Sie die konjunktive Minimalform für den Gray-Codeprüfer an.\points[3]
+    \item Geben Sie die Reed-Muller-Form für den Gray-Codeprüfer an.\points[3]\par
+          \hint{Es gilt $\bar{a}=1\oplus a$ und $a\lor b = a\oplus b\oplus ab$.}
+  \end{enumerate}
+\end{exercise}
 
-\begin{eexercises}{Entropie}{
-    Wir betrachten eine Münze mit den Seiten Kopf \& Zahl.
-  }
-  \item Geben Sie die Entropie an für einen Wurf mit der unpräparierten Münze, d.h. Kopf \& Zahl treten gleich oft auf. (Formel \& Zahlenwert)\points[3]
-  \item Die Münze sei jetzt so präpariert, dass Kopf dreimal öfter als Zahl auftritt ($p(Kopf) = 0,75$ \& $p(Zahl) = 0,25$). Berechnen Sie wieder die Entropie (Formel \& Zahlenwert).(3~Punkte)
-  \hint{Es gilt $\log_2(3) \approx 1.6$ und $\log(x \cdot y) = \log(x) + \log(y)$.}
-\end{eexercises}
-
-\begin{solutions}
-  \item $H = -(.5\cdot\log_2(.5) + .5\cdot\log_2(.5)) = 1$
-  \item $H = -(.75\cdot\log_2(.75) + .25\cdot\log_2(.25)) \approx .8$
-\end{solutions}
-
-\begin{eexercises}{Gray-Code Prüfer}{
-    Für die folgenden Gray-Codes ist ein Codeprüfer zu realisieren, d.h. eine Funktion $F$, die genau dann 1 liefert, wenn das als Argument angebotene Wort ein Codewort ist. Codewörter sind dabei:\par
-    \begin{tabular}{c|cccc cccc cc}
-      $x_4$ & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 \\
-      $x_3$ & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\
-      $x_2$ & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
-      $x_1$ & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-    \end{tabular}
-  }
-  \item Bestimmen Sie aus dem KV-Diagramm die disjunktive Minimalform des Gray-Codeprüfers.\points[5]
-  \item Geben Sie die konjunktive Minimalform für den Gray-Codeprüfer an.\points[3]
-  \item Geben Sie die Reed-Muller-Form für den Gray-Codeprüfer an.\points[3]\par
-  \hint{Es gilt $\bar{a}=1\oplus a$ und $a\lor b = a\oplus b\oplus ab$.}
-\end{eexercises}
-
-\begin{solutions}
-  \item KV-Diagramm:
-  \begin{tabular}{c|cccc}
-    $x_4x_3\backslash x_2x_1$ & 00 & 01 & 11 & 10 \\
-    \hline
-    00                        & 1  & 1  & 1  & 1  \\
-    01                        & 1  & 0  & 0  & 1  \\
-    11                        & 1  & 0  & 0  & 1  \\
-    10                        & 1  & 0  & 0  & 1  \\
-  \end{tabular}\par
-  Disjunktive Normalform: $\bar{x_1}\lor\bar{x_4}\bar{x_3}$
-  \item Konjunktive Minimalform: $(\bar{x_3}\lor\bar{x_1})\land(\bar{x_4}\lor\bar{x_1})$
-  \item Reed-Muller-Form: zB. $1\oplus x_4x_1\oplus x_3x_1\oplus x_4x_3x_1$
-\end{solutions}
+\begin{solution}
+  \begin{enumerate}
+    \item KV-Diagramm:
+          \begin{tabular}{c|cccc}
+            $x_4x_3\backslash x_2x_1$ & 00 & 01 & 11 & 10 \\
+            \hline
+            00                        & 1  & 1  & 1  & 1  \\
+            01                        & 1  & 0  & 0  & 1  \\
+            11                        & 1  & 0  & 0  & 1  \\
+            10                        & 1  & 0  & 0  & 1  \\
+          \end{tabular}\par
+          Disjunktive Normalform: $\bar{x_1}\lor\bar{x_4}\bar{x_3}$
+    \item Konjunktive Minimalform: $(\bar{x_3}\lor\bar{x_1})\land(\bar{x_4}\lor\bar{x_1})$
+    \item Reed-Muller-Form: zB. $1\oplus x_4x_1\oplus x_3x_1\oplus x_4x_3x_1$
+  \end{enumerate}
+\end{solution}
 
 \begin{exercise}{ROBDDs}
   Skizzieren Sie den ROBDD für die Boole’sche Funktion $f (x, y, z) = \overline{x \land y \land z}$.\hfill (8~Punkte)
@@ -564,85 +620,92 @@ gearbeitet wird.
   \end{solution}
 \end{exercise}
 
-\begin{eexercises}{Schaltwerke}{
-    Ein Schaltwerk ist durch das folgende Zustandsdiagramm definiert. Die Codierung der Zustände ($z_1, z_2$) und der Ausgabe $y$ ist bereits in den Knoten des Graphen angegeben.\par
-    \centering
-    \tikz[->,auto,node distance=3cm,main node/.style={circle,draw}]{
-      \node[main node] (-1) {$z_2z_1/y$};
-      \node[main node] (0) [right of=-1]{00/0};
-      \node[main node] (1) [below of=0] {01/0};
-      \node[main node] (2) [left of=1] {10/1};
+\begin{exercise}{Schaltwerke}
+  Ein Schaltwerk ist durch das folgende Zustandsdiagramm definiert. Die Codierung der Zustände ($z_1, z_2$) und der Ausgabe $y$ ist bereits in den Knoten des Graphen angegeben.\par
+  \centering
+  \tikz[->,auto,node distance=3cm,main node/.style={circle,draw}]{
+    \node[main node] (-1) {$z_2z_1/y$};
+    \node[main node] (0) [right of=-1]{00/0};
+    \node[main node] (1) [below of=0] {01/0};
+    \node[main node] (2) [left of=1] {10/1};
 
-      \path[every node]
-      (0) edge [bend right] node {$\bar x$} (1)
-      (0) edge [loop above] node {$x$} (0)
-      (1) edge [bend right] node {$x$} (0)
-      (1) edge [] node {$\bar x$} (2)
-      (2) edge node {*} (0);
-    }
+    \path[every node]
+    (0) edge [bend right] node {$\bar x$} (1)
+    (0) edge [loop above] node {$x$} (0)
+    (1) edge [bend right] node {$x$} (0)
+    (1) edge [] node {$\bar x$} (2)
+    (2) edge node {*} (0);
   }
-  \item Ist das Schaltwerk vom Typ Moore oder Mealy?\points
-  \item Tragen Sie die Ausgabewerte der Schaltfunktionen für die Ausgabe $y$ und den Folgezustand ($z_1^+, z_2^+$) in eine Funktionstabelle ein.\points[2]
-  \item Übertragen Sie die Tabellenwerte in KV-Diagramme für $z_1^+, z_2^+, y$.\points[3]
-  \item Geben Sie minimale Ausdrücke für die Schaltfunktionen an.\points[4]
-\end{eexercises}
+  \begin{enumerate}
+    \item Ist das Schaltwerk vom Typ Moore oder Mealy?\points
+    \item Tragen Sie die Ausgabewerte der Schaltfunktionen für die Ausgabe $y$ und den Folgezustand ($z_1^+, z_2^+$) in eine Funktionstabelle ein.\points[2]
+    \item Übertragen Sie die Tabellenwerte in KV-Diagramme für $z_1^+, z_2^+, y$.\points[3]
+    \item Geben Sie minimale Ausdrücke für die Schaltfunktionen an.\points[4]
+  \end{enumerate}
+\end{exercise}
 
-\begin{solutions}
-  \item Das Schaltwerk ist vom Typ Moore, da der Ausgang $y$ nur vom Zustand $z_1, z_2$ abhängt.
-  \item Funktionstabelle:
-  \begin{tabular}{ccc|cc}
-    $x$ & $z_2$ & $z_1$ & $z_2^+$ & $z_1^+$ \\
-    \hline
-    0   & 0     & 0     & 0       & 1       \\
-    0   & 0     & 1     & 1       & 0       \\
-    0   & 1     & 0     & 0       & 0       \\
-    0   & 1     & 1     & 0       & 0       \\
-    1   & 0     & 0     & 0       & 0       \\
-    1   & 0     & 1     & 0       & 0       \\
-    1   & 1     & 0     & 0       & 0       \\
-    *   & 1     & 1     & *       & *       \\
-  \end{tabular}
+\begin{solution}
+  \begin{enumerate}
+    \item Das Schaltwerk ist vom Typ Moore, da der Ausgang $y$ nur vom Zustand $z_1, z_2$ abhängt.
+    \item Funktionstabelle:
+          \begin{tabular}{ccc|cc}
+            $x$ & $z_2$ & $z_1$ & $z_2^+$ & $z_1^+$ \\
+            \hline
+            0   & 0     & 0     & 0       & 1       \\
+            0   & 0     & 1     & 1       & 0       \\
+            0   & 1     & 0     & 0       & 0       \\
+            0   & 1     & 1     & 0       & 0       \\
+            1   & 0     & 0     & 0       & 0       \\
+            1   & 0     & 1     & 0       & 0       \\
+            1   & 1     & 0     & 0       & 0       \\
+            *   & 1     & 1     & *       & *       \\
+          \end{tabular}
 
-  KV-Diagramm für $z_2^+$:
-  \begin{tabular}{c|cccc}
-    $x\backslash z_1z_2$ & 00 & 01 & 11 & 10 \\
-    \hline
-    1                    & 0  & 1  & *  & 0  \\
-    1                    & 0  & 0  & *  & 0  \\
-  \end{tabular}
+          KV-Diagramm für $z_2^+$:
+          \begin{tabular}{c|cccc}
+            $x\backslash z_1z_2$ & 00 & 01 & 11 & 10 \\
+            \hline
+            1                    & 0  & 1  & *  & 0  \\
+            1                    & 0  & 0  & *  & 0  \\
+          \end{tabular}
 
-  KV-Diagramm für $z_1^+$:
-  \begin{tabular}{c|cccc}
-    $x\backslash z_1z_2$ & 00 & 01 & 11 & 10 \\
-    \hline
-    0                    & 1  & 0  & *  & 0  \\
-    1                    & 0  & 0  & *  & 0  \\
-  \end{tabular}
+          KV-Diagramm für $z_1^+$:
+          \begin{tabular}{c|cccc}
+            $x\backslash z_1z_2$ & 00 & 01 & 11 & 10 \\
+            \hline
+            0                    & 1  & 0  & *  & 0  \\
+            1                    & 0  & 0  & *  & 0  \\
+          \end{tabular}
 
-  KV-Diagramm für $y$:
-  \begin{tabular}{c|cc}
-    $z_2\backslash z_1$ & 0 & 1 \\
-    \hline
-    0                   & 0 & 0 \\
-    1                   & 1 & * \\
-  \end{tabular}
-  \item
-  $z_2^+ = \bar x z_1$\par
-  $z_1^+ = \bar x \bar{z_2} \bar{z_1}$\par
-  $y = z_2$
-\end{solutions}
+          KV-Diagramm für $y$:
+          \begin{tabular}{c|cc}
+            $z_2\backslash z_1$ & 0 & 1 \\
+            \hline
+            0                   & 0 & 0 \\
+            1                   & 1 & * \\
+          \end{tabular}
+    \item
+          $z_2^+ = \bar x z_1$\par
+          $z_1^+ = \bar x \bar{z_2} \bar{z_1}$\par
+          $y = z_2$
+  \end{enumerate}
+\end{solution}
 
-\begin{exercises}{Codierung}
-\item Geben Sie einen Code mit vier Codeworten an, deren (paarweise) Hammingdistanz mindestens 4 ist.\points[4]
-\item Wie viele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code erkennen?\points
-\item Wie viele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code korrigieren?\points
-\end{exercises}
+\begin{exercise}{Codierung}
+  \begin{enumerate}
+    \item Geben Sie einen Code mit vier Codeworten an, deren (paarweise) Hammingdistanz mindestens 4 ist.\points[4]
+    \item Wie viele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code erkennen?\points
+    \item Wie viele Fehler innerhalb eines Codewortes lassen sich mit ihrem Code korrigieren?\points
+  \end{enumerate}
+\end{exercise}
 
-\begin{solutions}
-  \item $d_{min}=4$: z.B. $0000\ 0000, 0101\ 0101, 1010\ 1010, 1111\ 1111$
-  \item $d_{min}-1=3$ Fehler
-  \item $\lfloor\frac{d_{min}-1}{2}\rfloor=1$ Fehler
-\end{solutions}
+\begin{solution}
+  \begin{enumerate}
+    \item $d_{min}=4$: z.B. $0000\ 0000, 0101\ 0101, 1010\ 1010, 1111\ 1111$
+    \item $d_{min}-1=3$ Fehler
+    \item $\lfloor\frac{d_{min}-1}{2}\rfloor=1$ Fehler
+  \end{enumerate}
+\end{solution}
 
 \begin{exercise}{Assemblerprogrammierung}
   Schreiben Sie für eine Stack- \& eine 3-Adress-Maschine mit Load-Store Befehlssatz, jeweils ein Programm zur Berechnung des folgenden Ausdrucks:\points[8]\par
@@ -687,21 +750,24 @@ gearbeitet wird.
   siehe \ref{mc:tf} \hfill(10 Punkte)
 \end{exercise}
 
-\begin{eexercises}[14]{Betriebssysteme}{
-    Beantworten Sie schriftliche Fragen zu Betriebssystem-relevanten Themen. Dies können Inhalte, Eigenschaften oder Zusammenhänge sein. Es genügt eine Aufzählung von Schlüsselworten; Textantworten sollen kurz ausfallen: wenige Sätze, $<5$ Textzeilen!
-  }
-  \item Nennen Sie drei Aufgaben von Betriebssystemen?\points[3]
-  \item Was ist Scheduling?\points[5]
-  \item Was haben Prozesse mit Threads zu tun?\points[4]
-  \item Welche Mechanismen implementieren Virtual Memory?\points[3]
-\end{eexercises}
+\begin{exercise}[14]{Betriebssysteme}
+  Beantworten Sie schriftliche Fragen zu Betriebssystem-relevanten Themen. Dies können Inhalte, Eigenschaften oder Zusammenhänge sein. Es genügt eine Aufzählung von Schlüsselworten; Textantworten sollen kurz ausfallen: wenige Sätze, $<5$ Textzeilen!
+  \begin{enumerate}
+    \item Nennen Sie drei Aufgaben von Betriebssystemen?\points[3]
+    \item Was ist Scheduling?\points[5]
+    \item Was haben Prozesse mit Threads zu tun?\points[4]
+    \item Welche Mechanismen implementieren Virtual Memory?\points[3]
+  \end{enumerate}
+\end{exercise}
 
-\begin{solutions}
-  \item Ressourcenverwaltung, Prozessverwaltung, Speicherverwaltung, Dateiverwaltung, Benutzerschnittstelle, Systemkommunikation, Fehlerbehandlung, Sicherheitsfunktionen, ...
-  \item Scheduling ist die Zuweisung der Prozessorzeit an die verschiedenen Prozesse (bzw. Threads) eines Systems.
-  \item Threads sind leichtgewichtige Prozesse, die innerhalb eines Prozesses laufen und sich dessen Ressourcen teilen.
-  \item Paging, Swapping, Memory-Mapped Files, Demand Paging, Page Fault, ...
-\end{solutions}
+\begin{solution}
+  \begin{enumerate}
+    \item Ressourcenverwaltung, Prozessverwaltung, Speicherverwaltung, Dateiverwaltung, Benutzerschnittstelle, Systemkommunikation, Fehlerbehandlung, Sicherheitsfunktionen, ...
+    \item Scheduling ist die Zuweisung der Prozessorzeit an die verschiedenen Prozesse (bzw. Threads) eines Systems.
+    \item Threads sind leichtgewichtige Prozesse, die innerhalb eines Prozesses laufen und sich dessen Ressourcen teilen.
+    \item Paging, Swapping, Memory-Mapped Files, Demand Paging, Page Fault, ...
+  \end{enumerate}
+\end{solution}
 
 \sheet[\empty]{Multiple Choice}
 \begin{enumerate}
